@@ -56,9 +56,8 @@ const darkTheme = createTheme({
 
 export default function Pataientstable() {
     return (
-        <>
-        <input type="search" placeholder='ex:409595' className='border outline-none py-3 px-4 w-1/2 my-4 mx-5 rounded-sm '/>
-            <ThemeProvider theme={darkTheme}>
+        <>        
+            <ThemeProvider theme={darkTheme} >
                 <TableContainer component={Paper}>
                     <Table sx={{ minWidth: 700 }} aria-label="customized table">
                         <TableHead>
