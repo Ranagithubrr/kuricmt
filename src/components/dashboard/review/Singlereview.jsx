@@ -10,8 +10,7 @@ const Singlereview = () => {
             </div>
             <div className='w-56 p-2'>
                 <h4 className='font-semibold m-0 p-0'>Masud Rana</h4>
-                <span className='text-sm text-gray-500 block'>Doctor: Dr. Dinesh Roy</span>
-                <span className='text-sm text-gray-500 block'>Case: Headeache</span>
+                <span className='text-sm text-gray-500 block'>Junior Instructor</span>                
 
             </div>
             <div className='ml-2 w-6/12'>

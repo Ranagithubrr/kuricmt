@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { AiOutlineHome } from 'react-icons/ai';
 import { CgProfile } from 'react-icons/cg';
 import { AiOutlineSetting } from 'react-icons/ai';
-import { FaCalculator } from 'react-icons/fa';
-import { IoMdNotificationsOutline } from 'react-icons/io';
+import { IoDocumentTextOutline } from "react-icons/io5";
+import { IoMdNotificationsOutline, IoIosGlobe } from 'react-icons/io';
+
 import {Link} from 'react-router-dom'
 import Usermenu from './Usermenu';
+import Computer from '../../img/desktop.png';
 
 const Navbar = () => {
     const [rightSidebar, setRightSidebar] = useState(false);
@@ -40,7 +42,9 @@ const Navbar = () => {
         <>
             <div class="flex px-6 py-5 items-center shadow-md sticky top-0 z-10 bg-white dark:bg-gray-800">
                 <div class="w-4/12">
-                    <span className="text-3xl font-bold dark:text-gray-300">Me<span className="text-blue-900 dark:text-blue-500">Doc</span></span>
+                    {/* <span className="text-3xl font-bold dark:text-gray-300"><span className="text-blue-900 dark:text-blue-500">D.O.C</span></span> */}
+                    <img src={Computer} alt="D.O.C"  className='h-12 pl-10'/>
+                    <span className="block text-xs font-semibold">Department Of Computer</span>
                 </div>
                 <div class="w-6/12">
                     <ul className='flex'>
@@ -51,7 +55,7 @@ const Navbar = () => {
                         </li>
                         <li className='px-7 border-b-4 border-transparent hover:border-blue-900 dark:hover:border-gray-300  mx-2 pb-3 font-semibold text-blue-950 dark:text-gray-200   '>
                             <Link to="/calculators" className='text-3xl'>
-                                <FaCalculator />
+                                <IoDocumentTextOutline />
                             </Link>
                         </li>
                         <li className='px-7 border-b-4 border-transparent hover:border-blue-900 dark:hover:border-gray-300  mx-2 pb-3 font-semibold text-blue-950 dark:text-gray-200   '>
@@ -62,6 +66,11 @@ const Navbar = () => {
                         <li className='px-7 border-b-4 border-transparent hover:border-blue-900 dark:hover:border-gray-300  mx-2 pb-3 font-semibold text-blue-950 dark:text-gray-200   '>
                             <Link to="/profile" className='text-3xl'>
                                 <CgProfile />
+                            </Link>
+                        </li>
+                        <li className='px-7 border-b-4 border-transparent hover:border-blue-900 dark:hover:border-gray-300  mx-2 pb-3 font-semibold text-blue-950 dark:text-gray-200   '>
+                            <Link to="/website" className='text-3xl'>
+                                <IoIosGlobe />
                             </Link>
                         </li>
                     </ul>

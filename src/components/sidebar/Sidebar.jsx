@@ -25,33 +25,33 @@ const Sidebar = () => {
                     </Link>
                 </li>
                 <li className='flex  hover:bg-slate-200 rounded dark:hover:bg-gray-700'>
-                    <Link to='/appointment' className='h-full w-full  py-4 px-2 block'>
-                        <span className='flex items-center text-base dark:text-gray-300'><BsCalendarDate className='text-xl' />  <span className='pl-3 h-full text-sm font-semibold'>Appointment</span></span>
+                    <Link to='/applications' className='h-full w-full  py-4 px-2 block'>
+                        <span className='flex items-center text-base dark:text-gray-300'><BsCalendarDate className='text-xl' />  <span className='pl-3 h-full text-sm font-semibold'>Applications</span></span>
                     </Link>
                 </li>
                 <li className='rounded dark:hover:bg-gray-700 relative'>
                     <span className='h-full w-full  py-4 px-2 block cursor-pointer' onClick={() => toggleSubmenu()}>
-                        <span className='flex items-center text-base dark:text-gray-300'><MdArrowDropDown className='text-xl' />  <span className='pl-3 h-full text-sm font-semibold'><span className='flex items-center'>Medical Instruments </span></span></span>
+                        <span className='flex items-center text-base dark:text-gray-300'><MdArrowDropDown className='text-xl' />  <span className='pl-3 h-full text-sm font-semibold'><span className='flex items-center'>Dep. Instruments </span></span></span>
                     </span>
                     <div className={`border-l-2 border-gray-800 transition duration-500 ${isSubMenuOpen ? 'pointer-events-auto ml-3 ' : 'pointer-events-none h-0 overflow-hidden'
                         }`}>
-                        <Link to="/hospital-survey" className='pl-3 ml-2 flex items-center hover:bg-slate-200 rounded text-sm font-semibold py-1 dark:text-gray-300'><span className='pr-2 text-sm'><BsHospitalFill/> </span>- Hospital Survey</Link>                        
-                        <Link to="/earnings" className='pl-3 ml-2 flex items-center hover:bg-slate-200 rounded text-sm font-semibold py-1 dark:text-gray-300'><span className='pr-2 text-sm'><BsCurrencyDollar/> </span>- Earnings</Link>                        
+                        <Link to="/department-survey" className='pl-3 ml-2 flex items-center hover:bg-slate-200 rounded text-sm font-semibold py-1 dark:text-gray-300'><span className='pr-2 text-sm'><BsHospitalFill/> </span>- Instruments</Link>                                           
+                        <Link to="/website-contents" className='pl-3 ml-2 flex items-center hover:bg-slate-200 rounded text-sm font-semibold py-1 dark:text-gray-300'><span className='pr-2 text-sm'><BsHospitalFill/> </span>- Website Contents</Link>                                           
                     </div>
                 </li>
                 <li className='flex  hover:bg-slate-200 rounded dark:hover:bg-gray-700'>
                     <Link to='/doctors' className='h-full w-full  py-4 px-2 block'>
-                        <span className='flex items-center text-base dark:text-gray-300'><FaUsers className='text-xl' />  <span className='pl-3 h-full text-sm font-semibold'>Doctors Profile</span></span>
+                        <span className='flex items-center text-base dark:text-gray-300'><FaUsers className='text-xl' />  <span className='pl-3 h-full text-sm font-semibold'>Teachers Profile</span></span>
                     </Link>
                 </li>
                 <li className='flex  hover:bg-slate-200 rounded dark:hover:bg-gray-700'>
-                    <Link to='/patients' className='h-full w-full  py-4 px-2 block'>
-                        <span className='flex items-center text-base dark:text-gray-300'><HiUserAdd className='text-xl' />  <span className='pl-3 h-full text-sm font-semibold'>Patients</span></span>
+                    <Link to='/captains' className='h-full w-full  py-4 px-2 block'>
+                        <span className='flex items-center text-base dark:text-gray-300'><HiUserAdd className='text-xl' />  <span className='pl-3 h-full text-sm font-semibold'>Class Captains</span></span>
                     </Link>
                 </li>
                 <li className='flex  hover:bg-slate-200 rounded dark:hover:bg-gray-700'>
                     <Link to='/review' className='h-full w-full  py-4 px-2 block'>
-                        <span className='flex items-center text-base dark:text-gray-300'><AiFillStar className='text-xl' />  <span className='pl-3 h-full text-sm font-semibold'>Patients Review</span></span>
+                        <span className='flex items-center text-base dark:text-gray-300'><AiFillStar className='text-xl' />  <span className='pl-3 h-full text-sm font-semibold'>Reviews</span></span>
                     </Link>
                 </li>
                 <li className='flex  hover:bg-slate-200 rounded dark:hover:bg-gray-700'>
@@ -59,14 +59,14 @@ const Sidebar = () => {
                         <span className='flex items-center text-base dark:text-gray-300'><MdManageAccounts className='text-xl' />  <span className='pl-3 h-full text-sm font-semibold'>Accounts Review</span></span>
                     </Link>
                 </li>
-                <li className='flex  hover:bg-slate-200 rounded dark:hover:bg-gray-700'>
+                {/* <li className='flex  hover:bg-slate-200 rounded dark:hover:bg-gray-700'>
                     <Link to='/chat' className='h-full w-full  py-4 px-2 flex'>
                         <span className='flex items-center text-base dark:text-gray-300'><BsFillChatDotsFill className='text-xl' />  <span className='pl-3 h-full text-sm font-semibold'>Chat</span></span>
                         <div className='h-5 w-5 bg-red-700 rounded-full ml-auto mr-5 flex items-center justify-center'>
                             <span className='text-gray-200 text-xs font-semibold'>12</span>
                         </div>
                     </Link>
-                </li>
+                </li> */}
                 <li className='flex  hover:bg-slate-200 rounded dark:hover:bg-gray-700'>
                     <Link to='/login' className='h-full w-full  py-4 px-2 block'>
                         <span className='flex items-center text-base dark:text-gray-300'><MdOutlineLogout className='text-xl' />  <span className='pl-3 h-full text-sm font-semibold'>Log Out</span></span>

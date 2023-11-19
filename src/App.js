@@ -19,6 +19,7 @@ import Hospitalsurvey from './pages/Hospital-Survey/Hospitalsurvey';
 import Accountreview from './pages/Accounts-Review/Accountreview';
 import Earnings from './pages/Earnings/Earnings';
 import Chat from './pages/chat/Chat';
+import Contents from './pages/Contents/Contents';
 
 function App() {
   return (
@@ -27,19 +28,20 @@ function App() {
         <Route path='/' element={<Homepage />}>
           <Route path='/' element={<Dashboard />}>
             <Route path='/' element={<Maindashboard />}></Route>
-            <Route path='/patients' element={<Patients />}></Route>
+            <Route path='/captains' element={<Patients />}></Route>
             <Route path='/chat' element={<Chat />}></Route>
             <Route path='/accounts-review' element={<Accountreview />}></Route>
             <Route path='/review' element={<Review />}></Route>
             <Route path='/doctors' element={<Profile />}></Route>
-            <Route path='/appointment' element={<Appointment />}></Route>
+            <Route path='/applications' element={<Appointment />}></Route>
             <Route path='/earnings' element={<Earnings />}></Route>
             <Route path='/get-appointment' element={<Getappointment />}></Route>
             <Route path='/calculators' element={<Calculators />}></Route>
             <Route path='/notifications' element={<Notifications />}></Route>
             <Route path='/profile' element={<Userprofile />}></Route>
             <Route path='/update-profile' element={<UpdateProfile />}></Route>
-            <Route path='/hospital-survey' element={<Hospitalsurvey />}></Route>
+            <Route path='/department-survey' element={<Hospitalsurvey />}></Route>
+            <Route path='/website-contents' element={<Contents />}></Route>
           </Route>
         </Route>
         <Route path='/login' element={<Login />}></Route>

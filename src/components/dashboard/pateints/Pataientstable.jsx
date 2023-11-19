@@ -34,18 +34,18 @@ function createData(name, calories, fat, carbs, protein) {
 }
 
 const rows = [
-    createData('Deeana Scerlett', 'Male', '+880123456789', 'hello@gmail.com', '28'),
-    createData('James Ford', 'Famale', '+880123456789', 'hello@gmail.com', '26'),
-    createData('Deeana Scerlett', 'Male', '+880123456789', 'hello@gmail.com', '28'),
-    createData('James Ford', 'Famale', '+880123456789', 'hello@gmail.com', '26'),
-    createData('Deeana Scerlett', 'Male', '+880123456789', 'hello@gmail.com', '28'),
-    createData('James Ford', 'Famale', '+880123456789', 'hello@gmail.com', '26'),
-    createData('Deeana Scerlett', 'Male', '+880123456789', 'hello@gmail.com', '28'),
-    createData('James Ford', 'Famale', '+880123456789', 'hello@gmail.com', '26'),
-    createData('Deeana Scerlett', 'Male', '+880123456789', 'hello@gmail.com', '28'),
-    createData('James Ford', 'Famale', '+880123456789', 'hello@gmail.com', '26'),
-    createData('Deeana Scerlett', 'Male', '+880123456789', 'hello@gmail.com', '28'),
-    createData('James Ford', 'Famale', '+880123456789', 'hello@gmail.com', '26'),
+    createData('409090', 'Deeana Scerlett', 'Male', '+880123456789', 'hello@gmail.com'),
+    createData('409090', 'James Ford', 'Famale', '+880123456789', 'hello@gmail.com'),
+    createData('409090', 'Deeana Scerlett', 'Male', '+880123456789', 'hello@gmail.com'),
+    createData('409090', 'James Ford', 'Famale', '+880123456789', 'hello@gmail.com'),
+    createData('409090', 'Deeana Scerlett', 'Male', '+880123456789', 'hello@gmail.com'),
+    createData('409090', 'James Ford', 'Famale', '+880123456789', 'hello@gmail.com'),
+    createData('409090', 'Deeana Scerlett', 'Male', '+880123456789', 'hello@gmail.com'),
+    createData('409090', 'James Ford', 'Famale', '+880123456789', 'hello@gmail.com'),
+    createData('409090', 'Deeana Scerlett', 'Male', '+880123456789', 'hello@gmail.com'),
+    createData('409090', 'James Ford', 'Famale', '+880123456789', 'hello@gmail.com'),
+    createData('409090', 'Deeana Scerlett', 'Male', '+880123456789', 'hello@gmail.com'),
+    createData('409090', 'James Ford', 'Famale', '+880123456789', 'hello@gmail.com'),
 ];
 
 const darkTheme = createTheme({
@@ -56,35 +56,38 @@ const darkTheme = createTheme({
 
 export default function Pataientstable() {
     return (
-        <ThemeProvider theme={darkTheme}>
-            <TableContainer component={Paper}>
-                <Table sx={{ minWidth: 700 }} aria-label="customized table">
-                    <TableHead>
-                        <TableRow>
-                            <StyledTableCell>SL</StyledTableCell>
-                            <StyledTableCell>Patient Name</StyledTableCell>
-                            <StyledTableCell align="left">Gender</StyledTableCell>
-                            <StyledTableCell align="left">Phone</StyledTableCell>
-                            <StyledTableCell align="left">Email</StyledTableCell>
-                            <StyledTableCell align="left">Age</StyledTableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {rows.map((row) => (
-                            <StyledTableRow key={row.name}>
-                                <StyledTableCell align="left">1</StyledTableCell>
-                                <StyledTableCell component="th" scope="row">
-                                    {row.name}
-                                </StyledTableCell>
-                                <StyledTableCell align="left">{row.calories}</StyledTableCell>
-                                <StyledTableCell align="left">{row.fat}</StyledTableCell>
-                                <StyledTableCell align="left">{row.carbs}</StyledTableCell>
-                                <StyledTableCell align="left">{row.protein}</StyledTableCell>
-                            </StyledTableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-            </TableContainer>
-        </ThemeProvider>
+        <>
+        <input type="search" placeholder='ex:409595' className='border outline-none py-3 px-4 w-1/2 my-4 mx-5 rounded-sm '/>
+            <ThemeProvider theme={darkTheme}>
+                <TableContainer component={Paper}>
+                    <Table sx={{ minWidth: 700 }} aria-label="customized table">
+                        <TableHead>
+                            <TableRow>
+                                <StyledTableCell>SL</StyledTableCell>
+                                <StyledTableCell>Roll No</StyledTableCell>
+                                <StyledTableCell>Student Name</StyledTableCell>
+                                <StyledTableCell align="left">Gender</StyledTableCell>
+                                <StyledTableCell align="left">Phone</StyledTableCell>
+                                <StyledTableCell align="left">Email</StyledTableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {rows.map((row) => (
+                                <StyledTableRow key={row.name}>
+                                    <StyledTableCell align="left">1</StyledTableCell>
+                                    <StyledTableCell component="th" scope="row">
+                                        {row.name}
+                                    </StyledTableCell>
+                                    <StyledTableCell align="left">{row.calories}</StyledTableCell>
+                                    <StyledTableCell align="left">{row.fat}</StyledTableCell>
+                                    <StyledTableCell align="left">{row.carbs}</StyledTableCell>
+                                    <StyledTableCell align="left">{row.protein}</StyledTableCell>
+                                </StyledTableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+            </ThemeProvider>
+        </>
     );
 }

@@ -17,24 +17,9 @@ const Profile = () => {
                             <h4 className='font-semibold text-center text-gray-800'>Dr. Abraham Ehshan</h4>
                             <span className='font-semibold text-center block text-xs text-gray-800'>MBBS</span>
                             <div className='px-5'>
-                                <div className='flex items-center'>
-                                    <div className='w-1/2'>
-                                        <span className='text-xs font-semibold text-gray-700 flex items-center'><span className='text-base pr-1'><AiOutlineFieldTime /></span> Avaiable on</span>
-                                    </div>
-                                    <div className='w-1/2'>
-                                        <span className='text-xs font-semibold text-gray-700'>10AM To 6PM</span>
-                                    </div>
-                                </div>
-                                <div className='flex items-center'>
-                                    <div className='w-1/2'>
-                                        <span className='text-xs font-semibold text-gray-700 flex'><span className='text-base pr-1'><AiOutlineSchedule /></span>  Working Day</span>
-                                    </div>
-                                    <div className='w-1/2'>
-                                        <span className='text-xs font-semibold text-gray-700'>Mon To Fri</span>
-                                    </div>
-                                </div>
+                               <span className='font-semibold text-sm block text-center'>+8801738683787</span>
                                 <div className='text-center'>
-                                    <Link to="/get-appointment" className='border rounded px-3 py-1 my-2 block bg-gray-100 text-sm font-semibold text-gray-700 hover:bg-gray-200'>Request Appointment</Link>
+                                    <button className='border rounded px-3 py-1 my-2 block bg-gray-100 text-sm font-semibold text-gray-700 hover:bg-gray-200 m-auto'>View Details</button>
                                 </div>
                             </div>
                         </div>
