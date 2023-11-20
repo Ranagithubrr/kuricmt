@@ -22,7 +22,7 @@ const AddCaptain = () => {
         <input type="text" id='phone' className='border rounded-sm px-4 py-2 w-full outline-none' placeholder='012923937937'/>
         <label htmlFor="email">Email</label>
         <input type="text" id='email' className='border rounded-sm px-4 py-2 w-full outline-none' placeholder='hello@gmail.com'/>
-        <button className='bg-blue-700 text-gray-100 rounded px-4 py-2 font-semibold my-3'>Add</button>
+        <button className='bg-blue-700 text-gray-100 rounded px-8 py-2 font-semibold my-3'>Add</button>
     </div>
   )
 }

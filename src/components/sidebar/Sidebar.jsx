@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { AiFillStar } from 'react-icons/ai';
 import { MdDashboardCustomize, MdOutlineLogout } from 'react-icons/md';
 import { HiUserAdd } from 'react-icons/hi';
-import { BsCalendarDate, BsHospitalFill, BsCurrencyDollar, BsFillChatDotsFill } from 'react-icons/bs';
+import { BsCalendarDate, BsHospitalFill} from 'react-icons/bs';
 import { FaUsers } from 'react-icons/fa';
 import { MdArrowDropDown, MdManageAccounts } from 'react-icons/md';
 import { Link } from "react-router-dom";

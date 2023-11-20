@@ -9,6 +9,8 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { FaRegEdit, FaRegTrashAlt } from 'react-icons/fa';
+import { useState } from 'react';
+import { GoAlert } from 'react-icons/go';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -58,6 +60,7 @@ const darkTheme = createTheme({
 });
 
 export default function Pataientstable() {
+    const [modal, setmodal] = useState(false);
     return (
         <>
             <ThemeProvider theme={darkTheme} >
@@ -86,7 +89,7 @@ export default function Pataientstable() {
                                     <StyledTableCell align="left">{row.carbs}</StyledTableCell>
                                     <StyledTableCell align="left">{row.protein}</StyledTableCell>
                                     <div className='flex items-center pt-4'>
-                                        <span className='cursor-pointer text-red-500 px-3'><FaRegTrashAlt /></span>
+                                        <span className='cursor-pointer text-red-500 px-3' onClick={()=>setmodal(true)}><FaRegTrashAlt /></span>
                                         <span className='cursor-pointer text-blue-500 px-3'><FaRegEdit /></span></div>
                                 </StyledTableRow>
                             ))}
@@ -94,7 +97,23 @@ export default function Pataientstable() {
                     </Table>
                 </TableContainer>
             </ThemeProvider>
-            
+            {
+                modal &&
+                <div onClick={() => setmodal(false)} className='bg-gray-700 opacity-75 fixed top-0 left-0 w-full h-full z-10'></div>
+            }
+            { modal &&
+                <div className='fixed top-32 w-1/3 m-auto z-50 bg-white shadow left-0 right-0 rounded p-4'>
+                    <div className='text-center w-full flex items-center justify-center flex-col'>
+                        <span className='text-yellow-400 text-3xl m-auto'><GoAlert /></span>
+                        <span className='text-sm font-semibold'>Are you sure want to delete Demo?</span>
+                        <div className='py-3'>
+                            <button className='rounded px-6 mx-2 py-1 bg-red-500 text-gray-200 text-sm font-semibold'>Yes</button>
+                            <button className='rounded px-6 mx-2 py-1 bg-green-500 text-gray-200 text-sm font-semibold'>No</button>
+                        </div>
+                    </div>
+                </div>
+            }
+
         </>
     );
 }
