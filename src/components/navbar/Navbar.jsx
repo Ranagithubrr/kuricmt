@@ -96,10 +96,10 @@ const Navbar = () => {
                     <Usermenu />
                 </div>
                 <div className={`fixed bg-white dark:bg-gray-700 ${!rightSidebar ? '-right-full' : 'right-0'}  top-0 h-full w-2/12 z-20 transition-all duration-300 pl-5 pt-5 ease-in-out`}>
-                    <span className="text-3xl font-bold dark:text-gray-400">Me<span className="text-blue-900 dark:text-gray-300">Doc</span></span>
-                    <div className='pt-3'>
-                        <span className='text-xs font-bold dark:text-gray-300'>Theme : {darkMode ? 'Dark' : 'Light'}</span>
-                        <div className='flex pr-5 justify-between mt-5'>
+                <img src={Computer} alt="D.O.C"  className='h-12  m-auto pr-3'/>
+                    <div className='pt-3 pr-5'>
+                        <span className='text-xs font-bold dark:text-gray-300 block text-center'>Theme : {darkMode ? 'Dark' : 'Light'}</span>
+                        <div className='flex justify-between mt-5'>
                             <button className='bg-blue-900  text-lime-50 dark:bg-gray-200 dark:text-gray-800 px-5 py-1 rounded cursor-pointer w-full' onClick={handleToggleDarkMode}>Switch Theme</button>                            
                         </div>
                     </div>
