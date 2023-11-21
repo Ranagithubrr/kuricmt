@@ -108,7 +108,7 @@ export default function Pataientstable() {
                         <span className='text-sm font-semibold'>Are you sure want to delete Demo?</span>
                         <div className='py-3'>
                             <button className='rounded px-6 mx-2 py-1 bg-red-500 text-gray-200 text-sm font-semibold'>Yes</button>
-                            <button className='rounded px-6 mx-2 py-1 bg-green-500 text-gray-200 text-sm font-semibold'>No</button>
+                            <button className='rounded px-6 mx-2 py-1 bg-green-500 text-gray-200 text-sm font-semibold' onClick={()=>setmodal(false)}>No</button>
                         </div>
                     </div>
                 </div>

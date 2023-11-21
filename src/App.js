@@ -20,6 +20,7 @@ import Accountreview from './pages/Accounts-Review/Accountreview';
 import Earnings from './pages/Earnings/Earnings';
 import Chat from './pages/chat/Chat';
 import Contents from './pages/Contents/Contents';
+import AddNotice from './pages/Add-Notice/AddNotice';
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
             <Route path='/notifications' element={<Notifications />}></Route>
             <Route path='/profile' element={<Userprofile />}></Route>
             <Route path='/update-profile' element={<UpdateProfile />}></Route>
+            <Route path='/add-notice' element={<AddNotice />}></Route>
             <Route path='/department-survey' element={<Hospitalsurvey />}></Route>
             <Route path='/website-contents' element={<Contents />}></Route>
           </Route>

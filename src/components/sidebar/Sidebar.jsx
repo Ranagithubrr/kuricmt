@@ -3,7 +3,7 @@ import { AiFillStar } from 'react-icons/ai';
 import { MdDashboardCustomize, MdOutlineLogout } from 'react-icons/md';
 import { HiUserAdd } from 'react-icons/hi';
 import { BsCalendarDate, BsHospitalFill} from 'react-icons/bs';
-import { FaUsers } from 'react-icons/fa';
+import { FaUsers, FaPlus } from 'react-icons/fa';
 import { MdArrowDropDown, MdManageAccounts } from 'react-icons/md';
 import { Link } from "react-router-dom";
 
@@ -50,13 +50,19 @@ const Sidebar = () => {
                     </Link>
                 </li>
                 <li className='flex  hover:bg-slate-200 rounded dark:hover:bg-gray-700'>
-                    <Link to='/review' className='h-full w-full  py-4 px-2 block'>
-                        <span className='flex items-center text-base dark:text-gray-300'><AiFillStar className='text-xl' />  <span className='pl-3 h-full text-sm font-semibold'>Reviews</span></span>
+                    <Link to='/add-notice' className='h-full w-full  py-4 px-2 block'>
+                        <span className='flex items-center text-base dark:text-gray-300'><FaPlus className='text-xl' />  <span className='pl-3 h-full text-sm font-semibold'>Add Notice</span></span>
                     </Link>
                 </li>
+                
                 <li className='flex  hover:bg-slate-200 rounded dark:hover:bg-gray-700'>
                     <Link to='/accounts-review' className='h-full w-full  py-4 px-2 block'>
                         <span className='flex items-center text-base dark:text-gray-300'><MdManageAccounts className='text-xl' />  <span className='pl-3 h-full text-sm font-semibold'>Accounts Review</span></span>
+                    </Link>
+                </li>
+                <li className='flex  hover:bg-slate-200 rounded dark:hover:bg-gray-700'>
+                    <Link to='/review' className='h-full w-full  py-4 px-2 block'>
+                        <span className='flex items-center text-base dark:text-gray-300'><AiFillStar className='text-xl' />  <span className='pl-3 h-full text-sm font-semibold'>Reviews</span></span>
                     </Link>
                 </li>
                 {/* <li className='flex  hover:bg-slate-200 rounded dark:hover:bg-gray-700'>
