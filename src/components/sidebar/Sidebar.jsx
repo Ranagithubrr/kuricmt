@@ -6,11 +6,17 @@ import { BsCalendarDate, BsHospitalFill} from 'react-icons/bs';
 import { FaUsers, FaPlus } from 'react-icons/fa';
 import { MdArrowDropDown, MdManageAccounts } from 'react-icons/md';
 import { Link } from "react-router-dom";
+import {useDispatch} from 'react-redux'
+import { removeUser } from '../../redux/userReducer/userActions';
 
 const Sidebar = () => {
+    const dispatch = useDispatch();
     const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
     const toggleSubmenu = () => {
         isSubMenuOpen ? setIsSubMenuOpen(false) : setIsSubMenuOpen(true);
+    }
+    const LogOutUser = () =>{
+        dispatch(removeUser())
     }
     return (
         <div className='w-1/6 h-auto border-r shadow-lg min-h-screen dark:bg-gray-800'>
@@ -74,9 +80,9 @@ const Sidebar = () => {
                     </Link>
                 </li> */}
                 <li className='flex  hover:bg-slate-200 rounded dark:hover:bg-gray-700'>
-                    <Link to='/login' className='h-full w-full  py-4 px-2 block'>
+                    <button onClick={LogOutUser} className='h-full w-full  py-4 px-2 block'>
                         <span className='flex items-center text-base dark:text-gray-300'><MdOutlineLogout className='text-xl' />  <span className='pl-3 h-full text-sm font-semibold'>Log Out</span></span>
-                    </Link>
+                    </button>
                 </li>
             </ul>
         </div>

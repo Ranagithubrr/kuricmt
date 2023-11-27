@@ -21,6 +21,7 @@ export const userReducer = (state = initialState, action) => {
             };
 
         case REMOVE_USER:
+            localStorage.removeItem('userData');
             return {
                 ...state,
                 user: null,
