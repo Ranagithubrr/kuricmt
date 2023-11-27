@@ -49,27 +49,22 @@ const Navbar = () => {
                 <div class="w-6/12">
                     <ul className='flex'>
                         <li className='px-7 border-b-4 border-transparent hover:border-blue-900 dark:hover:border-gray-300  mx-2 pb-3 font-semibold text-blue-950 dark:text-gray-200   '>
-                            <Link to="/" className='text-3xl'>
+                            <Link to="/dashboard" className='text-3xl'>
                                 <AiOutlineHome />
                             </Link>
                         </li>
                         <li className='px-7 border-b-4 border-transparent hover:border-blue-900 dark:hover:border-gray-300  mx-2 pb-3 font-semibold text-blue-950 dark:text-gray-200   '>
-                            <Link to="/calculators" className='text-3xl'>
+                            <Link to="/dashboard/notices" className='text-3xl'>
                                 <IoDocumentTextOutline />
                             </Link>
-                        </li>
+                        </li>                        
                         <li className='px-7 border-b-4 border-transparent hover:border-blue-900 dark:hover:border-gray-300  mx-2 pb-3 font-semibold text-blue-950 dark:text-gray-200   '>
-                            <Link to="/notifications" className='text-3xl'>
-                                <IoMdNotificationsOutline />
-                            </Link>
-                        </li>
-                        <li className='px-7 border-b-4 border-transparent hover:border-blue-900 dark:hover:border-gray-300  mx-2 pb-3 font-semibold text-blue-950 dark:text-gray-200   '>
-                            <Link to="/profile" className='text-3xl'>
+                            <Link to="/dashboard/profile" className='text-3xl'>
                                 <CgProfile />
                             </Link>
                         </li>
                         <li className='px-7 border-b-4 border-transparent hover:border-blue-900 dark:hover:border-gray-300  mx-2 pb-3 font-semibold text-blue-950 dark:text-gray-200   '>
-                            <Link to="/website" className='text-3xl'>
+                            <Link target='_blank' to="/" className='text-3xl'>
                                 <IoIosGlobe />
                             </Link>
                         </li>

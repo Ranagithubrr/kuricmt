@@ -20,12 +20,12 @@ const Sidebar = () => {
             '>Dashboard</span> */}
             <ul className='pl-2 pt-2 sticky top-20'>
                 <li className='flex  hover:bg-slate-200 rounded dark:hover:bg-gray-700'>
-                    <Link to='/' className='h-full w-full py-4 px-2 block'>
+                    <Link to='/dashboard' className='h-full w-full py-4 px-2 block'>
                         <span className='flex items-center text-base dark:text-gray-300'><MdDashboardCustomize className='text-xl' />  <span className='pl-3 h-full text-sm font-semibold'>Dashboard</span></span>
                     </Link>
                 </li>
                 <li className='flex  hover:bg-slate-200 rounded dark:hover:bg-gray-700'>
-                    <Link to='/applications' className='h-full w-full  py-4 px-2 block'>
+                    <Link to='/dashboard/applications' className='h-full w-full  py-4 px-2 block'>
                         <span className='flex items-center text-base dark:text-gray-300'><BsCalendarDate className='text-xl' />  <span className='pl-3 h-full text-sm font-semibold'>Applications</span></span>
                     </Link>
                 </li>
@@ -35,33 +35,33 @@ const Sidebar = () => {
                     </span>
                     <div className={`border-l-2 border-gray-800 transition duration-500 ${isSubMenuOpen ? 'pointer-events-auto ml-3 ' : 'pointer-events-none h-0 overflow-hidden'
                         }`}>
-                        <Link to="/department-survey" className='pl-3 ml-2 flex items-center hover:bg-slate-200 rounded text-sm font-semibold py-1 dark:text-gray-300'><span className='pr-2 text-sm'><BsHospitalFill/> </span>- Instruments</Link>                                           
-                        <Link to="/website-contents" className='pl-3 ml-2 flex items-center hover:bg-slate-200 rounded text-sm font-semibold py-1 dark:text-gray-300'><span className='pr-2 text-sm'><BsHospitalFill/> </span>- Website Contents</Link>                                           
+                        <Link to="/dashboard/department-survey" className='pl-3 ml-2 flex items-center hover:bg-slate-200 rounded text-sm font-semibold py-1 dark:text-gray-300'><span className='pr-2 text-sm'><BsHospitalFill/> </span>- Instruments</Link>                                           
+                        <Link to="/dashboard/website-contents" className='pl-3 ml-2 flex items-center hover:bg-slate-200 rounded text-sm font-semibold py-1 dark:text-gray-300'><span className='pr-2 text-sm'><BsHospitalFill/> </span>- Website Contents</Link>                                           
                     </div>
                 </li>
                 <li className='flex  hover:bg-slate-200 rounded dark:hover:bg-gray-700'>
-                    <Link to='/doctors' className='h-full w-full  py-4 px-2 block'>
+                    <Link to='/dashboard/doctors' className='h-full w-full  py-4 px-2 block'>
                         <span className='flex items-center text-base dark:text-gray-300'><FaUsers className='text-xl' />  <span className='pl-3 h-full text-sm font-semibold'>Teachers Profile</span></span>
                     </Link>
                 </li>
                 <li className='flex  hover:bg-slate-200 rounded dark:hover:bg-gray-700'>
-                    <Link to='/captains' className='h-full w-full  py-4 px-2 block'>
+                    <Link to='/dashboard/captains' className='h-full w-full  py-4 px-2 block'>
                         <span className='flex items-center text-base dark:text-gray-300'><HiUserAdd className='text-xl' />  <span className='pl-3 h-full text-sm font-semibold'>Class Captains</span></span>
                     </Link>
                 </li>
                 <li className='flex  hover:bg-slate-200 rounded dark:hover:bg-gray-700'>
-                    <Link to='/add-notice' className='h-full w-full  py-4 px-2 block'>
+                    <Link to='/dashboard/add-notice' className='h-full w-full  py-4 px-2 block'>
                         <span className='flex items-center text-base dark:text-gray-300'><FaPlus className='text-xl' />  <span className='pl-3 h-full text-sm font-semibold'>Add Notice</span></span>
                     </Link>
                 </li>
                 
                 <li className='flex  hover:bg-slate-200 rounded dark:hover:bg-gray-700'>
-                    <Link to='/accounts-review' className='h-full w-full  py-4 px-2 block'>
+                    <Link to='/dashboard/accounts-review' className='h-full w-full  py-4 px-2 block'>
                         <span className='flex items-center text-base dark:text-gray-300'><MdManageAccounts className='text-xl' />  <span className='pl-3 h-full text-sm font-semibold'>Accounts Review</span></span>
                     </Link>
                 </li>
                 <li className='flex  hover:bg-slate-200 rounded dark:hover:bg-gray-700'>
-                    <Link to='/review' className='h-full w-full  py-4 px-2 block'>
+                    <Link to='/dashboard/review' className='h-full w-full  py-4 px-2 block'>
                         <span className='flex items-center text-base dark:text-gray-300'><AiFillStar className='text-xl' />  <span className='pl-3 h-full text-sm font-semibold'>Reviews</span></span>
                     </Link>
                 </li>

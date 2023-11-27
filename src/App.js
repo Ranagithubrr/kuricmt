@@ -21,35 +21,41 @@ import Earnings from './pages/Earnings/Earnings';
 import Chat from './pages/chat/Chat';
 import Contents from './pages/Contents/Contents';
 import AddNotice from './pages/Add-Notice/AddNotice';
+import ProtectedRoute from './protectedRoute';
 
 function App() {
   return (
     <>
       <Routes>
-        <Route path='/' element={<Homepage />}>
-          <Route path='/' element={<Dashboard />}>
-            <Route path='/' element={<Maindashboard />}></Route>
-            <Route path='/captains' element={<Patients />}></Route>
-            <Route path='/chat' element={<Chat />}></Route>
-            <Route path='/accounts-review' element={<Accountreview />}></Route>
-            <Route path='/review' element={<Review />}></Route>
-            <Route path='/doctors' element={<Profile />}></Route>
-            <Route path='/applications' element={<Appointment />}></Route>
-            <Route path='/earnings' element={<Earnings />}></Route>
-            <Route path='/get-appointment' element={<Getappointment />}></Route>
-            <Route path='/calculators' element={<Calculators />}></Route>
-            <Route path='/notifications' element={<Notifications />}></Route>
-            <Route path='/profile' element={<Userprofile />}></Route>
-            <Route path='/update-profile' element={<UpdateProfile />}></Route>
-            <Route path='/add-notice' element={<AddNotice />}></Route>
-            <Route path='/department-survey' element={<Hospitalsurvey />}></Route>
-            <Route path='/website-contents' element={<Contents />}></Route>
-          </Route>
+        <Route path='/' element={<Homepage />} />
+        <Route path='/dashboard' element={
+          <ProtectedRoute>
+            <Dashboard />
+          </ProtectedRoute>
+        }>
+          <Route path='' element={<Maindashboard />}></Route>
+          <Route path='captains' element={<Patients />}></Route>
+          <Route path='chat' element={<Chat />}></Route>
+          <Route path='accounts-review' element={<Accountreview />}></Route>
+          <Route path='review' element={<Review />}></Route>
+          <Route path='doctors' element={<Profile />}></Route>
+          <Route path='applications' element={<Appointment />}></Route>
+          <Route path='earnings' element={<Earnings />}></Route>
+          <Route path='get-appointment' element={<Getappointment />}></Route>
+          <Route path='calculators' element={<Calculators />}></Route>
+          <Route path='notices' element={<Notifications />}></Route>
+          <Route path='profile' element={<Userprofile />}></Route>
+          <Route path='update-profile' element={<UpdateProfile />}></Route>
+          <Route path='add-notice' element={<AddNotice />}></Route>
+          <Route path='department-survey' element={<Hospitalsurvey />}></Route>
+          <Route path='website-contents' element={<Contents />}></Route>
         </Route>
+
+
         <Route path='/login' element={<Login />}></Route>
         <Route path='/register' element={<Register />}></Route>
         <Route path='*' element={<Notfound />}></Route>
-      </Routes>
+      </Routes >
     </>
   );
 }
