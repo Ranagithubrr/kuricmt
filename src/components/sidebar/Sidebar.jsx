@@ -2,24 +2,25 @@ import React, { useState } from 'react';
 import { AiFillStar } from 'react-icons/ai';
 import { MdDashboardCustomize, MdOutlineLogout } from 'react-icons/md';
 import { HiUserAdd } from 'react-icons/hi';
-import { BsCalendarDate, BsHospitalFill} from 'react-icons/bs';
+import { BsCalendarDate, BsHospitalFill } from 'react-icons/bs';
 import { FaUsers, FaPlus } from 'react-icons/fa';
 import { MdArrowDropDown, MdManageAccounts } from 'react-icons/md';
 import { Link } from "react-router-dom";
-import {useDispatch} from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { removeUser } from '../../redux/userReducer/userActions';
 
 const Sidebar = () => {
+    const userState = useSelector((state) => state.userReducer);    
     const dispatch = useDispatch();
     const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
     const toggleSubmenu = () => {
         isSubMenuOpen ? setIsSubMenuOpen(false) : setIsSubMenuOpen(true);
     }
-    const LogOutUser = () =>{
+    const LogOutUser = () => {
         dispatch(removeUser())
     }
     return (
-        <div className='w-1/6 h-auto border-r shadow-lg min-h-screen dark:bg-gray-800'>
+        <div className='w-1/5 overflow-y-scroll sticky pb-10 border-r shadow-lg dark:bg-gray-800' style={{ height: '85vh', position: 'relative', top: '0' }}>
             {/* <span className='
                 text-sm
                 font-semibold
@@ -41,8 +42,8 @@ const Sidebar = () => {
                     </span>
                     <div className={`border-l-2 border-gray-800 transition duration-500 ${isSubMenuOpen ? 'pointer-events-auto ml-3 ' : 'pointer-events-none h-0 overflow-hidden'
                         }`}>
-                        <Link to="/dashboard/department-survey" className='pl-3 ml-2 flex items-center hover:bg-slate-200 rounded text-sm font-semibold py-1 dark:text-gray-300'><span className='pr-2 text-sm'><BsHospitalFill/> </span>- Instruments</Link>                                           
-                        <Link to="/dashboard/website-contents" className='pl-3 ml-2 flex items-center hover:bg-slate-200 rounded text-sm font-semibold py-1 dark:text-gray-300'><span className='pr-2 text-sm'><BsHospitalFill/> </span>- Website Contents</Link>                                           
+                        <Link to="/dashboard/department-survey" className='pl-3 ml-2 flex items-center hover:bg-slate-200 rounded text-sm font-semibold py-1 dark:text-gray-300'><span className='pr-2 text-sm'><BsHospitalFill /> </span>- Instruments</Link>
+                        <Link to="/dashboard/website-contents" className='pl-3 ml-2 flex items-center hover:bg-slate-200 rounded text-sm font-semibold py-1 dark:text-gray-300'><span className='pr-2 text-sm'><BsHospitalFill /> </span>- Website Contents</Link>
                     </div>
                 </li>
                 <li className='flex  hover:bg-slate-200 rounded dark:hover:bg-gray-700'>
@@ -60,12 +61,20 @@ const Sidebar = () => {
                         <span className='flex items-center text-base dark:text-gray-300'><FaPlus className='text-xl' />  <span className='pl-3 h-full text-sm font-semibold'>Add Notice</span></span>
                     </Link>
                 </li>
-                
+
                 <li className='flex  hover:bg-slate-200 rounded dark:hover:bg-gray-700'>
-                    <Link to='/dashboard/accounts-review' className='h-full w-full  py-4 px-2 block'>
-                        <span className='flex items-center text-base dark:text-gray-300'><MdManageAccounts className='text-xl' />  <span className='pl-3 h-full text-sm font-semibold'>Accounts Review</span></span>
+                    <Link to='/dashboard/notes' className='h-full w-full  py-4 px-2 block'>
+                        <span className='flex items-center text-base dark:text-gray-300'><FaPlus className='text-xl' />  <span className='pl-3 h-full text-sm font-semibold'>My Notes</span></span>
                     </Link>
                 </li>
+                {
+                    userState.user && userState.user.type && userState.user.type === "admin" &&
+                    <li className='flex  hover:bg-slate-200 rounded dark:hover:bg-gray-700'>
+                        <Link to='/dashboard/accounts-review' className='h-full w-full  py-4 px-2 block'>
+                            <span className='flex items-center text-base dark:text-gray-300'><MdManageAccounts className='text-xl' />  <span className='pl-3 h-full text-sm font-semibold'>Accounts Review</span></span>
+                        </Link>
+                    </li>
+                }
                 <li className='flex  hover:bg-slate-200 rounded dark:hover:bg-gray-700'>
                     <Link to='/dashboard/review' className='h-full w-full  py-4 px-2 block'>
                         <span className='flex items-center text-base dark:text-gray-300'><AiFillStar className='text-xl' />  <span className='pl-3 h-full text-sm font-semibold'>Reviews</span></span>

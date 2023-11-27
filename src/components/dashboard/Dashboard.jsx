@@ -9,7 +9,7 @@ const Dashboard = () => {
             <Navbar />
             <div className='flex'>
                 <Sidebar />
-                <div className='overflow-scroll w-full overflow-x-hidden scroll no-scrollbar'>
+                <div className='overflow-scroll w-full overflow-x-hidden scroll' style={{height:'80vh', position:'relative' , top:'0'}}>
                     <Outlet />
                 </div>
             </div>

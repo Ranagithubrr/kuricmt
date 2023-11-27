@@ -22,6 +22,8 @@ import Chat from './pages/chat/Chat';
 import Contents from './pages/Contents/Contents';
 import AddNotice from './pages/Add-Notice/AddNotice';
 import ProtectedRoute from './protectedRoute';
+import Notes from './pages/Notes/Notes';
+import AdminProtected from './AdminProtechRoute';
 
 function App() {
   return (
@@ -36,7 +38,11 @@ function App() {
           <Route path='' element={<Maindashboard />}></Route>
           <Route path='captains' element={<Patients />}></Route>
           <Route path='chat' element={<Chat />}></Route>
-          <Route path='accounts-review' element={<Accountreview />}></Route>
+          <Route path='accounts-review' element={
+            <AdminProtected>
+              <Accountreview />
+            </AdminProtected>
+          }></Route>
           <Route path='review' element={<Review />}></Route>
           <Route path='doctors' element={<Profile />}></Route>
           <Route path='applications' element={<Appointment />}></Route>
@@ -44,6 +50,7 @@ function App() {
           <Route path='get-appointment' element={<Getappointment />}></Route>
           <Route path='calculators' element={<Calculators />}></Route>
           <Route path='notices' element={<Notifications />}></Route>
+          <Route path='notes' element={<Notes />}></Route>
           <Route path='profile' element={<Userprofile />}></Route>
           <Route path='update-profile' element={<UpdateProfile />}></Route>
           <Route path='add-notice' element={<AddNotice />}></Route>
