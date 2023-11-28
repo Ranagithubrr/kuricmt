@@ -1,119 +1,135 @@
-import * as React from 'react';
-import { styled } from '@mui/material/styles';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell, { tableCellClasses } from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { FaRegEdit, FaRegTrashAlt } from 'react-icons/fa';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { GoAlert } from 'react-icons/go';
+import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux';
+import { setCaptainsreducer } from '../../../redux/captainReducer/captainReducer';
 
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-    [`&.${tableCellClasses.head}`]: {
-        backgroundColor: theme.palette.common.black,
-        color: theme.palette.common.white,
-    },
-    [`&.${tableCellClasses.body}`]: {
-        fontSize: 14,
-    },
-}));
 
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-    '&:nth-of-type(odd)': {
-        backgroundColor: theme.palette.action.hover,
-    },
-    // hide last border
-    '&:last-child td, &:last-child th': {
-        border: 0,
-    },
-}));
-
-function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-    createData('409090', 'Deeana Scerlett', '1st', '+880123456789', 'hello@gmail.com'),
-    createData('409090', 'James Ford', '1st', '+880123456789', 'hello@gmail.com'),
-    createData('409090', 'Deeana Scerlett', '2nd', '+880123456789', 'hello@gmail.com'),
-    createData('409090', 'James Ford', '2nd', '+880123456789', 'hello@gmail.com'),
-    createData('409090', 'Deeana Scerlett', '3rd', '+880123456789', 'hello@gmail.com'),
-    createData('409090', 'James Ford', '3rd', '+880123456789', 'hello@gmail.com'),
-    createData('409090', 'Deeana Scerlett', '4th', '+880123456789', 'hello@gmail.com'),
-    createData('409090', 'James Ford', '4th', '+880123456789', 'hello@gmail.com'),
-    createData('409090', 'Deeana Scerlett', '5th', '+880123456789', 'hello@gmail.com'),
-    createData('409090', 'James Ford', '5th', '+880123456789', 'hello@gmail.com'),
-    createData('409090', 'Deeana Scerlett', '6th', '+880123456789', 'hello@gmail.com'),
-    createData('409090', 'James Ford', '6th', '+880123456789', 'hello@gmail.com'),
-    createData('409090', 'James Ford', '7th', '+880123456789', 'hello@gmail.com'),
-    createData('409090', 'James Ford', '7th', '+880123456789', 'hello@gmail.com'),
-];
-
-const darkTheme = createTheme({
-    palette: {
-        mode: 'light',
-    },
-});
-
-export default function Pataientstable() {
+const Pataientstable = () => {
+    const dispatch = useDispatch()
+    const [studentName, setStudentName] = useState("");
+    const [studentId, setStudentId] = useState("");
     const [modal, setmodal] = useState(false);
+    // const [Captains, setCaptains] = useState([]);
+    const Captains = useSelector((state) => state.captainReducer);
+    console.log('cap ', Captains)
+    const FetchData = () => {
+        axios.get('https://kuricmt.onrender.com/captains')
+            .then((response) => {
+                dispatch(setCaptainsreducer(response.data.AllCaptains))
+                
+                console.log(response.data.AllCaptains)
+            })
+            .catch((err) => {
+                console.log('an error', err)
+            })
+    }
+    useEffect(() => {
+        FetchData()    
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    const WantToDelete = (sname, id) => {
+        setmodal(true);
+        setStudentName(sname);
+        console.log(id)
+        setStudentId(id);
+    }
+    const userState = useSelector((state) => state.userReducer);
+    const token = userState.token
+    const DeleteCaptain = async (id) => {
+        const apiUrl = `https://kuricmt.onrender.com/captains/delete/${id}`;
+        const requestData = {
+            key1: 'value1',
+            key2: 'value2',
+        };
+
+        const headers = {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+        };
+        try {
+            const response = await axios.post(apiUrl, requestData, { headers });
+            console.log('Response:', response.data);
+            FetchData()
+            setmodal(false);
+        } catch (error) {
+            console.error('Error:', error);
+            setmodal(false)
+        }
+    }
     return (
         <>
-            <ThemeProvider theme={darkTheme} >
-                <TableContainer component={Paper}>
-                    <Table sx={{ minWidth: 700 }} aria-label="customized table">
-                        <TableHead>
-                            <TableRow>
-                                <StyledTableCell>SL</StyledTableCell>
-                                <StyledTableCell>Roll No</StyledTableCell>
-                                <StyledTableCell>Student Name</StyledTableCell>
-                                <StyledTableCell align="left">Semester</StyledTableCell>
-                                <StyledTableCell align="left">Phone</StyledTableCell>
-                                <StyledTableCell align="left">Email</StyledTableCell>
-                                <StyledTableCell align="left">Actions</StyledTableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {rows.map((row) => (
-                                <StyledTableRow key={row.name}>
-                                    <StyledTableCell align="left">1</StyledTableCell>
-                                    <StyledTableCell component="th" scope="row">
-                                        {row.name}
-                                    </StyledTableCell>
-                                    <StyledTableCell align="left">{row.calories}</StyledTableCell>
-                                    <StyledTableCell align="left">{row.fat}</StyledTableCell>
-                                    <StyledTableCell align="left">{row.carbs}</StyledTableCell>
-                                    <StyledTableCell align="left">{row.protein}</StyledTableCell>
-                                    <div className='flex items-center pt-4'>
-                                        <span className='cursor-pointer text-red-500 px-3' onClick={()=>setmodal(true)}><FaRegTrashAlt /></span>
-                                        <span className='cursor-pointer text-blue-500 px-3'><FaRegEdit /></span></div>
-                                </StyledTableRow>
-                            ))}
-                        </TableBody>
-                    </Table>
-                </TableContainer>
-            </ThemeProvider>
-            {
-                modal &&
-                <div onClick={() => setmodal(false)} className='bg-gray-700 opacity-75 fixed top-0 left-0 w-full h-full z-10'></div>
-            }
-            { modal &&
-                <div className='fixed top-32 w-1/3 m-auto z-50 bg-white shadow left-0 right-0 rounded p-4'>
-                    <div className='text-center w-full flex items-center justify-center flex-col'>
-                        <span className='text-yellow-400 text-3xl m-auto'><GoAlert /></span>
-                        <span className='text-sm font-semibold'>Are you sure want to delete Demo?</span>
-                        <div className='py-3'>
-                            <button className='rounded px-6 mx-2 py-1 bg-red-500 text-gray-200 text-sm font-semibold'>Yes</button>
-                            <button className='rounded px-6 mx-2 py-1 bg-green-500 text-gray-200 text-sm font-semibold' onClick={()=>setmodal(false)}>No</button>
+            <div className='p-5'>
+                {
+                    Captains && Captains.captains.length !== 0 &&
+
+                    <table className='min-w-full border border-gray-300'>
+                        <thead>
+                            <tr className='bg-gray-200 text-left'>
+                                <th className='border p-2'>Sl</th>
+                                <th className='border p-2'>Roll</th>
+                                <th className='border p-2'>Name</th>
+                                <th className='border p-2'>Semester</th>
+                                <th className='border p-2'>Phone</th>
+                                <th className='border p-2'>Email</th>
+                                <th className='border p-2 text-center'>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                Captains && Captains.captains && Captains.captains.map((ele, index) => {
+                                    return (
+                                        <tr className='border even:bg-gray-50 odd:bg-white'>
+                                            <td className='border p-2'>{index + 1}</td>
+                                            <td className='border p-2'>{ele.roll}</td>
+                                            <td className='border p-2'>{ele.name}</td>
+                                            <td className='border p-2'>{ele.semester}</td>
+                                            <td className='border p-2'>{ele.phone}</td>
+                                            <td className='border p-2'>{ele.email}</td>
+                                            <td className='flex items-center justify-center pt-3'>
+                                                <span className='cursor-pointer text-red-500 px-3' onClick={() => WantToDelete(ele.name, ele._id)}><FaRegTrashAlt /></span>
+                                                <span className='cursor-pointer text-blue-500 px-3'><FaRegEdit /></span>
+                                            </td>
+                                        </tr>
+                                    )
+                                })
+                            }
+
+                        </tbody>
+                    </table>
+                }
+                {
+                    Captains && Captains.captains.length === 0 &&
+                    <div className="w-full p-4 text-center py-10">
+                        <span className="text-gray-500">No data</span>
+                    </div>
+                }
+                {
+                    modal &&
+                    <div onClick={() => setmodal(false)} className='bg-gray-700 opacity-75 fixed top-0 left-0 w-full h-full z-10'></div>
+                }
+                {modal &&
+                    <div className='fixed top-32 w-1/3 m-auto z-50 bg-white shadow left-0 right-0 rounded p-4'>
+                        <div className='text-center w-full flex items-center justify-center flex-col'>
+                            <span className='text-yellow-400 text-3xl m-auto'><GoAlert /></span>
+                            <div>
+                                <span className='text-sm font-semibold'>Are you sure want to delete {studentName}?</span>
+                                <div className='py-3'>
+                                    <button className='rounded px-6 mx-2 py-1 bg-red-500 text-gray-200 text-sm font-semibold' onClick={() => DeleteCaptain(studentId)}>Yes</button>
+                                    <button className='rounded px-6 mx-2 py-1 bg-green-500 text-gray-200 text-sm font-semibold' onClick={() => setmodal(false)}>No</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            }
+                }
+            </div>
 
         </>
     );
-}
+};
+
+
+export default Pataientstable;
+
