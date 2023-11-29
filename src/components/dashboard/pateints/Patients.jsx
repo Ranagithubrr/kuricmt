@@ -10,6 +10,9 @@ import { setCaptainsreducer } from '../../../redux/captainReducer/captainReducer
 const Patients = () => {
     const dispatch = useDispatch();
     const [modal, setmodal] = useState(false);
+    const [isUpdating, setIsUpdating] = useState(false);
+    const [oldData,setOldData] = useState({});
+        
     const FetchData = () => {
         axios.get('https://kuricmt.onrender.com/captains')
             .then((response) => {
@@ -21,6 +24,11 @@ const Patients = () => {
                 console.log('an error', err)
             })
     }
+    const AddNewCaptainButtonClicked = () =>{
+        setmodal(true);
+        setOldData({});
+        setIsUpdating(false);
+    }
     return (
         <div className='p-4'>
             <div className="flex items-center justify-between">
@@ -29,17 +37,17 @@ const Patients = () => {
                 </div>
                 <div className='flex items-center'>
                     <span className='block pr-5 cursor-pointer' onClick={FetchData}><LuRefreshCcw /></span>
-                    <button onClick={() => setmodal(true)} className='bg-blue-800 text-gray-200 rounded px-5 py-2 flex items-center'><span className='pr-3'><FaPlus /></span> Add New Captain</button>
+                    <button onClick={() => AddNewCaptainButtonClicked() } className='bg-blue-800 text-gray-200 rounded px-5 py-2 flex items-center'><span className='pr-3'><FaPlus /></span> Add New Captain</button>
                 </div>
             </div>
-            <Pataientstable />
+            <Pataientstable setIsUpdating={setIsUpdating} setOldData={setOldData} setPropmodal={setmodal}/>
             {
                 modal &&
                 <div onClick={() => setmodal(false)} className='bg-gray-700 opacity-75 fixed top-0 left-0 w-full h-full z-10'></div>
             }
             {
                 modal &&
-                <AddCaptain setmodal={setmodal}/>
+                <AddCaptain setmodal={setmodal} isUpdating={isUpdating} oldData={oldData}/>
             }
         </div>
     );

@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setCaptainsreducer } from '../../../redux/captainReducer/captainReducer';
 
 
-const Pataientstable = () => {
+const Pataientstable = ({setIsUpdating,setOldData,setPropmodal}) => {
     const dispatch = useDispatch()
     const [studentName, setStudentName] = useState("");
     const [studentId, setStudentId] = useState("");
@@ -59,6 +59,11 @@ const Pataientstable = () => {
             setmodal(false)
         }
     }
+    const SetProps = (ele) =>{
+        setIsUpdating(true);
+        setOldData(ele);
+        setPropmodal(true);
+    }
     return (
         <>
             <div className=''>
@@ -90,7 +95,7 @@ const Pataientstable = () => {
                                             <td className='border p-2'>{ele.email}</td>
                                             <td className='flex items-center justify-center pt-3'>
                                                 <span className='cursor-pointer text-red-500 px-3' onClick={() => WantToDelete(ele.name, ele._id)}><FaRegTrashAlt /></span>
-                                                <span className='cursor-pointer text-blue-500 px-3'><FaRegEdit /></span>
+                                                <span className='cursor-pointer text-blue-500 px-3' onClick={()=>SetProps(ele)}><FaRegEdit /></span>
                                             </td>
                                         </tr>
                                     )
