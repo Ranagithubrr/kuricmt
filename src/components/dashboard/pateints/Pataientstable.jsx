@@ -40,6 +40,7 @@ const Pataientstable = () => {
     const token = userState.token
     const DeleteCaptain = async (id) => {
         const apiUrl = `https://kuricmt.onrender.com/captains/delete/${id}`;
+        setmodal(false);
         const requestData = {
             key1: 'value1',
             key2: 'value2',
@@ -52,8 +53,7 @@ const Pataientstable = () => {
         try {
             const response = await axios.post(apiUrl, requestData, { headers });
             console.log('Response:', response.data);
-            FetchData()
-            setmodal(false);
+            FetchData()        
         } catch (error) {
             console.error('Error:', error);
             setmodal(false)
@@ -61,7 +61,7 @@ const Pataientstable = () => {
     }
     return (
         <>
-            <div className='p-5'>
+            <div className=''>
                 {
                     Captains && Captains.captains.length !== 0 &&
 

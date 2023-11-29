@@ -1,15 +1,36 @@
 import React, { useState } from 'react';
 import Pataientstable from './Pataientstable';
 import { FaPlus } from 'react-icons/fa';
+import { LuRefreshCcw } from 'react-icons/lu';
 import AddCaptain from '../../add-captain/AddCaptain';
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { setCaptainsreducer } from '../../../redux/captainReducer/captainReducer';
 
 const Patients = () => {
+    const dispatch = useDispatch();
     const [modal, setmodal] = useState(false);
+    const FetchData = () => {
+        axios.get('https://kuricmt.onrender.com/captains')
+            .then((response) => {
+                dispatch(setCaptainsreducer(response.data.AllCaptains))
+                
+                console.log(response.data.AllCaptains)
+            })
+            .catch((err) => {
+                console.log('an error', err)
+            })
+    }
     return (
-        <div>
+        <div className='p-4'>
             <div className="flex items-center justify-between">
-                <h4 className='font-semibold text-lg pl-2 my-5'>Class Captains</h4>
-                <button onClick={() => setmodal(true)} className='bg-blue-800 text-gray-200 rounded px-5 py-2 flex items-center'><span className='pr-3'><FaPlus /></span> Add New Captain</button>
+                <div>
+                    <h4 className='font-semibold text-lg pl-2 my-5'>Class Captains</h4>
+                </div>
+                <div className='flex items-center'>
+                    <span className='block pr-5 cursor-pointer' onClick={FetchData}><LuRefreshCcw /></span>
+                    <button onClick={() => setmodal(true)} className='bg-blue-800 text-gray-200 rounded px-5 py-2 flex items-center'><span className='pr-3'><FaPlus /></span> Add New Captain</button>
+                </div>
             </div>
             <Pataientstable />
             {
@@ -18,8 +39,8 @@ const Patients = () => {
             }
             {
                 modal &&
-                <AddCaptain />
-            }        
+                <AddCaptain setmodal={setmodal}/>
+            }
         </div>
     );
 };
