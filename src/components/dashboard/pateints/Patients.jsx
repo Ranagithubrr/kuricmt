@@ -36,7 +36,7 @@ const Patients = () => {
                     <h4 className='font-semibold text-lg pl-2 my-5'>Class Captains</h4>
                 </div>
                 <div className='flex items-center'>
-                    <span className='block pr-5 cursor-pointer' onClick={FetchData}><LuRefreshCcw /></span>
+                    <span  className='block pr-5 cursor-pointer' onClick={FetchData}><LuRefreshCcw /></span>
                     <button onClick={() => AddNewCaptainButtonClicked() } className='bg-blue-800 text-gray-200 rounded px-5 py-2 flex items-center'><span className='pr-3'><FaPlus /></span> Add New Captain</button>
                 </div>
             </div>

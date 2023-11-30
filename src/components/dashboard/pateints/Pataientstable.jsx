@@ -6,28 +6,31 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setCaptainsreducer } from '../../../redux/captainReducer/captainReducer';
 
 
-const Pataientstable = ({setIsUpdating,setOldData,setPropmodal}) => {
+const Pataientstable = ({ setIsUpdating, setOldData, setPropmodal }) => {
     const dispatch = useDispatch()
     const [studentName, setStudentName] = useState("");
     const [studentId, setStudentId] = useState("");
     const [modal, setmodal] = useState(false);
+    const [loading, setLoading] = useState(false);
     // const [Captains, setCaptains] = useState([]);
     const Captains = useSelector((state) => state.captainReducer);
     console.log('cap ', Captains)
     const FetchData = () => {
+        setLoading(true);
         axios.get('https://kuricmt.onrender.com/captains')
             .then((response) => {
                 dispatch(setCaptainsreducer(response.data.AllCaptains))
-                
+                setLoading(false);
                 console.log(response.data.AllCaptains)
             })
             .catch((err) => {
+                setLoading(false);
                 console.log('an error', err)
             })
     }
     useEffect(() => {
-        FetchData()    
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        FetchData()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const WantToDelete = (sname, id) => {
@@ -53,13 +56,13 @@ const Pataientstable = ({setIsUpdating,setOldData,setPropmodal}) => {
         try {
             const response = await axios.post(apiUrl, requestData, { headers });
             console.log('Response:', response.data);
-            FetchData()        
+            FetchData()
         } catch (error) {
             console.error('Error:', error);
             setmodal(false)
         }
     }
-    const SetProps = (ele) =>{
+    const SetProps = (ele) => {
         setIsUpdating(true);
         setOldData(ele);
         setPropmodal(true);
@@ -95,7 +98,7 @@ const Pataientstable = ({setIsUpdating,setOldData,setPropmodal}) => {
                                             <td className='border p-2'>{ele.email}</td>
                                             <td className='flex items-center justify-center pt-3'>
                                                 <span className='cursor-pointer text-red-500 px-3' onClick={() => WantToDelete(ele.name, ele._id)}><FaRegTrashAlt /></span>
-                                                <span className='cursor-pointer text-blue-500 px-3' onClick={()=>SetProps(ele)}><FaRegEdit /></span>
+                                                <span className='cursor-pointer text-blue-500 px-3' onClick={() => SetProps(ele)}><FaRegEdit /></span>
                                             </td>
                                         </tr>
                                     )
@@ -105,11 +108,11 @@ const Pataientstable = ({setIsUpdating,setOldData,setPropmodal}) => {
                         </tbody>
                     </table>
                 }
-                {
-                    Captains && Captains.captains.length === 0 &&
-                    <div className="w-full p-4 text-center py-10">
-                        <span className="text-gray-500">No data</span>
-                    </div>
+                {                
+                        Captains && Captains.captains.length === 0 &&
+                        <div className="w-full p-4 text-center py-10">
+                            <span className="text-gray-500">No data</span>
+                        </div>
                 }
                 {
                     modal &&
