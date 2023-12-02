@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react"
 import { useSelector, useDispatch } from "react-redux";
 import { setCaptainsreducer } from "../../redux/captainReducer/captainReducer";
+import { ToastContainer, toast } from "react-toastify";
 
 const AddCaptain = (props) => {
   const { isUpdating, setmodal, oldData } = props;
@@ -36,24 +37,62 @@ const AddCaptain = (props) => {
   }
   const AddCaptain = async () => {
     setmodal(false);
+
     if (name === "" || email === "" || phone === "" || roll === "" || semester === "") {
-      return window.alert("fill all the fields")
-    };
+      return window.alert("Fill all the fields");
+    }
+
     const headers = {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`,
+      Authorization: `Bearer ${token}`,
     };
     const apiUrl = isUpdating ? `https://kuricmt.onrender.com/captains/update/${oldData._id}` : `https://kuricmt.onrender.com/captains`;
     try {
       const response = await axios.post(apiUrl, userData, { headers });
       console.log('Response:', response.data);
+      if (response.status === 200) {
+        toast.success('Captain Added Successfully', {
+          position: "top-right",
+          autoClose: 1500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        })
+      }else{
+        toast.error('Failed to add Captain !', {
+          position: "top-right",
+          autoClose: 1500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+      }
       FetchData()
     } catch (error) {
       console.error('Error:', error);
+      setmodal(false);
     }
-  }
+  };
+
+
+
+
+
+
+
+
+
+
   return (
     <div className='fixed top-32 w-2/4 m-auto z-50 bg-white shadow left-0 right-0 rounded p-4'>
+      <ToastContainer
+      />
       <span className='font-semibold block'>{isUpdating ? 'Update Captain' : ' Add Captain'}</span>
       <label htmlFor="name">Name</label>
       <input value={name} onChange={(e) => setName(e.target.value)} type="text" id='name' className='border rounded-sm px-4 py-2 w-full outline-none' placeholder='Demo Name' />

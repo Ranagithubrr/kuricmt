@@ -2,6 +2,8 @@ import { FaRegEdit, FaRegTrashAlt } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
 import { GoAlert } from 'react-icons/go';
 import axios from 'axios';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { setCaptainsreducer } from '../../../redux/captainReducer/captainReducer';
 
@@ -40,28 +42,53 @@ const Pataientstable = ({ setIsUpdating, setOldData, setPropmodal }) => {
         setStudentId(id);
     }
     const userState = useSelector((state) => state.userReducer);
-    const token = userState.token
+    const token = userState.token;
+
+
     const DeleteCaptain = async (id) => {
         const apiUrl = `https://kuricmt.onrender.com/captains/delete/${id}`;
         setmodal(false);
         const requestData = {
-            key1: 'value1',
-            key2: 'value2',
+          key1: 'value1',
+          key2: 'value2',
         };
-
+      
         const headers = {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
         };
+      
+        // Create a promise that represents the deletion process
+        const deletionPromise = axios.post(apiUrl, requestData, { headers });
+      
+        // Use toast.promise to display the toast dynamically
+        const promiseToast = toast.promise(
+          deletionPromise,
+          {
+            pending: 'Deleting, please wait...',
+            success: 'Captain deleted successfully',
+            error: 'Failed to delete captain',
+          }
+        );
+      
         try {
-            const response = await axios.post(apiUrl, requestData, { headers });
-            console.log('Response:', response.data);
-            FetchData()
+          // Wait for the deletion promise to resolve or reject
+          const response = await deletionPromise;
+      
+          // Manually close the toast after success
+          toast.dismiss(promiseToast);
+      
+          console.log('Response:', response.data);
+          FetchData();
         } catch (error) {
-            console.error('Error:', error);
-            setmodal(false)
+          console.error('Error:', error);
+          setmodal(false);
+          
+          // Manually close the toast after error
+          toast.dismiss(promiseToast);
         }
-    }
+      };
+      
     const SetProps = (ele) => {
         setIsUpdating(true);
         setOldData(ele);
@@ -69,6 +96,9 @@ const Pataientstable = ({ setIsUpdating, setOldData, setPropmodal }) => {
     }
     return (
         <>
+            <ToastContainer 
+            autoClose={1500}
+            />
             <div className=''>
                 {
                     Captains && Captains.captains.length !== 0 &&
@@ -108,11 +138,11 @@ const Pataientstable = ({ setIsUpdating, setOldData, setPropmodal }) => {
                         </tbody>
                     </table>
                 }
-                {                
-                        Captains && Captains.captains.length === 0 &&
-                        <div className="w-full p-4 text-center py-10">
-                            <span className="text-gray-500">No data</span>
-                        </div>
+                {
+                    Captains && Captains.captains.length === 0 &&
+                    <div className="w-full p-4 text-center py-10">
+                        <span className="text-gray-500">No data</span>
+                    </div>
                 }
                 {
                     modal &&
