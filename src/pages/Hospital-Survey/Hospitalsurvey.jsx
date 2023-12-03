@@ -3,13 +3,18 @@ import React, { useEffect, useState } from 'react'
 import { AiFillEdit } from 'react-icons/ai'
 import { useSelector } from 'react-redux';
 
-const Hospitalsurvey = () => {
+const Hospitalsurvey = () => { 
+  const [loading, setLoading] = useState(false);  
 
-
-  const [fetchedData, setFetchedData] = useState({});
-  const [loading, setLoading] = useState(false);
-  console.log('state is', fetchedData)
-
+  const [formData, setFormData] = useState({
+    labassistant:  "",
+    labonecomputer: "",
+    labtwocomputer: "",
+    laboneseat:  "",
+    labtwoseat: "",
+    hlabcomputer: "",
+    hlabseat:  "",
+  });
   const FetchData = () => {
     setLoading(true);
     axios.get('https://kuricmt.onrender.com/content')
@@ -36,15 +41,7 @@ const Hospitalsurvey = () => {
     FetchData();
   }, [])
 
-  const [formData, setFormData] = useState({
-    labassistant: fetchedData.labassistant || "",
-    labonecomputer: fetchedData.labonecomputer,
-    labtwocomputer: fetchedData.labtwocomputer || "",
-    laboneseat: fetchedData.laboneseat || "",
-    labtwoseat: fetchedData.labtwoseat || "",
-    hlabcomputer: fetchedData.hlabcomputer || "",
-    hlabseat: fetchedData.hlabseat || "",
-  });
+
   const handleInputChange = (fieldName, value) => {
     setFormData((prevState) => ({
       ...prevState,

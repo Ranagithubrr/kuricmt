@@ -6,11 +6,13 @@ import { storage } from '../../firebase-config';
 const Contents = () => {
   const [maintitle, setMaintitle] = useState("");
   const [tagline, setTagline] = useState("");
-  const [mainLogo, setMainLogo] = useState("");
+  // const [mainLogo, setMainLogo] = useState("");
+  let mainLogo = "";
   const [photos, setPhotos] = useState([]);
   const [photosState, setPhotosState] = useState(null);
-
   const [logoState, setLogoState] = useState(null);
+
+  
 
   const handleFileChange = (e) => {
     setLogoState(e.target.files[0]);
@@ -22,6 +24,8 @@ const Contents = () => {
     setPhotosState(filesArray);
   };
 
+  const [singleFileURL, setSingleFileURL] = useState(null);
+
   const uploadSingleFile = async (file) => {
     const storageRef = ref(storage, `images/${file.name}`);
 
@@ -31,13 +35,24 @@ const Contents = () => {
       // Get the download URL of the uploaded file
       const downloadURL = await getDownloadURL(storageRef);
 
-      // Return the download URL
+      // Set the URL using state
+      setSingleFileURL(downloadURL);
+
+      // Return the download URL if needed
       return downloadURL;
     } catch (error) {
       console.error("Error uploading file:", error);
       return null;
     }
   };
+
+  // useEffect to set the photoURLs state when singleFileURL changes
+  useEffect(() => {
+    if (singleFileURL) {
+      setPhotos([singleFileURL]);
+    }
+  }, [singleFileURL]);
+
 
   const photoURLs = useMemo(() => [], []);
 
@@ -68,23 +83,26 @@ const Contents = () => {
   const SubmitClicked = async () => {
     let logoURL = "";
   
-    if (logoState) {
-      try {
+    try {
+      if (logoState) {
+        // Wait for the uploadSingleFile function to complete
         logoURL = await uploadSingleFile(logoState);
-        console.log('logo url is:', logoURL)
-        setMainLogo(logoURL);
-      } catch (error) {
-        console.error("Error uploading logo:", error);
+        console.log('logo url is:', logoURL);
+        mainLogo = logoURL;
       }
-    }
   
-    if (photosState && photosState.length > 0) {
-      await uploadPhotos();
-    }
+      if (photosState && photosState.length > 0) {
+        await uploadPhotos();
+      }
   
-    sendDatatoDb();
+      // Now you can safely call sendDatatoDb after mainLogo is set
+      sendDatatoDb();
+    } catch (error) {
+      console.error("Error during submission:", error);
+    }
   };
   
+
 
   const sendDatatoDb = () => {
     console.log(
@@ -97,7 +115,7 @@ const Contents = () => {
       "photos",
       photos
     );
-  };  
+  };
   return (
     <div className='p-4'>
       <span onClick={sendDatatoDb}>click me</span>
