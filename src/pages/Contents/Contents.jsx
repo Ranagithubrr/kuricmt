@@ -2,17 +2,41 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { FaRegTrashAlt } from 'react-icons/fa';
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { storage } from '../../firebase-config';
+import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 const Contents = () => {
   const [maintitle, setMaintitle] = useState("");
   const [tagline, setTagline] = useState("");
-  // const [mainLogo, setMainLogo] = useState("");
+  const [logoToDisplay, setLogoToDisplay] = useState("");
+  const [photosToDisplay, setPhotosToDisplay] = useState([]);
+
   let mainLogo = "";
   const [photos, setPhotos] = useState([]);
   const [photosState, setPhotosState] = useState(null);
   const [logoState, setLogoState] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-  
+  const FetchData = () => {
+    setLoading(true);
+    axios.get('https://kuricmt.onrender.com/content')
+      .then((response) => {
+        console.log('response is ', response.data[0]);
+        setMaintitle(response.data[0].maintitle);
+        setTagline(response.data[0].tagline);
+        setLogoToDisplay(response.data[0].mainlogo);
+        setPhotosToDisplay(response.data[0].photos);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log('an error', err)
+        setLoading(false);
+      })
+  }
+
+  useEffect(() => {
+    FetchData();
+  }, [])
 
   const handleFileChange = (e) => {
     setLogoState(e.target.files[0]);
@@ -82,7 +106,7 @@ const Contents = () => {
 
   const SubmitClicked = async () => {
     let logoURL = "";
-  
+
     try {
       if (logoState) {
         // Wait for the uploadSingleFile function to complete
@@ -90,31 +114,49 @@ const Contents = () => {
         console.log('logo url is:', logoURL);
         mainLogo = logoURL;
       }
-  
+
       if (photosState && photosState.length > 0) {
         await uploadPhotos();
       }
-  
+
       // Now you can safely call sendDatatoDb after mainLogo is set
       sendDatatoDb();
     } catch (error) {
       console.error("Error during submission:", error);
     }
   };
+
+
+  const userState = useSelector((state) => state.userReducer);
+  const token = userState.token;
+
+  const sendDatatoDb = async () => {
+    const existingData = {
+      maintitle: maintitle,
+      tagline: tagline,
+      mainlogo: logoToDisplay,
+      photos: photosToDisplay
+    };
   
-
-
-  const sendDatatoDb = () => {
-    console.log(
-      "title:",
-      maintitle,
-      "tagline",
-      tagline,
-      "logo",
-      mainLogo,
-      "photos",
-      photos
-    );
+    const dataObject = {
+      maintitle: maintitle || existingData.maintitle,
+      tagline: tagline || existingData.tagline,
+      mainlogo: mainLogo || existingData.mainlogo,
+      photos: photos.length > 0 ? photos : existingData.photos
+    };
+    console.log(dataObject);
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    };
+    const apiUrl = `https://kuricmt.onrender.com/content`;
+    try {
+      const response = await axios.put(apiUrl, dataObject, { headers });
+      console.log('Response:', response.data);
+      FetchData()
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
   return (
     <div className='p-4'>
@@ -122,15 +164,22 @@ const Contents = () => {
       <h4 className='font-semibold text-xl'>Setup Website Contents</h4>
       <div className='pt-4'>
         <span className='font-semibold block'>Main Title</span>
-        <input onChange={(e) => setMaintitle(e.target.value)} type="text" placeholder='Ex: This is a demo title' className='border outline-none px-3 py-4 text-lg w-2/3' />
+        <input value={maintitle} onChange={(e) => setMaintitle(e.target.value)} type="text" placeholder='Ex: This is a demo title' className='border outline-none px-3 py-4 text-lg w-2/3' />
       </div>
       <div className='pt-4'>
         <span className='font-semibold block'>Tagline</span>
-        <input onChange={(e) => setTagline(e.target.value)} type="text" placeholder='Ex: This is a demo tagline' className='border outline-none px-3 py-4 text-lg w-2/3' />
+        <input value={tagline} onChange={(e) => setTagline(e.target.value)} type="text" placeholder='Ex: This is a demo tagline' className='border outline-none px-3 py-4 text-lg w-2/3' />
       </div>
-      <div className='pt-4'>
-        <span className='font-semibold block'>Main Logo</span>
-        <input onChange={handleFileChange} type="file" className='border outline-none px-3 py-4 text-lg w-2/3' />
+      <div className='pt-4 flex w-2/3'>
+        <div className='w-1/2'>
+          <span className='font-semibold block'>Main Logo</span>
+          <input onChange={handleFileChange} type="file" className='border outline-none px-3 py-4 text-lg' />
+        </div>
+        <div className='w-1/2'>
+          {
+            logoToDisplay !== "" && <img src={logoToDisplay} alt=""  className='rounded'/>
+          }
+        </div>
       </div>
       <div className='pt-4'>
         <span className='font-semibold block'>Gallary Photos</span>
@@ -138,16 +187,16 @@ const Contents = () => {
       </div>
       <div className='pt-4'>
         <div className='grid grid-cols-6 gap-4'>
-          {/* {
-            images.map((ele) => {
+          {
+           photosToDisplay && photosToDisplay.length !== 0 && photosToDisplay.map((ele) => {
               return (
                 <div className='relative'>
-                  <span className='absolute top-5 right-5 bg-red-600 text-gray-200 cursor-pointer px-3 py-2 rounded'><FaRegTrashAlt /></span>
-                <img src={ele.image} alt="kdjfkd" className='h-44 w-full'/>
+                  {/* <span className='absolute top-5 right-5 bg-red-600 text-gray-200 cursor-pointer px-3 py-2 rounded'><FaRegTrashAlt /></span> */}
+                <img src={ele} alt="kdjfkd" className='h-44 w-full'/>
                 </div>
               )
             })
-          } */}
+          }
         </div>
       </div>
       <div>
