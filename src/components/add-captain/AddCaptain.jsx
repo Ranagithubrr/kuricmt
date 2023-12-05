@@ -51,7 +51,7 @@ const AddCaptain = (props) => {
       const response = await axios.post(apiUrl, userData, { headers });
       console.log('Response:', response.data);
       if (response.status === 200) {
-        toast.success('Captain Added Successfully', {
+        toast.success( isUpdating ? 'Captain Updated Successfully' : 'Captain Added Successfully', {
           position: "top-right",
           autoClose: 1500,
           hideProgressBar: false,

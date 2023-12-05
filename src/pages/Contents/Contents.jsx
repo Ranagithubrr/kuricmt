@@ -4,21 +4,23 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { storage } from '../../firebase-config';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Contents = () => {
   const [maintitle, setMaintitle] = useState("");
   const [tagline, setTagline] = useState("");
   const [logoToDisplay, setLogoToDisplay] = useState("");
   const [photosToDisplay, setPhotosToDisplay] = useState([]);
-
+  const dismissAll = () => toast.dismiss();
   let mainLogo = "";
   const [photos, setPhotos] = useState([]);
   const [photosState, setPhotosState] = useState(null);
   const [logoState, setLogoState] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [loadingState, setLoadingState] = useState("");
 
   const FetchData = () => {
-    setLoading(true);
+    setLoading(false);
     axios.get('https://kuricmt.onrender.com/content')
       .then((response) => {
         console.log('response is ', response.data[0]);
@@ -32,6 +34,8 @@ const Contents = () => {
         console.log('an error', err)
         setLoading(false);
       })
+    dismissAll();
+    setPhotosState(null)
   }
 
   useEffect(() => {
@@ -51,6 +55,7 @@ const Contents = () => {
   const [singleFileURL, setSingleFileURL] = useState(null);
 
   const uploadSingleFile = async (file) => {
+    setLoadingState("Uploading Logo");
     const storageRef = ref(storage, `images/${file.name}`);
 
     try {
@@ -81,6 +86,7 @@ const Contents = () => {
   const photoURLs = useMemo(() => [], []);
 
   const uploadPhotos = async () => {
+    setLoadingState("Uploading Photos . . .");
     for (const photo of photosState) {
       const storageRef = ref(storage, `images/${photo.name}`);
 
@@ -105,8 +111,9 @@ const Contents = () => {
   }, [photoURLs]);
 
   const SubmitClicked = async () => {
+    setLoadingState("Please Wait");
+    setLoading(true);
     let logoURL = "";
-
     try {
       if (logoState) {
         // Wait for the uploadSingleFile function to complete
@@ -131,13 +138,14 @@ const Contents = () => {
   const token = userState.token;
 
   const sendDatatoDb = async () => {
+    setLoadingState("Updating Data Please . . .");
     const existingData = {
       maintitle: maintitle,
       tagline: tagline,
       mainlogo: logoToDisplay,
       photos: photosToDisplay
     };
-  
+
     const dataObject = {
       maintitle: maintitle || existingData.maintitle,
       tagline: tagline || existingData.tagline,
@@ -153,13 +161,24 @@ const Contents = () => {
     try {
       const response = await axios.put(apiUrl, dataObject, { headers });
       console.log('Response:', response.data);
-      FetchData()
+      FetchData();
+      setPhotosState(null);
+      const fileInput = document.getElementById('fileInputField'); // Replace 'yourFileInputId' with the actual ID of your file input
+      if (fileInput) {
+        fileInput.value = '';
+      }
     } catch (error) {
       console.error('Error:', error);
     }
   };
   return (
     <div className='p-4'>
+
+      {
+        loading && <div className='shadow-lg flex items-center justify-center text-center rounded fixed top-16 z-30 left-0 right-0 h-20 w-1/2 m-auto bg-white'>
+          <span className='font-semibold'>{loadingState}</span>
+        </div>
+      }
       <span onClick={sendDatatoDb}>click me</span>
       <h4 className='font-semibold text-xl'>Setup Website Contents</h4>
       <div className='pt-4'>
@@ -177,22 +196,22 @@ const Contents = () => {
         </div>
         <div className='w-1/2'>
           {
-            logoToDisplay !== "" && <img src={logoToDisplay} alt=""  className='rounded'/>
+            logoToDisplay !== "" && <img src={logoToDisplay} alt="" className='rounded h-36 w-32 ml-10' />
           }
         </div>
       </div>
       <div className='pt-4'>
         <span className='font-semibold block'>Gallary Photos</span>
-        <input onChange={handlePhotoChange} type="file" multiple className='border outline-none px-3 py-4 text-lg w-2/3' />
+        <input id='fileInputField' onChange={handlePhotoChange} type="file" multiple className='border outline-none px-3 py-4 text-lg w-2/3' />
       </div>
       <div className='pt-4'>
         <div className='grid grid-cols-6 gap-4'>
           {
-           photosToDisplay && photosToDisplay.length !== 0 && photosToDisplay.map((ele) => {
+            photosToDisplay && photosToDisplay.length !== 0 && photosToDisplay.map((ele) => {
               return (
                 <div className='relative'>
                   {/* <span className='absolute top-5 right-5 bg-red-600 text-gray-200 cursor-pointer px-3 py-2 rounded'><FaRegTrashAlt /></span> */}
-                <img src={ele} alt="kdjfkd" className='h-44 w-full'/>
+                  <img src={ele} alt="kdjfkd" className='h-44 w-full' />
                 </div>
               )
             })
