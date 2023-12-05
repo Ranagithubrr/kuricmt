@@ -3,7 +3,7 @@ import { AiOutlineHome } from 'react-icons/ai';
 import { CgProfile } from 'react-icons/cg';
 import { AiOutlineSetting } from 'react-icons/ai';
 import { IoDocumentTextOutline } from "react-icons/io5";
-import { IoMdNotificationsOutline, IoIosGlobe } from 'react-icons/io';
+import { IoIosGlobe } from 'react-icons/io';
 
 import {Link} from 'react-router-dom'
 import Usermenu from './Usermenu';

@@ -1,5 +1,4 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { FaRegTrashAlt } from 'react-icons/fa';
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { storage } from '../../firebase-config';
 import axios from 'axios';
@@ -11,7 +10,6 @@ const Contents = () => {
   const [tagline, setTagline] = useState("");
   const [logoToDisplay, setLogoToDisplay] = useState("");
   const [photosToDisplay, setPhotosToDisplay] = useState([]);
-  const dismissAll = () => toast.dismiss();
   let mainLogo = "";
   const [photos, setPhotos] = useState([]);
   const [photosState, setPhotosState] = useState(null);
@@ -23,7 +21,6 @@ const Contents = () => {
     setLoading(false);
     axios.get('https://kuricmt.onrender.com/content')
       .then((response) => {
-        console.log('response is ', response.data[0]);
         setMaintitle(response.data[0].maintitle);
         setTagline(response.data[0].tagline);
         setLogoToDisplay(response.data[0].mainlogo);
@@ -34,7 +31,6 @@ const Contents = () => {
         console.log('an error', err)
         setLoading(false);
       })
-    dismissAll();
     setPhotosState(null)
   }
 
@@ -101,9 +97,7 @@ const Contents = () => {
       }
     }
 
-    setPhotos(photoURLs, () => {
-      console.log("Updated photos state:", photos);
-    });
+    setPhotos(photoURLs);
   };
 
   useEffect(() => {
@@ -138,7 +132,7 @@ const Contents = () => {
   const token = userState.token;
 
   const sendDatatoDb = async () => {
-    setLoadingState("Updating Data Please . . .");
+    setLoadingState("Updating Data Please wait. . .");
     const existingData = {
       maintitle: maintitle,
       tagline: tagline,
@@ -152,7 +146,6 @@ const Contents = () => {
       mainlogo: mainLogo || existingData.mainlogo,
       photos: photos.length > 0 ? photos : existingData.photos
     };
-    console.log(dataObject);
     const headers = {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`,
@@ -160,7 +153,29 @@ const Contents = () => {
     const apiUrl = `https://kuricmt.onrender.com/content`;
     try {
       const response = await axios.put(apiUrl, dataObject, { headers });
-      console.log('Response:', response.data);
+      if (response.status === 200) {
+        toast.success('Data Updated Successfully', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      } else {
+        toast.error('Failed to Update Data !', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      }
       FetchData();
       setPhotosState(null);
       const fileInput = document.getElementById('fileInputField'); // Replace 'yourFileInputId' with the actual ID of your file input
@@ -173,13 +188,23 @@ const Contents = () => {
   };
   return (
     <div className='p-4'>
-
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       {
         loading && <div className='shadow-lg flex items-center justify-center text-center rounded fixed top-16 z-30 left-0 right-0 h-20 w-1/2 m-auto bg-white'>
           <span className='font-semibold'>{loadingState}</span>
         </div>
       }
-      <span onClick={sendDatatoDb}>click me</span>
       <h4 className='font-semibold text-xl'>Setup Website Contents</h4>
       <div className='pt-4'>
         <span className='font-semibold block'>Main Title</span>

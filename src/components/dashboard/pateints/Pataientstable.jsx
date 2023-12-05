@@ -12,21 +12,17 @@ const Pataientstable = ({ setIsUpdating, setOldData, setPropmodal }) => {
     const dispatch = useDispatch()
     const [studentName, setStudentName] = useState("");
     const [studentId, setStudentId] = useState("");
-    const [modal, setmodal] = useState(false);
-    const [loading, setLoading] = useState(false);
+    const [modal, setmodal] = useState(false);   
     // const [Captains, setCaptains] = useState([]);
     const Captains = useSelector((state) => state.captainReducer);
     console.log('cap ', Captains)
-    const FetchData = () => {
-        setLoading(true);
+    const FetchData = () => {       
         axios.get('https://kuricmt.onrender.com/captains')
             .then((response) => {
-                dispatch(setCaptainsreducer(response.data.AllCaptains))
-                setLoading(false);
+                dispatch(setCaptainsreducer(response.data.AllCaptains))                
                 console.log(response.data.AllCaptains)
             })
-            .catch((err) => {
-                setLoading(false);
+            .catch((err) => {                
                 console.log('an error', err)
             })
     }

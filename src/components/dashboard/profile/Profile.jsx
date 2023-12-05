@@ -1,7 +1,5 @@
 import React from 'react';
 import Doctor from '../../../img/docc.png';
-import { AiOutlineFieldTime, AiOutlineSchedule } from 'react-icons/ai';
-import { Link } from 'react-router-dom';
 
 const Profile = () => {
     return (

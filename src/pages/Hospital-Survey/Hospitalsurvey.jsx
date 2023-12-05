@@ -4,8 +4,6 @@ import { AiFillEdit } from 'react-icons/ai'
 import { useSelector } from 'react-redux';
 
 const Hospitalsurvey = () => { 
-  const [loading, setLoading] = useState(false);  
-
   const [formData, setFormData] = useState({
     labassistant:  "",
     labonecomputer: "",
@@ -15,8 +13,7 @@ const Hospitalsurvey = () => {
     hlabcomputer: "",
     hlabseat:  "",
   });
-  const FetchData = () => {
-    setLoading(true);
+  const FetchData = () => {    
     axios.get('https://kuricmt.onrender.com/content')
       .then((response) => {
         console.log('response is ', response.data[0]);
@@ -28,12 +25,10 @@ const Hospitalsurvey = () => {
           labtwoseat: response.data[0].labtwoseat || "",
           hlabcomputer: response.data[0].hlabcomputer || "",
           hlabseat: response.data[0].hlabseat || "",
-        });
-        setLoading(false);
+        });       
       })
       .catch((err) => {
-        console.log('an error', err)
-        setLoading(false);
+        console.log('an error', err)       
       })
   }
 
@@ -52,7 +47,7 @@ const Hospitalsurvey = () => {
   const userState = useSelector((state) => state.userReducer);
   const token = userState.token;
 
-  
+
   const UpdateDataClicked = async () => {
     const headers = {
       'Content-Type': 'application/json',
