@@ -124,6 +124,7 @@ const Contents = () => {
       sendDatatoDb();
     } catch (error) {
       console.error("Error during submission:", error);
+      setLoading(false);
     }
   };
 
@@ -132,7 +133,6 @@ const Contents = () => {
   const token = userState.token;
 
   const sendDatatoDb = async () => {
-    setLoadingState("Updating Data Please wait. . .");
     const existingData = {
       maintitle: maintitle,
       tagline: tagline,
@@ -152,6 +152,7 @@ const Contents = () => {
     };
     const apiUrl = `https://kuricmt.onrender.com/content`;
     try {
+      setLoadingState("Updating Data Please wait. . .");
       const response = await axios.put(apiUrl, dataObject, { headers });
       if (response.status === 200) {
         toast.success('Data Updated Successfully', {
@@ -164,7 +165,9 @@ const Contents = () => {
           progress: undefined,
           theme: "light",
         });
+        setLoading(false);
       } else {
+        setLoading(false);
         toast.error('Failed to Update Data !', {
           position: "top-right",
           autoClose: 5000,
@@ -177,12 +180,14 @@ const Contents = () => {
         });
       }
       FetchData();
+      setLoading(false);
       setPhotosState(null);
       const fileInput = document.getElementById('fileInputField'); // Replace 'yourFileInputId' with the actual ID of your file input
       if (fileInput) {
         fileInput.value = '';
       }
     } catch (error) {
+      setLoading(false);
       console.error('Error:', error);
     }
   };

@@ -8,12 +8,12 @@ const ProtectedRoute = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    if (!userState.user) {
+    if ( !userState || userState === null || userState === undefined || !userState.user) {
       navigate('/login');
     } else {
       setIsAuthenticated(true)
     }
-  }, [userState.user, navigate]);
+  }, [userState.user, navigate, userState]);
   return isAuthenticated ? <>{children}</> : null;
 };
 

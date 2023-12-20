@@ -8,8 +8,11 @@ import { IoIosGlobe } from 'react-icons/io';
 import {Link} from 'react-router-dom'
 import Usermenu from './Usermenu';
 import Computer from '../../img/desktop.png';
+import { useSelector } from 'react-redux';
 
 const Navbar = () => {
+    // const User = useSelector((state) => state.userReducer);
+    const [userType,setUserType] =  useState(useSelector((state) => state.userReducer));
     const [rightSidebar, setRightSidebar] = useState(false);
     const [darkMode, setDarkMode] = useState(false);
 
@@ -71,7 +74,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div class="w-2/12 flex justify-end items-center">
-                    <span className='font-semibold text-sm mr-2 dark:text-gray-300'>Role: Admin</span>
+                    <span className='font-semibold text-sm mr-2 dark:text-gray-300'>Role: {userType && userType.user && userType.user.type}</span>
                     <span className='
                     h-8 
                     w-8 
