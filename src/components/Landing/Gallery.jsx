@@ -6,7 +6,7 @@ const Gallery = () => {
             <h1 className='font-extrabold text-2xl bg-gradient-to-r from-gray-500 to-red-500 text-transparent bg-clip-text text-center'>
                 Gallery
             </h1>
-            <div className="w-full  p-5 pb-10 mx-auto mb-10 gap-5 columns-3 space-y-5">
+            <div className="w-full  p-5 pb-10 mx-auto mb-10 gap-5 columns-4 space-y-5">
                 <img src="https://placekitten.com/400/300" alt="1" class="w-full" />
                 <img src="https://placekitten.com/350/500" alt="4" class="w-full" />
                 <img src="https://placekitten.com/500/350" alt="3" class="w-full" />

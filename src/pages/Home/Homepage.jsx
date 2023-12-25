@@ -4,6 +4,7 @@ import MainView from '../../components/Landing/MainView';
 import Teachers from '../../components/Landing/Teachers';
 import Gallery from '../../components/Landing/Gallery';
 import AboutUs from '../../components/Landing/AboutUs';
+import Notices from '../../components/Landing/Notices';
 
 const Homepage = () => {
     return (
@@ -12,6 +13,7 @@ const Homepage = () => {
             <MainView />
             <Teachers />
             <AboutUs />
+            <Notices />
             <Gallery />
         </div>
     );

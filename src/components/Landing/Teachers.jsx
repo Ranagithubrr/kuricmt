@@ -7,7 +7,7 @@ const Teachers = () => {
                 Meet Our Teachers
             </h1>
             <div className='grid grid-cols-4 gap-10 py-5 px-10'>
-                <div className='border rounded cursor-pointer box-border overflow-clip pb-4'>
+                <div data-aos="fade-up" className='border rounded cursor-pointer box-border overflow-clip pb-4'>
                     <div className='h-32 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-400'></div>
                     <div>
                         <img src={'https://photogov-com.akamaized.net/examples/bd-passport-55x45-photo/landmarks-US.webp'} alt="" className='rounded-full h-32 w-32 m-auto -mt-16 ring ring-white' />
