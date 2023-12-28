@@ -5,6 +5,7 @@ import Teachers from '../../components/Landing/Teachers';
 import Gallery from '../../components/Landing/Gallery';
 import AboutUs from '../../components/Landing/AboutUs';
 import Notices from '../../components/Landing/Notices';
+import Quotes from '../../components/Landing/Quotes';
 
 const Homepage = () => {
     return (
@@ -15,6 +16,7 @@ const Homepage = () => {
             <AboutUs />
             <Notices />
             <Gallery />
+            <Quotes />
         </div>
     );
 };
