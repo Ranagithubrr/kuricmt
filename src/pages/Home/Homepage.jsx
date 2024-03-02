@@ -7,6 +7,7 @@ import AboutUs from '../../components/Landing/AboutUs';
 import Notices from '../../components/Landing/Notices';
 import Quotes from '../../components/Landing/Quotes';
 import Application from '../../components/Landing/Application';
+import Footer from '../../components/Landing/Footer';
 
 const Homepage = () => {
     return (
@@ -19,6 +20,7 @@ const Homepage = () => {
             <Gallery />
             <Quotes />
             <Application />
+            <Footer />
         </div>
     );
 };
