@@ -6,6 +6,7 @@ import Gallery from '../../components/Landing/Gallery';
 import AboutUs from '../../components/Landing/AboutUs';
 import Notices from '../../components/Landing/Notices';
 import Quotes from '../../components/Landing/Quotes';
+import Application from '../../components/Landing/Application';
 
 const Homepage = () => {
     return (
@@ -17,6 +18,7 @@ const Homepage = () => {
             <Notices />
             <Gallery />
             <Quotes />
+            <Application />
         </div>
     );
 };

@@ -1,7 +1,9 @@
-import React from 'react'
+import React from 'react';
+import KuriImg from '../../img/kuri.jpg';
 
 const MainView = () => {
-    return (
+    return (<>
+
         <div className='flex items-center'>
             <div className='w-1/2'>
                 <h1 className='font-extrabold text-5xl bg-gradient-to-r from-gray-500 to-red-500 text-transparent bg-clip-text'>
@@ -22,6 +24,10 @@ const MainView = () => {
                 </div>
             </div>
         </div>
+        <div className='py-4'>
+            <img src={KuriImg} className='w-full rounded' alt="" />
+        </div>
+    </>
     )
 }
 
