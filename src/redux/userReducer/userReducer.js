@@ -15,10 +15,12 @@ export const userReducer = (state = initialState, action) => {
             localStorage.setItem('userData', JSON.stringify(newState.user));
             return newState;
         case UPDATE_USER:
-            return {
+            const newStateUpdate = {
                 ...state,
                 user: action.payload,
             };
+            localStorage.setItem('userData', JSON.stringify(newStateUpdate.user));
+            return newStateUpdate;
 
         case REMOVE_USER:
             localStorage.removeItem('userData');

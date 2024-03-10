@@ -17,7 +17,7 @@ const Pataientstable = ({ setIsUpdating, setOldData, setPropmodal }) => {
     const Captains = useSelector((state) => state.captainReducer);
     console.log('cap ', Captains)
     const FetchData = () => {       
-        axios.get('https://kuricmt.onrender.com/captains')
+        axios.get('http://localhost:4000/captains')
             .then((response) => {
                 dispatch(setCaptainsreducer(response.data.AllCaptains))                
                 console.log(response.data.AllCaptains)
@@ -42,7 +42,7 @@ const Pataientstable = ({ setIsUpdating, setOldData, setPropmodal }) => {
 
 
     const DeleteCaptain = async (id) => {
-        const apiUrl = `https://kuricmt.onrender.com/captains/delete/${id}`;
+        const apiUrl = `http://localhost:4000/captains/delete/${id}`;
         setmodal(false);
         const requestData = {
           key1: 'value1',

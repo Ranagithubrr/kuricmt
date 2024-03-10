@@ -26,7 +26,7 @@ const AddCaptain = (props) => {
   const userState = useSelector((state) => state.userReducer);
   const token = userState.token;
   const FetchData = () => {
-    axios.get('https://kuricmt.onrender.com/captains')
+    axios.get('http://localhost:4000/captains')
       .then((response) => {
         dispatch(setCaptainsreducer(response.data.AllCaptains))
         console.log(response.data.AllCaptains)
@@ -46,7 +46,7 @@ const AddCaptain = (props) => {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
     };
-    const apiUrl = isUpdating ? `https://kuricmt.onrender.com/captains/update/${oldData._id}` : `https://kuricmt.onrender.com/captains`;
+    const apiUrl = isUpdating ? `http://localhost:4000/captains/update/${oldData._id}` : `http://localhost:4000/captains`;
     try {
       const response = await axios.post(apiUrl, userData, { headers });
       console.log('Response:', response.data);

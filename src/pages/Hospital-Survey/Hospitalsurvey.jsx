@@ -14,7 +14,7 @@ const Hospitalsurvey = () => {
     hlabseat:  "",
   });
   const FetchData = () => {    
-    axios.get('https://kuricmt.onrender.com/content')
+    axios.get('http://localhost:4000/content')
       .then((response) => {
         console.log('response is ', response.data[0]);
         setFormData({
@@ -53,7 +53,7 @@ const Hospitalsurvey = () => {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`,
     };
-    const apiUrl = `https://kuricmt.onrender.com/content`;
+    const apiUrl = `http://localhost:4000/content`;
     try {
       const response = await axios.put(apiUrl, formData, { headers });
       console.log('Response:', response.data);

@@ -19,7 +19,7 @@ const Contents = () => {
 
   const FetchData = () => {
     setLoading(false);
-    axios.get('https://kuricmt.onrender.com/content')
+    axios.get('http://localhost:4000/content')
       .then((response) => {
         setMaintitle(response.data[0].maintitle);
         setTagline(response.data[0].tagline);
@@ -150,7 +150,7 @@ const Contents = () => {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`,
     };
-    const apiUrl = `https://kuricmt.onrender.com/content`;
+    const apiUrl = `http://localhost:4000/content`;
     try {
       setLoadingState("Updating Data Please wait. . .");
       const response = await axios.put(apiUrl, dataObject, { headers });

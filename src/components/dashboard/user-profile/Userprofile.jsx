@@ -1,17 +1,22 @@
 import React from 'react';
 import ProfilePic from '../../../img/docc.png'
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Userprofile = () => {
+  const userState = useSelector((state) => state.userReducer);  
+  const { name, address, email, isactivate, phone, title, type, website } = userState.user || {};
   return (
     <div className='flex p-4 pr-0 dark:bg-gray-800'>
       <div className="w-1/5 flex justify-end">
         <img src={ProfilePic} alt="profilePic here" className='h-40 w-40 bg-gray-300 rounded-full' />
       </div>
       <div className="border-t-4 border-gray-300 mt-20 w-full pl-4">
-        <h4 className='font-bold text-xl text-gray-600 dark:text-gray-300'>Masud Rana  <span className='text-xs font-bold text-blue-600 bg-blue-200 rounded p-1 ml-3'>Admin</span></h4>
-        <Link to="/update-profile" className='bg-blue-800 text-gray-100 dark:text-gray-200 float-right mr-5 font-bold text-sm p-2 rounded -mt-5'>Edit Profile</Link>
-        <h6 className='font-semibold text-gray-600 text-sm dark:text-gray-300'>Jr Front-end Developer</h6>
+        
+          <h4 className='font-bold text-xl text-gray-600 dark:text-gray-300'>{name} {type === "admin" && <span className='text-xs font-bold text-blue-600 bg-blue-200 rounded p-1 ml-3'>Admin</span> }</h4>
+       
+        <Link to="/dashboard/update-profile" className='bg-blue-800 text-gray-100 dark:text-gray-200 float-right mr-5 font-bold text-sm p-2 rounded -mt-5'>Edit Profile</Link>
+        <h6 className='font-semibold text-gray-600 text-sm dark:text-gray-300'>{title}</h6>
         <div className='pt-4'>
           <span className='font-semibold text-gray-400 dark:text-gray-200'>Contact Informations</span>
           <div className='flex justify-between w-1/2'>
@@ -19,7 +24,7 @@ const Userprofile = () => {
               <span className='font-semibold text-gray-600 dark:text-gray-300'>Phone</span>
             </div>
             <div className='w-3/4'>
-              <span className='text-gray-600 font-semibold dark:text-gray-300'>+8801773229167</span>
+              <span className='text-gray-600 font-semibold dark:text-gray-300'>{phone}</span>
             </div>
           </div>
           <div className='flex justify-between w-1/2'>
@@ -27,7 +32,7 @@ const Userprofile = () => {
               <span className='font-semibold text-gray-600 dark:text-gray-300'>Address</span>
             </div>
             <div className='w-3/4'>
-              <span className='text-gray-600 font-semibold dark:text-gray-300'>Rangpur Haragach, Bangladesh</span>
+              <span className='text-gray-600 font-semibold dark:text-gray-300'>{address}</span>
             </div>
           </div>
           <div className='flex justify-between w-1/2'>
@@ -35,7 +40,7 @@ const Userprofile = () => {
               <span className='font-semibold text-gray-600 dark:text-gray-300'>Email</span>
             </div>
             <div className='w-3/4'>
-              <span className='text-gray-600 font-semibold dark:text-gray-300'>ranarr.dev@gmail.com</span>
+              <span className='text-gray-600 font-semibold dark:text-gray-300'>{email}</span>
             </div>
           </div>
           <div className='flex justify-between w-1/2'>
@@ -43,7 +48,7 @@ const Userprofile = () => {
               <span className='font-semibold text-gray-600 dark:text-gray-300'>Website</span>
             </div>
             <div className='w-3/4'>
-              <Link to="https://rana-rr.netlify.app/" target='_blank' className='text-gray-600 font-semibold dark:text-gray-400'>https://rana-rr.netlify.app/</Link>
+              <Link to={website} target='_blank' className='text-gray-600 font-semibold dark:text-gray-400'>{website}</Link>
             </div>
           </div>
         </div>
