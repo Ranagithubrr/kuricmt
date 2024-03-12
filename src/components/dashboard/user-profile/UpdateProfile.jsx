@@ -5,6 +5,7 @@ import axios from 'axios';
 import { updateUser } from '../../../redux/userReducer/userActions';
 import { useNavigate } from 'react-router';
 import { ToastContainer, toast } from 'react-toastify';
+import { FaCamera } from "react-icons/fa";
 
 const UpdateProfile = () => {
     const userState = useSelector((state) => state.userReducer);
@@ -45,7 +46,7 @@ const UpdateProfile = () => {
             delete response.data.updatedUser;
             dispatch(updateUser(response.data));
             navigate('/dashboard/profile');
-            toast.success( 'User Updated Successfully', {
+            toast.success('User Updated Successfully', {
                 position: "top-right",
                 autoClose: 1500,
                 hideProgressBar: false,
@@ -54,7 +55,7 @@ const UpdateProfile = () => {
                 draggable: true,
                 progress: undefined,
                 theme: "light",
-              })
+            })
         } catch (e) {
             console.log(e)
         }
@@ -64,7 +65,16 @@ const UpdateProfile = () => {
             <ToastContainer
             />
             <div className="w-1/5 flex justify-end">
-                <img src={ProfilePic} alt="profilePic here" className='h-40 w-40 bg-gray-300 rounded-full' />
+                <div className='relative h-40 w-40 overflow-hidden rounded-full'>
+                    <img src={ProfilePic} alt="profilePic here" className='w-full h-full rounded-full absolute bg-gray-300' />
+                    <div className='absolute top-1/2 h-40 w-40 opacity-50 bg-gray-400 hover:opacity-80 transition ease-in-out cursor-pointer flex justify-around pt-4'>
+                        <input type="file" name="image" id="profilepic" className='hidden' />
+                        <label htmlFor="profilepic" className='cursor-pointer'>
+                            <FaCamera className='text-4xl' />
+                        </label>
+                    </div>
+                </div>
+
             </div>
             <div className="border-t-4 border-gray-300 mt-20 w-full pl-4">
                 <input className='font-bold text-xl text-gray-600 dark:text-white outline-none border-b-2' placeholder='Masud Rana ' autoFocus value={newData.name} onChange={(e) => handleChange(e)} name="name"></input>
@@ -108,7 +118,7 @@ const UpdateProfile = () => {
                 </div>
 
             </div>
-        </div>
+        </div >
     )
 }
 
