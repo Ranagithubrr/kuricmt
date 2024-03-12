@@ -3,14 +3,17 @@ import ProfilePic from '../../../img/docc.png'
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { updateUser } from '../../../redux/userReducer/userActions';
+import { useNavigate } from 'react-router';
+import { ToastContainer, toast } from 'react-toastify';
 
 const UpdateProfile = () => {
     const userState = useSelector((state) => state.userReducer);
+    const navigate = useNavigate();
     console.log(userState)
     const token = userState.token;
     const dispatch = useDispatch();
     console.log('state is', userState)
-    const { name, address, email, isactivate, phone, title, type, website, _id } = userState.user || {};
+    const { name, address, email, phone, title, website, _id } = userState.user || {};
     const [newData, setNewData] = useState({
         email: email,
         name: name,
@@ -33,25 +36,33 @@ const UpdateProfile = () => {
     };
     const UpdateData = async () => {
         console.log('clicked');
-        // console.log(token)
-        // console.log(newData)
         try {
             const response = await axios.post('http://localhost:4000/user/update-profile', newData, { headers });
-            console.log(response);
+            // console.log(response);
             response.data.msg = undefined;
-            const updatedUser = response.data.updatedUser;            
+            const updatedUser = response.data.updatedUser;
             response.data.user = updatedUser;
-            delete response.data.updatedUser;               
-            dispatch(updateUser(response.data))
+            delete response.data.updatedUser;
+            dispatch(updateUser(response.data));
+            navigate('/dashboard/profile');
+            toast.success( 'User Updated Successfully', {
+                position: "top-right",
+                autoClose: 1500,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+              })
         } catch (e) {
             console.log(e)
         }
-
-        // .then((res)=>{return(res)})   
-        // .catch((err)=>console.log(err))     
     }
     return (
         <div className='flex p-4 pr-0'>
+            <ToastContainer
+            />
             <div className="w-1/5 flex justify-end">
                 <img src={ProfilePic} alt="profilePic here" className='h-40 w-40 bg-gray-300 rounded-full' />
             </div>
@@ -95,36 +106,7 @@ const UpdateProfile = () => {
                         </div>
                     </div>
                 </div>
-                <div className='pt-4'>
-                    <span className='font-semibold text-gray-400'>Basic Informations</span>
-                    <div className='flex justify-between w-1/2'>
-                        <div className='w-1/4'>
-                            <span className='font-semibold text-gray-600'>Gender</span>
-                        </div>
-                        <div className='w-3/4'>
-                            <input type="radio" id='male' name='gender' className='mx-2' />
-                            <label htmlFor="male">Male</label>
-                            <input type="radio" id='famale' name='gender' className='mx-2' />
-                            <label htmlFor="famale">Famale</label>
-                        </div>
-                    </div>
-                    <div className='flex justify-between w-1/2'>
-                        <div className='w-1/4'>
-                            <span className='font-semibold text-gray-600'>Age</span>
-                        </div>
-                        <div className='w-3/4'>
-                            <span className='text-gray-600 font-semibold'>21</span>
-                        </div>
-                    </div>
-                    <div className='flex justify-between w-1/2'>
-                        <div className='w-1/4'>
-                            <span className='font-semibold text-gray-600'>Birth Date</span>
-                        </div>
-                        <div className='w-3/4'>
-                            <input type="date" />
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
     )

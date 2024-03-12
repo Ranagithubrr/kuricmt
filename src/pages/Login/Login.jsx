@@ -22,7 +22,7 @@ const Login = () => {
         const clearError = () => {
             setError(false);
             setErrorText("");
-        };    
+        };
         if (email === "" || password === "") {
             setError(true);
             setErrorText("Please Fill all the Fields");
@@ -36,22 +36,23 @@ const Login = () => {
                 email,
                 password
             });
+            setError(false);
+            response.data.msg = undefined;
+            dispatch(setUser(response.data));
+            setLoading(false);
+            navigate('/dashboard');
 
-            if (response.status !== 200) {
-                setError(true);
-                setErrorText(response.status === 404 ? "Invalid Credentials" : "Server Error");
-                setTimeout(clearError, 3000);
-            } else {
-                setError(false);
-                response.data.msg = undefined;
-                dispatch(setUser(response.data));
-                setLoading(false);
-                navigate('/dashboard');
-            }
         } catch (err) {
+            console.log(err)
             setLoading(false);
             setError(true);
-            setErrorText("Invalid Credentials");
+            if (err.response.status === 404) {
+                setErrorText("Invalid Credentials")
+            } else if (err.response.status === 406) {
+                setErrorText("Account is not activated")
+            } else {
+                setErrorText("An error occured")
+            }
             console.error(err);
             setTimeout(clearError, 3000);
         }

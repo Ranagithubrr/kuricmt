@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 
 const Userprofile = () => {
   const userState = useSelector((state) => state.userReducer);  
+  console.log('user state is', userState)
   const { name, address, email, isactivate, phone, title, type, website } = userState.user || {};
   return (
     <div className='flex p-4 pr-0 dark:bg-gray-800'>
@@ -79,117 +80,7 @@ const Userprofile = () => {
             </div>
           </div>
         </div>
-        <div className="pt-4">
-          <h4 className='font-semibold text-gray-800 text-lg mb-2'>Appointments</h4>
-          <div className='grid grid-cols-3'>
-            <div className='bg-white shadow-xl   p-4 rounded m-2 cursor-pointer'>
-              <span className='font-bold text-3xl border text-gray-700 rounded-full w-10 h-10 flex items-center justify-center border-gray-700 mb-3'>1</span>
-              <div className='flex '>
-                <div className='w-1/4'>
-                  <span className='font-semibold'>To:</span>
-                </div>
-                <div className='w-3/4'>
-                  <span className='font-semibold'>Dr. Dinesh Chandra</span>
-                </div>
-              </div>
-
-              <div className='flex'>
-                <div className='w-1/4'>
-                  <span className='font-semibold'>Type:</span>
-                </div>
-                <div className='w-3/4'>
-                  <span className='font-semibold'>Health</span>
-                </div>
-              </div>
-              <div className='flex'>
-                <div className='w-1/4'>
-                  <span className='font-semibold'>Fee:</span>
-                </div>
-                <div className='w-3/4'>
-                  <span className='font-semibold'>$17</span>
-                </div>
-              </div>
-              <div className='flex'>
-                <div className='w-1/4'>
-                  <span className='font-semibold'>Date:</span>
-                </div>
-                <div className='w-3/4'>
-                  <span className='font-semibold'>11/08/2023</span>
-                </div>
-              </div>
-
-            </div>
-            <div className='bg-white shadow-xl   p-4 rounded m-2 cursor-pointer'>
-              <span className='font-bold text-3xl border text-gray-700 rounded-full w-10 h-10 flex items-center justify-center border-gray-700 mb-3'>2</span>
-              <div className='flex '>
-                <div className='w-1/4'>
-                  <span className='font-semibold'>To:</span>
-                </div>
-                <div className='w-3/4'>
-                  <span className='font-semibold'>Dr. Dinesh Chandra</span>
-                </div>
-              </div>
-
-              <div className='flex'>
-                <div className='w-1/4'>
-                  <span className='font-semibold'>Type:</span>
-                </div>
-                <div className='w-3/4'>
-                  <span className='font-semibold'>Health</span>
-                </div>
-              </div>
-              <div className='flex'>
-                <div className='w-1/4'>
-                  <span className='font-semibold'>Date:</span>
-                </div>
-                <div className='w-3/4'>
-                  <span className='font-semibold'>11/08/2023</span>
-                </div>
-              </div>
-
-            </div>
-            <div className='bg-white shadow-xl   p-4 rounded m-2 cursor-pointer'>
-              <span className='font-bold text-3xl border text-gray-700 rounded-full w-10 h-10 flex items-center justify-center border-gray-700 mb-3'>3</span>
-              <div className='flex- flex-wrap'>
-
-
-                <div className='flex '>
-                  <div className='w-1/4'>
-                    <span className='font-semibold'>To:</span>
-                  </div>
-                  <div className='w-3/4'>
-                    <span className='font-semibold'>Dr. Dinesh Chandra</span>
-                  </div>
-                </div>
-
-                <div className='flex'>
-                  <div className='w-1/4'>
-                    <span className='font-semibold'>Type:</span>
-                  </div>
-                  <div className='w-3/4'>
-                    <span className='font-semibold'>Health</span>
-                  </div>
-                </div>
-                <div className='flex'>
-                  <div className='w-1/4'>
-                    <span className='font-semibold'>Date:</span>
-                  </div>
-                  <div className='w-3/4'>
-                    <span className='font-semibold'>11/08/2023</span>
-                  </div>
-                </div>
-                <div className='flex'>
-                  <div className='w-1/4'>
-                    <span className='font-semibold'>Date:</span>
-                  </div>
-                  <div className='w-3/4'>
-                    <span className='font-semibold'>11/08/2023</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        
       </div>
     </div>
   )
