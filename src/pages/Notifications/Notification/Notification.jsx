@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { CiMenuKebab } from "react-icons/ci";
-import { FaFilePdf, FaImage } from "react-icons/fa";
+import { FaFilePdf } from "react-icons/fa";
 
 const Notification = ({ item }) => {
     const dateString = item.createdAt;
