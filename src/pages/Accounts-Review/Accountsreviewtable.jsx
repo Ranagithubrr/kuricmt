@@ -2,20 +2,32 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { FaCheck, FaTimes } from "react-icons/fa";
 import { GoAlert } from "react-icons/go";
+import { useSelector } from "react-redux";
 import { ToastContainer } from "react-toastify";
 
 const AccountsReviewtable = () => {
   const [modal, setmodal] = useState(false);
   const [users, setUsers] = useState([]);
   const [teachaerName, setTeacherName] = useState("");
-  const [isdelete,setIsDelete] = useState(false)
-  const WantToActive = (tname) => {
-    console.log('got name', tname)
+  const [deletingId, setDeletingId] = useState(null);
+  const [isdelete, setIsDelete] = useState(false);
+  const userState = useSelector((state) => state.userReducer);
+  const token = userState.token;
+
+  const headers = {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`,
+  };
+  const WantToActive = async (tname, id) => {
+    console.log('got name', tname, 'id is', id);
+    setDeletingId(id)
     setTeacherName(tname);
     setmodal(true);
     setIsDelete(false)
+
   }
-  const WantToDelete = (tname) => {
+  const WantToDelete = (tname,id) => {
+    setDeletingId(id)
     console.log('got name', tname)
     setTeacherName(tname);
     setmodal(true);
@@ -29,6 +41,24 @@ const AccountsReviewtable = () => {
       .catch((err) => {
         console.log('an error', err)
       })
+  }
+  const DeleteTacher = () => {
+
+  }
+  const ActivateTacher = async () => {
+    const apiUrl = `http://localhost:4000/user/activate-teacher`;
+    try {
+      const response = await axios.post(apiUrl, { "teacherId": deletingId }, { headers });
+      if (response.status === 200) {
+        console.log('activated successfully');
+        FetchUsers()
+      } else {
+        console.log('failed to activate')
+      }
+    } catch (err) {
+      console.log(err)
+    }
+    setmodal(false)
   }
   console.log(users.length);
   useEffect(() => {
@@ -70,8 +100,8 @@ const AccountsReviewtable = () => {
                       <td className='border p-2'>{formattedDate}</td>
                       <td className='flex items-center justify-center pt-3'>
                         <div className='pt-3 flex items-center justify-center'>
-                          <button title='Decline' className='px-3 py-1 rounded mx-2  bg-red-500 text-gray-200 text-sm font-semibold' onClick={() => WantToDelete(ele.name)}><FaTimes /></button>
-                          <button title='Approve' className='px-3 py-1 rounded mx-2  bg-green-500 text-gray-200 text-sm font-semibold' onClick={() => WantToActive(ele.name)}><FaCheck /></button>
+                          <button title='Decline' className='px-3 py-1 rounded mx-2  bg-red-500 text-gray-200 text-sm font-semibold' onClick={() => WantToDelete(ele.name,ele._id)}><FaTimes /></button>
+                          <button title='Approve' className='px-3 py-1 rounded mx-2  bg-green-500 text-gray-200 text-sm font-semibold' onClick={() => WantToActive(ele.name, ele._id)}><FaCheck /></button>
                         </div>
                       </td>
                     </tr>
@@ -100,13 +130,13 @@ const AccountsReviewtable = () => {
                 <span className='text-sm font-semibold'>Are you sure want to {!isdelete ? <span className="font-bold text-green-600">Activate</span> : <span className="font-bold text-red-600">Decline</span>}  { } {teachaerName}'s account?</span>
                 <div className='py-3'>
                   {
-                    isdelete ? <button className='rounded px-6 mx-2 py-1 bg-red-500 text-gray-200 text-sm font-semibold' >Yes</button>
-                    : <button className='rounded px-6 mx-2 py-1 bg-green-500 text-gray-200 text-sm font-semibold' >Yes</button>
-                  }          
+                    isdelete ? <button className='rounded px-6 mx-2 py-1 bg-red-500 text-gray-200 text-sm font-semibold' onClick={() => DeleteTacher()}>Yes</button>
+                      : <button className='rounded px-6 mx-2 py-1 bg-green-500 text-gray-200 text-sm font-semibold' onClick={() => ActivateTacher()}>Yes</button>
+                  }
                   {
-                    isdelete ? <button className='rounded px-6 mx-2 py-1 bg-green-500 text-gray-200 text-sm font-semibold' >No</button>
-                    : <button className='rounded px-6 mx-2 py-1 bg-red-500 text-gray-200 text-sm font-semibold' >No</button>
-                  }                        
+                    isdelete ? <button className='rounded px-6 mx-2 py-1 bg-green-500 text-gray-200 text-sm font-semibold' onClick={() => setmodal(false)}>No</button>
+                      : <button className='rounded px-6 mx-2 py-1 bg-red-500 text-gray-200 text-sm font-semibold' onClick={() => setmodal(false)}>No</button>
+                  }
                 </div>
               </div>
             </div>
