@@ -4,12 +4,14 @@ import { FaCheck, FaTimes } from "react-icons/fa";
 import { GoAlert } from "react-icons/go";
 import { useSelector } from "react-redux";
 import { ToastContainer } from "react-toastify";
+import { toast } from 'react-toastify';
+
 
 const AccountsReviewtable = () => {
   const [modal, setmodal] = useState(false);
   const [users, setUsers] = useState([]);
   const [teachaerName, setTeacherName] = useState("");
-  const [deletingId, setDeletingId] = useState(null);
+  const [delAndActId, setDeletingId] = useState(null);
   const [isdelete, setIsDelete] = useState(false);
   const userState = useSelector((state) => state.userReducer);
   const token = userState.token;
@@ -26,7 +28,7 @@ const AccountsReviewtable = () => {
     setIsDelete(false)
 
   }
-  const WantToDelete = (tname,id) => {
+  const WantToDelete = (tname, id) => {
     setDeletingId(id)
     console.log('got name', tname)
     setTeacherName(tname);
@@ -42,24 +44,80 @@ const AccountsReviewtable = () => {
         console.log('an error', err)
       })
   }
-  const DeleteTacher = () => {
+  const DeleteTacher = async () => {
+    const apiUrl = `http://localhost:4000/user/delete-teacher`;
+    setmodal(false);
 
-  }
-  const ActivateTacher = async () => {
-    const apiUrl = `http://localhost:4000/user/activate-teacher`;
-    try {
-      const response = await axios.post(apiUrl, { "teacherId": deletingId }, { headers });
-      if (response.status === 200) {
-        console.log('activated successfully');
-        FetchUsers()
-      } else {
-        console.log('failed to activate')
+    const requestData = {
+      teacherId: delAndActId
+    };  
+    const activationPromise = axios.post(apiUrl, requestData, { headers });
+    const promiseToast = toast.promise(
+      activationPromise,
+      {
+        pending: 'Deleting teacher, please wait...',
+        success: 'Teacher deleted successfully',
+        error: 'Failed to delete teacher',
       }
-    } catch (err) {
-      console.log(err)
+    );
+
+    try {
+      // Wait for the activation promise to resolve or reject
+      await activationPromise;
+
+      // Manually close the toast after success
+      toast.dismiss(promiseToast);
+
+      FetchUsers();
+    } catch (error) {
+      console.error('Error:', error);
+
+      // Manually close the toast after error
+      toast.dismiss(promiseToast);
+    } finally {
+      setmodal(false); // Ensure modal is closed regardless of success or failure
     }
-    setmodal(false)
-  }
+  };
+  const ActivateTeacher = async () => {
+    const apiUrl = `http://localhost:4000/user/activate-teacher`;
+    setmodal(false);
+
+    const requestData = {
+      teacherId: delAndActId
+    };
+
+    const headers = {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    };
+    const activationPromise = axios.post(apiUrl, requestData, { headers });
+    const promiseToast = toast.promise(
+      activationPromise,
+      {
+        pending: 'Activating teacher, please wait...',
+        success: 'Teacher activated successfully',
+        error: 'Failed to activate teacher',
+      }
+    );
+
+    try {
+      // Wait for the activation promise to resolve or reject
+      await activationPromise;
+
+      // Manually close the toast after success
+      toast.dismiss(promiseToast);
+
+      FetchUsers();
+    } catch (error) {
+      console.error('Error:', error);
+
+      // Manually close the toast after error
+      toast.dismiss(promiseToast);
+    } finally {
+      setmodal(false); // Ensure modal is closed regardless of success or failure
+    }
+  };
+
   console.log(users.length);
   useEffect(() => {
     FetchUsers();
@@ -98,10 +156,10 @@ const AccountsReviewtable = () => {
                       <td className='border p-2'>{ele.email}</td>
                       <td className='border p-2'>{ele.type}</td>
                       <td className='border p-2'>{formattedDate}</td>
-                      <td className='flex items-center justify-center pt-3'>
-                        <div className='pt-3 flex items-center justify-center'>
-                          <button title='Decline' className='px-3 py-1 rounded mx-2  bg-red-500 text-gray-200 text-sm font-semibold' onClick={() => WantToDelete(ele.name,ele._id)}><FaTimes /></button>
-                          <button title='Approve' className='px-3 py-1 rounded mx-2  bg-green-500 text-gray-200 text-sm font-semibold' onClick={() => WantToActive(ele.name, ele._id)}><FaCheck /></button>
+                      <td className='flex items-center justify-center h-full'>
+                        <div className='flex items-center justify-center'>
+                          <button title='Decline' className='mt-2 px-3 py-1 rounded mx-2  bg-red-500 text-gray-200 text-sm font-semibold' onClick={() => WantToDelete(ele.name, ele._id)}><FaTimes /></button>
+                          <button title='Approve' className='mt-2 px-3 py-1 rounded mx-2  bg-green-500 text-gray-200 text-sm font-semibold' onClick={() => WantToActive(ele.name, ele._id)}><FaCheck /></button>
                         </div>
                       </td>
                     </tr>
@@ -131,7 +189,7 @@ const AccountsReviewtable = () => {
                 <div className='py-3'>
                   {
                     isdelete ? <button className='rounded px-6 mx-2 py-1 bg-red-500 text-gray-200 text-sm font-semibold' onClick={() => DeleteTacher()}>Yes</button>
-                      : <button className='rounded px-6 mx-2 py-1 bg-green-500 text-gray-200 text-sm font-semibold' onClick={() => ActivateTacher()}>Yes</button>
+                      : <button className='rounded px-6 mx-2 py-1 bg-green-500 text-gray-200 text-sm font-semibold' onClick={() => ActivateTeacher()}>Yes</button>
                   }
                   {
                     isdelete ? <button className='rounded px-6 mx-2 py-1 bg-green-500 text-gray-200 text-sm font-semibold' onClick={() => setmodal(false)}>No</button>
