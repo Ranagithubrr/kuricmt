@@ -8,24 +8,36 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setCaptainsreducer } from '../../../redux/captainReducer/captainReducer';
 
 
-const Pataientstable = ({ setIsUpdating, setOldData, setPropmodal }) => {
+const Pataientstable = ({ setIsUpdating, setOldData, setPropmodal, searchText }) => {
     const dispatch = useDispatch()
     const [studentName, setStudentName] = useState("");
     const [studentId, setStudentId] = useState("");
-    const [modal, setmodal] = useState(false);   
+    const [modal, setmodal] = useState(false);
+    console.log('search text is', searchText)
     // const [Captains, setCaptains] = useState([]);
     const Captains = useSelector((state) => state.captainReducer);
     console.log('cap ', Captains)
-    const FetchData = () => {       
+    const FetchData = () => {
         axios.get('http://localhost:4000/captains')
             .then((response) => {
-                dispatch(setCaptainsreducer(response.data.AllCaptains))                
+                dispatch(setCaptainsreducer(response.data.AllCaptains))
                 console.log(response.data.AllCaptains)
             })
-            .catch((err) => {                
+            .catch((err) => {
                 console.log('an error', err)
             })
     }
+    const filteredItems = Captains.captains.filter(item => {
+        if (!searchText || searchText.trim() === '') {
+            return true; // Return true for all items when searchText is null or empty
+        }
+        return (
+            item.name.toLowerCase().includes(searchText.toLowerCase()) ||
+            item.email.toLowerCase().includes(searchText.toLowerCase()) ||
+            item.roll.toLowerCase().includes(searchText.toLowerCase())
+        );
+    });
+    console.log('filted items is', filteredItems)
     useEffect(() => {
         FetchData()
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -45,46 +57,46 @@ const Pataientstable = ({ setIsUpdating, setOldData, setPropmodal }) => {
         const apiUrl = `http://localhost:4000/captains/delete/${id}`;
         setmodal(false);
         const requestData = {
-          key1: 'value1',
-          key2: 'value2',
+            key1: 'value1',
+            key2: 'value2',
         };
-      
+
         const headers = {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
         };
-      
+
         // Create a promise that represents the deletion process
         const deletionPromise = axios.post(apiUrl, requestData, { headers });
-      
+
         // Use toast.promise to display the toast dynamically
         const promiseToast = toast.promise(
-          deletionPromise,
-          {
-            pending: 'Deleting, please wait...',
-            success: 'Captain deleted successfully',
-            error: 'Failed to delete captain',
-          }
+            deletionPromise,
+            {
+                pending: 'Deleting, please wait...',
+                success: 'Captain deleted successfully',
+                error: 'Failed to delete captain',
+            }
         );
-      
+
         try {
-          // Wait for the deletion promise to resolve or reject
-          const response = await deletionPromise;
-      
-          // Manually close the toast after success
-          toast.dismiss(promiseToast);
-      
-          console.log('Response:', response.data);
-          FetchData();
+            // Wait for the deletion promise to resolve or reject
+            const response = await deletionPromise;
+
+            // Manually close the toast after success
+            toast.dismiss(promiseToast);
+
+            console.log('Response:', response.data);
+            FetchData();
         } catch (error) {
-          console.error('Error:', error);
-          setmodal(false);
-          
-          // Manually close the toast after error
-          toast.dismiss(promiseToast);
+            console.error('Error:', error);
+            setmodal(false);
+
+            // Manually close the toast after error
+            toast.dismiss(promiseToast);
         }
-      };
-      
+    };
+
     const SetProps = (ele) => {
         setIsUpdating(true);
         setOldData(ele);
@@ -92,8 +104,8 @@ const Pataientstable = ({ setIsUpdating, setOldData, setPropmodal }) => {
     }
     return (
         <>
-            <ToastContainer 
-            autoClose={1500}
+            <ToastContainer
+                autoClose={1500}
             />
             <div className=''>
                 {
@@ -113,7 +125,7 @@ const Pataientstable = ({ setIsUpdating, setOldData, setPropmodal }) => {
                         </thead>
                         <tbody>
                             {
-                                Captains && Captains.captains && Captains.captains.map((ele, index) => {
+                                filteredItems.length !== 0 && filteredItems.map((ele, index) => {
                                     return (
                                         <tr className='border even:bg-gray-50 odd:bg-white'>
                                             <td className='border p-2'>{index + 1}</td>
