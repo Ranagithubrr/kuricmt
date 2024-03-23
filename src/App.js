@@ -1,7 +1,6 @@
 import './App.css';
 import { Route, Routes } from 'react-router';
 import Homepage from './pages/Home/Homepage';
-import Appointment from './pages/Appointment/Appointment';
 import Login from './pages/Login/Login';
 import Patients from './components/dashboard/pateints/Patients';
 import Review from './components/dashboard/review/Review';
@@ -14,7 +13,6 @@ import Register from './pages/register/Register';
 import Userprofile from './components/dashboard/user-profile/Userprofile';
 import UpdateProfile from './components/dashboard/user-profile/UpdateProfile';
 import Notifications from './pages/Notifications/Notifications';
-import Getappointment from './components/getappointment/Getappointment';
 import Hospitalsurvey from './pages/Hospital-Survey/Hospitalsurvey';
 import Accountreview from './pages/Accounts-Review/Accountreview';
 import Earnings from './pages/Earnings/Earnings';
@@ -24,6 +22,7 @@ import AddNotice from './pages/Add-Notice/AddNotice';
 import ProtectedRoute from './protectedRoute';
 import Notes from './pages/Notes/Notes';
 import AdminProtected from './AdminProtechRoute';
+import Applications from './pages/Applications/Applications';
 
 function App() {
   return (
@@ -45,9 +44,8 @@ function App() {
           }></Route>
           <Route path='review' element={<Review />}></Route>
           <Route path='doctors' element={<Profile />}></Route>
-          <Route path='applications' element={<Appointment />}></Route>
-          <Route path='earnings' element={<Earnings />}></Route>
-          <Route path='get-appointment' element={<Getappointment />}></Route>
+          <Route path='applications' element={<Applications />}></Route>
+          <Route path='earnings' element={<Earnings />}></Route>          
           <Route path='calculators' element={<Calculators />}></Route>
           <Route path='notices' element={<Notifications />}></Route>
           <Route path='notes' element={<Notes />}></Route>
