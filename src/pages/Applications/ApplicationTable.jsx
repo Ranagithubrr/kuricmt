@@ -7,21 +7,16 @@ import { ToastContainer } from "react-toastify";
 import { toast } from 'react-toastify';
 
 
-const ApplicationTable = () => {  
-  const [applications, setApplications] = useState([]);  
-  const [delAndActId, setDeletingId] = useState(null);  
+const ApplicationTable = () => {
+  const [applications, setApplications] = useState([]);
   const userState = useSelector((state) => state.userReducer);
   const token = userState.token;
+  const [modal, setModal] = useState(false);
+  const [currentItem, setCurrentItem] = useState({})
+  const dateString = currentItem.createdAt;
+  const date = new Date(dateString);
 
-  const headers = {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${token}`,
-  };
-  const WantToActive = async (tname, id) => {
-    console.log('got name', tname, 'id is', id);
-    setDeletingId(id)    
-
-  }
+  const formattedDate = `${date.toLocaleDateString()} at ${date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
 
   const FetchApplications = async () => {
     axios.get('http://localhost:4000/application/')
@@ -31,12 +26,12 @@ const ApplicationTable = () => {
       .catch((err) => {
         console.log('an error', err)
       })
-  }  
-  const ActivateTeacher = async () => {
-    const apiUrl = `http://localhost:4000/user/activate-teacher`;    
+  }
+  const ApproveApplication = async (id) => {
+    const apiUrl = `http://localhost:4000/application/resolve-application`;
 
     const requestData = {
-      teacherId: delAndActId
+      applicationId: id
     };
 
     const headers = {
@@ -47,9 +42,9 @@ const ApplicationTable = () => {
     const promiseToast = toast.promise(
       activationPromise,
       {
-        pending: 'Activating teacher, please wait...',
-        success: 'Teacher activated successfully',
-        error: 'Failed to activate teacher',
+        pending: 'Approving Application, please wait...',
+        success: 'Application Approved successfully',
+        error: 'Failed to Approve application',
       }
     );
 
@@ -69,6 +64,10 @@ const ApplicationTable = () => {
     }
   };
 
+  const viewClicked = (item) => {
+    setModal(true);
+    setCurrentItem(item)
+  }
   // console.log(applications.length);
   useEffect(() => {
     FetchApplications();
@@ -110,11 +109,11 @@ const ApplicationTable = () => {
                       <td className='border p-2'>{ele.roll}</td>
                       <td className='border p-2'>{ele.subject}</td>
                       <td className='border p-2'>{formattedDate}</td>
-                      <td className='border p-2 flex justify-center'><span className="text-green-600 text-2xl cursor-pointer"><FaEye /></span></td>
-                      <td className='border p-2 text-center'>{ele.status} {ele.status === "pending" && <button title='Approve' className='mt-2 px-1 py-1 rounded mx-2  bg-green-500 text-gray-200 text-sm font-semibold' onClick={() => WantToActive(ele.name, ele._id)}><FaCheck /></button>}</td>
+                      <td className='border p-2 flex justify-center'><span className="text-green-600 text-2xl cursor-pointer" onClick={() => viewClicked(ele)}><FaEye /></span></td>
+                      <td className='border p-2'>{ele.status} {ele.status === "pending" && <button title='Approve' className='mt-2 px-1 py-1 rounded mx-2  bg-green-500 text-gray-200 text-sm font-semibold' onClick={() => ApproveApplication(ele._id)}><FaCheck /></button>}</td>
                       <td className='flex items-center justify-center h-full'>
                         <div className='flex items-center justify-center'>
-                          <button title='Mail' className='mt-2 px-3 py-1 rounded mx-2  bg-green-500 text-gray-200 text-sm font-semibold'><IoMail /></button>
+                          <a href={`mailto:${ele.email}`} title='Mail' className='mt-2 px-3 py-1 rounded mx-2  bg-green-500 text-gray-200 text-sm font-semibold'><IoMail /></a>
                         </div>
                       </td>
                     </tr>
@@ -130,7 +129,30 @@ const ApplicationTable = () => {
           <div className="w-full p-4 text-center py-10">
             <span className="text-gray-500">No data</span>
           </div>
-        }        
+        }
+        {
+          modal && <div onClick={() => setModal(false)} className="fixed left-0 right-0 top-0 z-10 w-screen h-screen bg-gray-400 opacity-50">
+
+          </div>
+        }
+        {
+          modal && <div className="fixed overflow-auto h-96  w-2/4 border bg-white shadow-lg rounded top-32 z-20 p-4 left-0 right-0 m-auto">
+            <h4 className="text-center font-semibold text-lg">Kurigram Polytechnic Institute</h4>
+            <span className="block mt-2">{formattedDate}</span>
+            <span className="block">Chief Instructor</span>
+            <span className="block">Kurigram Polytechnic Institute</span>
+            <span className="block">Central Jail Rd, Kurigram</span>
+            <span className="block font-semibold">Subject : {currentItem.subject}</span>
+            <span className="block mt-4">Dear Sir,</span>
+            <p>{currentItem.body}</p>
+            <span className="block my-3">Sincerely</span>
+            <span className="block">Student {currentItem.name}</span>
+            <span className="block">Roll: {currentItem.roll}</span>
+            <span className="block">Dept. Computer</span>
+            <span className="block">Semester: {currentItem.semester}</span>
+            <span className="block">Shift: {currentItem.shift}</span>
+          </div>
+        }
       </div>
 
     </>
