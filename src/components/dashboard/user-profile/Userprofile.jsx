@@ -6,11 +6,11 @@ import { useSelector } from 'react-redux';
 const Userprofile = () => {
   const userState = useSelector((state) => state.userReducer);  
   console.log('user state is', userState)
-  const { name, address, email, isactivate, phone, title, type, website } = userState.user || {};
+  const { name, address, email, isactivate, phone, title, type, website, image } = userState.user || {};
   return (
     <div className='flex p-4 pr-0 dark:bg-gray-800'>
       <div className="w-1/5 flex justify-end">
-        <img src={ProfilePic} alt="profilePic here" className='h-40 w-40 bg-gray-300 rounded-full' />
+        <img src={image || ProfilePic} alt="profilePic here" className='h-40 w-40 bg-gray-300 rounded-full' />
       </div>
       <div className="border-t-4 border-gray-300 mt-20 w-full pl-4">
         
