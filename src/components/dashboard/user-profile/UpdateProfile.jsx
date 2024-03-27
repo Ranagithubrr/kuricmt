@@ -30,11 +30,13 @@ const UpdateProfile = () => {
         userId: _id
     };
 
-    const handleChange = (name, value) => {
+    const handleChange = (e) => {
+        const { name, value } = e.target;
         newData = {
             ...newData,
             [name]: value
         };
+        console.log(newData)
     };
     const headers = {
         'Content-Type': 'application/json',
@@ -71,9 +73,9 @@ const UpdateProfile = () => {
                 image: imageUrl
             };
 
-            if (profilePicUrl) {
+            
                 await UpdateData();
-            }
+            
         } catch (error) {
             console.error("Error during submission:", error);
             // setLoading(false);
@@ -127,9 +129,9 @@ const UpdateProfile = () => {
 
             </div>
             <div className="border-t-4 border-gray-300 mt-20 w-full pl-4">
-                <input className='font-bold text-xl text-gray-600 dark:text-white outline-none border-b-2' placeholder='Masud Rana ' autoFocus value={newData.name} onChange={(e) => handleChange(e)} name="name"></input>
+                <input className='font-bold text-xl text-gray-600 dark:text-white outline-none border-b-2' placeholder='Masud Rana ' autoFocus defaultValue={newData.name} onChange={(e) => handleChange(e)} name="name"></input>
                 <button className='bg-green-800 text-gray-100 float-right mr-5 font-bold text-sm p-2 rounded mt-2' onClick={() => SubmitClicked()}>Save Profile</button>
-                <input className='font-semibold text-gray-600 text-sm outline-none block border-b-2' placeholder='Jr Front-end Developer' value={newData.title} onChange={(e) => handleChange(e)} name="title"></input>
+                <input className='font-semibold text-gray-600 text-sm outline-none block border-b-2' placeholder='Jr Front-end Developer' defaultValue={newData.title} onChange={(e) => handleChange(e)} name="title"></input>
                 <div className='pt-4'>
                     <span className='font-semibold text-gray-400'>Contact Informations</span>
                     <div className='flex justify-between w-1/2'>
@@ -137,7 +139,7 @@ const UpdateProfile = () => {
                             <span className='font-semibold text-gray-600'>Phone</span>
                         </div>
                         <div className='w-3/4'>
-                            <input className='text-gray-600 font-semibold outline-none border-b-2' placeholder='+880123456789' value={newData.phone} onChange={(e) => handleChange(e)} name="phone"></input>
+                            <input className='text-gray-600 font-semibold outline-none border-b-2' placeholder='+880123456789' defaultValue={newData.phone} onChange={(e) => handleChange(e)} name="phone"></input>
                         </div>
                     </div>
                     <div className='flex justify-between w-1/2'>
@@ -145,7 +147,7 @@ const UpdateProfile = () => {
                             <span className='font-semibold text-gray-600'>Address</span>
                         </div>
                         <div className='w-3/4'>
-                            <input className='text-gray-600 font-semibold outline-none border-b-2' placeholder='Rangpur Haragach, Bangladesh' value={newData.address} onChange={(e) => handleChange(e)} name="address"></input>
+                            <input className='text-gray-600 font-semibold outline-none border-b-2' placeholder='Rangpur Haragach, Bangladesh'  onChange={(e) => handleChange(e)} name="address" defaultValue={newData.address}></input>
                         </div>
                     </div>
                     <div className='flex justify-between w-1/2'>
@@ -153,7 +155,7 @@ const UpdateProfile = () => {
                             <span className='font-semibold text-gray-600'>Email</span>
                         </div>
                         <div className='w-3/4'>
-                            <input className='text-gray-600 font-semibold outline-none border-b-2' placeholder='ranarr.dev@gmail.com' disabled value={email}></input>
+                            <input className='text-gray-600 font-semibold outline-none border-b-2' placeholder='ranarr.dev@gmail.com' disabled defaultValue={email}></input>
                             <span className='block text-xs  my-2 p-1 w-2/3 rounded text-red-600 font-bold'>Email is not changable</span>
                         </div>
                     </div>
@@ -162,7 +164,7 @@ const UpdateProfile = () => {
                             <span className='font-semibold text-gray-600'>Website</span>
                         </div>
                         <div className='w-3/4'>
-                            <input className='text-gray-600 font-semibold outline-none border-b-2' placeholder='https://rana-rr.netlify.app/' value={newData.website} onChange={(e) => handleChange(e)} name="website"></input>
+                            <input className='text-gray-600 font-semibold outline-none border-b-2' placeholder='https://rana-rr.netlify.app/' defaultValue={newData.website} onChange={(e) => handleChange(e)} name="website"></input>
                         </div>
                     </div>
                 </div>
