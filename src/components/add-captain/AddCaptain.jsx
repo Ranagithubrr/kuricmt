@@ -1,10 +1,12 @@
 import axios from "axios";
 import { useState } from "react"
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setCaptainsreducer } from "../../redux/captainReducer/captainReducer";
 import { ToastContainer, toast } from "react-toastify";
+import { useAuth } from "../../contexts/AuthContext";
 
 const AddCaptain = (props) => {
+  const {token} = useAuth();
   const { isUpdating, setmodal, oldData } = props;
   const dispatch = useDispatch();
   const [name, setName] = useState(isUpdating ? oldData.name : '');
@@ -12,7 +14,7 @@ const AddCaptain = (props) => {
   const [roll, setRoll] = useState(isUpdating ? oldData.roll : '');
   const [phone, setPhone] = useState(isUpdating ? oldData.phone : '');
   const [semester, setSemester] = useState(isUpdating ? oldData.semester : '');
-  const userData = {
+  const userDataSending = {
     name: name,
     email: email,
     roll: roll,
@@ -20,16 +22,12 @@ const AddCaptain = (props) => {
     semester: semester,
   };
 
-  console.log('olddata is ', oldData);
-
-
-  const userState = useSelector((state) => state.userReducer);
-  const token = userState.token;
+  // console.log('olddata is ', oldData);
   const FetchData = () => {
     axios.get('http://localhost:4000/captains')
       .then((response) => {
         dispatch(setCaptainsreducer(response.data.AllCaptains))
-        console.log(response.data.AllCaptains)
+        // console.log(response.data.AllCaptains)
       })
       .catch((err) => {
         console.log('an error', err)
@@ -48,8 +46,8 @@ const AddCaptain = (props) => {
     };
     const apiUrl = isUpdating ? `http://localhost:4000/captains/update/${oldData._id}` : `http://localhost:4000/captains`;
     try {
-      const response = await axios.post(apiUrl, userData, { headers });
-      console.log('Response:', response.data);
+      const response = await axios.post(apiUrl, userDataSending, { headers });
+      // console.log('Response:', response.data);
       if (response.status === 200) {
         toast.success( isUpdating ? 'Captain Updated Successfully' : 'Captain Added Successfully', {
           position: "top-right",
@@ -77,17 +75,18 @@ const AddCaptain = (props) => {
     } catch (error) {
       console.error('Error:', error);
       setmodal(false);
+      toast.error('Failed to add Captain !', {
+        position: "top-right",
+        autoClose: 1500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
     }
   };
-
-
-
-
-
-
-
-
-
 
   return (
     <div className='fixed top-32 w-2/4 m-auto z-50 bg-white shadow left-0 right-0 rounded p-4'>

@@ -2,19 +2,19 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { FaCheck, FaTimes } from "react-icons/fa";
 import { GoAlert } from "react-icons/go";
-import { useSelector } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import { toast } from 'react-toastify';
+import { useAuth } from "../../contexts/AuthContext";
 
 
 const AccountsReviewtable = () => {
+  const {token} = useAuth()
   const [modal, setmodal] = useState(false);
   const [users, setUsers] = useState([]);
   const [teachaerName, setTeacherName] = useState("");
   const [delAndActId, setDeletingId] = useState(null);
   const [isdelete, setIsDelete] = useState(false);
-  const userState = useSelector((state) => state.userReducer);
-  const token = userState.token;
+  
 
   const headers = {
     'Content-Type': 'application/json',

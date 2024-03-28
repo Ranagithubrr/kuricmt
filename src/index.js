@@ -7,15 +7,18 @@ import { BrowserRouter } from 'react-router-dom'
 import { DarkThemeProvider } from './contexts/Themecontext';
 import { Provider } from 'react-redux';
 import store from './redux/store';
+import { AuthProvider } from './contexts/AuthContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <DarkThemeProvider>
-        <Provider store={store}>
-          <App />
-        </Provider>
+        <AuthProvider>
+          <Provider store={store}>
+            <App />
+          </Provider>
+        </AuthProvider>
       </DarkThemeProvider>
     </BrowserRouter>
   </React.StrictMode >

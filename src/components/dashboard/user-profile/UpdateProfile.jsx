@@ -1,24 +1,19 @@
 import React, { useState } from 'react';
 import ProfilePic from '../../../img/docc.png'
-import { useDispatch, useSelector } from 'react-redux';
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { storage } from '../../../firebase-config';
 import axios from 'axios';
-import { updateUser } from '../../../redux/userReducer/userActions';
 import { useNavigate } from 'react-router';
 import { ToastContainer, toast } from 'react-toastify';
 import { FaCamera } from "react-icons/fa";
+import {useAuth} from '../../../contexts/AuthContext';
 
 const UpdateProfile = () => {
+    const {token, userData, updateUserData} = useAuth();
     const [logoState, setLogoState] = useState(null);
-    const userState = useSelector((state) => state.userReducer);
     let imageUrl = "";
-    const navigate = useNavigate();
-    // console.log(userState)
-    const token = userState.token;
-    const dispatch = useDispatch();
-    // console.log('state is', userState)
-    const { name, address, email, phone, title, website, _id, image } = userState.user || {};
+    const navigate = useNavigate();   
+    const { name, address, email, phone, title, website, _id, image } = userData || {};
     let newData = {
         email: email,
         name: name,
@@ -36,7 +31,7 @@ const UpdateProfile = () => {
             ...newData,
             [name]: value
         };
-        console.log(newData)
+        // console.log(newData)
     };
     const headers = {
         'Content-Type': 'application/json',
@@ -58,34 +53,33 @@ const UpdateProfile = () => {
         }
     };
     const SubmitClicked = async () => {
+        // console.log('sending data is', newData)
         try {
             let profilePicUrl = "";
             if (logoState) {
                 // Wait for the uploadSingleFile function to complete
                 profilePicUrl = await uploadSingleFile(logoState);
                 imageUrl = profilePicUrl;
-                console.log('profilePic url is:', profilePicUrl);
+                // console.log('profilePic url is:', profilePicUrl);
             }
 
             // Update newData state after profile picture upload
             newData = {
                 ...newData,
                 image: imageUrl
-            };
-
-            
+            };        
                 await UpdateData();
             
         } catch (error) {
             console.error("Error during submission:", error);
             // setLoading(false);
         }
-        console.log(newData); // Ensure newData is updated before proceeding
+        // console.log(newData); // Ensure newData is updated before proceeding
     };
 
     const UpdateData = async () => {
 
-        console.log('going data is', newData);
+        // console.log('going data is', newData);
         try {
             const response = await axios.post('http://localhost:4000/user/update-profile', newData, { headers });
             // console.log(response);
@@ -93,8 +87,8 @@ const UpdateProfile = () => {
             const updatedUser = response.data.updatedUser;
             response.data.user = updatedUser;
             delete response.data.updatedUser;
-            console.log('updated data is:', response.data)
-            dispatch(updateUser(response.data));
+            updateUserData(response.data.user)
+            // console.log('updated data is:', response.data)            
             navigate('/dashboard/profile');
             toast.success('User Updated Successfully', {
                 position: "top-right",

@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from './contexts/AuthContext';
 
 const ProtectedRoute = ({ children }) => {
   const navigate = useNavigate();
-  const userState = useSelector((state) => state.userReducer);
+  const {userData} = useAuth()
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-
+  console.log(userData)
   useEffect(() => {
-    if ( !userState || userState === null || userState === undefined || !userState.user) {
+    if ( !userData || userData === undefined) {
       navigate('/login');
     } else {
       setIsAuthenticated(true)
     }
-  }, [userState.user, navigate, userState]);
+  }, [userData, navigate,]);
   return isAuthenticated ? <>{children}</> : null;
 };
 

@@ -2,15 +2,14 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { FaCheck, FaEye } from "react-icons/fa";
 import { IoMail } from "react-icons/io5";
-import { useSelector } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import { toast } from 'react-toastify';
+import { useAuth } from "../../contexts/AuthContext";
 
 
 const ApplicationTable = () => {
   const [applications, setApplications] = useState([]);
-  const userState = useSelector((state) => state.userReducer);
-  const token = userState.token;
+  const {token} = useAuth();
   const [modal, setModal] = useState(false);
   const [currentItem, setCurrentItem] = useState({})
   const dateString = currentItem.createdAt;

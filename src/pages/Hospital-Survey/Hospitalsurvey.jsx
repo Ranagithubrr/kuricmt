@@ -1,9 +1,9 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { AiFillEdit } from 'react-icons/ai'
-import { useSelector } from 'react-redux';
-
+import {useAuth} from '../../contexts/AuthContext';
 const Hospitalsurvey = () => { 
+  const {token} = useAuth();
   const [formData, setFormData] = useState({
     labassistant:  "",
     labonecomputer: "",
@@ -44,8 +44,6 @@ const Hospitalsurvey = () => {
     }));
   };
   console.log('form data is', formData)
-  const userState = useSelector((state) => state.userReducer);
-  const token = userState.token;
 
 
   const UpdateDataClicked = async () => {

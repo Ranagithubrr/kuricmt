@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import SigninImg from '../../img/login.svg';
-import { useSelector, useDispatch } from 'react-redux';
 import { IoIosWarning } from 'react-icons/io'
 import axios from 'axios';
-import { setUser } from '../../redux/userReducer/userActions';
 import { useNavigate } from 'react-router'
+import { useAuth } from '../../contexts/AuthContext';
 
 const Login = () => {
     const navigate = useNavigate();
-    const userState = useSelector((state) => state.userReducer);
-    const dispatch = useDispatch();
+    const {login } = useAuth();    
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
@@ -38,7 +36,7 @@ const Login = () => {
             });
             setError(false);
             response.data.msg = undefined;
-            dispatch(setUser(response.data));
+            login(response.data.user, response.data.token)            
             setLoading(false);
             navigate('/dashboard');
 
@@ -56,8 +54,6 @@ const Login = () => {
             console.error(err);
             setTimeout(clearError, 3000);
         }
-
-        console.log(userState);
     };
     return (
         <div className="w-2/3 mx-auto h-screen items-center flex bg-white">

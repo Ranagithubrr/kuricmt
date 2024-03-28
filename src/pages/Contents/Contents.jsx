@@ -2,10 +2,11 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { storage } from '../../firebase-config';
 import axios from 'axios';
-import { useSelector } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
+import { useAuth } from '../../contexts/AuthContext';
 
 const Contents = () => {
+  const {token} = useAuth();
   const [maintitle, setMaintitle] = useState("");
   const [tagline, setTagline] = useState("");
   const [logoToDisplay, setLogoToDisplay] = useState("");
@@ -126,11 +127,7 @@ const Contents = () => {
       console.error("Error during submission:", error);
       setLoading(false);
     }
-  };
-
-
-  const userState = useSelector((state) => state.userReducer);
-  const token = userState.token;
+  };  
 
   const sendDatatoDb = async () => {
     const existingData = {

@@ -1,12 +1,11 @@
 import React from 'react';
 import ProfilePic from '../../../img/docc.png'
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useAuth } from '../../../contexts/AuthContext';
 
 const Userprofile = () => {
-  const userState = useSelector((state) => state.userReducer);  
-  console.log('user state is', userState)
-  const { name, address, email, isactivate, phone, title, type, website, image } = userState.user || {};
+  const { userData } = useAuth();
+  const { name, address, email, phone, title, type, website, image } = userData || {};
   return (
     <div className='flex p-4 pr-0 dark:bg-gray-800'>
       <div className="w-1/5 flex justify-end">

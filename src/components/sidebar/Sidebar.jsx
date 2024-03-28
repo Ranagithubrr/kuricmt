@@ -6,18 +6,16 @@ import { BsCalendarDate, BsHospitalFill } from 'react-icons/bs';
 import { FaUsers, FaPlus } from 'react-icons/fa';
 import { MdArrowDropDown, MdManageAccounts } from 'react-icons/md';
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from 'react-redux'
-import { removeUser } from '../../redux/userReducer/userActions';
+import { useAuth } from '../../contexts/AuthContext';
 
 const Sidebar = () => {
-    const userState = useSelector((state) => state.userReducer);    
-    const dispatch = useDispatch();
+    const {userData,logout} = useAuth()      
     const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
     const toggleSubmenu = () => {
         isSubMenuOpen ? setIsSubMenuOpen(false) : setIsSubMenuOpen(true);
     }
     const LogOutUser = () => {
-        dispatch(removeUser())
+        logout()
     }
     return (
         <div className='w-1/5 overflow-y-scroll sticky pb-10 border-r shadow-lg dark:bg-gray-800' style={{ height: '85vh', position: 'relative', top: '0' }}>
@@ -68,7 +66,7 @@ const Sidebar = () => {
                     </Link>
                 </li>
                 {
-                    userState.user && userState.user.type && userState.user.type === "admin" &&
+                   userData && userData.type && userData.type === "admin" &&
                     <li className='flex  hover:bg-slate-200 rounded dark:hover:bg-gray-700'>
                         <Link to='/dashboard/accounts-review' className='h-full w-full  py-4 px-2 block'>
                             <span className='flex items-center text-base dark:text-gray-300'><MdManageAccounts className='text-xl' />  <span className='pl-3 h-full text-sm font-semibold'>Accounts Review</span></span>

@@ -6,9 +6,11 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { setCaptainsreducer } from '../../../redux/captainReducer/captainReducer';
+import { useAuth } from '../../../contexts/AuthContext';
 
 
 const Pataientstable = ({ setIsUpdating, setOldData, setPropmodal, searchText }) => {
+    const {token} = useAuth();
     const dispatch = useDispatch()
     const [studentName, setStudentName] = useState("");
     const [studentId, setStudentId] = useState("");
@@ -49,8 +51,8 @@ const Pataientstable = ({ setIsUpdating, setOldData, setPropmodal, searchText })
         console.log(id)
         setStudentId(id);
     }
-    const userState = useSelector((state) => state.userReducer);
-    const token = userState.token;
+    // const userState = useSelector((state) => state.userReducer);
+    // const token = token;
 
 
     const DeleteCaptain = async (id) => {

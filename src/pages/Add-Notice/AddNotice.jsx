@@ -2,18 +2,16 @@ import React, { useState } from 'react';
 import { FaFileUpload } from 'react-icons/fa';
 import { storage } from '../../firebase-config';
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { useSelector } from 'react-redux';
 import { toast, ToastContainer } from 'react-toastify';
 import axios from 'axios';
-
+import {useAuth}  from '../../contexts/AuthContext';
 const AddNotice = () => {
+  const {token} = useAuth();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [logoState, setLogoState] = useState(null);
   const [disabled,setDisabled] = useState(false);
-  let noticefileurl = "";
-  const userState = useSelector((state) => state.userReducer);
-  const token = userState.token;
+  let noticefileurl = "";  
   const uploadSingleFile = async (file) => {
     setDisabled(true);
     const storageRef = ref(storage, `images/${file.name}`);
