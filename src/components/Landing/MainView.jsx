@@ -1,10 +1,10 @@
 import React from 'react';
 import KuriImg from '../../img/kuri.jpg';
+import './landing.css';
 
 const MainView = () => {
-    return (<>
-
-        <div className='flex items-center'>
+    return (<>      
+        <div className='flex items-center relative overflow-hidden'>
             <div className='w-1/2'>
                 <h1 className='font-extrabold text-5xl bg-gradient-to-r from-gray-500 to-red-500 text-transparent bg-clip-text'>
                     Department Of Computer
@@ -22,7 +22,7 @@ const MainView = () => {
                     </div>
                     <h4 className='font-bold text-2xl bg-gradient-to-r from-gray-700 to-blue-500 text-transparent bg-clip-text px-12'>MD Nahiduzzaman Nahid</h4>
                 </div>
-            </div>
+            </div>        
         </div>
         <div className='py-4'>
             <img src={KuriImg} className='w-full rounded' alt="" />

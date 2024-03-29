@@ -145,7 +145,7 @@ const ApplicationTable = () => {
             <span className="block mt-4">Dear Sir,</span>
             <p>{currentItem.body}</p>
             <span className="block my-3">Sincerely</span>
-            <span className="block">Student {currentItem.name}</span>
+            <span className="block">{currentItem.name}</span>
             <span className="block">Roll: {currentItem.roll}</span>
             <span className="block">Dept. Computer</span>
             <span className="block">Semester: {currentItem.semester}</span>

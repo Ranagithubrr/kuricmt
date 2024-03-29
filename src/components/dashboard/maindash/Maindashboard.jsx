@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { BiCalendar } from 'react-icons/bi';
 import { FaAmbulance, FaUsers } from 'react-icons/fa';
 import { MdPictureAsPdf } from 'react-icons/md';
@@ -6,14 +6,29 @@ import { GiCheckMark } from 'react-icons/gi';
 import { RxScissors } from 'react-icons/rx';
 import { IoMdBed, IoLogoUsd } from 'react-icons/io';
 import Doctor from '../../../img/docc.png';
+import axios from 'axios';
 
 const Maindashboard = () => {
+    const [teachers, setTeachers] = useState([])
     const notices = [
         'this is a demo notice',
         'Notice 2',
         'Notice 3',
         // Add more notices as needed
-      ];
+    ];
+    const FetchTeachers = async () => {
+        axios.get('http://localhost:4000/user')
+            .then((res) => {
+                setTeachers(res.data.AllUser)
+            })
+            .catch(err => {
+                console.log('fetching error')
+            })
+    }
+    useEffect(() => {
+        FetchTeachers()
+    }, [])
+    console.log(teachers)
     return (
         <div className="flex flex-wrap w-full items-start p-2">
             <div className='w-full md:w-1/2 lg:w-2/3 p-2 flex flex-wrap'>
@@ -121,77 +136,28 @@ const Maindashboard = () => {
             <div className="w-full md:w-1/2 lg:w-1/3 p-3">
                 <div className='border p-2 rounded-sm '>
                     <h5 className='font-semibold pl-2'>Our Teachers</h5>
+
                     <ul className='mt-3 sticky top-32'>
-                        <li className='flex my-2 bg-gradient-to-r from-gray-200 to-blue-200 rounded py-1 px-3'>
-                            <a href="/" className='flex items-center no-underline w-full h-full'>
-                                <img src={Doctor} alt="" className="h-8 w-8 bg-gradient-to-r from-blue-600 to-blue-900 rounded-full" />
-                                <div>
-
-                                    <span className='pl-2 text-sm font-semibold text-gray-700'>Dr Abraham Ehsan</span>
-                                    <span className='block text-xs pl-2 font-semibold text-gray-600'>Heart Surgeon</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li className='flex my-2 bg-gradient-to-r from-gray-200 to-blue-200 rounded py-1 px-3'>
-                            <a href="/" className='flex items-center no-underline w-full h-full'>
-                                <img src={Doctor} alt="" className="h-8 w-8 bg-gradient-to-r from-blue-600 to-blue-900 rounded-full" />
-                                <div>
-
-                                    <span className='pl-2 text-sm font-semibold text-gray-700'>Dr Abraham Ehsan</span>
-                                    <span className='block text-xs pl-2 font-semibold text-gray-600'>Heart Surgeon</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li className='flex my-2 bg-gradient-to-r from-gray-200 to-blue-200 rounded py-1 px-3'>
-                            <a href="/" className='flex items-center no-underline w-full h-full'>
-                                <img src={Doctor} alt="" className="h-8 w-8 bg-gradient-to-r from-blue-600 to-blue-900 rounded-full" />
-                                <div>
-
-                                    <span className='pl-2 text-sm font-semibold text-gray-700'>Dr Abraham Ehsan</span>
-                                    <span className='block text-xs pl-2 font-semibold text-gray-600'>Heart Surgeon</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li className='flex my-2 bg-gradient-to-r from-gray-200 to-blue-200 rounded py-1 px-3'>
-                            <a href="/" className='flex items-center no-underline w-full h-full'>
-                                <img src={Doctor} alt="" className="h-8 w-8 bg-gradient-to-r from-blue-600 to-blue-900 rounded-full" />
-                                <div>
-
-                                    <span className='pl-2 text-sm font-semibold text-gray-700'>Dr Abraham Ehsan</span>
-                                    <span className='block text-xs pl-2 font-semibold text-gray-600'>Heart Surgeon</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li className='flex my-2 bg-gradient-to-r from-gray-200 to-blue-200 rounded py-1 px-3'>
-                            <a href="/" className='flex items-center no-underline w-full h-full'>
-                                <img src={Doctor} alt="" className="h-8 w-8 bg-gradient-to-r from-blue-600 to-blue-900 rounded-full" />
-                                <div>
-
-                                    <span className='pl-2 text-sm font-semibold text-gray-700'>Dr Abraham Ehsan</span>
-                                    <span className='block text-xs pl-2 font-semibold text-gray-600'>Heart Surgeon</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li className='flex my-2 bg-gradient-to-r from-gray-200 to-blue-200 rounded py-1 px-3'>
-                            <a href="/" className='flex items-center no-underline w-full h-full'>
-                                <img src={Doctor} alt="" className="h-8 w-8 bg-gradient-to-r from-blue-600 to-blue-900 rounded-full" />
-                                <div>
-
-                                    <span className='pl-2 text-sm font-semibold text-gray-700'>Dr Abraham Ehsan</span>
-                                    <span className='block text-xs pl-2 font-semibold text-gray-600'>Heart Surgeon</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li className='flex my-2 bg-gradient-to-r from-gray-200 to-blue-200 rounded py-1 px-3'>
-                            <a href="/" className='flex items-center no-underline w-full h-full'>
-                                <img src={Doctor} alt="" className="h-8 w-8 bg-gradient-to-r from-blue-600 to-blue-900 rounded-full" />
-                                <div>
-
-                                    <span className='pl-2 text-sm font-semibold text-gray-700'>Dr Abraham Ehsan</span>
-                                    <span className='block text-xs pl-2 font-semibold text-gray-600'>Heart Surgeon</span>
-                                </div>
-                            </a>
-                        </li>
+                        {
+                            teachers && teachers.length !== 0 && teachers.map((ele, index) => {
+                                if (ele.isactivate === true && index <= 6) {
+                                    return (
+                                        <li className='flex my-2 border shadow-sm rounded py-1 px-3'>
+                                            <a href="/" className='flex items-center no-underline w-full h-full'>
+                                                <img src={ele.image || Doctor} alt="" className="h-8 w-8 bg-gradient-to-r from-blue-600 to-blue-900 rounded-full" />
+                                                <div>
+                                                    <span className='pl-2 text-sm font-semibold text-gray-700'>{ele.name} {ele.type === "admin" && <span className='ml-10 text-xs font-bold text-green-500'>Admin</span>}</span>
+                                                    <span className='block text-xs pl-2 font-semibold text-gray-600'>{ele.title || 'Instructor'}</span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    );
+                                } else {
+                                    // Return null or any default content if the condition isn't met
+                                    return null;
+                                }
+                            })
+                        }
 
                     </ul>
                 </div>

@@ -43,7 +43,7 @@ function App() {
             </AdminProtected>
           }></Route>
           <Route path='review' element={<Review />}></Route>
-          <Route path='doctors' element={<Profile />}></Route>
+          <Route path='teachers' element={<Profile />}></Route>
           <Route path='applications' element={<Applications />}></Route>
           <Route path='earnings' element={<Earnings />}></Route>          
           <Route path='calculators' element={<Calculators />}></Route>

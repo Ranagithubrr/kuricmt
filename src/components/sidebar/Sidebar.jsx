@@ -45,7 +45,7 @@ const Sidebar = () => {
                     </div>
                 </li>
                 <li className='flex  hover:bg-slate-200 rounded dark:hover:bg-gray-700'>
-                    <Link to='/dashboard/doctors' className='h-full w-full  py-4 px-2 block'>
+                    <Link to='/dashboard/teachers' className='h-full w-full  py-4 px-2 block'>
                         <span className='flex items-center text-base dark:text-gray-300'><FaUsers className='text-xl' />  <span className='pl-3 h-full text-sm font-semibold'>Teachers Profile</span></span>
                     </Link>
                 </li>
