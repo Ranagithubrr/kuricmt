@@ -3,10 +3,10 @@ import React from 'react'
 const Chat = () => {
     return (
         <div className='p-4'>
-            <div className="flex">
+            {/* <div className="flex">
                 <div className="w-1/5 border h-auto px-2">
                     <div className='bg-gray-200 px-3 py-4 rounded mt-2 cursor-pointer sticky top-0'>
-                        <span className='font-semibold'>MeDoc Discussion</span>
+                        <span className='font-semibold'>Discussion</span>
                     </div>
                 </div>
                 <div className="w-3/5 border h-screen px-2 relative">
@@ -36,6 +36,9 @@ const Chat = () => {
                     </div>
                 </div>
                 <div className="w-1/5">3</div>
+            </div> */}
+            <div>
+                <span>Coming Soon . . .</span>
             </div>
         </div>
     )

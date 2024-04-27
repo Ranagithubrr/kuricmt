@@ -155,6 +155,12 @@ const Pataientstable = ({ setIsUpdating, setOldData, setPropmodal, searchText })
                     </div>
                 }
                 {
+                  Captains && Captains.captains.length !== 0 && filteredItems.length === 0 &&
+                    <div className="w-full p-4 text-center py-10">
+                        <span className="text-gray-500">No match</span>
+                    </div>
+                }
+                {
                     modal &&
                     <div onClick={() => setmodal(false)} className='bg-gray-700 opacity-75 fixed top-0 left-0 w-full h-full z-10'></div>
                 }

@@ -8,7 +8,8 @@ const Notifications = () => {
   const FetchNotices = async () => {
     try {
       const notices = await axios.get("http://localhost:4000/notice");
-      setNotices(notices.data.AllNotices)
+      console.log('data is :', notices)
+      setNotices(notices.data.allNotices)
     } catch (err) {
       console.log(err)
     }

@@ -1,21 +1,27 @@
 import React, { useEffect, useState } from 'react';
-import { BiCalendar } from 'react-icons/bi';
-import { FaAmbulance, FaUsers } from 'react-icons/fa';
-import { MdPictureAsPdf } from 'react-icons/md';
-import { GiCheckMark } from 'react-icons/gi';
-import { RxScissors } from 'react-icons/rx';
-import { IoMdBed, IoLogoUsd } from 'react-icons/io';
+import { FaClipboardCheck, FaClipboardList, FaUserTie, FaUsers, FaWpforms, } from 'react-icons/fa';
+import { MdOutlineComputer, MdOutlinePendingActions } from 'react-icons/md';
 import Doctor from '../../../img/docc.png';
 import axios from 'axios';
+import Notification from '../../../pages/Notifications/Notification/Notification';
 
 const Maindashboard = () => {
     const [teachers, setTeachers] = useState([])
-    const notices = [
-        'this is a demo notice',
-        'Notice 2',
-        'Notice 3',
-        // Add more notices as needed
-    ];
+    const [notices, setNotices] = useState([]);
+    const [noticeNumber, setNoticeNumber] = useState(0);    
+    const FetchNotices = async () => {
+        try {
+            const notices = await axios.get("http://localhost:4000/notice");
+            setNoticeNumber(notices.data.allNotices.length)
+            const limitedNotices = notices.data.allNotices.slice(0, 3);
+            setNotices(limitedNotices)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    useEffect(() => {
+        FetchNotices()
+    }, [])
     const FetchTeachers = async () => {
         axios.get('http://localhost:4000/user')
             .then((res) => {
@@ -28,7 +34,34 @@ const Maindashboard = () => {
     useEffect(() => {
         FetchTeachers()
     }, [])
-    console.log(teachers)
+    const [applications, setApplications] = useState([]);    
+    const pendingApplication = applications.filter(item => item.status === "pending");
+    const resolvedApplication = applications.filter(item => item.status === "resolved");
+    const FetchApplications = async () => {
+        axios.get('http://localhost:4000/application/')
+            .then((response) => {
+                setApplications(response.data.ApplicationsData)
+            })
+            .catch((err) => {
+                console.log('an error', err)
+            })
+    }
+    useEffect(() => {
+        FetchApplications();
+    }, []);
+    const [captains, setCaptains] = useState([]);
+    const FetchCaptainData = () => {
+        axios.get('http://localhost:4000/captains')
+            .then((response) => {
+                setCaptains(response.data.AllCaptains)                
+            })
+            .catch((err) => {
+                console.log('an error', err)
+            })
+    }
+    useEffect(() => {
+        FetchCaptainData();
+    }, []);
     return (
         <div className="flex flex-wrap w-full items-start p-2">
             <div className='w-full md:w-1/2 lg:w-2/3 p-2 flex flex-wrap'>
@@ -40,18 +73,18 @@ const Maindashboard = () => {
                                 <div className='w-1/2 flex p-2 border rounded mx-1'>
                                     <div className="bg-gradient-to-b from-blue-800 to-blue-500 text-white
                             rounded py-2 px-3 text-1xl  flex items-center
-                            "><BiCalendar /></div>
+                            "><FaWpforms /></div>
                                     <div className="pl-2 flex flex-col">
-                                        <span className='font-semibold text-base'>500</span>
+                                        <span className='font-semibold text-base'>{applications && applications.length}</span>
                                         <span className='text-xs text-gray-500'>Applications</span>
                                     </div>
                                 </div>
                                 <div className='w-1/2 flex p-2 border rounded mx-1 '>
                                     <div className="bg-gradient-to-b from-yellow-400 to-yellow-500 text-white
                             rounded py-2 px-3 text-1xl  flex items-center
-                            "><RxScissors /></div>
+                            "><MdOutlinePendingActions /></div>
                                     <div className="pl-2 flex flex-col">
-                                        <span className='font-semibold text-base'>32</span>
+                                        <span className='font-semibold text-base'>{pendingApplication.length}</span>
                                         <span className='text-xs text-gray-500'>Pending Appli..</span>
                                     </div>
                                 </div>
@@ -60,18 +93,18 @@ const Maindashboard = () => {
                                 <div className='w-1/2 flex p-2 border rounded mx-1'>
                                     <div className="bg-gradient-to-b from-purple-800 to-purple-500 text-white
                             rounded py-2 px-2 text-2xl  flex items-center
-                            "><IoMdBed /></div>
+                            "><FaClipboardCheck /></div>
                                     <div className="pl-2 flex flex-col">
-                                        <span className='font-semibold text-base'>84</span>
+                                        <span className='font-semibold text-base'>{resolvedApplication.length}</span>
                                         <span className='text-xs text-gray-500'>Resolved Appli..</span>
                                     </div>
                                 </div>
                                 <div className='w-1/2 flex p-2 border rounded mx-1 '>
                                     <div className="bg-gradient-to-b from-green-400 to-green-500 text-white
                             rounded py-2 px-3 text-1xl  flex items-center
-                            "><IoLogoUsd /></div>
+                            "><FaClipboardList /></div>
                                     <div className="pl-2 flex flex-col">
-                                        <span className='font-semibold text-base'>1440</span>
+                                        <span className='font-semibold text-base'>{noticeNumber}</span>
                                         <span className='text-xs text-gray-500'>Notices</span>
                                     </div>
                                 </div>
@@ -87,14 +120,14 @@ const Maindashboard = () => {
                             rounded py-2 px-3 text-1xl  flex items-center
                             "><FaUsers /></div>
                                     <div className="pl-2 flex flex-col">
-                                        <span className='font-semibold text-base'>150</span>
-                                        <span className='text-xs text-gray-500'>Total Stuff</span>
+                                        <span className='font-semibold text-base'>{captains.length}</span>
+                                        <span className='text-xs text-gray-500'>Total Captains</span>
                                     </div>
                                 </div>
                                 <div className='w-1/2 flex p-2 border rounded mx-1 '>
                                     <div className="bg-gradient-to-b from-emerald-800 to-emerald-500 text-white
                             rounded py-2 px-2 text-2xl  flex items-center
-                            "><IoMdBed /></div>
+                            "><MdOutlineComputer /></div>
                                     <div className="pl-2 flex flex-col">
                                         <span className='font-semibold text-base'>220</span>
                                         <span className='text-xs text-gray-500'>Total Computer</span>
@@ -105,21 +138,13 @@ const Maindashboard = () => {
                                 <div className='w-1/2 flex p-2 border rounded mx-1 '>
                                     <div className="bg-gradient-to-b from-purple-800 to-purple-500 text-white
                             rounded py-2 px-3 text-1xl  flex items-center
-                            "><GiCheckMark /></div>
+                            "><FaUserTie /></div>
                                     <div className="pl-2 flex flex-col">
-                                        <span className='font-semibold text-base'>84</span>
+                                        <span className='font-semibold text-base'>{teachers.length}</span>
                                         <span className='text-xs text-gray-500'><abbr title="Pataients Released" className='no-underline'>Teachers</abbr></span>
                                     </div>
                                 </div>
-                                <div className='w-1/2 flex p-2 border rounded mx-1 '>
-                                    <div className="bg-gradient-to-b from-red-400 to-red-500 text-white
-                            rounded py-2 px-3 text-1xl  flex items-center
-                            "><FaAmbulance /></div>
-                                    <div className="pl-2 flex flex-col">
-                                        <span className='font-semibold text-base'>12</span>
-                                        <span className='text-xs text-gray-500'>Ambulance</span>
-                                    </div>
-                                </div>
+                               
                             </div>
                         </div>
                     </div>
@@ -127,8 +152,8 @@ const Maindashboard = () => {
                 <div className="border rounded-sm p-4 w-full">
                     <h2 className="text-md font-semibold mb-4">Recent Notices</h2>
                     <ol className='list-disc ml-5'>
-                        {notices.map((notice, index) => (
-                            <li key={index} className="mb-2 flex items-center">* {notice} <span className='text-red-500 pl-5 cursor-pointer text-2xl'><MdPictureAsPdf /></span></li>
+                        {notices.length !== 0 && notices.map((notice, index) => (
+                            <Notification item={notice} />
                         ))}
                     </ol>
                 </div>
@@ -158,7 +183,11 @@ const Maindashboard = () => {
                                 }
                             })
                         }
-
+                        {
+                            teachers.length === 0 && <div>
+                                <span className='font-semibold text-gray-500 pl-2'>Empty list</span>
+                            </div>
+                        }
                     </ul>
                 </div>
             </div>
