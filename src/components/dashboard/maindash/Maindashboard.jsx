@@ -4,6 +4,7 @@ import { MdOutlineComputer, MdOutlinePendingActions } from 'react-icons/md';
 import Doctor from '../../../img/docc.png';
 import axios from 'axios';
 import Notification from '../../../pages/Notifications/Notification/Notification';
+import { Link } from 'react-router-dom';
 
 const Maindashboard = () => {
     const [teachers, setTeachers] = useState([])
@@ -149,6 +150,9 @@ const Maindashboard = () => {
                         </div>
                     </div>
                 </div>
+                <div className="border rounded-lg p-4 w-full my-2 mb-4 bg-red-300">
+                    <span>Announcement : 📢 Exciting news! Join us for a special guest lecture on AI advancements this Friday at 2 PM in the auditorium! Don't miss out! 🎓</span>
+                </div>
                 <div className="border rounded-sm p-4 w-full">
                     <h2 className="text-md font-semibold mb-4">Recent Notices</h2>
                     <ol className='list-disc ml-5'>
@@ -156,6 +160,11 @@ const Maindashboard = () => {
                             <Notification item={notice} />
                         ))}
                     </ol>
+                    {
+                        notices.length === 0 && <div>
+                            <span className='font-semibold text-gray-700'>No Notice Published Yet, <Link to="/dashboard/add-notice" className='text-blue-800'>Publish One</Link></span>
+                        </div>
+                    }
                 </div>
             </div>
             <div className="w-full md:w-1/2 lg:w-1/3 p-3">
