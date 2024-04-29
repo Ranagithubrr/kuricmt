@@ -150,7 +150,7 @@ const Maindashboard = () => {
                         </div>
                     </div>
                 </div>
-                <div className="border rounded-lg p-4 w-full my-2 mb-4 bg-red-300">
+                <div className="border rounded-lg p-4 w-full my-2 mb-4 bg-gradient-to-r from-yellow-200 to-yellow-300">
                     <span>Announcement : 📢 Exciting news! Join us for a special guest lecture on AI advancements this Friday at 2 PM in the auditorium! Don't miss out! 🎓</span>
                 </div>
                 <div className="border rounded-sm p-4 w-full">

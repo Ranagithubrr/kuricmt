@@ -227,6 +227,17 @@ const Contents = () => {
           }
         </div>
       </div>
+      {/* <div className='pt-4 flex w-2/3'>
+        <div className='w-1/2'>
+          <span className='font-semibold block'>Cover Photo</span>
+          <input onChange={handleFileChange} type="file" className='border outline-none px-3 py-4 text-lg' />
+        </div>
+        <div className='w-1/2'>
+          {
+            logoToDisplay !== "" && <img src={logoToDisplay} alt="" className='rounded h-36 w-32 ml-10' />
+          }
+        </div>
+      </div> */}
       <div className='pt-4'>
         <span className='font-semibold block'>Gallary Photos</span>
         <input id='fileInputField' onChange={handlePhotoChange} type="file" multiple className='border outline-none px-3 py-4 text-lg w-2/3' />

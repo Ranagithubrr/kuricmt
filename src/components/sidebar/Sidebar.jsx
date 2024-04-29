@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { AiFillStar } from 'react-icons/ai';
 import { MdDashboardCustomize, MdOutlineLogout } from 'react-icons/md';
 import { HiUserAdd } from 'react-icons/hi';
-import { BsCalendarDate, BsFillChatDotsFill, BsHospitalFill } from 'react-icons/bs';
+import { BsCalendarDate, BsChatLeftQuoteFill, BsFillChatDotsFill, BsHospitalFill } from 'react-icons/bs';
 import { GrAnnounce } from "react-icons/gr";
 import { FaUsers, FaPlus } from 'react-icons/fa';
 import { MdArrowDropDown, MdManageAccounts } from 'react-icons/md';
@@ -85,6 +85,11 @@ const Sidebar = () => {
                         </Link>
                     </li>
                 }
+                <li className='flex  hover:bg-slate-200 rounded dark:hover:bg-gray-700'>
+                        <Link to='/dashboard/quote-review' className='h-full w-full  py-4 px-2 block'>
+                            <span className='flex items-center text-base dark:text-gray-300'><BsChatLeftQuoteFill className='text-xl' />  <span className='pl-3 h-full text-sm font-semibold'>Quotes Review</span></span>
+                        </Link>
+                    </li>
                 <li className='flex  hover:bg-slate-200 rounded dark:hover:bg-gray-700'>
                     <Link to='/dashboard/review' className='h-full w-full  py-4 px-2 block'>
                         <span className='flex items-center text-base dark:text-gray-300'><AiFillStar className='text-xl' />  <span className='pl-3 h-full text-sm font-semibold'>Reviews</span></span>

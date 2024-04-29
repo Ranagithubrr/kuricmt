@@ -1,8 +1,11 @@
-import React from 'react'
+import React from 'react';
+import ComingSoon from '../../img/coomingsoon.jpg';
 
 const Notes = () => {
   return (
-    <div>coming soon . . .</div>
+    <div className='flex items-center justify-center pt-10'>
+      <img src={ComingSoon} alt="coming soon" />
+    </div>
   )
 }
 

@@ -24,6 +24,7 @@ import Notes from './pages/Notes/Notes';
 import AdminProtected from './AdminProtechRoute';
 import Applications from './pages/Applications/Applications';
 import Announcement from './pages/Announcement/Announcement';
+import QuoteReview from './pages/QuotReview/QuoteReview';
 
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
           <Route path='notices' element={<Notifications />}></Route>
           <Route path='notes' element={<Notes />}></Route>
           <Route path='profile' element={<Userprofile />}></Route>
+          <Route path='quote-review' element={<QuoteReview />}></Route>
           <Route path='update-profile' element={<UpdateProfile />}></Route>
           <Route path='add-notice' element={<AddNotice />}></Route>
           <Route path='add-announcement' element={<Announcement />}></Route>

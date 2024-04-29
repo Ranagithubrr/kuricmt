@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import ComingSoon from '../../img/coomingsoon.jpg';
 
 const Chat = () => {
     return (
@@ -37,8 +38,8 @@ const Chat = () => {
                 </div>
                 <div className="w-1/5">3</div>
             </div> */}
-            <div>
-                <span>Coming Soon . . .</span>
+            <div className='flex items-center justify-center pt-10'>
+                <img src={ComingSoon} alt="coming soon" />
             </div>
         </div>
     )
