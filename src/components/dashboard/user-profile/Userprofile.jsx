@@ -11,8 +11,7 @@ const Userprofile = () => {
       <div className="w-1/5 flex justify-end">
         <img src={image || ProfilePic} alt="profilePic here" className='h-40 w-40 bg-gray-300 rounded-full' />
       </div>
-      <div className="border-t-4 border-gray-300 mt-20 w-full pl-4">
-        
+      <div className="border-t-4 border-gray-300 mt-20 w-full pl-4">        
           <h4 className='font-bold text-xl text-gray-600 dark:text-gray-300'>{name} {type === "admin" && <span className='text-xs font-bold text-blue-600 bg-blue-200 rounded p-1 ml-3'>Admin</span> }</h4>
        
         <Link to="/dashboard/update-profile" className='bg-blue-800 text-gray-100 dark:text-gray-200 float-right mr-5 font-bold text-sm p-2 rounded -mt-5'>Edit Profile</Link>

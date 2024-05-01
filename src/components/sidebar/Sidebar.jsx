@@ -98,8 +98,8 @@ const Sidebar = () => {
                 <li className='flex  hover:bg-slate-200 rounded dark:hover:bg-gray-700'>
                     <Link to='/dashboard/chat' className='h-full w-full  py-4 px-2 flex'>
                         <span className='flex items-center text-base dark:text-gray-300'><BsFillChatDotsFill className='text-xl' />  <span className='pl-3 h-full text-sm font-semibold'>Chat</span></span>
-                        <div className='h-5 w-5 bg-red-700 rounded-full ml-auto mr-5 flex items-center justify-center'>
-                            <span className='text-gray-200 text-xs font-semibold'>12</span>
+                        <div className='h-3 w-3 bg-blue-700 rounded-full ml-auto mr-5 flex items-center justify-center'>
+                            
                         </div>
                     </Link>
                 </li>
