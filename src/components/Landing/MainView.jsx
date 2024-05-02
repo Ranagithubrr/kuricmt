@@ -1,28 +1,34 @@
 import React from 'react';
 import KuriImg from '../../img/kuri.jpg';
-import './landing.css';
 
-const MainView = () => {
-    return (<>      
+const MainView = ({ Admin, Content }) => {
+    console.log(Content)
+    return (<>
+        {
+            Content && Content[0].announcementstatus &&
+            <div class="bg-yellow-100 border-t-4 border-yellow-500 rounded-b text-teal-900 px-4 py-3 shadow-md my-4" role="alert">
+                <div class="flex">
+                    <div class="py-1"><svg class="fill-current h-6 w-6 text-yellow-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z" /></svg></div>
+                    <div>
+                        <p class="font-bold">Alert</p>
+                        <p class="text-sm">{Content && Content[0].announcement}</p>
+                    </div>
+                </div>
+            </div>
+        }
         <div className='flex items-center relative overflow-hidden'>
-            <div className='w-1/2'>
+            <div className='w-7/12'>
                 <h1 className='font-extrabold text-5xl bg-gradient-to-r from-gray-500 to-red-500 text-transparent bg-clip-text'>
-                    Department Of Computer
+                  { Content && Content[0].maintitle}                  
                 </h1>
-                <h3 className='font-semibold text-xl bg-gradient-to-r from-gray-500 to-red-500 text-transparent bg-clip-text'>Where Innovation Meets Excellence.</h3>
+                <h3 className='font-semibold text-xl bg-gradient-to-r from-gray-500 to-red-500 text-transparent bg-clip-text'>{Content && Content[0].tagline}</h3>
                 <h3 className='font-semibold text-xl'>Kurigram Polytechnic Institute, kurigram</h3>
             </div>
-            <div className='w-1/3 py-5 pb-20 border-blue-500 border rounded-t-sm rounded-b-full '>
-                <div className='flex flex-col items-center'>
-                    <div class="flex items-center">
-                        <div class="transform -rotate-90 text-right float-right">
-                            <p class="font-bold uppercase bg-gradient-to-r from-gray-500 to-red-500 text-transparent bg-clip-text">Chif Instructor</p>
-                        </div>
-                        <img class="h-72 -ml-14 w-64 rounded-sm" src="https://photogov-com.akamaized.net/examples/bd-passport-55x45-photo/landmarks-US.webp" alt="teacher" />
-                    </div>
-                    <h4 className='font-bold text-2xl bg-gradient-to-r from-gray-700 to-blue-500 text-transparent bg-clip-text px-12'>MD Nahiduzzaman Nahid</h4>
-                </div>
-            </div>        
+            <div className='w-5/12'>
+                <img className="h-72 w-72 rounded-lg" src={Admin ? Admin.image : 'https://photogov-com.akamaized.net/examples/bd-passport-55x45-photo/landmarks-US.webp'} alt="teacher" />
+                <p className="font-bold mt-2 uppercase bg-gradient-to-r from-gray-500 to-red-500 text-transparent bg-clip-text">{Admin && Admin.title}</p>
+                <h4 className='font-bold text-2xl bg-gradient-to-r from-gray-700 to-blue-500 text-transparent bg-clip-text'>{Admin && Admin.name}</h4>
+            </div>
         </div>
         <div className='py-4'>
             <img src={KuriImg} className='w-full rounded' alt="" />

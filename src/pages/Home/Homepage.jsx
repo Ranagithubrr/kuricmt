@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import NavbarLanding from '../../components/Landing/NavbarLanding';
 import MainView from '../../components/Landing/MainView';
 import Teachers from '../../components/Landing/Teachers';
@@ -8,13 +8,26 @@ import Notices from '../../components/Landing/Notices';
 import Quotes from '../../components/Landing/Quotes';
 import Application from '../../components/Landing/Application';
 import Footer from '../../components/Landing/Footer';
+import axios from 'axios';
 
 const Homepage = () => {
+    const [allcontent,setAllContent] = useState([])
+    const FetchContents = async () =>{
+        const response = await axios.get('http://localhost:4000/content/website-data');
+        setAllContent(response.data)
+    };
+    console.log(allcontent);
+    useEffect(()=>{
+        FetchContents();
+    },[]);
+    const adminTeacher = allcontent && allcontent.teachers && allcontent.teachers.find(teacher => teacher.type === "admin");
+    const content = allcontent && allcontent.contents;
+    console.log(content)
     return (
         <div className='px-8'>
             <NavbarLanding />
-            <MainView />
-            <Teachers />
+            <MainView Admin={adminTeacher} Content={content}/>
+            <Teachers Teachers={allcontent.teachers}/>
             <AboutUs />
             <Notices />
             <Gallery />
