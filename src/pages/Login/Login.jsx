@@ -13,7 +13,7 @@ const Login = () => {
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
-    const [errorText, setErrorText] = useState("");
+    const [errorText, setErrorText] = useState("Something went wrong");
 
 
     const LoginClicked = async () => {
