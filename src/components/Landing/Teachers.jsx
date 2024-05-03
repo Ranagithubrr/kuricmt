@@ -19,7 +19,7 @@ const Teachers = ({ Teachers }) => {
                 Meet Our Teachers
             </h1>
             {
-                Teachers && Teachers.length < 6 &&
+                Teachers && Teachers.length < 5 &&
 
                 <div className='grid grid-cols-4 gap-10 py-5 px-10 mt-5'>
                     {

@@ -30,7 +30,7 @@ const Notices = ({ Notices }) => {
                 {
                     slicedNotices && slicedNotices.map((ele) => {
                         return (
-                            <div className="border shadow rounded-sm px-4 py-2 flex items-center cursor-pointer w-2/3 mx-auto">
+                            <div className="border shadow rounded-sm px-4 py-2 flex items-center cursor-pointer w-2/3 mx-auto mt-1">
                                 <div className='w-1/6 flex items-center'>
                                     <span className='text-red-500'><FaAngleDoubleRight /></span>
                                     <div className='font-semibold text-sm pl-2'>
@@ -39,7 +39,8 @@ const Notices = ({ Notices }) => {
                                     </div>
                                 </div>
                                 <div className='w-4/6'>
-                                    <span className='font-semibold pl-4'>{ele.title}</span>
+                                    <span className='font-semibold block pl-4'>{ele.title}</span>
+                                    <span className='text-xs block pl-4'>{ele.description}</span>
                                 </div>
                                 <div className='w-2/6 text-center'>
                                     <Link to={ele.noticeurl} target='_blank' download={ele.noticeurl} className='w-2/4 mx-auto bg-red-500 text-gray-200 font-semibold rounded py-1 px-3'>Download</Link>

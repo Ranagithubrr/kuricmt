@@ -23,6 +23,7 @@ const Homepage = () => {
     const adminTeacher = allcontent && allcontent.teachers && allcontent.teachers.find(teacher => teacher.type === "admin");
     const content = allcontent && allcontent.contents;
     const notices = allcontent && allcontent.notices;
+    const quotes = allcontent && allcontent.Quotes;
     // console.log(content)
     return (
         <div className='px-8'>
@@ -31,8 +32,8 @@ const Homepage = () => {
             <Teachers Teachers={allcontent.teachers}/>
             <AboutUs Content={content}/>
             <Notices Notices={notices}/>
-            <Gallery Content={content}/>
-            <Quotes />
+            {/* <Gallery Content={content}/> */}
+            <Quotes Quotes={quotes} Teachers={allcontent.teachers}/>
             <Application />
             <Footer />
         </div>
