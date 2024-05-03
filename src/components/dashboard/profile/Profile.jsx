@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Doctor from '../../../img/docc.png';
-import Keyboard from '../../../img/keyboard.jpg';
 import axios from 'axios';
 
 const Profile = () => {
@@ -46,6 +45,7 @@ const Profile = () => {
                                 </div>
                             )
                         }
+                        return null;
                     })
                 }
                 {
