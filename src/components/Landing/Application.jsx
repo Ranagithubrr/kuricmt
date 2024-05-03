@@ -116,10 +116,10 @@ const Application = () => {
                         </div>
 
                         <div className='text-center py-1 mx-5'>
-                            <textarea value={formData.body} name='body' onChange={(e) => handleChange(e)} id="" cols="30" rows="5" style={{ whiteSpace: 'pre-wrap' }} className='border rounded-sm px-3 py-1 w-full outline-none' placeholder='Type Your Application'></textarea>
+                            <textarea value={formData.body} name='body' onChange={(e) => handleChange(e)} id="" cols="30" rows="5" style={{ whiteSpace: 'pre-wrap' }} className='border rounded-sm px-3 py-1 w-full outline-none' placeholder='Type Your Application ( Just Write The Main Body! )'></textarea>
                         </div>
                         <div className='text-center py-1 mx-5'>
-                            <button onClick={SubmitClicked} className='outline-none bg-red-500 text-gray-100 font-semibold text-sm px-3 py-2 rounded'>Submit Applcation</button>
+                            <button onClick={SubmitClicked} className='outline-none bg-red-500 text-gray-100 font-semibold text-sm px-3 py-2 rounded'>Submit Application</button>
                         </div>
                     </div>
                 </>

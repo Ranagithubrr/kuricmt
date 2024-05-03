@@ -8,6 +8,7 @@ const Review = () => {
     const value = 4.6;
     return (
         <div className='pl-10 pt-5'>
+            <span className='bg-red-400 px-5 rounded-sm text-gray-100'>Demo Page</span>
             <h4 className='font-semibold text-xl'>Reviews</h4>
             <div className='flex justify-between w-1/3 my-4'>
                 <div>

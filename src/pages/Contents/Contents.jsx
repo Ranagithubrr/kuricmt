@@ -43,11 +43,11 @@ const Contents = () => {
     setLogoState(e.target.files[0]);
   };
 
-  const handlePhotoChange = (e) => {
-    const files = e.target.files;
-    const filesArray = Array.from(files);
-    setPhotosState(filesArray);
-  };
+  // const handlePhotoChange = (e) => {
+  //   const files = e.target.files;
+  //   const filesArray = Array.from(files);
+  //   setPhotosState(filesArray);
+  // };
 
   const [singleFileURL, setSingleFileURL] = useState(null);
 
@@ -238,11 +238,12 @@ const Contents = () => {
           }
         </div>
       </div> */}
-      <div className='pt-4'>
+      {/* <div className='pt-4'>
         <span className='font-semibold block'>Gallary Photos</span>
         <input id='fileInputField' onChange={handlePhotoChange} type="file" multiple className='border outline-none px-3 py-4 text-lg w-2/3' />
-      </div>
-      <div className='pt-4'>
+      </div> */}
+      
+      <div className='pt-4 hidden'>
         <div className='grid grid-cols-6 gap-4'>
           {
             photosToDisplay && photosToDisplay.length !== 0 && photosToDisplay.map((ele) => {
