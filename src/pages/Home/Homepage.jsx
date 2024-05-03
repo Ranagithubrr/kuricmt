@@ -10,7 +10,7 @@ import Application from '../../components/Landing/Application';
 import Footer from '../../components/Landing/Footer';
 import axios from 'axios';
 
-const Homepage = () => {
+const Homepage = () => {   
     const [allcontent,setAllContent] = useState([])
     const FetchContents = async () =>{
         const response = await axios.get('http://localhost:4000/content/website-data');
@@ -22,15 +22,16 @@ const Homepage = () => {
     },[]);
     const adminTeacher = allcontent && allcontent.teachers && allcontent.teachers.find(teacher => teacher.type === "admin");
     const content = allcontent && allcontent.contents;
-    console.log(content)
+    const notices = allcontent && allcontent.notices;
+    // console.log(content)
     return (
         <div className='px-8'>
             <NavbarLanding />
             <MainView Admin={adminTeacher} Content={content}/>
             <Teachers Teachers={allcontent.teachers}/>
-            <AboutUs />
-            <Notices />
-            <Gallery />
+            <AboutUs Content={content}/>
+            <Notices Notices={notices}/>
+            <Gallery Content={content}/>
             <Quotes />
             <Application />
             <Footer />

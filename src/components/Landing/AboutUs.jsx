@@ -1,8 +1,9 @@
 import React from 'react'
 
-const AboutUs = () => {
+const AboutUs = ({Content}) => {
+    console.log(Content)
     return (
-        <div>
+        <div className='mt-5'>
             <h1 className='font-extrabold text-2xl bg-gradient-to-r from-gray-500 to-red-500 text-transparent bg-clip-text text-center'>
                 About Us
             </h1>
@@ -24,13 +25,13 @@ const AboutUs = () => {
                             <p className="text-gray-600 text-base font-semibold">
                                 Number of Computers :
                             </p>
-                            <p className='font-bold'>30</p>
+                            <p className='font-bold'>{Content && Content[0].labonecomputer}</p>
                         </div>                       
                         <div className='flex justify-between w-2/3'>
                             <p className="text-gray-600 text-base font-semibold">
                                 Number of Capacity :
                             </p>
-                            <p className='font-bold'>50</p>
+                            <p className='font-bold'>{Content && Content[0].laboneseat}</p>
                         </div>                       
                     </div>                   
                 </div>
@@ -46,13 +47,13 @@ const AboutUs = () => {
                             <p className="text-gray-600 text-base font-semibold">
                                 Number of Computers :
                             </p>
-                            <p className='font-bold'>30</p>
+                            <p className='font-bold'>{Content && Content[0].labtwocomputer}</p>
                         </div>                       
                         <div className='flex justify-between w-2/3'>
                             <p className="text-gray-600 text-base font-semibold">
                                 Number of Capacity :
                             </p>
-                            <p className='font-bold'>50</p>
+                            <p className='font-bold'>{Content && Content[0].labtwoseat}</p>
                         </div>                       
                     </div>                     
                 </div>
@@ -68,13 +69,13 @@ const AboutUs = () => {
                             <p className="text-gray-600 text-base font-semibold">
                                 Number of Computers :
                             </p>
-                            <p className='font-bold'>30</p>
+                            <p className='font-bold'>{Content && Content[0].hlabcomputer}</p>
                         </div>                       
                         <div className='flex justify-between w-2/3'>
                             <p className="text-gray-600 text-base font-semibold">
                                 Number of Capacity :
                             </p>
-                            <p className='font-bold'>50</p>
+                            <p className='font-bold'>{Content && Content[0].hlabseat}</p>
                         </div>                       
                     </div>                     
                 </div>
