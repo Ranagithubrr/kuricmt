@@ -38,6 +38,7 @@ const Teachers = ({ Teachers }) => {
                                     </div>
                                 )
                             }
+                            return null;
                         })
                     }
                 </div>
@@ -61,6 +62,7 @@ const Teachers = ({ Teachers }) => {
                                     </div>
                                 )
                             }
+                            return null;
                         })
                     }
                 </Slider>
