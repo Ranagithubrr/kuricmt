@@ -24,10 +24,11 @@ const Homepage = () => {
     const content = allcontent && allcontent.contents;
     const notices = allcontent && allcontent.notices;
     const quotes = allcontent && allcontent.Quotes;
-    // console.log(content)
+    const logo = allcontent && allcontent.contents && allcontent.contents[0].mainlogo;
+    console.log(logo)
     return (
         <div className='px-8'>
-            <NavbarLanding />
+            <NavbarLanding Logo={logo}/>
             <MainView Admin={adminTeacher} Content={content}/>
             <Teachers Teachers={allcontent.teachers}/>
             <AboutUs Content={content}/>
