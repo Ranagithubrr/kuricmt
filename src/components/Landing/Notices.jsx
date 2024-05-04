@@ -30,19 +30,19 @@ const Notices = ({ Notices }) => {
                 {
                     slicedNotices && slicedNotices.map((ele) => {
                         return (
-                            <div className="border shadow rounded-sm px-4 py-2 flex items-center cursor-pointer w-2/3 mx-auto mt-1">
-                                <div className='w-1/6 flex items-center'>
+                            <div className="border shadow rounded-sm px-4 py-2 lg:flex lg:items-center cursor-pointer w-full lg:w-2/3 mx-auto mt-1">
+                                <div className='lg:w-1/6 flex items-center'>
                                     <span className='text-red-500'><FaAngleDoubleRight /></span>
-                                    <div className='font-semibold text-sm pl-2'>
+                                    <div className='font-semibold text-sm pl-2 flex lg:block'>
                                         <span className='block'>{formatDateAndTime(ele.createdAt).date}</span>
-                                        <span className='block text-xs text-gray-400'>{formatDateAndTime(ele.createdAt).time}</span>
+                                        <span className='block text-xs text-gray-400 pl-2 lg:pl-0'>{formatDateAndTime(ele.createdAt).time}</span>
                                     </div>
                                 </div>
-                                <div className='w-4/6'>
-                                    <span className='font-semibold block pl-4'>{ele.title}</span>
-                                    <span className='text-xs block pl-4'>{ele.description}</span>
+                                <div className='w-full lg:w-4/6'>
+                                    <span className='font-semibold block lg:pl-4'>{ele.title}</span>
+                                    <span className='text-xs block lg:pl-4'>{ele.description}</span>
                                 </div>
-                                <div className='w-2/6 text-center'>
+                                <div className='w-full lg:w-2/6 lg:text-center mt-3 lg:mt-0'>
                                     <Link to={ele.noticeurl} target='_blank' download={ele.noticeurl} className='w-2/4 mx-auto bg-red-500 text-gray-200 font-semibold rounded py-1 px-3'>Download</Link>
                                 </div>
                             </div>

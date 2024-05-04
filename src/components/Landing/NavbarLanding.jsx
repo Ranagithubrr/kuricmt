@@ -1,25 +1,104 @@
-import { Link } from 'react-router-dom';
-import Computer from '../../img/desktop.png';
+import { FaBars } from "react-icons/fa";
+import { FaTimes } from "react-icons/fa";
+import {
+    Navbar,
+    Collapse,
+    Typography,
+    IconButton,
+} from "@material-tailwind/react";
+import { useEffect, useState } from 'react';
+
+function NavList() {
+    return (
+        <ul className="my-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
+            <Typography
+                as="li"
+                variant="small"
+                color="blue-gray"
+                className="p-1 font-medium"
+            >
+                <a href="#home" className="flex items-center hover:text-blue-500 transition-colors">
+                    Home
+                </a>
+            </Typography>
+            <Typography
+                as="li"
+                variant="small"
+                color="blue-gray"
+                className="p-1 font-medium"
+            >
+                <a href="#home" className="flex items-center hover:text-blue-500 transition-colors">
+                    About Us
+                </a>
+            </Typography>
+            <Typography
+                as="li"
+                variant="small"
+                color="blue-gray"
+                className="p-1 font-medium"
+            >
+                <a href="#home" className="flex items-center hover:text-blue-500 transition-colors">
+                    Our Teachers
+                </a>
+            </Typography>
+            <Typography
+                as="li"
+                variant="small"
+                color="blue-gray"
+                className="p-1 font-medium"
+            >
+                <a href="#home" className="flex items-center hover:text-blue-500 transition-colors">
+                    Notices
+                </a>
+            </Typography>
+        </ul>
+    );
+}
 
 const NavbarLanding = () => {
+    const [openNav, setOpenNav] = useState(false);
+
+    const handleWindowResize = () =>
+        window.innerWidth >= 960 && setOpenNav(false);
+
+    useEffect(() => {
+        window.addEventListener("resize", handleWindowResize);
+
+        return () => {
+            window.removeEventListener("resize", handleWindowResize);
+        };
+    }, []);
     return (
-        <nav className='py-3 flex items-center'>
-            <div class="w-4/12">
-                {/* <span className="text-3xl font-bold dark:text-gray-300"><span className="text-blue-900 dark:text-blue-500">D.O.C</span></span> */}
-                <img src={Computer} alt="D.O.C" className='h-12 pl-10' />
-                <span className="block text-xs font-semibold">Department Of Computer</span>
+        <Navbar className="mx-auto max-w-screen-xl px-6 py-3 text-black mb-10 shadow-none border-none">
+            <div className="flex items-center justify-between text-blue-gray-900">
+                <Typography
+                    as="a"
+                    href="#"
+                    variant="h6"
+                    className="mr-4 cursor-pointer py-1.5"
+                >
+                    Material Tailwind
+                </Typography>
+                <div className="hidden lg:block">
+                    <NavList />
+                </div>
+                <IconButton
+                    variant="text"
+                    className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
+                    ripple={false}
+                    onClick={() => setOpenNav(!openNav)}
+                >
+                    {openNav ? (
+                        <FaTimes className="h-6 w-6" strokeWidth={2} />
+                    ) : (
+                        <FaBars className="h-6 w-6" strokeWidth={2} />
+                    )}
+                </IconButton>
             </div>
-            <div class="w-8/12">
-                <ul className='flex float-right'>
-                    <li className='px-2 font-semibold text-sm'><Link to="/">Home</Link></li>
-                    <li className='px-2 font-semibold text-sm'><Link to="/">About Us</Link></li>
-                    <li className='px-2 font-semibold text-sm'><Link to="/">Gallery</Link></li>
-                    <li className='px-2 font-semibold text-sm'><Link to="/">Notices</Link></li>
-                    <li className='px-2 font-semibold text-sm'><Link to="/">Teachers</Link></li>
-                    <li className='px-2 font-semibold text-sm'><Link to="/">Contact</Link></li>
-                </ul>
-            </div>
-        </nav>
+            <Collapse open={openNav}>
+                <NavList />
+            </Collapse>
+        </Navbar>
     );
 };
 

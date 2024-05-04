@@ -155,6 +155,30 @@ const UpdateProfile = () => {
                     </div>
                     <div className='flex justify-between w-1/2'>
                         <div className='w-1/4'>
+                            <span className='font-semibold text-gray-600'>Facebook</span>
+                        </div>
+                        <div className='w-3/4'>
+                            <input className='text-gray-600 font-semibold outline-none border-b-2' placeholder='https://rana-rr.netlify.app/' defaultValue={newData.website} onChange={(e) => handleChange(e)} name="website"></input>
+                        </div>
+                    </div>
+                    <div className='flex justify-between w-1/2'>
+                        <div className='w-1/4'>
+                            <span className='font-semibold text-gray-600'>Instagram</span>
+                        </div>
+                        <div className='w-3/4'>
+                            <input className='text-gray-600 font-semibold outline-none border-b-2' placeholder='https://rana-rr.netlify.app/' defaultValue={newData.website} onChange={(e) => handleChange(e)} name="website"></input>
+                        </div>
+                    </div>
+                    <div className='flex justify-between w-1/2'>
+                        <div className='w-1/4'>
+                            <span className='font-semibold text-gray-600'>Twitter</span>
+                        </div>
+                        <div className='w-3/4'>
+                            <input className='text-gray-600 font-semibold outline-none border-b-2' placeholder='https://rana-rr.netlify.app/' defaultValue={newData.website} onChange={(e) => handleChange(e)} name="website"></input>
+                        </div>
+                    </div>
+                    <div className='flex justify-between w-1/2'>
+                        <div className='w-1/4'>
                             <span className='font-semibold text-gray-600'>Website</span>
                         </div>
                         <div className='w-3/4'>

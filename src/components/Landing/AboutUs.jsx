@@ -12,7 +12,7 @@ const AboutUs = ({Content}) => {
             </p>
             <h5 className='font-semibold text-center text-lg text-gray-500 pt-4'>We Have</h5>
 
-            <div className='grid grid-cols-3 gap-4 py-5'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 py-5'>
                 <div className="bg-white rounded overflow-hidden shadow-lg">
                     <img
                         className="w-full h-48 object-cover"

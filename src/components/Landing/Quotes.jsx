@@ -46,14 +46,14 @@ const Quotes = ({ Quotes, Teachers }) => {
     return (
         <div>
             <ToastContainer />
-            <div className='w-1/2 mx-auto py-5'>
+            <div className='lg:w-1/2 mx-auto py-5'>
                 {
                     FilteredQuotes && FilteredQuotes.length > 1 && <Slider {...settings} className='mt-5'>
                         {
                             FilteredQuotes && FilteredQuotes.map((ele, index) => {
                                 return (
                                     <div className='w-1/2 mx-auto py-5'>
-                                        <p className='p-2 text-center font-semibold text-2xl text-gray-500 py-5'><span><FaQuoteLeft /></span>
+                                        <p className='p-2 text-center font-semibold lg:text-2xl text-gray-500 py-5'><span><FaQuoteLeft /></span>
                                             {ele.message}
                                             <span className='float-right pt-5'><FaQuoteRight /></span></p>
                                         <span className='font-semibold text-black block text-center text-sm'>{ele.name}</span>
@@ -66,11 +66,11 @@ const Quotes = ({ Quotes, Teachers }) => {
                     </Slider>
                 }
             </div>
-            <div className='w-1/2 mx-auto py-5'>
+            <div className='lg:w-1/2 mx-auto py-5'>
                 {
                     FilteredQuotes && FilteredQuotes.length === 1 &&
                     <div>
-                        <p className='p-2 text-center font-semibold text-2xl text-gray-500 py-5'><span><FaQuoteLeft /></span>
+                        <p className='p-2 text-center font-semibold lg:text-2xl text-gray-500 py-5'><span><FaQuoteLeft /></span>
                             {FilteredQuotes[0].message}
                             <span className='float-right pt-5'><FaQuoteRight /></span></p>
                         <span className='font-semibold text-black block text-center text-sm'>{FilteredQuotes[0].name}</span>
@@ -86,7 +86,7 @@ const Quotes = ({ Quotes, Teachers }) => {
                 showqhote &&
                 <>
                     <div className='fixed w-full h-full bg-gray-800 opacity-80 top-0 bottom-0 left-0 right-0'></div>
-                    <div className='fixed w-1/3 bg-white top-20 left-0 right-0 m-auto shadow-lg rounded py-3'>
+                    <div className='fixed w-11/12 lg:w-1/3 bg-white top-20 left-0 right-0 m-auto shadow-lg rounded py-3'>
                         <div className='absolute -top-4 -right-4 bg-black rounded-full' onClick={() => setshowqhote(false)}>
                             <span className='text-white text-3xl cursor-pointer'><IoCloseCircle /></span>
                         </div>

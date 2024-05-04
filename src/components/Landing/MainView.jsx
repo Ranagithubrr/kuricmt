@@ -1,5 +1,7 @@
 import React from 'react';
 import KuriImg from '../../img/kuri.jpg';
+import { Card, CardBody, CardFooter, CardHeader, Typography } from '@material-tailwind/react';
+import { FaFacebook, FaGlobe, FaInstagram, FaTwitter } from 'react-icons/fa';
 
 const MainView = ({ Admin, Content }) => {
     console.log(Content)
@@ -16,22 +18,83 @@ const MainView = ({ Admin, Content }) => {
                 </div>
             </div>
         }
-        <div className='flex items-center relative overflow-hidden'>
-            <div className='w-7/12'>
+        <div className='lg:flex items-center relative overflow-hidden'>
+            <div className='w-full lg:w-7/12'>
                 <h1 className='font-extrabold text-5xl bg-gradient-to-r from-gray-500 to-red-500 text-transparent bg-clip-text'>
-                  { Content && Content[0].maintitle}                  
+                    {Content && Content[0].maintitle}
                 </h1>
                 <h3 className='font-semibold text-xl bg-gradient-to-r from-gray-500 to-red-500 text-transparent bg-clip-text'>{Content && Content[0].tagline}</h3>
                 <h3 className='font-semibold text-xl'>Kurigram Polytechnic Institute, kurigram</h3>
             </div>
-            <div className='w-5/12'>
-                <img className="h-72 w-72 rounded-lg" src={Admin ? Admin.image : 'https://photogov-com.akamaized.net/examples/bd-passport-55x45-photo/landmarks-US.webp'} alt="teacher" />
-                <p className="font-bold mt-2 uppercase bg-gradient-to-r from-gray-500 to-red-500 text-transparent bg-clip-text">{Admin && Admin.title}</p>
-                <h4 className='font-bold text-2xl bg-gradient-to-r from-gray-700 to-blue-500 text-transparent bg-clip-text'>{Admin && Admin.name}</h4>
+            <div className='w-full lg:w-4/12'>
+                <Card className="rounded-lg p-2">
+                    <CardHeader floated={false} className="h-80">
+                        <img src={Admin ? Admin.image : "https://www.spencerclarkegroup.co.uk/uploads/5005001.png"} alt="profile-pictue" className='h-full w-full rounded-lg' />
+                    </CardHeader>
+                    <CardBody className="text-center mt-3">
+                        <Typography variant="h4" color="blue-gray" className="mb-2">
+                            {Admin && Admin.name}
+                        </Typography>
+                        <Typography color="blue-gray" className="font-medium">
+                            {Admin ? Admin.title : "Not Provided"}
+                        </Typography>
+                    </CardBody>
+                    <CardFooter className="flex justify-center gap-7 pt-2 pb-2">
+
+                        <Typography
+                            as="a"
+                            href="#facebook"
+                            variant="lead"
+                            color="black"
+                            textGradient
+                            className='text-blue-600'
+                        >
+                            <FaFacebook />
+                        </Typography>
+
+
+
+                        <Typography
+                            as="a"
+                            href="#instagram"
+                            variant="lead"
+                            color="purple"
+                            textGradient
+                            className='text-red-400'
+                        >
+                            <FaInstagram />
+                        </Typography>
+
+
+                        <Typography
+                            as="a"
+                            href="#twitter"
+                            variant="lead"
+                            color="light-blue"
+                            textGradient
+                            className='text-blue-700'
+                        >
+                            <FaTwitter />
+                        </Typography>
+
+
+                        <Typography
+                            as="a"
+                            href="#instagram"
+                            variant="lead"
+                            color="purple"
+                            textGradient
+                            className='text-gray-900'
+                        >
+                            <FaGlobe />
+                        </Typography>
+
+                    </CardFooter>
+                </Card>
             </div>
         </div>
         <div className='py-4'>
-            <img src={KuriImg} className='w-full rounded' alt="" />
+            <img src={KuriImg} className='w-full rounded' style={{minHeight:'200px'}} alt="" />
         </div>
     </>
     )
