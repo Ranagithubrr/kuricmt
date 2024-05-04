@@ -30,7 +30,7 @@ const Quotes = ({ Quotes, Teachers }) => {
             return;
         }
         try {
-            const response = await axios.post("http://localhost:4000/quotes", {name,session,message});
+            const response = await axios.post("https://kuricmt-backend.onrender.com/quotes", {name,session,message});
             if (response.status === 200) {
                 toast.success("Quotes Submitted Successfully");                
                 setshowqhote(false)

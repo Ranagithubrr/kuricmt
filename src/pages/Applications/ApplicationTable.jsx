@@ -18,7 +18,7 @@ const ApplicationTable = () => {
   const formattedDate = `${date.toLocaleDateString()} at ${date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
 
   const FetchApplications = async () => {
-    axios.get('http://localhost:4000/application/')
+    axios.get('https://kuricmt-backend.onrender.com/application/')
       .then((response) => {
         setApplications(response.data.ApplicationsData)
       })
@@ -27,7 +27,7 @@ const ApplicationTable = () => {
       })
   }
   const ApproveApplication = async (id) => {
-    const apiUrl = `http://localhost:4000/application/resolve-application`;
+    const apiUrl = `https://kuricmt-backend.onrender.com/application/resolve-application`;
 
     const requestData = {
       applicationId: id

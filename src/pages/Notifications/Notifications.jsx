@@ -7,7 +7,7 @@ const Notifications = () => {
   console.log(notices)
   const FetchNotices = async () => {
     try {
-      const notices = await axios.get("http://localhost:4000/notice");
+      const notices = await axios.get("https://kuricmt-backend.onrender.com/notice");
       console.log('data is :', notices)
       setNotices(notices.data.allNotices)
     } catch (err) {

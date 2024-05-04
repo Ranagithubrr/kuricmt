@@ -10,7 +10,7 @@ const QuotesReviewTable = () => {
 
 
     const FetchUsers = async () => {
-        axios.get('http://localhost:4000/quotes')
+        axios.get('https://kuricmt-backend.onrender.com/quotes')
             .then((response) => {
                 setUsers(response.data.allQuotes)
             })
@@ -24,12 +24,12 @@ const QuotesReviewTable = () => {
         FetchUsers();
     }, [])
     const DeleteQuote = async (id) =>{
-       const response =  await axios.delete(`http://localhost:4000/quotes/${id}`);
+       const response =  await axios.delete(`https://kuricmt-backend.onrender.com/quotes/${id}`);
        console.log(response.status);
        FetchUsers();
     }
     const UpdateStatus = async (id) =>{
-        const response =  await axios.post(`http://localhost:4000/quotes/update-status/${id}`);
+        const response =  await axios.post(`https://kuricmt-backend.onrender.com/quotes/update-status/${id}`);
        console.log(response.status);
        FetchUsers();
     }

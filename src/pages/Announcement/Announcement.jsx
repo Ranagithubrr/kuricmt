@@ -9,7 +9,7 @@ const Announcement = () => {
     const [announcement, setAnnouncement] = useState("");
 
     const ToggleSwitch = () => {
-        axios.post('http://localhost:4000/content/status')
+        axios.post('https://kuricmt-backend.onrender.com/content/status')
         .then((res)=>{
             console.log(res.data);
             setSwitchState(res.data.data)            
@@ -23,7 +23,7 @@ const Announcement = () => {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`,
     };
-    const apiUrl = `http://localhost:4000/content/announcement`;
+    const apiUrl = `https://kuricmt-backend.onrender.com/content/announcement`;
 
     const UpdateAnnc = async () => {
         try {
@@ -35,7 +35,7 @@ const Announcement = () => {
         }
     }
     const FetchData = async () =>{
-        axios.get('http://localhost:4000/content/announcement')
+        axios.get('https://kuricmt-backend.onrender.com/content/announcement')
         .then((res)=>{
             setSwitchState(res.data.announcementStatus.announcementstatus);
             setAnnouncement(res.data.data.announcement)

@@ -24,7 +24,7 @@ const AddCaptain = (props) => {
 
   // console.log('olddata is ', oldData);
   const FetchData = () => {
-    axios.get('http://localhost:4000/captains')
+    axios.get('https://kuricmt-backend.onrender.com/captains')
       .then((response) => {
         dispatch(setCaptainsreducer(response.data.AllCaptains))
         // console.log(response.data.AllCaptains)
@@ -44,7 +44,7 @@ const AddCaptain = (props) => {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
     };
-    const apiUrl = isUpdating ? `http://localhost:4000/captains/update/${oldData._id}` : `http://localhost:4000/captains`;
+    const apiUrl = isUpdating ? `https://kuricmt-backend.onrender.com/captains/update/${oldData._id}` : `https://kuricmt-backend.onrender.com/captains`;
     try {
       const response = await axios.post(apiUrl, userDataSending, { headers });
       // console.log('Response:', response.data);

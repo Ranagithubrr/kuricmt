@@ -13,7 +13,7 @@ import axios from 'axios';
 const Homepage = () => {   
     const [allcontent,setAllContent] = useState([])
     const FetchContents = async () =>{
-        const response = await axios.get('http://localhost:4000/content/website-data');
+        const response = await axios.get('https://kuricmt-backend.onrender.com/content/website-data');
         setAllContent(response.data)
     };
     console.log(allcontent);

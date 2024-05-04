@@ -12,7 +12,7 @@ const Chat = () => {
     const { name, _id, image } = userData || {};
     console.log(userData)
     useEffect(() => {
-        const newSocket = io('http://localhost:4000');
+        const newSocket = io('https://kuricmt-backend.onrender.com');
         setSocket(newSocket);
         return () => newSocket.close();
     }, []);

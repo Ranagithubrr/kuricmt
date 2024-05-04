@@ -54,7 +54,7 @@ const AddNotice = () => {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`,
     };
-    const apiUrl = `http://localhost:4000/notice`;
+    const apiUrl = `https://kuricmt-backend.onrender.com/notice`;
     try {
       const response = await axios.post(apiUrl, dataObject, { headers });
       if (response.status === 200) {

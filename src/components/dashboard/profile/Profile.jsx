@@ -5,7 +5,7 @@ import axios from 'axios';
 const Profile = () => {
     const [teachers, setTeachers] = useState([])
     const FetchTeachers = async () => {
-        axios.get('http://localhost:4000/user')
+        axios.get('https://kuricmt-backend.onrender.com/user')
             .then((res) => {
                 setTeachers(res.data.AllUser)
             })

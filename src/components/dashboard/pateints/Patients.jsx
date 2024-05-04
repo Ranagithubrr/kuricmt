@@ -15,7 +15,7 @@ const Patients = () => {
     const [searchText,setSearchText] = useState("")
         
     const FetchData = () => {
-        axios.get('http://localhost:4000/captains')
+        axios.get('https://kuricmt-backend.onrender.com/captains')
             .then((response) => {
                 dispatch(setCaptainsreducer(response.data.AllCaptains))
                 

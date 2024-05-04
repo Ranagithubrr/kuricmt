@@ -36,7 +36,7 @@ const AccountsReviewtable = () => {
     setIsDelete(true)
   }
   const FetchUsers = async () => {
-    axios.get('http://localhost:4000/user/inactive-teacher')
+    axios.get('https://kuricmt-backend.onrender.com/user/inactive-teacher')
       .then((response) => {
         setUsers(response.data.AllUser)
       })
@@ -45,7 +45,7 @@ const AccountsReviewtable = () => {
       })
   }
   const DeleteTacher = async () => {
-    const apiUrl = `http://localhost:4000/user/delete-teacher`;
+    const apiUrl = `https://kuricmt-backend.onrender.com/user/delete-teacher`;
     setmodal(false);
 
     const requestData = {
@@ -79,7 +79,7 @@ const AccountsReviewtable = () => {
     }
   };
   const ActivateTeacher = async () => {
-    const apiUrl = `http://localhost:4000/user/activate-teacher`;
+    const apiUrl = `https://kuricmt-backend.onrender.com/user/activate-teacher`;
     setmodal(false);
 
     const requestData = {

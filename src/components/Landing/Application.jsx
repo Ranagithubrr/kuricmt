@@ -36,7 +36,7 @@ const Application = () => {
             return;
         }
         try {
-            const response = await axios.post("http://localhost:4000/application", formData);
+            const response = await axios.post("https://kuricmt-backend.onrender.com/application", formData);
             if (response.status === 200) {
                 toast.success("Application Submitted Successfully");
                 setFormData({

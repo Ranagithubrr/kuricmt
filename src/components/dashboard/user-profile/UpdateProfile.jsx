@@ -81,7 +81,7 @@ const UpdateProfile = () => {
 
         // console.log('going data is', newData);
         try {
-            const response = await axios.post('http://localhost:4000/user/update-profile', newData, { headers });
+            const response = await axios.post('https://kuricmt-backend.onrender.com/user/update-profile', newData, { headers });
             // console.log(response);
             response.data.msg = undefined;
             const updatedUser = response.data.updatedUser;

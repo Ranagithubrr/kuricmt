@@ -12,7 +12,7 @@ const Maindashboard = () => {
     const [noticeNumber, setNoticeNumber] = useState(0);    
     const FetchNotices = async () => {
         try {
-            const notices = await axios.get("http://localhost:4000/notice");
+            const notices = await axios.get("https://kuricmt-backend.onrender.com/notice");
             setNoticeNumber(notices.data.allNotices.length)
             const limitedNotices = notices.data.allNotices.slice(0, 3);
             setNotices(limitedNotices)
@@ -24,7 +24,7 @@ const Maindashboard = () => {
         FetchNotices()
     }, [])
     const FetchTeachers = async () => {
-        axios.get('http://localhost:4000/user')
+        axios.get('https://kuricmt-backend.onrender.com/user')
             .then((res) => {
                 setTeachers(res.data.AllUser)
             })
@@ -39,7 +39,7 @@ const Maindashboard = () => {
     const pendingApplication = applications.filter(item => item.status === "pending");
     const resolvedApplication = applications.filter(item => item.status === "resolved");
     const FetchApplications = async () => {
-        axios.get('http://localhost:4000/application/')
+        axios.get('https://kuricmt-backend.onrender.com/application/')
             .then((response) => {
                 setApplications(response.data.ApplicationsData)
             })
@@ -52,7 +52,7 @@ const Maindashboard = () => {
     }, []);
     const [captains, setCaptains] = useState([]);
     const FetchCaptainData = () => {
-        axios.get('http://localhost:4000/captains')
+        axios.get('https://kuricmt-backend.onrender.com/captains')
             .then((response) => {
                 setCaptains(response.data.AllCaptains)                
             })
