@@ -7,10 +7,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { setCaptainsreducer } from '../../../redux/captainReducer/captainReducer';
 import { useAuth } from '../../../contexts/AuthContext';
+import { Link } from 'react-router-dom';
 
 
 const Pataientstable = ({ setIsUpdating, setOldData, setPropmodal, searchText }) => {
-    const {token} = useAuth();
+    const { token, userData } = useAuth();
     const dispatch = useDispatch()
     const [studentName, setStudentName] = useState("");
     const [studentId, setStudentId] = useState("");
@@ -122,7 +123,10 @@ const Pataientstable = ({ setIsUpdating, setOldData, setPropmodal, searchText })
                                 <th className='border p-2'>Semester</th>
                                 <th className='border p-2'>Phone</th>
                                 <th className='border p-2'>Email</th>
-                                <th className='border p-2 text-center'>Action</th>
+                                {
+                                    userData && userData.type && userData.type === "admin" &&
+                                    <th className='border p-2 text-center'>Action</th>
+                                }
                             </tr>
                         </thead>
                         <tbody>
@@ -134,12 +138,15 @@ const Pataientstable = ({ setIsUpdating, setOldData, setPropmodal, searchText })
                                             <td className='border p-2'>{ele.roll}</td>
                                             <td className='border p-2'>{ele.name}</td>
                                             <td className='border p-2'>{ele.semester}</td>
-                                            <td className='border p-2'>{ele.phone}</td>
-                                            <td className='border p-2'>{ele.email}</td>
-                                            <td className='flex items-center justify-center pt-3'>
-                                                <span className='cursor-pointer text-red-500 px-3' onClick={() => WantToDelete(ele.name, ele._id)}><FaRegTrashAlt /></span>
-                                                <span className='cursor-pointer text-blue-500 px-3' onClick={() => SetProps(ele)}><FaRegEdit /></span>
-                                            </td>
+                                            <td className='border p-2'><Link to={`tel:${ele.phone}`}>{ele.phone}</Link></td>
+                                            <td className='border p-2'><Link to={`mailto:${ele.email}`}>{ele.email}</Link></td>
+                                            {
+                                                userData && userData.type && userData.type === "admin" &&
+                                                <td className='flex items-center justify-center pt-3'>
+                                                    <span className='cursor-pointer text-red-500 px-3' onClick={() => WantToDelete(ele.name, ele._id)}><FaRegTrashAlt /></span>
+                                                    <span className='cursor-pointer text-blue-500 px-3' onClick={() => SetProps(ele)}><FaRegEdit /></span>
+                                                </td>
+                                            }
                                         </tr>
                                     )
                                 })
@@ -155,7 +162,7 @@ const Pataientstable = ({ setIsUpdating, setOldData, setPropmodal, searchText })
                     </div>
                 }
                 {
-                  Captains && Captains.captains.length !== 0 && filteredItems.length === 0 &&
+                    Captains && Captains.captains.length !== 0 && filteredItems.length === 0 &&
                     <div className="w-full p-4 text-center py-10">
                         <span className="text-gray-500">No match</span>
                     </div>

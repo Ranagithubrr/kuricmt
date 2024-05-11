@@ -25,10 +25,16 @@ import AdminProtected from './AdminProtechRoute';
 import Applications from './pages/Applications/Applications';
 import Announcement from './pages/Announcement/Announcement';
 import QuoteReview from './pages/QuotReview/QuoteReview';
+import { Alert } from "@material-tailwind/react";
 
 function App() {
   return (
     <>
+      <Alert
+        className="fixed flex items-center bottom-5 right-0 w-64 z-20 rounded-none border-l-4 border-red-400 bg-red-200 font-medium text-red-800"
+        >      
+        <span>Test Mode</span>
+      </Alert>
       <Routes>
         <Route path='/' element={<Homepage />} />
         <Route path='/dashboard' element={
@@ -47,7 +53,7 @@ function App() {
           <Route path='review' element={<Review />}></Route>
           <Route path='teachers' element={<Profile />}></Route>
           <Route path='applications' element={<Applications />}></Route>
-          <Route path='earnings' element={<Earnings />}></Route>          
+          <Route path='earnings' element={<Earnings />}></Route>
           <Route path='calculators' element={<Calculators />}></Route>
           <Route path='notices' element={<Notifications />}></Route>
           <Route path='notes' element={<Notes />}></Route>

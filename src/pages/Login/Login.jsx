@@ -5,10 +5,11 @@ import { IoIosWarning } from 'react-icons/io'
 import axios from 'axios';
 import { useNavigate } from 'react-router'
 import { useAuth } from '../../contexts/AuthContext';
+import { Alert } from "@material-tailwind/react";
 
 const Login = () => {
     const navigate = useNavigate();
-    const {login } = useAuth();    
+    const { login } = useAuth();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
@@ -36,7 +37,7 @@ const Login = () => {
             });
             setError(false);
             response.data.msg = undefined;
-            login(response.data.user, response.data.token)            
+            login(response.data.user, response.data.token)
             setLoading(false);
             navigate('/dashboard');
 
@@ -62,6 +63,19 @@ const Login = () => {
             </div>
             <div className="w-1/2">
                 <div className='w-2/3 ml-10'>
+                    <Alert
+                        
+                        className="rounded-none my-2 border-l-4 border-[#2ec946] bg-[#2ec946]/10 font-medium text-[#2ec946]"
+                    >
+                        Use this accounts for test
+                        <p className='text-black'>Role: Admin</p>
+                        <p className='text-gray-700'>Email: admin@gmail.com</p>
+                        <p className='text-gray-700 border-b-2 border-dashed border-green-500 block w-full'>Password: pass123</p>
+
+                        <p className='text-black'>Role: Teacher</p>
+                        <p className='text-gray-700'>Email: admin@gmail.com</p>
+                        <p className='text-gray-700'>Password: pass123</p>
+                    </Alert>
                     {
                         error &&
                         <div className='flex items-center bg-yellow-200 px-4 py-3'>

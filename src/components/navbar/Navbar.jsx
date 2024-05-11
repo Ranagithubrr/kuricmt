@@ -9,11 +9,26 @@ import {Link} from 'react-router-dom'
 import Usermenu from './Usermenu';
 import Computer from '../../img/desktop.png';
 import { useAuth } from '../../contexts/AuthContext';
+import axios from 'axios';
 
 const Navbar = () => {
     const {userData} = useAuth()  
     const [rightSidebar, setRightSidebar] = useState(false);
     const [darkMode, setDarkMode] = useState(false);
+    const [logo,setLogo] = useState("")
+    const FetchData = () => {        
+        axios.get('https://kuricmt-backend.onrender.com/content')
+          .then((response) => {
+            setLogo(response.data[0].mainlogo);
+          })
+          .catch((err) => {
+            console.log('an error', err)            
+          })        
+      }
+    
+      useEffect(() => {
+        FetchData();
+      }, [])
 
   useEffect(() => {
     // Check if the user's dark mode preference is stored in local storage
@@ -42,30 +57,30 @@ const Navbar = () => {
   }, [darkMode]);
     return (
         <>
-            <div class="flex px-6 py-5 items-center shadow-md sticky top-0 z-10 bg-white dark:bg-gray-800">
+            <div class="flex px-6 py-2  items-center shadow-md sticky top-0 z-10 bg-white dark:bg-gray-800">
                 <div class="w-4/12">
                     {/* <span className="text-3xl font-bold dark:text-gray-300"><span className="text-blue-900 dark:text-blue-500">D.O.C</span></span> */}
-                    <img src={Computer} alt="D.O.C"  className='h-12 pl-10'/>
-                    <span className="block text-xs font-semibold">Department Of Computer</span>
+                    <img src={logo ? logo : Computer} alt="D.O.C"  className='h-16 rounded-full bg-white'/>
+                    <span className="block text-xs font-semibold dark:text-slate-400 mt-1">Department Of Computer</span>
                 </div>
                 <div class="w-6/12">
                     <ul className='flex'>
-                        <li className='px-7 border-b-4 border-transparent hover:border-blue-900 dark:hover:border-gray-300  mx-2 pb-3 font-semibold text-blue-950 dark:text-gray-200   '>
+                        <li className='px-7 border-b-4 border-transparent hover:border-blue-900 dark:hover:border-slate-400  mx-2 pb-3 font-semibold text-blue-950 dark:text-slate-400   '>
                             <Link to="/dashboard" className='text-3xl'>
                                 <AiOutlineHome />
                             </Link>
                         </li>
-                        <li className='px-7 border-b-4 border-transparent hover:border-blue-900 dark:hover:border-gray-300  mx-2 pb-3 font-semibold text-blue-950 dark:text-gray-200   '>
+                        <li className='px-7 border-b-4 border-transparent hover:border-blue-900 dark:hover:border-slate-400  mx-2 pb-3 font-semibold text-blue-950 dark:text-slate-400   '>
                             <Link to="/dashboard/notices" className='text-3xl'>
                                 <IoDocumentTextOutline />
                             </Link>
                         </li>                        
-                        <li className='px-7 border-b-4 border-transparent hover:border-blue-900 dark:hover:border-gray-300  mx-2 pb-3 font-semibold text-blue-950 dark:text-gray-200   '>
+                        <li className='px-7 border-b-4 border-transparent hover:border-blue-900 dark:hover:border-slate-400  mx-2 pb-3 font-semibold text-blue-950 dark:text-slate-400   '>
                             <Link to="/dashboard/profile" className='text-3xl'>
                                 <CgProfile />
                             </Link>
                         </li>
-                        <li className='px-7 border-b-4 border-transparent hover:border-blue-900 dark:hover:border-gray-300  mx-2 pb-3 font-semibold text-blue-950 dark:text-gray-200   '>
+                        <li className='px-7 border-b-4 border-transparent hover:border-blue-900 dark:hover:border-slate-400  mx-2 pb-3 font-semibold text-blue-950 dark:text-slate-400   '>
                             <Link target='_blank' to="/" className='text-3xl'>
                                 <IoIosGlobe />
                             </Link>
