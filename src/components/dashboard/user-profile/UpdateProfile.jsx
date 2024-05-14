@@ -13,7 +13,7 @@ const UpdateProfile = () => {
     const [logoState, setLogoState] = useState(null);
     let imageUrl = "";
     const navigate = useNavigate();   
-    const { name, address, email, phone, title, website, _id, image } = userData || {};
+    const { name, address, email, phone, title, website, facebook, twitter, instagram, _id, image } = userData || {};
     let newData = {
         email: email,
         name: name,
@@ -21,6 +21,9 @@ const UpdateProfile = () => {
         phone: phone,
         title: title,
         website: website,
+        facebook: facebook,
+        twitter: twitter,
+        instagram: instagram,
         image: image,
         userId: _id
     };
@@ -153,12 +156,13 @@ const UpdateProfile = () => {
                             <span className='block text-xs  my-2 p-1 w-2/3 rounded text-red-600 font-bold'>Email is not changable</span>
                         </div>
                     </div>
+                    <span className='font-bold textmd text-gray-700'>Social Networks</span>
                     <div className='flex justify-between w-1/2'>
                         <div className='w-1/4'>
                             <span className='font-semibold text-gray-600'>Facebook</span>
                         </div>
                         <div className='w-3/4'>
-                            <input className='text-gray-600 font-semibold outline-none border-b-2' placeholder='https://rana-rr.netlify.app/' defaultValue={newData.website} onChange={(e) => handleChange(e)} name="website"></input>
+                            <input className='text-gray-600 font-semibold outline-none border-b-2' placeholder='' defaultValue={newData.website} onChange={(e) => handleChange(e)} name="facebook"></input>
                         </div>
                     </div>
                     <div className='flex justify-between w-1/2'>
@@ -166,7 +170,7 @@ const UpdateProfile = () => {
                             <span className='font-semibold text-gray-600'>Instagram</span>
                         </div>
                         <div className='w-3/4'>
-                            <input className='text-gray-600 font-semibold outline-none border-b-2' placeholder='https://rana-rr.netlify.app/' defaultValue={newData.website} onChange={(e) => handleChange(e)} name="website"></input>
+                            <input className='text-gray-600 font-semibold outline-none border-b-2' placeholder='' defaultValue={newData.website} onChange={(e) => handleChange(e)} name="instagram"></input>
                         </div>
                     </div>
                     <div className='flex justify-between w-1/2'>
@@ -174,7 +178,7 @@ const UpdateProfile = () => {
                             <span className='font-semibold text-gray-600'>Twitter</span>
                         </div>
                         <div className='w-3/4'>
-                            <input className='text-gray-600 font-semibold outline-none border-b-2' placeholder='https://rana-rr.netlify.app/' defaultValue={newData.website} onChange={(e) => handleChange(e)} name="website"></input>
+                            <input className='text-gray-600 font-semibold outline-none border-b-2' placeholder='' defaultValue={newData.website} onChange={(e) => handleChange(e)} name="twitter"></input>
                         </div>
                     </div>
                     <div className='flex justify-between w-1/2'>
@@ -182,7 +186,7 @@ const UpdateProfile = () => {
                             <span className='font-semibold text-gray-600'>Website</span>
                         </div>
                         <div className='w-3/4'>
-                            <input className='text-gray-600 font-semibold outline-none border-b-2' placeholder='https://rana-rr.netlify.app/' defaultValue={newData.website} onChange={(e) => handleChange(e)} name="website"></input>
+                            <input className='text-gray-600 font-semibold outline-none border-b-2' placeholder='' defaultValue={newData.website} onChange={(e) => handleChange(e)} name="website"></input>
                         </div>
                     </div>
                 </div>
