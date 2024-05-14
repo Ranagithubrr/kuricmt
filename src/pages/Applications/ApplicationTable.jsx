@@ -75,6 +75,7 @@ const ApplicationTable = () => {
   // console.log(applications.length);
   useEffect(() => {
     FetchApplications();
+    // eslint-disable-next-line
   }, []);
   console.log(applications);
   return (
