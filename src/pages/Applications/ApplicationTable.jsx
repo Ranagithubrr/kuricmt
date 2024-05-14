@@ -3,49 +3,54 @@ import { useEffect, useState } from "react";
 import { FaCheck, FaEye } from "react-icons/fa";
 import { IoMail } from "react-icons/io5";
 import { ToastContainer } from "react-toastify";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 import { useAuth } from "../../contexts/AuthContext";
-
+import { useDispatch, useSelector } from "react-redux";
+import { setApplicationreducer } from "../../redux/applicationReducers/applicationReducer";
 
 const ApplicationTable = () => {
-  const [applications, setApplications] = useState([]);
-  const {token} = useAuth();
+  const applications = useSelector(
+    (state) => state.applicationReducer.applications
+  );
+  const dispatch = useDispatch();
+  const { token } = useAuth();
   const [modal, setModal] = useState(false);
-  const [currentItem, setCurrentItem] = useState({})
+  const [currentItem, setCurrentItem] = useState({});
   const dateString = currentItem.createdAt;
   const date = new Date(dateString);
 
-  const formattedDate = `${date.toLocaleDateString()} at ${date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
+  const formattedDate = `${date.toLocaleDateString()} at ${date.toLocaleTimeString(
+    [],
+    { hour: "2-digit", minute: "2-digit" }
+  )}`;
 
   const FetchApplications = async () => {
-    axios.get('https://kuricmt-backend.onrender.com/application/')
+    axios
+      .get("https://kuricmt-backend.onrender.com/application/")
       .then((response) => {
-        setApplications(response.data.ApplicationsData)
+        dispatch(setApplicationreducer(response.data.ApplicationsData));
       })
       .catch((err) => {
-        console.log('an error', err)
-      })
-  }
+        console.log("an error", err);
+      });
+  };
   const ApproveApplication = async (id) => {
     const apiUrl = `https://kuricmt-backend.onrender.com/application/resolve-application`;
 
     const requestData = {
-      applicationId: id
+      applicationId: id,
     };
 
     const headers = {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     };
     const activationPromise = axios.post(apiUrl, requestData, { headers });
-    const promiseToast = toast.promise(
-      activationPromise,
-      {
-        pending: 'Approving Application, please wait...',
-        success: 'Application Approved successfully',
-        error: 'Failed to Approve application',
-      }
-    );
+    const promiseToast = toast.promise(activationPromise, {
+      pending: "Approving Application, please wait...",
+      success: "Application Approved successfully",
+      error: "Failed to Approve application",
+    });
 
     try {
       // Wait for the activation promise to resolve or reject
@@ -56,7 +61,7 @@ const ApplicationTable = () => {
 
       FetchApplications();
     } catch (error) {
-      console.error('Error:', error);
+      console.error("Error:", error);
 
       // Manually close the toast after error
       toast.dismiss(promiseToast);
@@ -65,18 +70,16 @@ const ApplicationTable = () => {
 
   const viewClicked = (item) => {
     setModal(true);
-    setCurrentItem(item)
-  }
+    setCurrentItem(item);
+  };
   // console.log(applications.length);
   useEffect(() => {
     FetchApplications();
   }, []);
-  console.log(applications)
+  console.log(applications);
   return (
     <>
-      <ToastContainer
-        autoClose={1500}
-      />
+      <ToastContainer autoClose={1500} />
       <div className=''>
         {
           applications && applications.length !== 0 &&
@@ -153,9 +156,8 @@ const ApplicationTable = () => {
           </div>
         }
       </div>
-
     </>
-  )
-}
+  );
+};
 
-export default ApplicationTable
+export default ApplicationTable;

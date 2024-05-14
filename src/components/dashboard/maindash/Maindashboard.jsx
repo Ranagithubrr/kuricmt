@@ -7,11 +7,14 @@ import Notification from '../../../pages/Notifications/Notification/Notification
 import { Link } from 'react-router-dom';
 import { Alert } from "@material-tailwind/react";
 import { FaCheckCircle } from "react-icons/fa";
+import { useDispatch, useSelector } from 'react-redux';
+import { setTeacherreducer } from '../../../redux/teacherReducer/teacherReducer';
 
-const Maindashboard = () => {
-    const [teachers, setTeachers] = useState([])
+const Maindashboard = () => {    
+    const dispatch = useDispatch();
     const [notices, setNotices] = useState([]);
     const [noticeNumber, setNoticeNumber] = useState(0);
+    const teachers = useSelector((state) => state.teacherReducer.teachers);
     const FetchNotices = async () => {
         try {
             const notices = await axios.get("https://kuricmt-backend.onrender.com/notice");
@@ -24,19 +27,20 @@ const Maindashboard = () => {
     }
     useEffect(() => {
         FetchNotices()
-    }, [])
-    const FetchTeachers = async () => {
-        axios.get('https://kuricmt-backend.onrender.com/user')
-            .then((res) => {
-                setTeachers(res.data.AllUser)
-            })
-            .catch(err => {
-                console.log('fetching error')
-            })
-    }
-    useEffect(() => {
-        FetchTeachers()
-    }, [])
+    }, [])   
+    const FetchTeachers = () => {
+        axios
+          .get("https://kuricmt-backend.onrender.com/user")
+          .then((res) => {
+            dispatch(setTeacherreducer(res.data.AllUser));
+          })
+          .catch((err) => {
+            console.log("fetching error");
+          });
+      };
+      useEffect(() => {
+        FetchTeachers();
+      }, []);
     const [applications, setApplications] = useState([]);
     const pendingApplication = applications.filter(item => item.status === "pending");
     const resolvedApplication = applications.filter(item => item.status === "resolved");

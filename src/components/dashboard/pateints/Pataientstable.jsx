@@ -52,9 +52,6 @@ const Pataientstable = ({ setIsUpdating, setOldData, setPropmodal, searchText })
         console.log(id)
         setStudentId(id);
     }
-    // const userState = useSelector((state) => state.userReducer);
-    // const token = token;
-
 
     const DeleteCaptain = async (id) => {
         const apiUrl = `https://kuricmt-backend.onrender.com/captains/delete/${id}`;
