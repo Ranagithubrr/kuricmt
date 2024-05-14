@@ -20,6 +20,7 @@ const Profile = () => {
   };
   useEffect(() => {
     FetchTeachers();
+     // eslint-disable-next-line
   }, []);
   return (
     <div className="p-2 border m-3">

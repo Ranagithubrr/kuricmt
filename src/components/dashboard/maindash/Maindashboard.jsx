@@ -28,6 +28,7 @@ const Maindashboard = () => {
     useEffect(() => {
         FetchNotices()
     }, [])   
+
     const FetchTeachers = () => {
         axios
           .get("https://kuricmt-backend.onrender.com/user")
@@ -40,6 +41,7 @@ const Maindashboard = () => {
       };
       useEffect(() => {
         FetchTeachers();
+        // eslint-disable-next-line
       }, []);
     const [applications, setApplications] = useState([]);
     const pendingApplication = applications.filter(item => item.status === "pending");
