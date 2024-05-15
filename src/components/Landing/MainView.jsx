@@ -20,11 +20,11 @@ const MainView = ({ Admin, Content }) => {
         }
         <div className='lg:flex items-center relative overflow-hidden'>
             <div className='w-full lg:w-7/12'>
-                <h1 className='font-extrabold text-5xl bg-gradient-to-r from-gray-500 to-red-500 text-transparent bg-clip-text'>
+                <h1 className='font-extrabold text-5xl bg-gradient-to-r from-gray-500 to-gray-800 text-transparent bg-clip-text'>
                     {Content && Content[0].maintitle}
                 </h1>
-                <h3 className='font-semibold text-xl bg-gradient-to-r from-gray-500 to-red-500 text-transparent bg-clip-text'>{Content && Content[0].tagline}</h3>
-                <h3 className='font-semibold text-xl'>Kurigram Polytechnic Institute, kurigram</h3>
+                <h3 className='font-semibold text-xl bg-gradient-to-r from-gray-500 to-gray-800 text-transparent bg-clip-text'>{Content && Content[0].tagline}</h3>
+                <h3 className='font-semibold text-xl text-gray-700'>Kurigram Polytechnic Institute, kurigram</h3>
             </div>
             <div className='w-full lg:w-4/12'>
                 <Card className="rounded-lg p-2">
@@ -40,55 +40,55 @@ const MainView = ({ Admin, Content }) => {
                         </Typography>
                     </CardBody>
                     <CardFooter className="flex justify-center gap-7 pt-2 pb-2">
+                      {Admin && Admin.facebook && (
+                        <Typography
+                          as="a"
+                          href={Admin && Admin.facebook}
+                          variant="lead"
+                          color="black"
+                          textGradient
+                          className="text-blue-600"
+                        >
+                          <FaFacebook />
+                        </Typography>
+                      )}
+                      {Admin && Admin.instagram && (
+                        <Typography
+                          as="a"
+                          href={Admin && Admin.instagram}
+                          variant="lead"
+                          color="purple"
+                          textGradient
+                          className="text-red-400"
+                        >
+                          <FaInstagram />
+                        </Typography>
+                      )}
+                      {Admin && Admin.twitter && (
+                        <Typography
+                          as="a"
+                          href={Admin && Admin.twitter}
+                          variant="lead"
+                          color="light-blue"
+                          textGradient
+                          className="text-blue-700"
+                        >
+                          <FaTwitter />
+                        </Typography>
+                      )}
+                      {Admin && Admin.website && (
 
                         <Typography
-                            as="a"
-                            href="#facebook"
-                            variant="lead"
-                            color="black"
-                            textGradient
-                            className='text-blue-600'
+                          as="a"
+                          href={Admin && Admin.website}
+                          variant="lead"
+                          color="purple"
+                          textGradient
+                          className="text-gray-900"
                         >
-                            <FaFacebook />
+                          <FaGlobe />
                         </Typography>
-
-
-
-                        <Typography
-                            as="a"
-                            href="#instagram"
-                            variant="lead"
-                            color="purple"
-                            textGradient
-                            className='text-red-400'
-                        >
-                            <FaInstagram />
-                        </Typography>
-
-
-                        <Typography
-                            as="a"
-                            href="#twitter"
-                            variant="lead"
-                            color="light-blue"
-                            textGradient
-                            className='text-blue-700'
-                        >
-                            <FaTwitter />
-                        </Typography>
-
-
-                        <Typography
-                            as="a"
-                            href="#instagram"
-                            variant="lead"
-                            color="purple"
-                            textGradient
-                            className='text-gray-900'
-                        >
-                            <FaGlobe />
-                        </Typography>
-
+                      )}
                     </CardFooter>
                 </Card>
             </div>

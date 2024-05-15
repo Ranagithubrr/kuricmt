@@ -9,6 +9,7 @@ import Quotes from '../../components/Landing/Quotes';
 import Application from '../../components/Landing/Application';
 import Footer from '../../components/Landing/Footer';
 import axios from 'axios';
+import Captains from '../../components/Landing/Captains';
 
 const Homepage = () => {
     const [loading, setLoading] = useState(false);
@@ -47,6 +48,7 @@ const Homepage = () => {
                     <Teachers Teachers={allcontent.teachers} />
                     <AboutUs Content={content} />
                     <Notices Notices={notices} />
+                    <Captains />
                     {/* <Gallery Content={content}/> */}
                     <Quotes Quotes={quotes} Teachers={allcontent.teachers} />
                     <Application />
