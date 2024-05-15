@@ -29,6 +29,7 @@ const Homepage = () => {
     const notices = allcontent && allcontent.notices;
     const quotes = allcontent && allcontent.Quotes;
     const logo = allcontent && allcontent.contents && allcontent.contents[0].mainlogo;
+    const captains = allcontent && allcontent.Captains && allcontent.Captains;
     console.log(logo)
     return (
         <div className='px-8'>
@@ -48,7 +49,7 @@ const Homepage = () => {
                     <Teachers Teachers={allcontent.teachers} />
                     <AboutUs Content={content} />
                     <Notices Notices={notices} />
-                    <Captains />
+                    <Captains Captains={captains}/>
                     {/* <Gallery Content={content}/> */}
                     <Quotes Quotes={quotes} Teachers={allcontent.teachers} />
                     <Application />

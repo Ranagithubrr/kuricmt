@@ -6,7 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { useAuth } from "../../contexts/AuthContext";
 
 const AddCaptain = (props) => {
-  const {token} = useAuth();
+  const { token } = useAuth();
   const { isUpdating, setmodal, oldData } = props;
   const dispatch = useDispatch();
   const [name, setName] = useState(isUpdating ? oldData.name : '');
@@ -14,12 +14,14 @@ const AddCaptain = (props) => {
   const [roll, setRoll] = useState(isUpdating ? oldData.roll : '');
   const [phone, setPhone] = useState(isUpdating ? oldData.phone : '');
   const [semester, setSemester] = useState(isUpdating ? oldData.semester : '');
+  const [shift, setShift] = useState(isUpdating ? oldData.shift : '');
   const userDataSending = {
     name: name,
     email: email,
     roll: roll,
     phone: phone,
     semester: semester,
+    shift: shift
   };
 
   // console.log('olddata is ', oldData);
@@ -49,7 +51,7 @@ const AddCaptain = (props) => {
       const response = await axios.post(apiUrl, userDataSending, { headers });
       // console.log('Response:', response.data);
       if (response.status === 200) {
-        toast.success( isUpdating ? 'Captain Updated Successfully' : 'Captain Added Successfully', {
+        toast.success(isUpdating ? 'Captain Updated Successfully' : 'Captain Added Successfully', {
           position: "top-right",
           autoClose: 1500,
           hideProgressBar: false,
@@ -59,7 +61,7 @@ const AddCaptain = (props) => {
           progress: undefined,
           theme: "light",
         })
-      }else{
+      } else {
         toast.error('Failed to add Captain !', {
           position: "top-right",
           autoClose: 1500,
@@ -69,7 +71,7 @@ const AddCaptain = (props) => {
           draggable: true,
           progress: undefined,
           theme: "light",
-          });
+        });
       }
       FetchData()
     } catch (error) {
@@ -84,12 +86,12 @@ const AddCaptain = (props) => {
         draggable: true,
         progress: undefined,
         theme: "light",
-        });
+      });
     }
   };
 
   return (
-    <div className='fixed top-32 w-2/4 m-auto z-50 bg-white shadow left-0 right-0 rounded p-4'>
+    <div className='fixed top-12 w-2/4 m-auto z-50 bg-white shadow left-0 right-0 rounded p-4'>
       <ToastContainer
       />
       <span className='font-semibold block'>{isUpdating ? 'Update Captain' : ' Add Captain'}</span>
@@ -99,6 +101,7 @@ const AddCaptain = (props) => {
       <input value={roll} onChange={(e) => setRoll(e.target.value)} type="number" id='roll' className='border rounded-sm px-4 py-2 w-full outline-none' placeholder='403849' />
       <label htmlFor="sem">Semester</label>
       <select value={semester} onChange={(e) => setSemester(e.target.value)} name="semester" id="sem" className='border rounded-sm px-4 py-2 w-full outline-none'>
+        <option>Select</option>
         <option value="1st">1st</option>
         <option value="2nd">2nd</option>
         <option value="3rd">3rd</option>
@@ -106,6 +109,12 @@ const AddCaptain = (props) => {
         <option value="5th">5th</option>
         <option value="6th">6th</option>
         <option value="7th">7th</option>
+      </select>
+      <label htmlFor="sem">Shift</label>
+      <select value={shift} onChange={(e) => setShift(e.target.value)} name="shift" id="shift" className='border rounded-sm px-4 py-2 w-full outline-none'>
+        <option>Select</option>
+        <option value="1st">1st</option>
+        <option value="2nd">2nd</option>
       </select>
       <label htmlFor="phone">Phone</label>
       <input value={phone} onChange={(e) => setPhone(e.target.value)} type="text" id='phone' className='border rounded-sm px-4 py-2 w-full outline-none' placeholder='012923937937' />

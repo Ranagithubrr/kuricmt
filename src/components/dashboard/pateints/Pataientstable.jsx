@@ -15,11 +15,8 @@ const Pataientstable = ({ setIsUpdating, setOldData, setPropmodal, searchText })
     const dispatch = useDispatch()
     const [studentName, setStudentName] = useState("");
     const [studentId, setStudentId] = useState("");
-    const [modal, setmodal] = useState(false);
-    console.log('search text is', searchText)
-    // const [Captains, setCaptains] = useState([]);
-    const Captains = useSelector((state) => state.captainReducer);
-    console.log('cap ', Captains)
+    const [modal, setmodal] = useState(false);      
+    const Captains = useSelector((state) => state.captainReducer);   
     const FetchData = () => {
         axios.get('https://kuricmt-backend.onrender.com/captains')
             .then((response) => {
@@ -118,6 +115,7 @@ const Pataientstable = ({ setIsUpdating, setOldData, setPropmodal, searchText })
                                 <th className='border p-2'>Roll</th>
                                 <th className='border p-2'>Name</th>
                                 <th className='border p-2'>Semester</th>
+                                <th className='border p-2'>Shift</th>
                                 <th className='border p-2'>Phone</th>
                                 <th className='border p-2'>Email</th>
                                 {
@@ -135,6 +133,7 @@ const Pataientstable = ({ setIsUpdating, setOldData, setPropmodal, searchText })
                                             <td className='border p-2'>{ele.roll}</td>
                                             <td className='border p-2'>{ele.name}</td>
                                             <td className='border p-2'>{ele.semester}</td>
+                                            <td className='border p-2'>{ele.shift}</td>
                                             <td className='border p-2'><Link to={`tel:${ele.phone}`}>{ele.phone}</Link></td>
                                             <td className='border p-2'><Link to={`mailto:${ele.email}`}>{ele.email}</Link></td>
                                             {
