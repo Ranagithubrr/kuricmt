@@ -8,9 +8,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
 
 const Quotes = ({ Quotes, Teachers }) => {
-    const [name,setName] = useState('');
-    const [session,setSession] = useState('');
-    const [message,setMessage] = useState('');
+    const [name, setName] = useState('');
+    const [session, setSession] = useState('');
+    const [message, setMessage] = useState('');
     console.log(Quotes)
     const [showqhote, setshowqhote] = useState(false);
     const settings = {
@@ -24,17 +24,17 @@ const Quotes = ({ Quotes, Teachers }) => {
     const FilteredQuotes = Quotes && Quotes.filter((ele) => ele.status === true);
     console.log('Filtered Quotes', FilteredQuotes);
 
-    const SubmitQuote = async () =>{
-        if(name === "" || session === "" || message === ""){
+    const SubmitQuote = async () => {
+        if (name === "" || session === "" || message === "") {
             toast.error("Please Fill All The Fields")
             return;
         }
         try {
-            const response = await axios.post("https://kuricmt-backend.onrender.com/quotes", {name,session,message});
+            const response = await axios.post("https://kuricmt-backend.onrender.com/quotes", { name, session, message });
             if (response.status === 200) {
-                toast.success("Quotes Submitted Successfully");                
+                toast.success("Quotes Submitted Successfully");
                 setshowqhote(false)
-            }else{
+            } else {
                 toast.error("Failed to submit Quote")
                 return;
             }
@@ -44,11 +44,11 @@ const Quotes = ({ Quotes, Teachers }) => {
         }
     }
     return (
-        <div>
+        <div className='focus:outline-none'>
             <ToastContainer />
             <div className='lg:w-1/2 mx-auto py-5'>
                 {
-                    FilteredQuotes && FilteredQuotes.length > 1 && <Slider {...settings} className='mt-5'>
+                    FilteredQuotes && FilteredQuotes.length > 1 && <Slider {...settings} className='mt-5 border-none outline-none'>
                         {
                             FilteredQuotes && FilteredQuotes.map((ele, index) => {
                                 return (
@@ -66,13 +66,15 @@ const Quotes = ({ Quotes, Teachers }) => {
                     </Slider>
                 }
             </div>
-            <div className='lg:w-1/2 mx-auto py-5'>
+            <div className='lg:w-1/2 mx-auto py-5 border-none outline-none'>
                 {
                     FilteredQuotes && FilteredQuotes.length === 1 &&
-                    <div>
-                        <p className='p-2 text-center font-semibold lg:text-2xl text-gray-500 py-5'><span><FaQuoteLeft /></span>
+                    <div className="border-none outline-none">
+                        <p className='p-2 text-center font-semibold lg:text-2xl text-gray-500 py-5'>
+                            <span><FaQuoteLeft /></span>
                             {FilteredQuotes[0].message}
-                            <span className='float-right pt-5'><FaQuoteRight /></span></p>
+                            <span className='float-right pt-5'><FaQuoteRight /></span>
+                        </p>
                         <span className='font-semibold text-black block text-center text-sm'>{FilteredQuotes[0].name}</span>
                         <span className='font-semibold text-gray-700 block text-center text-xs'>Department Of Computer</span>
                         <span className='font-semibold text-gray-700 block text-center text-xs'>Session {FilteredQuotes[0].session}</span>
@@ -82,6 +84,7 @@ const Quotes = ({ Quotes, Teachers }) => {
             <div className="text-center py-3 flex items-center justify-center">
                 <button className='bg-red-500 px-3 py-2 text-gray-200 rounded font-semibold flex items-center' onClick={() => setshowqhote(!showqhote)}><span className='mr-2'><FaPlus /></span> Add My Quote</button>
             </div>
+            {/* add quote */}
             {
                 showqhote &&
                 <>
@@ -91,7 +94,7 @@ const Quotes = ({ Quotes, Teachers }) => {
                             <span className='text-white text-3xl cursor-pointer'><IoCloseCircle /></span>
                         </div>
                         <div className='text-center py-1 mx-5'>
-                            <input type="text" placeholder='Your Name' className='outline-none border rounded-sm px-3 py-1 w-full' value={name} onChange={(e)=>setName(e.target.value)}/>
+                            <input type="text" placeholder='Your Name' className='outline-none border rounded-sm px-3 py-1 w-full' value={name} onChange={(e) => setName(e.target.value)} />
                         </div>
                         <div className='text-center py-1 mx-5'>
                             <select name="department" id="dep" className='border rounded-sm px-3 py-1 w-full outline-none'>
@@ -99,7 +102,7 @@ const Quotes = ({ Quotes, Teachers }) => {
                             </select>
                         </div>
                         <div className='text-center py-1 mx-5'>
-                            <select name="department" id="dep" className='border rounded-sm px-3 py-1 w-full outline-none' value={session} onChange={(e)=>setSession(e.target.value)}>
+                            <select name="department" id="dep" className='border rounded-sm px-3 py-1 w-full outline-none' value={session} onChange={(e) => setSession(e.target.value)}>
                                 <option value="Computer">Session</option>
                                 <option value="2015-16">2015-16</option>
                                 <option value="2016-17">2016-17</option>
@@ -113,7 +116,7 @@ const Quotes = ({ Quotes, Teachers }) => {
                             </select>
                         </div>
                         <div className='text-center py-1 mx-5'>
-                            <textarea value={message} onChange={(e)=>setMessage(e.target.value)} name="" id="" cols="30" rows="10" className='border rounded-sm px-3 py-1 w-full outline-none' placeholder='Type Your Message'></textarea>
+                            <textarea value={message} onChange={(e) => setMessage(e.target.value)} name="" id="" cols="30" rows="10" className='border rounded-sm px-3 py-1 w-full outline-none' placeholder='Type Your Message'></textarea>
                         </div>
                         <div className='text-center py-1 mx-5'>
                             <button className='outline-none bg-red-500 text-gray-100 font-semibold text-sm px-3 py-2 rounded' onClick={SubmitQuote}>Submit</button>

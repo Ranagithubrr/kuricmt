@@ -22,15 +22,15 @@ const AboutUs = ({ Content }) => {
                         />
                         <div className="px-6 py-4">
                             <div className="font-bold text-xl mb-2">Software Lab 1</div>
-                            <div className='flex justify-between w-2/3'>
-                                <p className="text-gray-600 text-base font-semibold">
-                                    Number of Computers :
+                            <div className='flex justify-between w-full md:w-2/3'>
+                                <p className="text-gray-600 text-sm md:text-base font-semibold">
+                                    Number of Computers
                                 </p>
                                 <p className='font-bold'>{Content && Content[0].labonecomputer}</p>
                             </div>
-                            <div className='flex justify-between w-2/3'>
-                                <p className="text-gray-600 text-base font-semibold">
-                                    Number of Capacity :
+                            <div className='flex justify-between w-full md:w-2/3'>
+                                <p className="text-gray-600 text-sm md:text-base font-semibold">
+                                    Number of Capacity
                                 </p>
                                 <p className='font-bold'>{Content && Content[0].laboneseat}</p>
                             </div>
@@ -44,15 +44,15 @@ const AboutUs = ({ Content }) => {
                         />
                         <div className="px-6 py-4">
                             <div className="font-bold text-xl mb-2">Software Lab 2</div>
-                            <div className='flex justify-between w-2/3'>
-                                <p className="text-gray-600 text-base font-semibold">
-                                    Number of Computers :
+                            <div className='flex justify-between w-full md:w-2/3'>
+                                <p className="text-gray-600 text-sm md:text-base font-semibold">
+                                    Number of Computers
                                 </p>
                                 <p className='font-bold'>{Content && Content[0].labtwocomputer}</p>
                             </div>
-                            <div className='flex justify-between w-2/3'>
-                                <p className="text-gray-600 text-base font-semibold">
-                                    Number of Capacity :
+                            <div className='flex justify-between w-full md:w-2/3'>
+                                <p className="text-gray-600 text-sm md:text-base font-semibold">
+                                    Number of Capacity
                                 </p>
                                 <p className='font-bold'>{Content && Content[0].labtwoseat}</p>
                             </div>
@@ -66,15 +66,15 @@ const AboutUs = ({ Content }) => {
                         />
                         <div className="px-6 py-4">
                             <div className="font-bold text-xl mb-2">Hardware Lab</div>
-                            <div className='flex justify-between w-2/3'>
+                            <div className='flex justify-between w-full md:w-2/3'>
                                 <p className="text-gray-600 text-base font-semibold">
-                                    Number of Computers :
+                                    Number of Computers
                                 </p>
                                 <p className='font-bold'>{Content && Content[0].hlabcomputer}</p>
                             </div>
-                            <div className='flex justify-between w-2/3'>
+                            <div className='flex justify-between w-full md:w-2/3'>
                                 <p className="text-gray-600 text-base font-semibold">
-                                    Number of Capacity :
+                                    Number of Capacity
                                 </p>
                                 <p className='font-bold'>{Content && Content[0].hlabseat}</p>
                             </div>
