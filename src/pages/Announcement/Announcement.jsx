@@ -1,8 +1,8 @@
-import { Switch } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { GrAnnounce } from 'react-icons/gr'
 import { useAuth } from '../../contexts/AuthContext';
 import axios from 'axios';
+import { Switch } from "@material-tailwind/react";
 
 const Announcement = () => {
     const [switchState, setSwitchState] = useState(false);
@@ -50,7 +50,7 @@ const Announcement = () => {
     return (
         <div className='p-4 flex items-center justify-center flex-col mt-10'>
         <h2 className='font-semibold text-md'>Add a New Announcement</h2>
-        <Switch checked={switchState} onClick={ToggleSwitch} />
+        <Switch defaultChecked={switchState} onClick={ToggleSwitch} />
         <span className='text-9xl cursor-pointer my-5'><GrAnnounce /></span>
         <textarea
             rows={10}

@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { FaRegTrashAlt } from 'react-icons/fa';
 import { ToastContainer } from "react-toastify";
-import { Switch } from "@mui/material";
+import { Switch } from "@material-tailwind/react";
 
 
 const QuotesReviewTable = () => {
@@ -71,7 +71,7 @@ const QuotesReviewTable = () => {
                                             <td className='border p-2'>{ele.message}</td>
                                             <td className='border p-2'>{formattedDate}</td>
                                             <td className='border p-2 text-center'>
-                                                <Switch checked={ele.status} onClick={() => UpdateStatus(ele._id)}/>
+                                                <Switch defaultChecked={ele.status} onClick={() => UpdateStatus(ele._id)}/>
                                             </td>
                                             <td className='border p-2 text-center'>
                                                 <span className="text-lg font-bold text-red-600 cursor-pointer text-center">

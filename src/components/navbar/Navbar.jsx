@@ -90,8 +90,8 @@ const Navbar = () => {
                 <div class="w-2/12 flex justify-end items-center">
                     <span className='font-semibold text-sm mr-2 dark:text-gray-300'>Role: {userData && userData.type}</span>
                     <span className='
-                    h-8 
-                    w-8 
+                    h-9 
+                    w-9
                     flex                      
                     justify-center 
                     bg-blue-900 mx-2 

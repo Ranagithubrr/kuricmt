@@ -1,6 +1,5 @@
 import React from 'react';
 import Avatar from '../../../img/docc.png';
-import Rating from '@mui/material/Rating';
 
 const Singlereview = () => {
     return (
@@ -15,7 +14,7 @@ const Singlereview = () => {
             </div>
             <div className='ml-2 w-6/12'>
                 <div className='flex items-center'>
-                    <Rating name="read-only" value={5} readOnly precision={0.1} />
+                    
                     <span className='text-sm font-semibold text-gray-500 ml-2'>24/08/2023</span>
                 </div>
                 <div>
