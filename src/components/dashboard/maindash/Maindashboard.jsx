@@ -10,11 +10,17 @@ import { FaCheckCircle } from "react-icons/fa";
 import { useDispatch, useSelector } from 'react-redux';
 import { setTeacherreducer } from '../../../redux/teacherReducer/teacherReducer';
 
-const Maindashboard = () => {    
+const Maindashboard = () => {
     const dispatch = useDispatch();
     const [notices, setNotices] = useState([]);
+    const [data, setData] = useState([]);
     const [noticeNumber, setNoticeNumber] = useState(0);
     const teachers = useSelector((state) => state.teacherReducer.teachers);
+    const [applications, setApplications] = useState([]);
+    const [captains, setCaptains] = useState([]);
+    const pendingApplication = applications.filter(item => item.status === "pending");
+    const resolvedApplication = applications.filter(item => item.status === "resolved");
+
     const FetchNotices = async () => {
         try {
             const notices = await axios.get("https://kuricmt-backend.onrender.com/notice");
@@ -25,27 +31,16 @@ const Maindashboard = () => {
             console.log(err)
         }
     }
-    useEffect(() => {
-        FetchNotices()
-    }, [])   
-
     const FetchTeachers = () => {
         axios
-          .get("https://kuricmt-backend.onrender.com/user")
-          .then((res) => {
-            dispatch(setTeacherreducer(res.data.AllUser));
-          })
-          .catch((err) => {
-            console.log("fetching error");
-          });
-      };
-      useEffect(() => {
-        FetchTeachers();
-        // eslint-disable-next-line
-      }, []);
-    const [applications, setApplications] = useState([]);
-    const pendingApplication = applications.filter(item => item.status === "pending");
-    const resolvedApplication = applications.filter(item => item.status === "resolved");
+            .get("https://kuricmt-backend.onrender.com/user")
+            .then((res) => {
+                dispatch(setTeacherreducer(res.data.AllUser));
+            })
+            .catch((err) => {
+                console.log("fetching error");
+            });
+    };
     const FetchApplications = async () => {
         axios.get('https://kuricmt-backend.onrender.com/application/')
             .then((response) => {
@@ -55,10 +50,6 @@ const Maindashboard = () => {
                 console.log('an error', err)
             })
     }
-    useEffect(() => {
-        FetchApplications();
-    }, []);
-    const [captains, setCaptains] = useState([]);
     const FetchCaptainData = () => {
         axios.get('https://kuricmt-backend.onrender.com/captains')
             .then((response) => {
@@ -68,9 +59,25 @@ const Maindashboard = () => {
                 console.log('an error', err)
             })
     }
+    const FetchWebsiteData = () => {
+        axios.get('https://kuricmt-backend.onrender.com/content/website-data')
+            .then((response) => {
+                setData(response.data.contents[0])
+            })
+            .catch((err) => {
+                console.log('an error', err)
+            })
+    }
+
     useEffect(() => {
+        FetchWebsiteData();
+        FetchNotices();
+        FetchTeachers();
+        FetchApplications();
         FetchCaptainData();
+        // eslint-disable-next-line
     }, []);
+    console.log(data)
     return (
         <div className="flex flex-wrap w-full items-start p-2">
             <div className='w-full md:w-1/2 lg:w-2/3 p-2 flex flex-wrap'>
@@ -138,7 +145,7 @@ const Maindashboard = () => {
                             rounded py-2 px-2 text-2xl  flex items-center
                             "><MdOutlineComputer /></div>
                                     <div className="pl-2 flex flex-col">
-                                        <span className='font-semibold text-base dark:text-slate-400'>220</span>
+                                        <span className='font-semibold text-base dark:text-slate-400'>{data ? (parseInt(data.hlabcomputer) + parseInt(data.labonecomputer) + parseInt(data.labtwocomputer)) : 0}</span>
                                         <span className='text-xs text-gray-500 dark:text-slate-400'>Total Computer</span>
                                     </div>
                                 </div>
@@ -157,13 +164,16 @@ const Maindashboard = () => {
                             </div>
                         </div>
                     </div>
-                </div>                
-                <Alert
-                    icon={<FaCheckCircle />}
-                    className="my-3 rounded-none border-l-4 border-[#2ec946] bg-[#2ec946]/10 font-medium text-[#2ec946]"
-                >
-                    Announcement : 📢 Exciting news! Join us for a special guest lecture on AI advancements this Friday at 2 PM in the auditorium! Don't miss out! 🎓
-                </Alert>
+                </div>
+                {
+                   data && data.announcementstatus &&
+                    <Alert
+                        icon={<FaCheckCircle />}
+                        className="my-3 rounded-none border-l-4 border-[#2ec946] bg-[#2ec946]/10 font-medium text-[#2ec946]"
+                    >
+                        Announcement : {data && data.announcement}
+                    </Alert>
+                }
                 <div className="border rounded-sm p-4 w-full dark:border-slate-600">
                     <h2 className="text-md font-semibold mb-4 dark:text-slate-400">Recent Notices</h2>
                     <ol className='list-disc ml-5'>

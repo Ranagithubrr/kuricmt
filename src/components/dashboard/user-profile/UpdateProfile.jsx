@@ -162,7 +162,7 @@ const UpdateProfile = () => {
                             <span className='font-semibold text-gray-600'>Facebook</span>
                         </div>
                         <div className='w-3/4'>
-                            <input className='text-gray-600 font-semibold outline-none border-b-2' placeholder='' defaultValue={newData.website} onChange={(e) => handleChange(e)} name="facebook"></input>
+                            <input className='text-gray-600 font-semibold outline-none border-b-2' placeholder='' defaultValue={newData.facebook} onChange={(e) => handleChange(e) } name="facebook"></input>
                         </div>
                     </div>
                     <div className='flex justify-between w-1/2'>
@@ -170,7 +170,7 @@ const UpdateProfile = () => {
                             <span className='font-semibold text-gray-600'>Instagram</span>
                         </div>
                         <div className='w-3/4'>
-                            <input className='text-gray-600 font-semibold outline-none border-b-2' placeholder='' defaultValue={newData.website} onChange={(e) => handleChange(e)} name="instagram"></input>
+                            <input className='text-gray-600 font-semibold outline-none border-b-2' placeholder='' defaultValue={newData.instagram} onChange={(e) => handleChange(e)} name="instagram"></input>
                         </div>
                     </div>
                     <div className='flex justify-between w-1/2'>
@@ -178,7 +178,7 @@ const UpdateProfile = () => {
                             <span className='font-semibold text-gray-600'>Twitter</span>
                         </div>
                         <div className='w-3/4'>
-                            <input className='text-gray-600 font-semibold outline-none border-b-2' placeholder='' defaultValue={newData.website} onChange={(e) => handleChange(e)} name="twitter"></input>
+                            <input className='text-gray-600 font-semibold outline-none border-b-2' placeholder='' defaultValue={newData.twitter} onChange={(e) => handleChange(e)} name="twitter"></input>
                         </div>
                     </div>
                     <div className='flex justify-between w-1/2'>

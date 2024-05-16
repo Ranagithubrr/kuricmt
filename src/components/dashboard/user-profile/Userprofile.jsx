@@ -159,7 +159,7 @@ const Userprofile = () => {
             </div>
           )}
         </div>
-        <div className="pt-4">
+        {/* <div className="pt-4">
           <span className="font-semibold text-gray-400">
             Basic Informations
           </span>
@@ -187,7 +187,7 @@ const Userprofile = () => {
               <span className="text-gray-600 font-semibold">20 April 2003</span>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

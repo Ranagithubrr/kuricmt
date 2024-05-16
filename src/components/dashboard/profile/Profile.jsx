@@ -24,7 +24,7 @@ const Profile = () => {
   }, []);
   return (
     <div className="p-2 border m-3">
-      <h3 className="font-semibold text-gray-900">Doctors Profile</h3>
+      <h3 className="font-semibold text-gray-900">Teachers Profile</h3>
       <div className="flex flex-wrap">
         {teachers &&
           teachers.length !== 0 &&
