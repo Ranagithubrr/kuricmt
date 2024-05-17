@@ -89,7 +89,7 @@ const Teachers = ({ Teachers }) => {
                 return null;
               })}
           </div>
-        )}
+        )}   
         {Teachers && Teachers.length > 4 && (
           <Slider {...settings} className="mt-5 pb-4">
             {Teachers &&

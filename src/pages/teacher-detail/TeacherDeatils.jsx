@@ -30,7 +30,7 @@ const TeacherDeatils = () => {
         <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden mt-5">
             {
                 loading ? <div className="flex animate-pulse flex-wrap items-center gap-8">
-                    <div className="grid h-52 w-52 place-items-center rounded-lg bg-gray-300">
+                    <div className="grid h-56 w-56 place-items-center rounded-lg bg-gray-300">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
@@ -85,8 +85,8 @@ const TeacherDeatils = () => {
                     </div>
                 </div> :
                     <div className="md:flex">
-                        <div className="md:flex-shrink-0 w-52">
-                            <img className="h-full w-full object-cover" src={teacher.image || 'https://www.spencerclarkegroup.co.uk/uploads/5005001.png'} alt={`${teacher.name}'s`} />
+                        <div className="md:flex-shrink-0 w-56 h-56">
+                            <img className="h-full w-full " src={teacher.image || 'https://www.spencerclarkegroup.co.uk/uploads/5005001.png'} alt={`${teacher.name}'s`} />
                         </div>
                         <div className="p-6">
                             <div className="uppercase tracking-wide text-xs text-gray-700 font-semibold">{teacher.title}</div>

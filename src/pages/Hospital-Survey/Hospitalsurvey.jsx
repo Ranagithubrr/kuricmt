@@ -74,10 +74,7 @@ const Hospitalsurvey = () => {
             <div className="">
               <span className='text-sm text-gray-400 font-semibold  block z-400 bg-white'>Lab Assistant</span>
               <input onChange={(e) => handleInputChange(e.target.name, e.target.value)} value={formData.labassistant} name='labassistant' type="number" placeholder='3' className='border outline-none p-2 w-full' />
-            </div>
-            <div>
-              <button onClick={() => console.log(formData)} className='bg-green-600 flex items-center text-gray-200 px-4 py-2 rounded-sm'><AiFillEdit />Update</button>
-            </div>
+            </div>            
           </div>
         </div>
         <div className='w-1/2 border p-2'>
@@ -114,11 +111,11 @@ const Hospitalsurvey = () => {
               <input value={formData.hlabseat} onChange={(e) => handleInputChange(e.target.name, e.target.value)} name='hlabseat' type="number" placeholder='40' className='border outline-none p-2 w-full' />
             </div>
           </div>
-          <div className='my-2'>
-            <button onClick={UpdateDataClicked} className='bg-green-600 flex items-center text-gray-200 px-4 py-2 rounded-sm'><AiFillEdit /> Update</button>
-          </div>
         </div>
       </div>
+      <div className='my-2'>
+            <button onClick={UpdateDataClicked} className='bg-green-600 flex items-center text-gray-200 px-4 py-2 rounded-sm'><AiFillEdit /> Update</button>
+          </div>
     </div>
   )
 }
