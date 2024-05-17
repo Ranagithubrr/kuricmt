@@ -2,8 +2,7 @@ import React from 'react';
 import Singlereview from './Singlereview';
 
 const Review = () => {
-    // const [value, setValue] = useState(4.6);
-    const value = 4.6;
+    // const [value, setValue] = useState(4.6);    
     return (
         <div className='pl-10 pt-5'>
             <span className='bg-red-400 px-5 rounded-sm text-gray-100'>Demo Page</span>
