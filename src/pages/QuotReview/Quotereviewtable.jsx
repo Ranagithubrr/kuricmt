@@ -2,7 +2,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { FaRegTrashAlt } from 'react-icons/fa';
 import { ToastContainer } from "react-toastify";
-import { Switch } from "@material-tailwind/react";
 
 
 const QuotesReviewTable = () => {
@@ -23,15 +22,15 @@ const QuotesReviewTable = () => {
     useEffect(() => {
         FetchUsers();
     }, [])
-    const DeleteQuote = async (id) =>{
-       const response =  await axios.delete(`https://kuricmt-backend.onrender.com/quotes/${id}`);
-       console.log(response.status);
-       FetchUsers();
+    const DeleteQuote = async (id) => {
+        const response = await axios.delete(`https://kuricmt-backend.onrender.com/quotes/${id}`);
+        console.log(response.status);
+        FetchUsers();
     }
-    const UpdateStatus = async (id) =>{
-        const response =  await axios.post(`https://kuricmt-backend.onrender.com/quotes/update-status/${id}`);
-       console.log(response.status);
-       FetchUsers();
+    const UpdateStatus = async (id) => {
+        const response = await axios.post(`https://kuricmt-backend.onrender.com/quotes/update-status/${id}`);
+        console.log(response.status);
+        FetchUsers();
     }
     return (
         <>
@@ -71,28 +70,35 @@ const QuotesReviewTable = () => {
                                             <td className='border p-2'>{ele.message}</td>
                                             <td className='border p-2'>{formattedDate}</td>
                                             <td className='border p-2 text-center'>
-                                                <Switch defaultChecked={ele.status} onClick={() => UpdateStatus(ele._id)}/>
+                                                <div
+                                                    className={`mt-2 w-14 h-6 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-300 ${ele.status ? 'bg-blue-500' : 'bg-gray-300'}`}
+                                                    onClick={() => UpdateStatus(ele._id)}                                                                                            
+                                                >
+                                                    <div
+                                                        className={`bg-white w-5 h-5 rounded-full shadow-md transform transition-transform duration-300 ${ele.status ? 'translate-x-7' : ''}`}
+                                                    ></div>
+                                                </div>
                                             </td>
                                             <td className='border p-2 text-center'>
                                                 <span className="text-lg font-bold text-red-600 cursor-pointer text-center">
-                                                    <FaRegTrashAlt onClick={() => DeleteQuote(ele._id)}/>
+                                                    <FaRegTrashAlt onClick={() => DeleteQuote(ele._id)} />
                                                 </span>
                                             </td>
                                         </tr>
-                                    )
+                        )
                                 })
                             }
 
-                        </tbody>
+                    </tbody>
                     </table>
                 }
-                {
-                    users && users.length === 0 &&
-                    <div className="w-full p-4 text-center py-10">
-                        <span className="text-gray-500">No data</span>
-                    </div>
-                }
-            </div>
+            {
+                users && users.length === 0 &&
+                <div className="w-full p-4 text-center py-10">
+                    <span className="text-gray-500">No data</span>
+                </div>
+            }
+        </div >
 
         </>
     )
