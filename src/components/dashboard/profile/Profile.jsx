@@ -3,6 +3,7 @@ import Doctor from "../../../img/docc.png";
 import axios from "axios";
 import { setTeacherreducer } from "../../../redux/teacherReducer/teacherReducer";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -47,9 +48,9 @@ const Profile = () => {
                       </h4>
                       <div className="px-5">
                         <div className="text-center">
-                          <button className="border rounded px-3 py-1 my-2 block bg-gray-100 text-sm font-semibold text-gray-700 hover:bg-gray-200 m-auto">
+                          <Link to={`/dashboard/teachers/${ele._id}`} className="border rounded px-3 py-1 my-2 block bg-gray-100 text-sm font-semibold text-gray-700 hover:bg-gray-200 m-auto">
                             View Details
-                          </button>
+                          </Link>
                         </div>
                       </div>
                     </div>

@@ -26,10 +26,11 @@ import Applications from './pages/Applications/Applications';
 import Announcement from './pages/Announcement/Announcement';
 import QuoteReview from './pages/QuotReview/QuoteReview';
 import { Alert } from "@material-tailwind/react";
+import TeacherDeatils from './pages/teacher-detail/TeacherDeatils';
 
 function App() {
   return (
-    <>
+    <>   
       <Alert
         className="fixed flex items-center bottom-5 right-0 w-64 z-20 rounded-none border-l-4 border-red-400 bg-red-200 bg-opacity-50 font-medium text-red-800"
         >      
@@ -52,6 +53,7 @@ function App() {
           }></Route>
           <Route path='review' element={<Review />}></Route>
           <Route path='teachers' element={<Profile />}></Route>
+          <Route path='teachers/:id' element={<TeacherDeatils />}></Route>
           <Route path='applications' element={<Applications />}></Route>
           <Route path='earnings' element={<Earnings />}></Route>
           <Route path='calculators' element={<Calculators />}></Route>

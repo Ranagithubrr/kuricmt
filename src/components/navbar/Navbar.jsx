@@ -60,7 +60,7 @@ const Navbar = () => {
             <div class="flex px-6 py-2  items-center shadow-md sticky top-0 z-10 bg-white dark:bg-gray-800">
                 <div class="w-4/12">
                     {/* <span className="text-3xl font-bold dark:text-gray-300"><span className="text-blue-900 dark:text-blue-500">D.O.C</span></span> */}
-                    <img src={logo ? logo : Computer} alt="D.O.C"  className='h-16 rounded-full bg-white'/>
+                    <img src={logo ? logo : Computer} alt="D.O.C"  className='h-16 rounded-md bg-white'/>
                     <span className="block text-xs font-semibold dark:text-slate-400 mt-1">Department Of Computer</span>
                 </div>
                 <div class="w-6/12">
