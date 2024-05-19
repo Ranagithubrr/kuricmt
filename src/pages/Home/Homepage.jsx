@@ -10,6 +10,7 @@ import Application from '../../components/Landing/Application';
 import Footer from '../../components/Landing/Footer';
 import axios from 'axios';
 import Captains from '../../components/Landing/Captains';
+import Wehave from '../../components/Landing/Wehave';
 
 const Homepage = () => {
     const [loading, setLoading] = useState(false);
@@ -46,8 +47,9 @@ const Homepage = () => {
               </div> : <>
                     <NavbarLanding Logo={logo} />
                     <MainView Admin={adminTeacher} Content={content} />
-                    <Teachers Teachers={allcontent.teachers} />
                     <AboutUs Content={content} />
+                    <Teachers Teachers={allcontent.teachers} />
+                    <Wehave Content={content} />
                     <Notices Notices={notices} />
                     <Captains Captains={captains}/>
                     {/* <Gallery Content={content}/> */}

@@ -1,5 +1,4 @@
 import React from 'react';
-import KuriImg from '../../img/kuri.jpg';
 import { FaFacebook, FaGlobe, FaInstagram, FaPhoneAlt, FaTwitter } from 'react-icons/fa';
 import { IoLocation } from 'react-icons/io5';
 import { IoMdMail } from 'react-icons/io';
@@ -65,10 +64,7 @@ const MainView = ({ Admin, Content }) => {
           </div>
         </div>
       </div>
-    </div>
-    <div className='py-4'>
-      <img src={KuriImg} className='w-full rounded' style={{ minHeight: '200px' }} alt="" />
-    </div>
+    </div>  
   </>
   )
 }
