@@ -61,7 +61,7 @@ const Teachers = ({ Teachers }) => {
                     <div style={{ display: 'flex' }}>
                       <div className="flex text-center h-48" >
                         <div className="w-5/12 text-center">
-                          <img className="h-full w-full rounded" src={ele.image || 'https://www.spencerclarkegroup.co.uk/uploads/5005001.png'} alt={`${ele.name}'s`} />
+                          <img className="h-full w-full rounded" src={ele.image || ProfilePIc} alt={`${ele.name}'s`} />
                         </div>
                         <div className="px-6 w-7/12 h-full flex flex-col justify-between">
                           <div>
