@@ -38,7 +38,7 @@ const AccountsReviewtable = () => {
   const FetchUsers = async () => {
     axios.get('https://kuricmt-backend.onrender.com/user/inactive-teacher')
       .then((response) => {
-        setUsers(response.data.AllUser)
+        setUsers(response.data.allUsers)        
       })
       .catch((err) => {
         console.log('an error', err)
@@ -118,7 +118,7 @@ const AccountsReviewtable = () => {
     }
   };
 
-  console.log(users.length);
+  console.log(users && users.length);
   useEffect(() => {
     FetchUsers();
   }, [])
