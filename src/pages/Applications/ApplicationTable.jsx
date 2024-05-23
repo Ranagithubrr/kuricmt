@@ -85,17 +85,17 @@ const ApplicationTable = () => {
         {
           applications && applications.length !== 0 &&
 
-          <table className='min-w-full border border-gray-300'>
+          <table className='min-w-full border border-gray-300 dark:border-slate-600'>
             <thead>
-              <tr className='bg-gray-200 text-left'>
-                <th className='border p-2'>Sl</th>
-                <th className='border p-2'>Name</th>
-                <th className='border p-2'>Roll</th>
-                <th className='border p-2'>Subject</th>
-                <th className='border p-2'>Date</th>
-                <th className='border p-2 text-center'>Application</th>
-                <th className='border p-2 text-center'>Status</th>
-                <th className='border p-2 text-center'>Respond</th>
+              <tr className='bg-gray-200 dark:bg-gray-800 text-left'>
+                <th className='border p-2 dark:text-gray-200 dark:border-slate-400'>Sl</th>
+                <th className='border p-2 dark:text-gray-200 dark:border-slate-400'>Name</th>
+                <th className='border p-2 dark:text-gray-200 dark:border-slate-400'>Roll</th>
+                <th className='border p-2 dark:text-gray-200 dark:border-slate-400'>Subject</th>
+                <th className='border p-2 dark:text-gray-200 dark:border-slate-400'>Date</th>
+                <th className='border p-2 dark:text-gray-200 dark:border-slate-400 text-center'>Application</th>
+                <th className='border p-2 dark:text-gray-200 dark:border-slate-400 text-center'>Status</th>
+                <th className='border p-2 dark:text-gray-200 dark:border-slate-400 text-center'>Respond</th>
               </tr>
             </thead>
             <tbody>
@@ -106,14 +106,14 @@ const ApplicationTable = () => {
 
                   const formattedDate = `${date.toLocaleDateString()} at ${date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
                   return (
-                    <tr className='border even:bg-gray-50 odd:bg-white' key={ele._id}>
-                      <td className='border p-2'>{index + 1}</td>
-                      <td className='border p-2'>{ele.name}</td>
-                      <td className='border p-2'>{ele.roll}</td>
-                      <td className='border p-2'>{ele.subject}</td>
-                      <td className='border p-2'>{formattedDate}</td>
-                      <td className='border p-2 flex justify-center'><span className="text-green-600 text-2xl cursor-pointer" onClick={() => viewClicked(ele)}><FaEye /></span></td>
-                      <td className='border p-2'>{ele.status} {ele.status === "pending" && <button title='Approve' className='mt-2 px-1 py-1 rounded mx-2  bg-green-500 text-gray-200 text-sm font-semibold' onClick={() => ApproveApplication(ele._id)}><FaCheck /></button>}</td>
+                    <tr className='border even:bg-gray-50 odd:bg-white dark:even:bg-gray-600 dark:odd:bg-gray-700' key={ele._id}>
+                      <td className='border p-2 dark:text-gray-200'>{index + 1}</td>
+                      <td className='border p-2 dark:text-gray-200'>{ele.name}</td>
+                      <td className='border p-2 dark:text-gray-200'>{ele.roll}</td>
+                      <td className='border p-2 dark:text-gray-200'>{ele.subject}</td>
+                      <td className='border p-2 dark:text-gray-200'>{formattedDate}</td>
+                      <td className='border p-2 flex justify-center'><span className="text-green-600 dark:text-green-500 text-2xl cursor-pointer" onClick={() => viewClicked(ele)}><FaEye /></span></td>
+                      <td className='border p-2 dark:text-gray-200'>{ele.status} {ele.status === "pending" && <button title='Approve' className='mt-2 px-1 py-1 rounded mx-2  bg-green-500 text-gray-200 text-sm font-semibold' onClick={() => ApproveApplication(ele._id)}><FaCheck /></button>}</td>
                       <td className='flex items-center justify-center h-full'>
                         <div className='flex items-center justify-center'>
                           <a href={`mailto:${ele.email}`} title='Mail' className='mt-2 px-3 py-1 rounded mx-2  bg-green-500 text-gray-200 text-sm font-semibold'><IoMail /></a>
@@ -130,7 +130,7 @@ const ApplicationTable = () => {
         {
           applications && applications.length === 0 &&
           <div className="w-full p-4 text-center py-10">
-            <span className="text-gray-500">No data</span>
+            <span className="text-gray-500 dark:text-gray-200">No data</span>
           </div>
         }
         {
@@ -139,21 +139,21 @@ const ApplicationTable = () => {
           </div>
         }
         {
-          modal && <div className="fixed overflow-auto h-96  w-2/4 border bg-white shadow-lg rounded top-32 z-20 p-4 left-0 right-0 m-auto">
-            <h4 className="text-center font-semibold text-lg">Kurigram Polytechnic Institute</h4>
-            <span className="block mt-2">{formattedDate}</span>
-            <span className="block">Chief Instructor</span>
-            <span className="block">Kurigram Polytechnic Institute</span>
-            <span className="block">Central Jail Rd, Kurigram</span>
-            <span className="block font-semibold">Subject : {currentItem.subject}</span>
-            <span className="block mt-4">Dear Sir,</span>
-            <p>{currentItem.body}</p>
-            <span className="block my-3">Sincerely</span>
-            <span className="block">{currentItem.name}</span>
-            <span className="block">Roll: {currentItem.roll}</span>
-            <span className="block">Dept. Computer</span>
-            <span className="block">Semester: {currentItem.semester}</span>
-            <span className="block">Shift: {currentItem.shift}</span>
+          modal && <div className="fixed overflow-auto h-96  w-2/4 border bg-white dark:bg-gray-800 dark:border-slate-400 shadow-lg rounded top-32 z-20 p-4 left-0 right-0 m-auto">
+            <h4 className="text-center font-semibold text-lg dark:text-gray-200">Kurigram Polytechnic Institute</h4>
+            <span className="block mt-2 dark:text-gray-200">{formattedDate}</span>
+            <span className="block dark:text-gray-200">Chief Instructor</span>
+            <span className="block dark:text-gray-200">Kurigram Polytechnic Institute</span>
+            <span className="block dark:text-gray-200">Central Jail Rd, Kurigram</span>
+            <span className="block dark:text-gray-200 font-semibold">Subject : {currentItem.subject}</span>
+            <span className="block dark:text-gray-200 mt-4">Dear Sir,</span>
+            <p className="dark:text-gray-200">{currentItem.body}</p>
+            <span className="block dark:text-gray-200 my-3">Sincerely</span>
+            <span className="block dark:text-gray-200">{currentItem.name}</span>
+            <span className="block dark:text-gray-200">Roll: {currentItem.roll}</span>
+            <span className="block dark:text-gray-200">Dept. Computer</span>
+            <span className="block dark:text-gray-200">Semester: {currentItem.semester}</span>
+            <span className="block dark:text-gray-200">Shift: {currentItem.shift}</span>
           </div>
         }
       </div>
