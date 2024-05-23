@@ -58,8 +58,8 @@ const Teachers = ({ Teachers }) => {
               Teachers.map((ele) => {
                 if (ele.type !== "admin") {
                   return (
-                    <div style={{ display: 'flex' }}>
-                      <div className="flex text-center lg:h-48" >
+                    <div className="lg:flex">
+                      <div className="lg:flex text-center lg:h-48" >
                         <div className="w-5/12 text-center">
                           <img className="h-full w-full rounded" src={ele.image || ProfilePIc} alt={`${ele.name}'s`} />
                         </div>
@@ -110,12 +110,12 @@ const Teachers = ({ Teachers }) => {
               Teachers.map((ele, index) => {
                 if (ele.type !== "admin") {
                   return (
-                    <div style={{ display: 'flex' }}>
-                      <div className="flex text-center lg:h-48" >
-                        <div className="w-5/12 text-center">
-                          <img className="lg:h-full w-full rounded" src={ele.image || 'https://www.spencerclarkegroup.co.uk/uploads/5005001.png'} alt={`${ele.name}'s`} />
+                    <div className="flex">
+                      <div className="lg:flex text-center lg:h-48" >
+                        <div className="w-full lg:w-5/12 text-center">
+                          <img className="w-56 mx-auto lg:h-full lg:w-full rounded" src={ele.image || 'https://www.spencerclarkegroup.co.uk/uploads/5005001.png'} alt={`${ele.name}'s`} />
                         </div>
-                        <div className="px-6 w-7/12 h-full flex flex-col justify-between">
+                        <div className="mt-3 lg:mt-0 px-6 w-full lg:w-7/12 h-full flex flex-col justify-between">
                           <div>
                             <div className="uppercase tracking-wide text-xs text-gray-700 font-semibold text-left">{ele.title || "Not Provided"}</div>
                             <h1 className="text-md lg:text-2xl font-bold text-gray-900 text-left">{ele.name}</h1>

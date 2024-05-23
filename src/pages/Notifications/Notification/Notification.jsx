@@ -14,9 +14,8 @@ const Notification = ({ item }) => {
                 <div className='flex items-center'>
                     <a href={item.noticeurl} download={item.noticeurl} target='_blank' rel="noreferrer">
                     <FaFilePdf className='text-red-500 text-3xl cursor-pointer mr-3'/>
-                    </a>
-                    {/* <FaImage className='text-blue-500 text-3xl cursor-pointer mr-3'  /> */}
-                    <CiMenuKebab className='text-black text-md cursor-pointer' />
+                    </a>                   
+                    <CiMenuKebab className='text-black text-md cursor-pointer dark:text-gray-200' />
                 </div>
             </div>
             <div className='flex justify-between'>

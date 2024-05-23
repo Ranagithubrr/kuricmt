@@ -29,7 +29,7 @@ const MainView = ({ Admin, Content }) => {
       <div className='w-full lg:w-4/12'>
         <div className="md:flex">
           <div className="md:flex-shrink-0 lg:w-56 lg:h-56">
-            <img className="h-full w-full " src={Admin ? Admin.image : 'https://www.spencerclarkegroup.co.uk/uploads/5005001.png'} alt={`${Admin && Admin.name}'s`} />
+            <img className="h-full w-full rounded" src={Admin ? Admin.image : 'https://www.spencerclarkegroup.co.uk/uploads/5005001.png'} alt={`${Admin && Admin.name}'s`} />
           </div>
           <div className="p-6">
             <div className="uppercase tracking-wide text-xs text-gray-700 font-semibold">{Admin && Admin.title}</div>

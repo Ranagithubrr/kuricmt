@@ -4,6 +4,7 @@ import { IoMdMail } from 'react-icons/io';
 import { IoLocation } from "react-icons/io5";
 import { Typography } from "@material-tailwind/react";
 import { useParams } from 'react-router';
+import Notfoundimage from "../../img/no-profile.png";
 import axios from 'axios';
 const TeacherDeatils = () => {
     const [loading, setLoading] = useState(false);
@@ -86,7 +87,7 @@ const TeacherDeatils = () => {
                 </div> :
                     <div className="md:flex">
                         <div className="md:flex-shrink-0 w-56 h-56">
-                            <img className="h-full w-full " src={teacher.image || 'https://www.spencerclarkegroup.co.uk/uploads/5005001.png'} alt={`${teacher.name}'s`} />
+                            <img className="h-full w-full " src={teacher.image || Notfoundimage} alt={`${teacher.name}'s`} />
                         </div>
                         <div className="p-6">
                             <div className="uppercase tracking-wide text-xs text-gray-700 font-semibold">{teacher.title}</div>

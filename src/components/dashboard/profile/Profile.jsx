@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Doctor from "../../../img/docc.png";
+import Notfoundimage from "../../../img/no-profile.png";
 import axios from "axios";
 import { setTeacherreducer } from "../../../redux/teacherReducer/teacherReducer";
 import { useDispatch, useSelector } from "react-redux";
@@ -38,7 +38,7 @@ const Profile = () => {
                     <div>
                       <div className="rounded-full h-28 w-28 m-auto -mt-16 bg-gradient-to-r from-gray-400  to-gray-200 overflow-hidden ring ring-white">
                         <img
-                          src={ele.image || Doctor}
+                          src={ele.image || Notfoundimage}
                           alt=""
                           className="h-full w-full"
                         />

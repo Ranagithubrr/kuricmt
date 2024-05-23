@@ -125,28 +125,28 @@ const Maindashboard = () => {
                     </ol>
                     {
                         dataState.data.notices.length === 0 && <div>
-                            <span className='font-semibold text-gray-700'>No Notice Published Yet, <Link to="/dashboard/add-notice" className='text-blue-800'>Publish One</Link></span>
+                            <span className='font-semibold text-gray-700 dark:text-gray-200'>No Notice Published Yet, <Link to="/dashboard/add-notice" className='text-blue-800'>Publish One</Link></span>
                         </div>
                     }
                 </div>
             </div>
             <div className="w-full md:w-1/2 lg:w-1/3 p-3">
-                <div className='border p-2 rounded-sm '>
-                    <h5 className='font-semibold pl-2'>Our Teachers</h5>
+                <div className='border p-2 rounded-sm dark:border-slate-600'>
+                    <h5 className='font-semibold pl-2 dark:text-gray-200'>Our Teachers</h5>
 
                     <ul className='mt-3 sticky top-32'>
                         {
                             dataState.data.teachers && dataState.data.teachers.length !== 0 && dataState.data.teachers.map((ele, index) => {
                                 if (ele.isactivate === true && index <= 6) {
                                     return (
-                                        <li className='flex my-2 border shadow-sm rounded py-1 px-3'>
-                                            <a href="/" className='flex items-center no-underline w-full h-full'>
+                                        <li className='flex my-2 border dark:border-slate-600 shadow-sm rounded py-1 px-3'>
+                                            <Link to={`/dashboard/teachers/${ele._id}`} className='flex items-center no-underline w-full h-full'>
                                                 <img src={ele.image || Doctor} alt="" className="h-8 w-8 bg-gradient-to-r from-blue-600 to-blue-900 rounded-full" />
                                                 <div>
-                                                    <span className='pl-2 text-sm font-semibold text-gray-700'>{ele.name} {ele.type === "admin" && <span className='ml-10 text-xs font-bold text-green-500'>Admin</span>}</span>
-                                                    <span className='block text-xs pl-2 font-semibold text-gray-600'>{ele.title || 'Instructor'}</span>
+                                                    <span className='pl-2 text-sm font-semibold text-gray-700 dark:text-gray-200'>{ele.name} {ele.type === "admin" && <span className='ml-10 text-xs font-bold text-green-500'>Admin</span>}</span>
+                                                    <span className='block text-xs pl-2 font-semibold text-gray-600 dark:text-gray-400'>{ele.title || 'Instructor'}</span>
                                                 </div>
-                                            </a>
+                                            </Link>
                                         </li>
                                     );
                                 } else {

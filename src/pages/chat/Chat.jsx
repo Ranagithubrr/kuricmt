@@ -143,7 +143,7 @@ const Chat = () => {
                                 </form>
                             </div>
                         </div>
-                        <div className="w-1/5">3</div>
+                        <div className="w-1/5"></div>
                     </div>
                 </div>
             </div>
