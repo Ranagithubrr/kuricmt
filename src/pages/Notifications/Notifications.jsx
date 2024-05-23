@@ -19,7 +19,7 @@ const Notifications = () => {
   }, [])
   return (
     <div className='w-1/2 m-auto'>
-      <h4 className='font-semibold text-xl m-3 ml-0'>Notices</h4>
+      <h4 className='font-semibold text-xl m-3 ml-0 dark:text-gray-200'>Notices</h4>
       {
         notices && notices.map((ele) => {
           return (

@@ -6,11 +6,12 @@ html {
   scroll-behavior: smooth;
 }
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 6px;
 }
 /* Track */
 .dark ::-webkit-scrollbar-track {
   background: #1d2a3b;
+  width: 5px;
 }
 
 /* Handle */
@@ -25,10 +26,10 @@ html {
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #69A7FF;
+  background: #5e5e5e;
 }
 .dark ::-webkit-scrollbar-thumb:hover {
-  background: #2563EB;
+  background: #525151;
 }
 body {
   margin: 0;

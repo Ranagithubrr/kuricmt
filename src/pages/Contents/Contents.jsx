@@ -6,7 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { useAuth } from '../../contexts/AuthContext';
 
 const Contents = () => {
-  const {token} = useAuth();
+  const { token } = useAuth();
   const [maintitle, setMaintitle] = useState("");
   const [tagline, setTagline] = useState("");
   const [logoToDisplay, setLogoToDisplay] = useState("");
@@ -127,7 +127,7 @@ const Contents = () => {
       console.error("Error during submission:", error);
       setLoading(false);
     }
-  };  
+  };
 
   const sendDatatoDb = async () => {
     const existingData = {
@@ -189,7 +189,7 @@ const Contents = () => {
     }
   };
   return (
-    <div className='p-4'>
+    <div className='p-4 bg-white dark:bg-gray-900 dark:text-gray-200'>
       <ToastContainer
         position="top-right"
         autoClose={5000}
@@ -200,26 +200,26 @@ const Contents = () => {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="light"
+        theme="light" // Adjust if you need to change the toast theme in dark mode
       />
       {
-        loading && <div className='shadow-lg flex items-center justify-center text-center rounded fixed top-16 z-30 left-0 right-0 h-20 w-1/2 m-auto bg-white'>
+        loading && <div className='shadow-lg flex items-center justify-center text-center rounded fixed top-16 z-30 left-0 right-0 h-20 w-1/2 m-auto bg-white dark:bg-gray-700'>
           <span className='font-semibold'>{loadingState}</span>
         </div>
       }
       <h4 className='font-semibold text-xl'>Setup Website Contents</h4>
       <div className='pt-4'>
         <span className='font-semibold block'>Main Title</span>
-        <input value={maintitle} onChange={(e) => setMaintitle(e.target.value)} type="text" placeholder='Ex: This is a demo title' className='border outline-none px-3 py-4 text-lg w-2/3' />
+        <input value={maintitle} onChange={(e) => setMaintitle(e.target.value)} type="text" placeholder='Ex: This is a demo title' className='border dark:border-gray-600 outline-none px-3 py-4 text-lg w-2/3 bg-white dark:bg-gray-800 dark:text-gray-200' />
       </div>
       <div className='pt-4'>
         <span className='font-semibold block'>Tagline</span>
-        <input value={tagline} onChange={(e) => setTagline(e.target.value)} type="text" placeholder='Ex: This is a demo tagline' className='border outline-none px-3 py-4 text-lg w-2/3' />
+        <input value={tagline} onChange={(e) => setTagline(e.target.value)} type="text" placeholder='Ex: This is a demo tagline' className='border dark:border-gray-600 outline-none px-3 py-4 text-lg w-2/3 bg-white dark:bg-gray-800 dark:text-gray-200' />
       </div>
       <div className='pt-4 flex w-2/3'>
         <div className='w-1/2'>
           <span className='font-semibold block'>Main Logo</span>
-          <input onChange={handleFileChange} type="file" className='border outline-none px-3 py-4 text-lg' />
+          <input onChange={handleFileChange} type="file" className='border dark:border-gray-600 outline-none px-3 py-4 text-lg bg-white dark:bg-gray-800 dark:text-gray-200' />
         </div>
         <div className='w-1/2'>
           {
@@ -228,21 +228,21 @@ const Contents = () => {
         </div>
       </div>
       {/* <div className='pt-4 flex w-2/3'>
-        <div className='w-1/2'>
-          <span className='font-semibold block'>Cover Photo</span>
-          <input onChange={handleFileChange} type="file" className='border outline-none px-3 py-4 text-lg' />
-        </div>
-        <div className='w-1/2'>
-          {
-            logoToDisplay !== "" && <img src={logoToDisplay} alt="" className='rounded h-36 w-32 ml-10' />
-          }
-        </div>
-      </div> */}
+    <div className='w-1/2'>
+      <span className='font-semibold block'>Cover Photo</span>
+      <input onChange={handleFileChange} type="file" className='border outline-none px-3 py-4 text-lg' />
+    </div>
+    <div className='w-1/2'>
+      {
+        logoToDisplay !== "" && <img src={logoToDisplay} alt="" className='rounded h-36 w-32 ml-10' />
+      }
+    </div>
+  </div> */}
       {/* <div className='pt-4'>
-        <span className='font-semibold block'>Gallary Photos</span>
-        <input id='fileInputField' onChange={handlePhotoChange} type="file" multiple className='border outline-none px-3 py-4 text-lg w-2/3' />
-      </div> */}
-      
+    <span className='font-semibold block'>Gallary Photos</span>
+    <input id='fileInputField' onChange={handlePhotoChange} type="file" multiple className='border outline-none px-3 py-4 text-lg w-2/3' />
+  </div> */}
+
       <div className='pt-4 hidden'>
         <div className='grid grid-cols-6 gap-4'>
           {
@@ -258,9 +258,15 @@ const Contents = () => {
         </div>
       </div>
       <div>
-        <button onClick={SubmitClicked} className='bg-green-500 text-gray-200 font-semibold text-sm px-3 py-2 rounded-md my-2'>Save Changes</button>
+        <button
+          onClick={SubmitClicked}
+          className='bg-gradient-to-r from-green-400 to-green-500 hover:from-green-500 hover:to-green-600 dark:from-green-600 dark:to-green-700 dark:hover:from-green-700 dark:hover:to-green-800 text-white font-semibold text-sm px-6 py-3 rounded-lg shadow-lg transform transition-transform duration-300 ease-in-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-300 dark:focus:ring-green-800'
+        >
+          Save Changes
+        </button>
       </div>
     </div>
+
   )
 }
 
