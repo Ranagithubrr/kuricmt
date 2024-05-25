@@ -62,7 +62,7 @@ const Login = () => {
                 <img src={SigninImg} alt="" />
             </div>
             <div className="w-full lg:w-1/2">
-                <div className='lg:w-2/3 lg:ml-10 mx-6'>
+                <div className='lg:w-2/3 mx-6'>
                     <Alert
                         
                         className="rounded-none my-2 border-l-4 border-[#2ec946] bg-[#2ec946]/10 font-medium text-[#2ec946]"
@@ -73,7 +73,7 @@ const Login = () => {
                         <p className='text-gray-700 border-b-2 border-dashed border-green-500 block w-full'>Password: pass123</p>
 
                         <p className='text-black'>Role: Teacher</p>
-                        <p className='text-gray-700'>Email: admin@gmail.com</p>
+                        <p className='text-gray-700'>Email: teacher1@gmail.com</p>
                         <p className='text-gray-700'>Password: pass123</p>
                     </Alert>
                     {

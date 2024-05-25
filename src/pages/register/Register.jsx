@@ -64,12 +64,12 @@ const Register = () => {
         }
     };
     return (
-        <div className="w-2/3 mx-auto h-screen items-center flex bg-white">
-            <div className="w-1/2">
+        <div className="w-full lg:w-2/3 lg:mx-auto h-screen items-center lg:flex  px-6 bg-white">
+            <div className="w-full lg:w-1/2 p-12 pt-20 lg:pt-0">
                 <img src={SigninImg} alt="" className='rotat ' style={{ transform: 'scaleX(-1)' }} />
             </div>
-            <div className="w-1/2">
-                <div className='w-2/3 ml-10'>
+            <div className="w-full lg:w-1/2">
+                <div className='lg:w-2/3 box-border'>
                     {
                         error &&
                         <div className='flex items-center bg-yellow-200 px-4 py-3'>
