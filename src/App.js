@@ -32,7 +32,7 @@ function App() {
   return (
     <>   
       <Alert
-        className="pointer-events-none fixed flex items-center bottom-5 right-0 w-64 z-20 rounded-none border-l-4 border-red-400 bg-red-200 bg-opacity-50 font-medium text-red-800"
+        className="pointer-events-none fixed flex items-center top-0 lg:bottom-5 lg:top-auto right-0 w-full h-5 lg:w-64 z-20 rounded-none border-l-4 border-red-400 bg-red-200 bg-opacity-50 font-medium text-red-800"
         >      
         <span>Test Mode</span>
       </Alert>

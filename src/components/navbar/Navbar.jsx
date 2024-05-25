@@ -58,13 +58,12 @@ const Navbar = () => {
     return (
         <>
             <div class="flex px-6 py-2  items-center shadow-md sticky top-0 z-10 bg-white dark:bg-gray-800">
-                <div class="w-4/12">
-                    {/* <span className="text-3xl font-bold dark:text-gray-300"><span className="text-blue-900 dark:text-blue-500">D.O.C</span></span> */}
+                <div class="w-4/12">                    
                     <img src={logo ? logo : Computer} alt="D.O.C" className='h-16 rounded-md bg-white' />
                     <span className="text-xs font-semibold dark:text-gray-200 mt-1 hidden lg:block">Department Of Computer</span>
                 </div>
                 <div class="lg:w-6/12">
-                    <ul className='flex fixed lg:static lg:bg-transparent w-full bottom-0 bg-gray-700 left-0 right-0 mx-auto py-4'>
+                    <ul className='flex fixed lg:static lg:bg-transparent w-full bottom-0 dark:bg-gray-900 left-0 right-0 mx-auto py-4'>
                         <li className='px-7 border-b-4 border-transparent hover:border-blue-900 dark:hover:border-gray-200  mx-2 pb-3 font-semibold text-blue-950 dark:text-gray-200   '>
                             <Link to="/dashboard" className='text-3xl'>
                                 <AiOutlineHome />
@@ -107,7 +106,7 @@ const Navbar = () => {
                     </span>
                     <Usermenu />
                 </div>
-                <div className={`fixed bg-white dark:bg-gray-700 ${!rightSidebar ? '-right-full' : 'right-0'}  top-0 h-full w-8/12 lg:w-2/12 z-20 transition-all duration-300 pl-5 pt-5 ease-in-out`}>
+                <div className={`fixed bg-white dark:bg-gray-700 ${!rightSidebar ? '-right-full' : 'right-0'}  top-0 h-full w-8/12 lg:w-2/12 z-40 transition-all duration-300 pl-5 pt-5 ease-in-out`}>
                     <img src={Computer} alt="D.O.C" className='h-12  m-auto pr-3' />
                     <div className='pt-3 pr-5'>
                         <span className='text-xs font-bold dark:text-gray-300 block text-center'>Theme : {darkMode ? 'Dark' : 'Light'}</span>
@@ -117,7 +116,8 @@ const Navbar = () => {
                     </div>
                 </div>
                 {
-                    rightSidebar && <div className='fixed h-full w-full bg-gray-700 opacity-70 top-0 left-0 z-10' onClick={() => setRightSidebar(false)}>
+                    rightSidebar && <div className='fixed h-full w-full bg-gray-700 opacity-70 top-0 left-0 z-30' onClick={() => setRightSidebar(false)}>
+                        
                     </div>
                 }
             </div>

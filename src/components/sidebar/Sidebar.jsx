@@ -15,14 +15,14 @@ const Sidebar = () => {
     const toggleSubmenu = () => {
         isSubMenuOpen ? setIsSubMenuOpen(false) : setIsSubMenuOpen(true);
     }
-    const [sidebar, setSidebar] = useState(false);
+    const [sidebar, setSidebar] = useState(true);
     console.log(sidebar)
     const LogOutUser = () => {
         logout()
     }
     return (
         <>
-            <div className={`${!sidebar ? 'w-8/12 lg:w-3/12' : 'w-[6rem] -left-full lg:left-0'} z-50 top-20 fixed lg:sticky transition-all ease-in-out overflow-y-scroll pb-10 dark:border-gray-700 border-r shadow-lg dark:shadow-transparent bg-white dark:bg-slate-800`} style={{ height: '85vh', }}>
+            <div className={`${!sidebar ? 'w-8/12 lg:w-3/12' : 'w-[6rem] -left-full lg:left-0'} z-10 md:z-auto fixed top-20 lg:sticky transition-all ease-in-out overflow-y-scroll pb-10 dark:border-gray-700 border-r shadow-lg dark:shadow-transparent bg-white dark:bg-slate-800 h-full lg:h-[85vh]`}>
                 <div className='w-full text-center flex justify-end pr-7 pt-4 dark:text-gray-200 font-bold text-2xl cursor-pointer'>
                     <span className='' onClick={() => setSidebar((prev) => !prev)}><HiOutlineBars3BottomRight /> </span>
                 </div>
