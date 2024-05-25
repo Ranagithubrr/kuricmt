@@ -57,12 +57,12 @@ const Login = () => {
         }
     };
     return (
-        <div className="w-2/3 mx-auto h-screen items-center flex bg-white">
-            <div className="w-1/2">
+        <div className="lg:w-2/3 mx-auto h-screen items-center lg:flex bg-white">
+            <div className="w-full lg:w-1/2 p-12">
                 <img src={SigninImg} alt="" />
             </div>
-            <div className="w-1/2">
-                <div className='w-2/3 ml-10'>
+            <div className="w-full lg:w-1/2">
+                <div className='lg:w-2/3 lg:ml-10 mx-6'>
                     <Alert
                         
                         className="rounded-none my-2 border-l-4 border-[#2ec946] bg-[#2ec946]/10 font-medium text-[#2ec946]"

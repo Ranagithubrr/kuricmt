@@ -61,7 +61,7 @@ const Navbar = () => {
                 <div class="w-4/12">
                     {/* <span className="text-3xl font-bold dark:text-gray-300"><span className="text-blue-900 dark:text-blue-500">D.O.C</span></span> */}
                     <img src={logo ? logo : Computer} alt="D.O.C" className='h-16 rounded-md bg-white' />
-                    <span className="block text-xs font-semibold dark:text-gray-200 mt-1 hidden lg:block">Department Of Computer</span>
+                    <span className="text-xs font-semibold dark:text-gray-200 mt-1 hidden lg:block">Department Of Computer</span>
                 </div>
                 <div class="lg:w-6/12">
                     <ul className='flex fixed lg:static lg:bg-transparent w-full bottom-0 bg-gray-700 left-0 right-0 mx-auto py-4'>
