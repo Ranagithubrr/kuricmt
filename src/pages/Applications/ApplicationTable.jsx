@@ -81,7 +81,7 @@ const ApplicationTable = () => {
   return (
     <>
       <ToastContainer autoClose={1500} />
-      <div className=''>
+      <div className='w-full overflow-x-auto'>
         {
           applications && applications.length !== 0 &&
 
@@ -107,14 +107,14 @@ const ApplicationTable = () => {
                   const formattedDate = `${date.toLocaleDateString()} at ${date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
                   return (
                     <tr className='border even:bg-gray-50 odd:bg-white dark:even:bg-gray-600 dark:odd:bg-gray-700' key={ele._id}>
-                      <td className='border p-2 dark:text-gray-200'>{index + 1}</td>
-                      <td className='border p-2 dark:text-gray-200'>{ele.name}</td>
-                      <td className='border p-2 dark:text-gray-200'>{ele.roll}</td>
-                      <td className='border p-2 dark:text-gray-200'>{ele.subject}</td>
-                      <td className='border p-2 dark:text-gray-200'>{formattedDate}</td>
+                      <td className='border p-2 dark:text-gray-200 whitespace-nowrap'>{index + 1}</td>
+                      <td className='border p-2 dark:text-gray-200 whitespace-nowrap'>{ele.name}</td>
+                      <td className='border p-2 dark:text-gray-200 whitespace-nowrap'>{ele.roll}</td>
+                      <td className='border p-2 dark:text-gray-200 whitespace-nowrap'>{ele.subject}</td>
+                      <td className='border p-2 dark:text-gray-200 whitespace-nowrap'>{formattedDate}</td>
                       <td className='border p-2 flex justify-center'><span className="text-green-600 dark:text-green-500 text-2xl cursor-pointer" onClick={() => viewClicked(ele)}><FaEye /></span></td>
                       <td className='border p-2 dark:text-gray-200'>{ele.status} {ele.status === "pending" && <button title='Approve' className='mt-2 px-1 py-1 rounded mx-2  bg-green-500 text-gray-200 text-sm font-semibold' onClick={() => ApproveApplication(ele._id)}><FaCheck /></button>}</td>
-                      <td className='flex items-center justify-center h-full'>
+                      <td className='flex items-center justify-center h-full whitespace-nowrap'>
                         <div className='flex items-center justify-center'>
                           <a href={`mailto:${ele.email}`} title='Mail' className='mt-2 px-3 py-1 rounded mx-2  bg-green-500 text-gray-200 text-sm font-semibold'><IoMail /></a>
                         </div>

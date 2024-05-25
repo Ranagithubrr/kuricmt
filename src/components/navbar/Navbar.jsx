@@ -10,8 +10,9 @@ import Usermenu from './Usermenu';
 import Computer from '../../img/desktop.png';
 import { useAuth } from '../../contexts/AuthContext';
 import axios from 'axios';
+import { HiOutlineBars3BottomRight } from 'react-icons/hi2';
 
-const Navbar = () => {
+const Navbar = ({setSidebar}) => {
     const { userData } = useAuth()
     const [rightSidebar, setRightSidebar] = useState(false);
     const [darkMode, setDarkMode] = useState(false);
@@ -58,35 +59,40 @@ const Navbar = () => {
     return (
         <>
             <div class="flex px-6 py-2  items-center shadow-md sticky top-0 z-10 bg-white dark:bg-gray-800">
-                <div class="w-4/12">                    
+                <div class="w-3/12">                    
                     <img src={logo ? logo : Computer} alt="D.O.C" className='h-16 rounded-md bg-white' />
                     <span className="text-xs font-semibold dark:text-gray-200 mt-1 hidden lg:block">Department Of Computer</span>
                 </div>
-                <div class="lg:w-6/12">
-                    <ul className='flex fixed lg:static lg:bg-transparent w-full bottom-0 dark:bg-gray-900 left-0 right-0 mx-auto py-4'>
-                        <li className='px-7 border-b-4 border-transparent hover:border-blue-900 dark:hover:border-gray-200  mx-2 pb-3 font-semibold text-blue-950 dark:text-gray-200   '>
+                <div class="lg:w-6/12 mx-auto">
+                    <ul className='flex items-center justify-evenly fixed lg:static bg-white lg:bg-transparent w-full bottom-0 dark:bg-gray-900 left-0 right-0 mx-auto py-4'>
+                        <li className=' border-b-4 border-transparent hover:border-blue-900 dark:hover:border-gray-200  mx-2 pb-3 font-semibold text-blue-950 dark:text-gray-200   '>
                             <Link to="/dashboard" className='text-3xl'>
                                 <AiOutlineHome />
                             </Link>
                         </li>
-                        <li className='px-7 border-b-4 border-transparent hover:border-blue-900 dark:hover:border-gray-200  mx-2 pb-3 font-semibold text-blue-950 dark:text-gray-200   '>
+                        <li className=' border-b-4 border-transparent hover:border-blue-900 dark:hover:border-gray-200  mx-2 pb-3 font-semibold text-blue-950 dark:text-gray-200   '>
                             <Link to="/dashboard/notices" className='text-3xl'>
                                 <IoDocumentTextOutline />
                             </Link>
                         </li>
-                        <li className='px-7 border-b-4 border-transparent hover:border-blue-900 dark:hover:border-gray-200  mx-2 pb-3 font-semibold text-blue-950 dark:text-gray-200   '>
+                        <li className=' border-b-4 border-transparent hover:border-blue-900 dark:hover:border-gray-200  mx-2 pb-3 font-semibold text-blue-950 dark:text-gray-200   '>
                             <Link to="/dashboard/profile" className='text-3xl'>
                                 <CgProfile />
                             </Link>
                         </li>
-                        <li className='px-7 border-b-4 border-transparent hover:border-blue-900 dark:hover:border-gray-200  mx-2 pb-3 font-semibold text-blue-950 dark:text-gray-200   '>
+                        <li className=' border-b-4 border-transparent hover:border-blue-900 dark:hover:border-gray-200  mx-2 pb-3 font-semibold text-blue-950 dark:text-gray-200   '>
                             <Link target='_blank' to="/" className='text-3xl'>
                                 <IoIosGlobe />
                             </Link>
                         </li>
+                        <li className='lg:hidden border-b-4 border-transparent hover:border-blue-900 dark:hover:border-gray-200  mx-2 pb-3 font-semibold text-blue-950 dark:text-gray-200' onClick={() => setSidebar((prev) => !prev)}>
+                            <span className='text-3xl'>
+                                <HiOutlineBars3BottomRight />
+                            </span>
+                        </li>
                     </ul>
                 </div>
-                <div class="lg:w-2/12 w-8/12 flex justify-end items-center">
+                <div class="lg:w-3/12 w-8/12 flex justify-end items-center">
                     <span className='font-semibold text-sm mr-2 dark:text-gray-300'>Role: {userData && userData.type}</span>
                     <span className='
                     h-9 
@@ -106,7 +112,7 @@ const Navbar = () => {
                     </span>
                     <Usermenu />
                 </div>
-                <div className={`fixed bg-white dark:bg-gray-700 ${!rightSidebar ? '-right-full' : 'right-0'}  top-0 h-full w-8/12 lg:w-2/12 z-40 transition-all duration-300 pl-5 pt-5 ease-in-out`}>
+                <div className={`fixed bg-white dark:bg-gray-700 ${!rightSidebar ? '-right-full' : 'right-0'}  top-0 h-full w-8/12 lg:w-2/12 z-[9999999] transition-all duration-300 pl-5 pt-5 ease-in-out`}>
                     <img src={Computer} alt="D.O.C" className='h-12  m-auto pr-3' />
                     <div className='pt-3 pr-5'>
                         <span className='text-xs font-bold dark:text-gray-300 block text-center'>Theme : {darkMode ? 'Dark' : 'Light'}</span>

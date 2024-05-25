@@ -3,31 +3,36 @@ import { AiFillStar } from 'react-icons/ai';
 import { MdDashboardCustomize, MdOutlineLogout } from 'react-icons/md';
 import { HiUserAdd } from 'react-icons/hi';
 import { BsCalendarDate, BsChatLeftQuoteFill, BsFillChatDotsFill, BsHospitalFill } from 'react-icons/bs';
-import { FaUsers, FaPlus, FaBullhorn } from 'react-icons/fa';
+import { FaUsers, FaPlus, FaBullhorn, FaTimes } from 'react-icons/fa';
 import { HiOutlineBars3BottomRight } from "react-icons/hi2";
 import { MdArrowDropDown, MdManageAccounts } from 'react-icons/md';
 import { Link } from "react-router-dom";
 import { useAuth } from '../../contexts/AuthContext';
 
-const Sidebar = () => {
+const Sidebar = ({sidebar, setSidebar}) => {
     const { userData, logout } = useAuth()
     const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
     const toggleSubmenu = () => {
         isSubMenuOpen ? setIsSubMenuOpen(false) : setIsSubMenuOpen(true);
-    }
-    const [sidebar, setSidebar] = useState(true);
-    console.log(sidebar)
+    }    
     const LogOutUser = () => {
         logout()
     }
     return (
         <>
-            <div className={`${!sidebar ? 'w-8/12 lg:w-3/12' : 'w-[6rem] -left-full lg:left-0'} z-10 md:z-auto fixed top-20 lg:sticky transition-all ease-in-out overflow-y-scroll pb-10 dark:border-gray-700 border-r shadow-lg dark:shadow-transparent bg-white dark:bg-slate-800 h-full lg:h-[85vh]`}>
+            <div className={`${!sidebar ? 'w-8/12 lg:w-3/12' : 'w-[6rem] -left-full lg:left-0'} md:z-auto fixed top-20 lg:sticky transition-all duration-300 ease-in-out overflow-y-scroll pb-10 dark:border-gray-700 border-r shadow-lg dark:shadow-transparent bg-white dark:bg-slate-800 h-full lg:h-[85vh] z-50`}>
                 <div className='w-full text-center flex justify-end pr-7 pt-4 dark:text-gray-200 font-bold text-2xl cursor-pointer'>
-                    <span className='' onClick={() => setSidebar((prev) => !prev)}><HiOutlineBars3BottomRight /> </span>
+                    <span className='hidden lg:block' onClick={() => setSidebar((prev) => !prev)}><HiOutlineBars3BottomRight /> </span>
+                    <span className='lg:hidden' onClick={() => setSidebar(true)}><FaTimes /> </span>
                 </div>
                 <ul className='pl-2 pt-2 top-0'>
-                    <li className='flex  hover:bg-slate-200 rounded dark:hover:bg-gray-900'>
+                    <li className='flex  hover:bg-slate-200 rounded dark:hover:bg-gray-900'
+                        onClick={() => {
+                            if (window.innerWidth <= 768) {
+                                setSidebar(true);
+                            }
+                        }}
+                    >
                         <Link to='/dashboard' className='h-full w-full py-4 px-2 block'>
                             <span className='flex items-center text-base dark:text-gray-200 ml-4'><MdDashboardCustomize className='text-xl' />  <span className={`pl-3 h-full text-sm font-semibold ${sidebar && 'hidden'}`}>Dashboard</span></span>
                         </Link>
@@ -108,7 +113,7 @@ const Sidebar = () => {
                     <li className='flex  hover:bg-slate-200 rounded dark:hover:bg-gray-900'>
                         <Link to='/dashboard/chat' className='h-full w-full  py-4 px-2 flex'>
                             <span className='flex items-center text-base dark:text-gray-200 ml-4'><BsFillChatDotsFill className='text-xl' />  <span className={`pl-3 h-full text-sm font-semibold ${sidebar && 'hidden'}`}>Chat</span></span>
-                            <div className={`h-3 w-3 bg-blue-700 rounded-full ml-auto mr-5 flex items-center justify-center ${!sidebar && 'hidden'}`}>
+                            <div className={`h-3 w-3 bg-blue-700 rounded-full ml-auto mr-5 flex items-center justify-center ${sidebar && 'hidden'}`}>
 
                             </div>
                         </Link>
@@ -119,10 +124,13 @@ const Sidebar = () => {
                         </button>
                     </li>
                 </ul>
-            </div>
-            <div className='fixed lg:hidden h-16 w-16 flex items-center justify-center z-10 rounded-md bg-gray-800 text-gray-200 right-0 top-1/2 bottom-1/2 my-auto'>
-                <span className='text-3xl' onClick={() => setSidebar((prev) => !prev)}><HiOutlineBars3BottomRight /> </span>
-            </div>
+            </div>           
+            {
+                !sidebar &&
+                <div className='fixed lg:hidden w-full h-full bg-gray-400 z-10 opacity-50' onClick={() => setSidebar(true)}>
+
+                </div>
+            }
         </>
     );
 };

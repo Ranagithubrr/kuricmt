@@ -32,9 +32,9 @@ function App() {
   return (
     <>   
       <Alert
-        className="pointer-events-none fixed flex items-center top-0 lg:bottom-5 lg:top-auto right-0 w-full h-5 lg:w-64 z-20 rounded-none border-l-4 border-red-400 bg-red-200 bg-opacity-50 font-medium text-red-800"
+        className="pointer-events-none fixed flex items-center left-auto right-0 top-0 h-2 py-3 w-44 lg:w-64 z-20 rounded-none border-l-4 border-red-400 bg-red-200 bg-opacity-50 font-medium text-red-800"
         >      
-        <span>Test Mode</span>
+        <span className='text-xs'>Test Mode</span>
       </Alert>
       <Routes>
         <Route path='/' element={<Homepage />} />
