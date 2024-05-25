@@ -64,7 +64,7 @@ const Navbar = ({setSidebar}) => {
                     <span className="text-xs font-semibold dark:text-gray-200 mt-1 hidden lg:block">Department Of Computer</span>
                 </div>
                 <div class="lg:w-6/12 mx-auto">
-                    <ul className='flex items-center justify-evenly fixed lg:static bg-white lg:bg-transparent w-full bottom-0 dark:bg-gray-900 left-0 right-0 mx-auto py-4'>
+                    <ul className='flex items-center justify-evenly fixed lg:static bg-white lg:bg-transparent w-full bottom-0 dark:bg-gray-900 lg:dark:bg-transparent left-0 right-0 mx-auto py-4'>
                         <li className=' border-b-4 border-transparent hover:border-blue-900 dark:hover:border-gray-200  mx-2 pb-3 font-semibold text-blue-950 dark:text-gray-200   '>
                             <Link to="/dashboard" className='text-3xl'>
                                 <AiOutlineHome />
@@ -112,7 +112,7 @@ const Navbar = ({setSidebar}) => {
                     </span>
                     <Usermenu />
                 </div>
-                <div className={`fixed bg-white dark:bg-gray-700 ${!rightSidebar ? '-right-full' : 'right-0'}  top-0 h-full w-8/12 lg:w-2/12 z-[9999999] transition-all duration-300 pl-5 pt-5 ease-in-out`}>
+                <div className={`fixed bg-white dark:bg-gray-900 ${!rightSidebar ? '-right-full' : 'right-0'}  top-0 h-full w-8/12 lg:w-2/12 z-[9999999] transition-all duration-300 pl-5 pt-5 ease-in-out`}>
                     <img src={Computer} alt="D.O.C" className='h-12  m-auto pr-3' />
                     <div className='pt-3 pr-5'>
                         <span className='text-xs font-bold dark:text-gray-300 block text-center'>Theme : {darkMode ? 'Dark' : 'Light'}</span>
