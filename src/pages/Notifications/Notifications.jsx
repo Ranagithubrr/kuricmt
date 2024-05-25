@@ -18,7 +18,7 @@ const Notifications = () => {
     FetchNotices()
   }, [])
   return (
-    <div className='w-1/2 m-auto'>
+    <div className='w-full px-4 lg:w-1/2 m-auto'>
       <h4 className='font-semibold text-xl m-3 ml-0 dark:text-gray-200'>Notices</h4>
       {
         notices && notices.map((ele) => {

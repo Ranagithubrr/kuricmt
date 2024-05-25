@@ -116,9 +116,9 @@ const Maindashboard = () => {
                         Announcement : {dataState.data.websiteData.announcement}
                     </Alert>
                 }
-                <div className="border rounded-sm p-4 w-full dark:border-slate-600">
+                <div className="border rounded-sm p-2 lg:p-4 w-full dark:border-slate-600">
                     <h2 className="text-md font-semibold mb-4 dark:text-slate-400">Recent Notices</h2>
-                    <ol className='list-disc ml-5'>
+                    <ol className='list-disc lg:ml-5'>
                         {dataState.data.notices.length !== 0 && dataState.data.notices.map((notice, index) => (
                             <Notification item={notice} />
                         ))}
@@ -130,7 +130,7 @@ const Maindashboard = () => {
                     }
                 </div>
             </div>
-            <div className="w-full md:w-1/2 lg:w-1/3 p-3">
+            <div className="w-full md:w-1/2 lg:w-1/3 p-3 mb-5 lg:mb-0">
                 <div className='border p-2 rounded-sm dark:border-slate-600'>
                     <h5 className='font-semibold pl-2 dark:text-gray-200'>Our Teachers</h5>
 

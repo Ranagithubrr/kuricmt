@@ -18,7 +18,7 @@ const Notification = ({ item }) => {
                     <CiMenuKebab className='text-black text-md cursor-pointer dark:text-gray-200' />
                 </div>
             </div>
-            <div className='flex justify-between'>
+            <div className='lg:flex justify-between'>
                 <p className='text-sm text-gray-700 dark:text-gray-300 text-justify pr-4'>{item.description}</p>
                 <span className='text-sm font-semibold dark:text-gray-300'>{formattedDate}</span>
             </div>           
