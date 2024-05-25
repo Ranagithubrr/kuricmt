@@ -52,39 +52,46 @@ const Sidebar = ({ sidebar, setSidebar }) => {
                         userData && userData.type && userData.type === "admin" &&
 
                         <li className='rounded dark:hover:bg-gray-900 relative pb-2'
-                        onClick={() => {
-                            if (window.innerWidth <= 768) {
-                                setSidebar(true);
-                            }
-                        }}
                         >
                             <span className='h-full w-full  py-4 px-2 block cursor-pointer' onClick={() => toggleSubmenu()}>
                                 <span className='flex items-center text-base dark:text-gray-200 ml-4'><MdArrowDropDown className='text-xl' />  <span className={`pl-3 h-full text-sm font-semibold ${sidebar && 'hidden'}`}><span className='flex items-center'>Dep. Instruments </span></span></span>
                             </span>
                             <div className={`border-l-2 border-gray-800 transition duration-500 ${isSubMenuOpen ? 'pointer-events-auto ml-3 ' : 'pointer-events-none h-0 overflow-hidden'
                                 }`}>
-                                <Link to="/dashboard/department-survey" className='pl-3 ml-2 flex items-center hover:bg-slate-200 dark:hover:bg-gray-800 rounded text-sm font-semibold py-1 dark:text-gray-400'><span className='pr-2 text-sm'><BsHospitalFill /> </span>- Instruments</Link>
-                                <Link to="/dashboard/website-contents" className='pl-3 ml-2 flex items-center hover:bg-slate-200 dark:hover:bg-gray-800 rounded text-sm font-semibold py-1 dark:text-gray-400'><span className='pr-2 text-sm'><BsHospitalFill /> </span>- Website Contents</Link>
+                                <Link to="/dashboard/department-survey" className='pl-3 ml-2 flex items-center hover:bg-slate-200 dark:hover:bg-gray-800 rounded text-sm font-semibold py-1 dark:text-gray-400'
+                                    onClick={() => {
+                                        if (window.innerWidth <= 768) {
+                                            setSidebar(true);
+                                        }
+                                    }}
+                                ><span className='pr-2 text-sm'><BsHospitalFill /> </span>- Instruments</Link>
+                                <Link to="/dashboard/website-contents" className='pl-3 ml-2 flex items-center hover:bg-slate-200 dark:hover:bg-gray-800 rounded text-sm font-semibold py-1 dark:text-gray-400'
+                                    onClick={() => {
+                                        if (window.innerWidth <= 768) {
+                                            setSidebar(true);
+                                        }
+                                    }}
+                                ><span className='pr-2 text-sm'><BsHospitalFill /> </span>- Website Contents</Link>
                             </div>
                         </li>
                     }
                     <li className='flex  hover:bg-slate-200 rounded dark:hover:bg-gray-900'
-                     onClick={() => {
-                        if (window.innerWidth <= 768) {
-                            setSidebar(true);
-                        }
-                    }}
+                        onClick={() => {
+                            if (window.innerWidth <= 768) {
+                                setSidebar(true);
+                            }
+                        }}
                     >
                         <Link to='/dashboard/teachers' className='h-full w-full  py-4 px-2 block'>
                             <span className='flex items-center text-base dark:text-gray-200 ml-4'><FaUsers className='text-xl' />  <span className={`pl-3 h-full text-sm font-semibold ${sidebar && 'hidden'}`}>Teachers Profile</span></span>
                         </Link>
                     </li>
                     <li className='flex  hover:bg-slate-200 rounded dark:hover:bg-gray-900'
-                     onClick={() => {
-                        if (window.innerWidth <= 768) {
-                            setSidebar(true);
-                        }
-                    }}
+                        onClick={() => {
+                            if (window.innerWidth <= 768) {
+                                setSidebar(true);
+                            }
+                        }}
                     >
                         <Link to='/dashboard/captains' className='h-full w-full  py-4 px-2 block'>
                             <span className='flex items-center text-base dark:text-gray-200 ml-4'><HiUserAdd className='text-xl' />  <span className={`pl-3 h-full text-sm font-semibold ${sidebar && 'hidden'}`}>Class Captains</span></span>
@@ -93,11 +100,11 @@ const Sidebar = ({ sidebar, setSidebar }) => {
                     {
                         userData && userData.type && userData.type === "admin" &&
                         <li className='flex  hover:bg-slate-200 rounded dark:hover:bg-gray-900'
-                        onClick={() => {
-                            if (window.innerWidth <= 768) {
-                                setSidebar(true);
-                            }
-                        }}
+                            onClick={() => {
+                                if (window.innerWidth <= 768) {
+                                    setSidebar(true);
+                                }
+                            }}
                         >
                             <Link to='/dashboard/add-notice' className='h-full w-full  py-4 px-2 block'>
                                 <span className='flex items-center text-base dark:text-gray-200 ml-4'><FaPlus className='text-xl' />  <span className={`pl-3 h-full text-sm font-semibold ${sidebar && 'hidden'}`}>Add Notice</span></span>
@@ -107,11 +114,11 @@ const Sidebar = ({ sidebar, setSidebar }) => {
                     {
                         userData && userData.type && userData.type === "admin" &&
                         <li className='flex  hover:bg-slate-200 rounded dark:hover:bg-gray-900'
-                        onClick={() => {
-                            if (window.innerWidth <= 768) {
-                                setSidebar(true);
-                            }
-                        }}
+                            onClick={() => {
+                                if (window.innerWidth <= 768) {
+                                    setSidebar(true);
+                                }
+                            }}
                         >
                             <Link to='/dashboard/add-announcement' className='h-full w-full  py-4 px-2 block dark:text-gray-200'>
                                 <span className='flex items-center text-base dark:text-gray-200 ml-4'><FaBullhorn className='text-xl dark:text-gray-200' />  <span className={`pl-3 h-full text-sm font-semibold ${sidebar && 'hidden'}`}>Announcement</span></span>
@@ -120,11 +127,11 @@ const Sidebar = ({ sidebar, setSidebar }) => {
                     }
 
                     <li className='flex  hover:bg-slate-200 rounded dark:hover:bg-gray-900'
-                     onClick={() => {
-                        if (window.innerWidth <= 768) {
-                            setSidebar(true);
-                        }
-                    }}
+                        onClick={() => {
+                            if (window.innerWidth <= 768) {
+                                setSidebar(true);
+                            }
+                        }}
                     >
                         <Link to='/dashboard/notes' className='h-full w-full  py-4 px-2 block'>
                             <span className='flex items-center text-base dark:text-gray-200 ml-4'><FaPlus className='text-xl' />  <span className={`pl-3 h-full text-sm font-semibold ${sidebar && 'hidden'}`}>My Notes</span></span>
@@ -133,11 +140,11 @@ const Sidebar = ({ sidebar, setSidebar }) => {
                     {
                         userData && userData.type && userData.type === "admin" &&
                         <li className='flex  hover:bg-slate-200 rounded dark:hover:bg-gray-900'
-                        onClick={() => {
-                            if (window.innerWidth <= 768) {
-                                setSidebar(true);
-                            }
-                        }}
+                            onClick={() => {
+                                if (window.innerWidth <= 768) {
+                                    setSidebar(true);
+                                }
+                            }}
                         >
                             <Link to='/dashboard/accounts-review' className='h-full w-full  py-4 px-2 block'>
                                 <span className='flex items-center text-base dark:text-gray-200 ml-4'><MdManageAccounts className='text-xl' />  <span className={`pl-3 h-full text-sm font-semibold ${sidebar && 'hidden'}`}>Accounts Review</span></span>
@@ -148,11 +155,11 @@ const Sidebar = ({ sidebar, setSidebar }) => {
                     {
                         userData && userData.type && userData.type === "admin" &&
                         <li className='flex  hover:bg-slate-200 rounded dark:hover:bg-gray-900'
-                        onClick={() => {
-                            if (window.innerWidth <= 768) {
-                                setSidebar(true);
-                            }
-                        }}
+                            onClick={() => {
+                                if (window.innerWidth <= 768) {
+                                    setSidebar(true);
+                                }
+                            }}
                         >
                             <Link to='/dashboard/quote-review' className='h-full w-full  py-4 px-2 block'>
                                 <span className='flex items-center text-base dark:text-gray-200 ml-4'><BsChatLeftQuoteFill className='text-xl' />  <span className={`pl-3 h-full text-sm font-semibold ${sidebar && 'hidden'}`}>Quotes Review</span></span>
@@ -160,22 +167,22 @@ const Sidebar = ({ sidebar, setSidebar }) => {
                         </li>
                     }
                     <li className='flex  hover:bg-slate-200 rounded dark:hover:bg-gray-900'
-                     onClick={() => {
-                        if (window.innerWidth <= 768) {
-                            setSidebar(true);
-                        }
-                    }}
+                        onClick={() => {
+                            if (window.innerWidth <= 768) {
+                                setSidebar(true);
+                            }
+                        }}
                     >
                         <Link to='/dashboard/review' className='h-full w-full  py-4 px-2 block'>
                             <span className='flex items-center text-base dark:text-gray-200 ml-4'><AiFillStar className='text-xl' />  <span className={`pl-3 h-full text-sm font-semibold ${sidebar && 'hidden'}`}>Reviews</span></span>
                         </Link>
                     </li>
-                    <li className='flex  hover:bg-slate-200 rounded dark:hover:bg-gray-900' 
-                     onClick={() => {
-                        if (window.innerWidth <= 768) {
-                            setSidebar(true);
-                        }
-                    }}
+                    <li className='flex  hover:bg-slate-200 rounded dark:hover:bg-gray-900'
+                        onClick={() => {
+                            if (window.innerWidth <= 768) {
+                                setSidebar(true);
+                            }
+                        }}
                     >
                         <Link to='/dashboard/chat' className='h-full w-full  py-4 px-2 flex'>
                             <span className='flex items-center text-base dark:text-gray-200 ml-4'><BsFillChatDotsFill className='text-xl' />  <span className={`pl-3 h-full text-sm font-semibold ${sidebar && 'hidden'}`}>Chat</span></span>
