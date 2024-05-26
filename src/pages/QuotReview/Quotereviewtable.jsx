@@ -41,17 +41,17 @@ const QuotesReviewTable = () => {
                 {
                     users && users.length !== 0 &&
 
-                    <table className='min-w-full border border-gray-300'>
+                    <table className='min-w-full border border-gray-300 dark:border-gray-600'>
                         <thead>
-                            <tr className='bg-gray-200 text-left'>
-                                <th className='border p-2'>Sl</th>
-                                <th className='border p-2'>Name</th>
-                                <th className='border p-2'>Department</th>
-                                <th className='border p-2'>Session</th>
-                                <th className='border p-2'>Message</th>
-                                <th className='border p-2'>Created At</th>
-                                <th className='border p-2 text-center'>Show/Hide</th>
-                                <th className='border p-2 text-center'>Action</th>
+                            <tr className='bg-gray-200 text-left dark:bg-gray-900'>
+                                <th className='border dark:border-gray-600 dark:text-gray-300 p-2'>Sl</th>
+                                <th className='border dark:border-gray-600 dark:text-gray-300 p-2'>Name</th>
+                                <th className='border dark:border-gray-600 dark:text-gray-300 p-2'>Department</th>
+                                <th className='border dark:border-gray-600 dark:text-gray-300 p-2'>Session</th>
+                                <th className='border dark:border-gray-600 dark:text-gray-300 p-2'>Message</th>
+                                <th className='border dark:border-gray-600 dark:text-gray-300 p-2'>Created At</th>
+                                <th className='border dark:border-gray-600 dark:text-gray-300 p-2 text-center'>Show/Hide</th>
+                                <th className='border dark:border-gray-600 dark:text-gray-300 p-2 text-center'>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -62,14 +62,14 @@ const QuotesReviewTable = () => {
 
                                     const formattedDate = `${date.toLocaleDateString()} at ${date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
                                     return (
-                                        <tr className='border even:bg-gray-50 odd:bg-white'>
-                                            <td className='border p-2'>{index + 1}</td>
-                                            <td className='border p-2'>{ele.name}</td>
-                                            <td className='border p-2'>{ele.department}</td>
-                                            <td className='border p-2'>{ele.session}</td>
-                                            <td className='border p-2'>{ele.message}</td>
-                                            <td className='border p-2'>{formattedDate}</td>
-                                            <td className='border p-2 text-center'>
+                                        <tr className='border dark:border-gray-600 even:bg-gray-50 odd:bg-white dark:even:bg-gray-800 dark:odd:bg-gray-900'>
+                                            <td className='border dark:text-gray-300 dark:border-gray-600 p-2'>{index + 1}</td>
+                                            <td className='border dark:text-gray-300 dark:border-gray-600 p-2'>{ele.name}</td>
+                                            <td className='border dark:text-gray-300 dark:border-gray-600 p-2'>{ele.department}</td>
+                                            <td className='border dark:text-gray-300 dark:border-gray-600 p-2'>{ele.session}</td>
+                                            <td className='border dark:text-gray-300 dark:border-gray-600 p-2'>{ele.message}</td>
+                                            <td className='border dark:text-gray-300 dark:border-gray-600 p-2'>{formattedDate}</td>
+                                            <td className='border dark:text-gray-300 dark:border-gray-600 p-2 text-center'>
                                                 <div
                                                     className={`mt-2 w-14 h-6 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-300 ${ele.status ? 'bg-blue-500' : 'bg-gray-300'}`}
                                                     onClick={() => UpdateStatus(ele._id)}                                                                                            
@@ -79,7 +79,7 @@ const QuotesReviewTable = () => {
                                                     ></div>
                                                 </div>
                                             </td>
-                                            <td className='border p-2 text-center'>
+                                            <td className='border p-2 text-center dark:border-gray-600'>
                                                 <span className="text-lg font-bold text-red-600 cursor-pointer text-center">
                                                     <FaRegTrashAlt onClick={() => DeleteQuote(ele._id)} />
                                                 </span>

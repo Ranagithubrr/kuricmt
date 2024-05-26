@@ -4,7 +4,7 @@ import QuotesReviewTable from './Quotereviewtable';
 const QuoteReview = () => {
   return (
     <div className='p-4'>
-      <h4 className='font-semibold pb-4'>Review Quotes</h4>
+      <h4 className='font-semibold pb-4 dark:text-gray-200'>Review Quotes</h4>
       <QuotesReviewTable />
     </div>
   )

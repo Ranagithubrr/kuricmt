@@ -131,15 +131,15 @@ const AccountsReviewtable = () => {
         {
           users && users.length !== 0 &&
 
-          <table className='min-w-full border border-gray-300'>
+          <table className='min-w-full border border-gray-300 '>
             <thead>
-              <tr className='bg-gray-200 text-left'>
-                <th className='border p-2'>Sl</th>
-                <th className='border p-2'>Name</th>
-                <th className='border p-2'>Email</th>
-                <th className='border p-2'>Type</th>
-                <th className='border p-2'>Created At</th>
-                <th className='border p-2 text-center'>Action</th>
+              <tr className='bg-gray-200 text-left dark:bg-gray-900 dark:border-gray-600'>
+                <th className='border dark:border-gray-500 dark:text-gray-300 p-2'>Sl</th>
+                <th className='border dark:border-gray-500 dark:text-gray-300 p-2'>Name</th>
+                <th className='border dark:border-gray-500 dark:text-gray-300 p-2'>Email</th>
+                <th className='border dark:border-gray-500 dark:text-gray-300 p-2'>Type</th>
+                <th className='border dark:border-gray-500 dark:text-gray-300 p-2'>Created At</th>
+                <th className='border dark:border-gray-500 dark:text-gray-300 p-2 text-center'>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -150,12 +150,12 @@ const AccountsReviewtable = () => {
 
                   const formattedDate = `${date.toLocaleDateString()} at ${date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
                   return (
-                    <tr className='border even:bg-gray-50 odd:bg-white'>
-                      <td className='border p-2'>{index + 1}</td>
-                      <td className='border p-2'>{ele.name}</td>
-                      <td className='border p-2'>{ele.email}</td>
-                      <td className='border p-2'>{ele.type}</td>
-                      <td className='border p-2'>{formattedDate}</td>
+                    <tr className='border dark:border-gray-500 dark:text-gray-300 even:bg-gray-50 odd:bg-white dark:even:bg-gray-800 dark:odd:bg-gray-900'>
+                      <td className='border dark:border-gray-500 dark:text-gray-300 p-2'>{index + 1}</td>
+                      <td className='border dark:border-gray-500 dark:text-gray-300 p-2'>{ele.name}</td>
+                      <td className='border dark:border-gray-500 dark:text-gray-300 p-2'>{ele.email}</td>
+                      <td className='border dark:border-gray-500 dark:text-gray-300 p-2'>{ele.type}</td>
+                      <td className='border dark:border-gray-500 dark:text-gray-300 p-2'>{formattedDate}</td>
                       <td className='flex items-center justify-center h-full'>
                         <div className='flex items-center justify-center'>
                           <button title='Decline' className='mt-2 px-3 py-1 rounded mx-2  bg-red-500 text-gray-200 text-sm font-semibold' onClick={() => WantToDelete(ele.name, ele._id)}><FaTimes /></button>
