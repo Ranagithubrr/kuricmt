@@ -25,7 +25,7 @@ const Sidebar = ({ sidebar, setSidebar }) => {
                     <span className='hidden lg:block' onClick={() => setSidebar((prev) => !prev)}><HiOutlineBars3BottomRight /> </span>
                     <span className='lg:hidden' onClick={() => setSidebar(true)}><FaTimes /> </span>
                 </div>
-                <ul className='pl-2 pt-2 top-0'>
+                <ul className='pl-2 pt-2 top-0 mb-12'>
                     <li className='flex  hover:bg-slate-200 rounded dark:hover:bg-gray-900'
                         onClick={() => {
                             if (window.innerWidth <= 768) {

@@ -1,5 +1,5 @@
 import React from 'react';
-import ComingSoon from '../../img/coomingsoon.jpg';
+import ComingSoon from '../../img/coming-soon.png';
 
 const Notes = () => {
   return (

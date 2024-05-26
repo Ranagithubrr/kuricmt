@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { GrAnnounce } from 'react-icons/gr'
 import { useAuth } from '../../contexts/AuthContext';
 import axios from 'axios';
+import { FaBullhorn } from 'react-icons/fa';
 
 const Announcement = () => {
     const [switchState, setSwitchState] = useState(false);
@@ -49,23 +49,23 @@ const Announcement = () => {
     }, []);
     return (
         <div className='p-4 flex items-center justify-center flex-col mt-10'>
-            <h2 className='font-semibold text-md'>Add a New Announcement</h2>
+            <h2 className='font-semibold text-md dark:text-gray-300'>Add a New Announcement</h2>
             <div
-                className={`mt-2 w-14 h-6 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-300 ${switchState ? 'bg-blue-500' : 'bg-gray-300'}`}
+                className={`mt-2 w-14 h-6 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-300 ${switchState ? 'bg-blue-500' : 'bg-gray-300 dark:bg-gray-700'}`}
                 onClick={ToggleSwitch}
             >
                 <div
                     className={`bg-white w-5 h-5 rounded-full shadow-md transform transition-transform duration-300 ${switchState ? 'translate-x-7' : ''}`}
                 ></div>
             </div>
-            <span className='text-9xl cursor-pointer my-5'><GrAnnounce /></span>
+            <span className='text-9xl cursor-pointer my-5 dark:text-gray-500'><FaBullhorn /></span>
             <textarea
                 rows={10}
                 cols={20}
                 value={announcement}
                 onChange={(e) => setAnnouncement(e.target.value)}
                 placeholder='Text'
-                className='border outline-none rounded-sm px-2 py-2 my-2 resize-none h-32 w-1/2'
+                className='border outline-none rounded-sm px-2 py-2 my-2 resize-none h-32 w-1/2 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300'
             />
             <button onClick={UpdateAnnc} className='bg-blue-600 text-gray-200 font-semibold text-sm rounded px-6 py-2' >Post</button>
         </div>
