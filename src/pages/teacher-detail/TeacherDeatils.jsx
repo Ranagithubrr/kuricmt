@@ -28,7 +28,7 @@ const TeacherDeatils = () => {
         // eslint-disable-next-line
     }, [])
     return (<>
-        <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden mt-5">
+        <div className="max-w-2xl mx-auto bg-white dark:shadow-gray-800 dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden mt-5">
             {
                 loading ? <div className="flex animate-pulse flex-wrap items-center gap-8">
                     <div className="grid h-56 w-56 place-items-center rounded-lg bg-gray-300">
@@ -90,21 +90,21 @@ const TeacherDeatils = () => {
                             <img className="h-full w-full " src={teacher.image || Notfoundimage} alt={`${teacher.name}'s`} />
                         </div>
                         <div className="p-6">
-                            <div className="uppercase tracking-wide text-xs text-gray-700 font-semibold">{teacher.title}</div>
-                            <h1 className="text-2xl font-bold text-gray-900">{teacher.name}</h1>
+                            <div className="uppercase tracking-wide text-xs text-gray-700 font-semibold dark:text-gray-400">{teacher.title}</div>
+                            <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-300">{teacher.name}</h1>
                             <div className="flex items-center space-x-2">
                                 <IoLocation className="text-blue-500" size={14} />
-                                <span className="text-sm font-bold text-gray-600 block">{teacher.address || 'not provided'}</span>
+                                <span className="text-sm font-bold text-gray-600 block dark:text-gray-300">{teacher.address || 'not provided'}</span>
                             </div>
                             <div className="flex items-center space-x-2">
                                 <FaPhoneAlt className="text-red-500" size={14} />
-                                <span className="text-sm font-bold text-gray-600 block">{teacher.phone || 'not provided'}</span>
+                                <span className="text-sm font-bold text-gray-600 block dark:text-gray-300">{teacher.phone || 'not provided'}</span>
                             </div>
                             <div className="flex items-center space-x-2">
                                 <IoMdMail className="text-green-500" size={14} />
-                                <span className="text-sm font-bold text-gray-600 block">{teacher.email || 'not provided'}</span>
+                                <span className="text-sm font-bold text-gray-600 block dark:text-gray-300">{teacher.email || 'not provided'}</span>
                             </div>
-                            <div className="flex justify-around items-center w-64 h-12 bg-gray-200 rounded-lg p-2 mt-5">
+                            <div className="flex justify-around items-center w-64 h-12 bg-gray-200 dark:bg-gray-800 rounded-lg p-2 mt-5">
                                 <a href={teacher.facebook} target="_blank" rel="noreferrer">
                                     <FaFacebook className="text-blue-600 hover:text-blue-700" size={24} />
                                 </a>
