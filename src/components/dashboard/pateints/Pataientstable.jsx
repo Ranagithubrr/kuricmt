@@ -108,19 +108,19 @@ const Pataientstable = ({ setIsUpdating, setOldData, setPropmodal, searchText })
                 {
                     Captains && Captains.captains.length !== 0 &&
 
-                    <table className='min-w-full border border-gray-300'>
+                    <table className='min-w-full border border-gray-300 dark:border-gray-600'>
                         <thead>
-                            <tr className='bg-gray-200 text-left'>
-                                <th className='border p-2'>Sl</th>
-                                <th className='border p-2'>Roll</th>
-                                <th className='border p-2'>Name</th>
-                                <th className='border p-2'>Semester</th>
-                                <th className='border p-2'>Shift</th>
-                                <th className='border p-2'>Phone</th>
-                                <th className='border p-2'>Email</th>
+                            <tr className='bg-gray-200 text-left dark:bg-gray-900 dark:border-gray-600'>
+                                <th className='border dark:border-gray-500 dark:text-gray-300 p-2'>Sl</th>
+                                <th className='border dark:border-gray-500 dark:text-gray-300 p-2'>Roll</th>
+                                <th className='border dark:border-gray-500 dark:text-gray-300 p-2'>Name</th>
+                                <th className='border dark:border-gray-500 dark:text-gray-300 p-2'>Semester</th>
+                                <th className='border dark:border-gray-500 dark:text-gray-300 p-2'>Shift</th>
+                                <th className='border dark:border-gray-500 dark:text-gray-300 p-2'>Phone</th>
+                                <th className='border dark:border-gray-500 dark:text-gray-300 p-2'>Email</th>
                                 {
                                     userData && userData.type && userData.type === "admin" &&
-                                    <th className='border p-2 text-center'>Action</th>
+                                    <th className='border dark:border-gray-500 dark:text-gray-300 p-2 text-center'>Action</th>
                                 }
                             </tr>
                         </thead>
@@ -128,17 +128,17 @@ const Pataientstable = ({ setIsUpdating, setOldData, setPropmodal, searchText })
                             {
                                 filteredItems.length !== 0 && filteredItems.map((ele, index) => {
                                     return (
-                                        <tr className='border even:bg-gray-50 odd:bg-white'>
-                                            <td className='border p-2'>{index + 1}</td>
-                                            <td className='border p-2'>{ele.roll}</td>
-                                            <td className='border p-2'>{ele.name}</td>
-                                            <td className='border p-2'>{ele.semester}</td>
-                                            <td className='border p-2'>{ele.shift}</td>
-                                            <td className='border p-2'><Link to={`tel:${ele.phone}`}>{ele.phone}</Link></td>
-                                            <td className='border p-2'><Link to={`mailto:${ele.email}`}>{ele.email}</Link></td>
+                                        <tr className='border even:bg-gray-50 odd:bg-white dark:even:bg-gray-800 dark:odd:bg-gray-900'>
+                                            <td className='border dark:border-gray-600 dark:text-gray-300 p-2'>{index + 1}</td>
+                                            <td className='border dark:border-gray-600 dark:text-gray-300 p-2'>{ele.roll}</td>
+                                            <td className='border dark:border-gray-600 dark:text-gray-300 p-2'>{ele.name}</td>
+                                            <td className='border dark:border-gray-600 dark:text-gray-300 p-2'>{ele.semester}</td>
+                                            <td className='border dark:border-gray-600 dark:text-gray-300 p-2'>{ele.shift}</td>
+                                            <td className='border dark:border-gray-600 dark:text-gray-300 p-2'><Link to={`tel:${ele.phone}`}>{ele.phone}</Link></td>
+                                            <td className='border dark:border-gray-600 dark:text-gray-300 p-2'><Link to={`mailto:${ele.email}`}>{ele.email}</Link></td>
                                             {
                                                 userData && userData.type && userData.type === "admin" &&
-                                                <td className='flex items-center justify-center pt-3'>
+                                                <td className='flex items-center justify-center pt-3 dark:border-gray-600'>
                                                     <span className='cursor-pointer text-red-500 px-3' onClick={() => WantToDelete(ele.name, ele._id)}><FaRegTrashAlt /></span>
                                                     <span className='cursor-pointer text-blue-500 px-3' onClick={() => SetProps(ele)}><FaRegEdit /></span>
                                                 </td>
