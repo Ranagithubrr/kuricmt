@@ -91,16 +91,16 @@ const AddCaptain = (props) => {
   };
 
   return (
-    <div className='fixed top-12 w-2/4 m-auto z-50 bg-white shadow left-0 right-0 rounded p-4'>
+    <div className='fixed top-12 w-2/4 m-auto z-50 bg-white shadow left-0 right-0 rounded p-4 dark:bg-gray-900'>
       <ToastContainer
       />
-      <span className='font-semibold block'>{isUpdating ? 'Update Captain' : ' Add Captain'}</span>
-      <label htmlFor="name">Name</label>
-      <input value={name} onChange={(e) => setName(e.target.value)} type="text" id='name' className='border rounded-sm px-4 py-2 w-full outline-none' placeholder='Demo Name' />
-      <label htmlFor="roll">Roll</label>
-      <input value={roll} onChange={(e) => setRoll(e.target.value)} type="number" id='roll' className='border rounded-sm px-4 py-2 w-full outline-none' placeholder='403849' />
-      <label htmlFor="sem">Semester</label>
-      <select value={semester} onChange={(e) => setSemester(e.target.value)} name="semester" id="sem" className='border rounded-sm px-4 py-2 w-full outline-none'>
+      <span className='font-semibold block dark:text-gray-200'>{isUpdating ? 'Update Captain' : ' Add Captain'}</span>
+      <label htmlFor="name" className="dark:text-gray-300">Name</label>
+      <input value={name} onChange={(e) => setName(e.target.value)} type="text" id='name' className='border rounded-sm px-4 py-2 w-full outline-none dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300' placeholder='Demo Name' />
+      <label htmlFor="roll" className="dark:text-gray-300">Roll</label>
+      <input value={roll} onChange={(e) => setRoll(e.target.value)} type="number" id='roll' className='border rounded-sm px-4 py-2 w-full outline-none dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300' placeholder='403849' />
+      <label htmlFor="sem" className="dark:text-gray-300">Semester</label>
+      <select value={semester} onChange={(e) => setSemester(e.target.value)} name="semester" id="sem" className='border rounded-sm px-4 py-2 w-full outline-none dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300'>
         <option>Select</option>
         <option value="1st">1st</option>
         <option value="2nd">2nd</option>
@@ -110,16 +110,16 @@ const AddCaptain = (props) => {
         <option value="6th">6th</option>
         <option value="7th">7th</option>
       </select>
-      <label htmlFor="sem">Shift</label>
-      <select value={shift} onChange={(e) => setShift(e.target.value)} name="shift" id="shift" className='border rounded-sm px-4 py-2 w-full outline-none'>
+      <label htmlFor="sem" className="dark:text-gray-300">Shift</label>
+      <select value={shift} onChange={(e) => setShift(e.target.value)} name="shift" id="shift" className='border rounded-sm px-4 py-2 w-full outline-none dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300'>
         <option>Select</option>
         <option value="1st">1st</option>
         <option value="2nd">2nd</option>
       </select>
       <label htmlFor="phone">Phone</label>
-      <input value={phone} onChange={(e) => setPhone(e.target.value)} type="text" id='phone' className='border rounded-sm px-4 py-2 w-full outline-none' placeholder='012923937937' />
+      <input value={phone} onChange={(e) => setPhone(e.target.value)} type="text" id='phone' className='border rounded-sm px-4 py-2 w-full outline-none dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300' placeholder='012923937937' />
       <label htmlFor="email">Email</label>
-      <input value={email} onChange={(e) => setEmail(e.target.value)} type="text" id='email' className='border rounded-sm px-4 py-2 w-full outline-none' placeholder='hello@gmail.com' />
+      <input value={email} onChange={(e) => setEmail(e.target.value)} type="text" id='email' className='border rounded-sm px-4 py-2 w-full outline-none dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300' placeholder='hello@gmail.com' />
       <button onClick={AddCaptain} className='bg-blue-700 text-gray-100 rounded px-8 py-2 font-semibold my-3'>{isUpdating ? 'Update' : 'Add'}</button>
     </div>
   )
