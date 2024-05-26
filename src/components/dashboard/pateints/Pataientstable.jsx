@@ -108,7 +108,7 @@ const Pataientstable = ({ setIsUpdating, setOldData, setPropmodal, searchText })
                 {
                     Captains && Captains.captains.length !== 0 &&
 
-                    <table className='min-w-full border border-gray-300 dark:border-gray-600'>
+                    <table className='min-w-full border-gray-300'>
                         <thead>
                             <tr className='bg-gray-200 text-left dark:bg-gray-900 dark:border-gray-600'>
                                 <th className='border dark:border-gray-500 dark:text-gray-300 p-2'>Sl</th>
@@ -138,7 +138,7 @@ const Pataientstable = ({ setIsUpdating, setOldData, setPropmodal, searchText })
                                             <td className='border dark:border-gray-600 dark:text-gray-300 p-2'><Link to={`mailto:${ele.email}`}>{ele.email}</Link></td>
                                             {
                                                 userData && userData.type && userData.type === "admin" &&
-                                                <td className='flex items-center justify-center pt-3 dark:border-gray-600'>
+                                                <td className='flex items-center justify-center pt-3'>
                                                     <span className='cursor-pointer text-red-500 px-3' onClick={() => WantToDelete(ele.name, ele._id)}><FaRegTrashAlt /></span>
                                                     <span className='cursor-pointer text-blue-500 px-3' onClick={() => SetProps(ele)}><FaRegEdit /></span>
                                                 </td>
@@ -168,11 +168,11 @@ const Pataientstable = ({ setIsUpdating, setOldData, setPropmodal, searchText })
                     <div onClick={() => setmodal(false)} className='bg-gray-700 opacity-75 fixed top-0 left-0 w-full h-full z-10'></div>
                 }
                 {modal &&
-                    <div className='fixed top-32 w-1/3 m-auto z-50 bg-white shadow left-0 right-0 rounded p-4'>
+                    <div className='fixed top-32 w-1/3 m-auto z-50 bg-white dark:bg-gray-900 shadow left-0 right-0 rounded p-4'>
                         <div className='text-center w-full flex items-center justify-center flex-col'>
                             <span className='text-yellow-400 text-3xl m-auto'><GoAlert /></span>
                             <div>
-                                <span className='text-sm font-semibold'>Are you sure want to delete {studentName}?</span>
+                                <span className='text-sm font-semibold dark:text-gray-300'>Are you sure want to delete {studentName}?</span>
                                 <div className='py-3'>
                                     <button className='rounded px-6 mx-2 py-1 bg-red-500 text-gray-200 text-sm font-semibold' onClick={() => DeleteCaptain(studentId)}>Yes</button>
                                     <button className='rounded px-6 mx-2 py-1 bg-green-500 text-gray-200 text-sm font-semibold' onClick={() => setmodal(false)}>No</button>
