@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { AiFillStar } from 'react-icons/ai';
 import { MdDashboardCustomize, MdOutlineLogout } from 'react-icons/md';
 import { HiUserAdd } from 'react-icons/hi';
-import { BsCalendarDate, BsChatLeftQuoteFill, BsFillChatDotsFill, BsHospitalFill } from 'react-icons/bs';
+import { BsCalendarDate, BsChatLeftQuoteFill, BsFillChatDotsFill, BsGlobe, BsHospitalFill } from 'react-icons/bs';
 import { FaUsers, FaPlus, FaBullhorn, FaTimes } from 'react-icons/fa';
 import { HiOutlineBars3BottomRight } from "react-icons/hi2";
 import { MdArrowDropDown, MdManageAccounts } from 'react-icons/md';
@@ -54,24 +54,24 @@ const Sidebar = ({ sidebar, setSidebar }) => {
                         <li className='rounded dark:hover:bg-gray-900 relative pb-2'
                         >
                             <span className='h-full w-full  py-4 px-2 block cursor-pointer' onClick={() => toggleSubmenu()}>
-                                <span className='flex items-center text-base dark:text-gray-200 ml-4'><MdArrowDropDown className='text-xl' />  <span className={`pl-3 h-full text-sm font-semibold ${sidebar && 'hidden'}`}><span className='flex items-center'>Dep. Instruments </span></span></span>
+                                <span className='flex items-center text-base dark:text-gray-200 ml-4'><MdArrowDropDown className='text-xl' />  <span className={`pl-3 h-full text-sm font-semibold ${sidebar && 'hidden'}`}><span className={`flex items-center ${sidebar && 'hidden'}`}>Dep. Instruments </span></span></span>
                             </span>
                             <div className={`border-l-2 border-gray-800 transition duration-500 ${isSubMenuOpen ? 'pointer-events-auto ml-3 ' : 'pointer-events-none h-0 overflow-hidden'
                                 }`}>
-                                <Link to="/dashboard/department-survey" className='pl-3 ml-2 flex items-center hover:bg-slate-200 dark:hover:bg-gray-800 rounded text-sm font-semibold py-1 dark:text-gray-400'
+                                <Link to="/dashboard/department-survey" className={`${sidebar ? 'ml-2 pl-2' : 'ml-4 pl-3'} flex items-center hover:bg-slate-200 dark:hover:bg-gray-800 rounded text-sm font-semibold py-1 dark:text-gray-400`}
                                     onClick={() => {
                                         if (window.innerWidth <= 768) {
                                             setSidebar(true);
                                         }
                                     }}
-                                ><span className='pr-2 text-sm'><BsHospitalFill /> </span>- Instruments</Link>
-                                <Link to="/dashboard/website-contents" className='pl-3 ml-2 flex items-center hover:bg-slate-200 dark:hover:bg-gray-800 rounded text-sm font-semibold py-1 dark:text-gray-400'
+                                ><span className='pr-2 text-sm'><BsHospitalFill /> </span> <span className={`${sidebar && 'hidden'}`}>- Instruments </span></Link>
+                                <Link to="/dashboard/website-contents" className={`${sidebar ? 'ml-2 pl-2' : 'ml-4 pl-3'} flex items-center hover:bg-slate-200 dark:hover:bg-gray-800 rounded text-sm font-semibold py-1 dark:text-gray-400`}
                                     onClick={() => {
                                         if (window.innerWidth <= 768) {
                                             setSidebar(true);
                                         }
                                     }}
-                                ><span className='pr-2 text-sm'><BsHospitalFill /> </span>- Website Contents</Link>
+                                ><span className='pr-2 text-sm'><BsGlobe   /> </span><span className={`${sidebar && 'hidden'}`}>- Website Contents </span></Link>
                             </div>
                         </li>
                     }
