@@ -10,7 +10,7 @@ const Dashboard = () => {
             <Navbar setSidebar={setSidebar}/>
             <div className='flex dark:bg-gray-900'>
                 <Sidebar sidebar={sidebar} setSidebar={setSidebar}/>
-                <div className='dark:bg-gray-900 overflow-scroll w-full overflow-x-hidden scroll' style={{height:'80vh', position:'relative' , top:'0'}}>
+                <div className='dark:bg-gray-900 overflow-scroll w-full overflow-x-hidden scroll h-[85vh] lg:h-[80vh] relative top-0'>
                     <Outlet />
                 </div>
             </div>
