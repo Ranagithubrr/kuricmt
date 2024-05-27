@@ -104,7 +104,7 @@ const Pataientstable = ({ setIsUpdating, setOldData, setPropmodal, searchText })
             <ToastContainer
                 autoClose={1500}
             />
-            <div className=''>
+            <div className='overflow-x-auto'>
                 {
                     Captains && Captains.captains.length !== 0 &&
 
@@ -129,13 +129,13 @@ const Pataientstable = ({ setIsUpdating, setOldData, setPropmodal, searchText })
                                 filteredItems.length !== 0 && filteredItems.map((ele, index) => {
                                     return (
                                         <tr className='border even:bg-gray-50 odd:bg-white dark:even:bg-gray-800 dark:odd:bg-gray-900'>
-                                            <td className='border dark:border-gray-600 dark:text-gray-300 p-2'>{index + 1}</td>
-                                            <td className='border dark:border-gray-600 dark:text-gray-300 p-2'>{ele.roll}</td>
-                                            <td className='border dark:border-gray-600 dark:text-gray-300 p-2'>{ele.name}</td>
-                                            <td className='border dark:border-gray-600 dark:text-gray-300 p-2'>{ele.semester}</td>
-                                            <td className='border dark:border-gray-600 dark:text-gray-300 p-2'>{ele.shift}</td>
-                                            <td className='border dark:border-gray-600 dark:text-gray-300 p-2'><Link to={`tel:${ele.phone}`}>{ele.phone}</Link></td>
-                                            <td className='border dark:border-gray-600 dark:text-gray-300 p-2'><Link to={`mailto:${ele.email}`}>{ele.email}</Link></td>
+                                            <td className='border dark:border-gray-600 whitespace-nowrap dark:text-gray-300 p-2'>{index + 1}</td>
+                                            <td className='border dark:border-gray-600 whitespace-nowrap dark:text-gray-300 p-2'>{ele.roll}</td>
+                                            <td className='border dark:border-gray-600 whitespace-nowrap dark:text-gray-300 p-2'>{ele.name}</td>
+                                            <td className='border dark:border-gray-600 whitespace-nowrap dark:text-gray-300 p-2'>{ele.semester}</td>
+                                            <td className='border dark:border-gray-600 whitespace-nowrap dark:text-gray-300 p-2'>{ele.shift}</td>
+                                            <td className='border dark:border-gray-600 whitespace-nowrap dark:text-gray-300 p-2'><Link to={`tel:${ele.phone}`}>{ele.phone}</Link></td>
+                                            <td className='border dark:border-gray-600 whitespace-nowrap dark:text-gray-300 p-2'><Link to={`mailto:${ele.email}`}>{ele.email}</Link></td>
                                             {
                                                 userData && userData.type && userData.type === "admin" &&
                                                 <td className='flex items-center justify-center pt-3'>
@@ -168,7 +168,7 @@ const Pataientstable = ({ setIsUpdating, setOldData, setPropmodal, searchText })
                     <div onClick={() => setmodal(false)} className='bg-gray-700 opacity-75 fixed top-0 left-0 w-full h-full z-10'></div>
                 }
                 {modal &&
-                    <div className='fixed top-32 w-1/3 m-auto z-50 bg-white dark:bg-gray-900 shadow left-0 right-0 rounded p-4'>
+                    <div className='fixed top-32 w-11/12 lg:w-1/3 m-auto z-50 bg-white dark:bg-gray-900 shadow left-0 right-0 rounded p-4'>
                         <div className='text-center w-full flex items-center justify-center flex-col'>
                             <span className='text-yellow-400 text-3xl m-auto'><GoAlert /></span>
                             <div>

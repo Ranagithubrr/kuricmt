@@ -91,7 +91,7 @@ const AddCaptain = (props) => {
   };
 
   return (
-    <div className='fixed top-12 w-2/4 m-auto z-50 bg-white shadow left-0 right-0 rounded p-4 dark:bg-gray-900'>
+    <div className='fixed top-12 w-11/12 lg:w-2/4 m-auto z-50 bg-white shadow left-0 right-0 rounded p-4 dark:bg-gray-900'>
       <ToastContainer
       />
       <span className='font-semibold block dark:text-gray-200'>{isUpdating ? 'Update Captain' : ' Add Captain'}</span>
@@ -116,9 +116,9 @@ const AddCaptain = (props) => {
         <option value="1st">1st</option>
         <option value="2nd">2nd</option>
       </select>
-      <label htmlFor="phone">Phone</label>
+      <label htmlFor="phone" className="dark:text-gray-300">Phone</label>
       <input value={phone} onChange={(e) => setPhone(e.target.value)} type="text" id='phone' className='border rounded-sm px-4 py-2 w-full outline-none dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300' placeholder='012923937937' />
-      <label htmlFor="email">Email</label>
+      <label htmlFor="email" className="dark:text-gray-300">Email</label>
       <input value={email} onChange={(e) => setEmail(e.target.value)} type="text" id='email' className='border rounded-sm px-4 py-2 w-full outline-none dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300' placeholder='hello@gmail.com' />
       <button onClick={AddCaptain} className='bg-blue-700 text-gray-100 rounded px-8 py-2 font-semibold my-3'>{isUpdating ? 'Update' : 'Add'}</button>
     </div>
