@@ -130,7 +130,7 @@ const Maindashboard = () => {
                     }
                 </div>
             </div>
-            <div className="w-full md:w-1/2 lg:w-1/3 p-3 mb-8 lg:mb-0">
+            <div className="w-full md:w-1/2 lg:w-1/3 p-3 lg:mb-0">
                 <div className='border p-2 rounded-sm dark:border-slate-600'>
                     <h5 className='font-semibold pl-2 dark:text-gray-200'>Our Teachers</h5>
 
