@@ -17,7 +17,7 @@ const Teachers = ({ Teachers }) => {
     slidesToShow: 3,
     slidesToScroll: 1,
     centerMode: false,
-    autoplay: false,
+    autoplay: true,
     autoplaySpeed: 2000,
     responsive: [
       {

@@ -63,8 +63,8 @@ const Hospitalsurvey = () => {
   return (
     <div className='m-5 p-3 border dark:border-gray-600'>
       <h4 className='dark:text-gray-300'>Department Survey</h4>
-      <div className='flex gap-4 my-2'>
-        <div className='w-1/2 border p-2 dark:border-gray-600'>
+      <div className='md:flex gap-4 my-2'>
+        <div className='md:w-1/2 border p-2 dark:border-gray-600'>
           <h4 className='font-semibold dark:text-gray-300'>Staff</h4>
           <div className="grid grid-cols-2 gap-2">
             <div className="">
@@ -77,7 +77,7 @@ const Hospitalsurvey = () => {
             </div>            
           </div>
         </div>
-        <div className='w-1/2 border p-2 dark:border-gray-600'>
+        <div className='md:w-1/2 border p-2 dark:border-gray-600'>
           <h4 className='font-semibold dark:text-gray-200'>Software Lab 1</h4>
           <div className="grid grid-cols-2 gap-2">
             <div className="">
@@ -89,7 +89,7 @@ const Hospitalsurvey = () => {
               <input value={formData.laboneseat} onChange={(e) => handleInputChange(e.target.name, e.target.value)} name='laboneseat' type="number" placeholder='50' className='border dark:border-gray-600 outline-none px-3 py-2 text-lg bg-white dark:bg-gray-800 dark:text-gray-200 w-full' />
             </div>
           </div>
-          <h4 className='font-semibold dark:text-gray-200'>Software Lab 2</h4>
+          <h4 className='font-semibold dark:text-gray-200 mt-2 md:mt-0'>Software Lab 2</h4>
           <div className="grid grid-cols-2 gap-2">
             <div className="">
               <span className='text-sm text-gray-400 font-semibold  block z-400 bg-white dark:bg-transparent dark:text-gray-300'>Computer</span>

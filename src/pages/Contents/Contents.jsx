@@ -210,20 +210,20 @@ const Contents = () => {
       <h4 className='font-semibold text-xl'>Setup Website Contents</h4>
       <div className='pt-4'>
         <span className='font-semibold block'>Main Title</span>
-        <input value={maintitle} onChange={(e) => setMaintitle(e.target.value)} type="text" placeholder='Ex: This is a demo title' className='border dark:border-gray-600 outline-none px-3 py-4 text-lg w-2/3 bg-white dark:bg-gray-800 dark:text-gray-200' />
+        <input value={maintitle} onChange={(e) => setMaintitle(e.target.value)} type="text" placeholder='Ex: This is a demo title' className='border dark:border-gray-600 outline-none px-3 py-4 text-lg w-full md:w-2/3 bg-white dark:bg-gray-800 dark:text-gray-200' />
       </div>
       <div className='pt-4'>
         <span className='font-semibold block'>Tagline</span>
-        <input value={tagline} onChange={(e) => setTagline(e.target.value)} type="text" placeholder='Ex: This is a demo tagline' className='border dark:border-gray-600 outline-none px-3 py-4 text-lg w-2/3 bg-white dark:bg-gray-800 dark:text-gray-200' />
+        <input value={tagline} onChange={(e) => setTagline(e.target.value)} type="text" placeholder='Ex: This is a demo tagline' className='border dark:border-gray-600 outline-none px-3 py-4 text-lg w-full md:w-2/3 bg-white dark:bg-gray-800 dark:text-gray-200' />
       </div>
-      <div className='pt-4 flex w-2/3'>
-        <div className='w-1/2'>
+      <div className='pt-4 md:flex w-full md:w-2/3'>
+        <div className='w-full md:w-1/2'>
           <span className='font-semibold block'>Main Logo</span>
-          <input onChange={handleFileChange} type="file" className='border dark:border-gray-600 outline-none px-3 py-4 text-lg bg-white dark:bg-gray-800 dark:text-gray-200' />
+          <input onChange={handleFileChange} type="file" className='border dark:border-gray-600 outline-none px-3 py-4 text-lg bg-white dark:bg-gray-800 dark:text-gray-200 w-full' />
         </div>
-        <div className='w-1/2'>
+        <div className='md:w-1/2 py-4'>
           {
-            logoToDisplay !== "" && <img src={logoToDisplay} alt="" className='rounded h-36 w-32 ml-10' />
+            logoToDisplay !== "" && <img src={logoToDisplay} alt="" className='rounded w-8/12 lg:h-36 lg:w-32 md:ml-10' />
           }
         </div>
       </div>

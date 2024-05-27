@@ -120,7 +120,7 @@ const Chat = () => {
                                         if (user) {
                                             if (message.uid !== _id) {
                                                 return (
-                                                    <div className='pr-20 flex items-center w-full' key={index}>
+                                                    <div className='pr-20 flex items-center w-full lg:w-10/12' key={index}>
                                                         <div className='pr-2'>
                                                             <img src={user.image || NotfoundImage} style={{ minWidth: '30px', width: '30px', minHeight: '30px', height: '30px' }} className='h-10 w-10 rounded-full' alt="" />
                                                         </div>
@@ -136,7 +136,7 @@ const Chat = () => {
                                                 );
                                             } else {
                                                 return (
-                                                    <div className='ml-20 flex justify-end items-center float-right w-full' key={index}>
+                                                    <div className='ml-20 flex justify-end items-center float-right w-full lg:w-10/12' key={index}>
                                                         <div>
                                                             <div className="bg-blue-400 block px-3 py-2 rounded-lg rounded-bl-none my-2">
                                                                 <p className='text-sm font-semibold'>{message.body}</p>
