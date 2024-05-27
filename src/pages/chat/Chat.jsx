@@ -102,18 +102,18 @@ const Chat = () => {
         <div className='mt-8'>
             <div>
                 <div className='mt-8'>
-                    <div className="flex ">
-                        <div className="w-1/5 px-2">
+                    <div className="lg:flex ">
+                        <div className="lg:w-1/5 px-2">
                             <div className='bg-gray-200 dark:bg-gray-700 px-3 py-4 rounded mt-2 cursor-pointer sticky top-0'>
                                 <span className='font-semibold dark:text-gray-200'>Discussion</span>
                             </div>
                         </div>
-                        <div className="w-3/5">
-                            <div className="border px-2 relative h-96 overflow-hidden dark:border-gray-600">
+                        <div className="lg:w-3/5">
+                            <div className="border px-2 relative h-[62vh] lg:h-96 overflow-hidden dark:border-gray-600">
                                 <div className='bg-gray-200 dark:bg-gray-700 px-3 py-4 rounded mt-2 cursor-pointer text-center  sticky top-0'>
                                     <span className='font-semibold dark:text-gray-200'>Chat</span>
                                 </div>
-                                <div className='px-2 h-80 overflow-y-scroll pb-4' ref={chatBoxRef}>
+                                <div className='px-2 h-[55vh] lg:h-80 overflow-y-scroll pb-4' ref={chatBoxRef}>
                                     {messages && messages.map((message, index) => {
                                         const user = AllUsers.find(user => user._id === message.uid);
 
@@ -163,14 +163,14 @@ const Chat = () => {
                                 </div>
 
                             </div>
-                            <div className='flex mt-2'>
+                            <div className='flex mt-2 mx-2 lg:mx-0'>
                                 <form onSubmit={sendMessage} className='flex w-full'>
                                     <input type="text" value={messageInput} onChange={(e) => setMessageInput(e.target.value)} className='border rounded-sm w-10/12 text-sm px-3 py-2 outline-none mr-2 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600' placeholder='Type Your Message . . .' />
                                     <button type='submit' className='w-2/12 outline-none bg-green-600 rounded font-semibold'>Send</button>
                                 </form>
                             </div>
                         </div>
-                        <div className="w-1/5"></div>
+                        <div className="hidden lg:block lg:w-1/5"></div>
                     </div>
                 </div>
             </div>

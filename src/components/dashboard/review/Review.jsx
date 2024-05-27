@@ -5,10 +5,10 @@ import { Rating } from '@material-tailwind/react';
 const Review = () => {
     // const [value, setValue] = useState(4.6);    
     return (
-        <div className='pl-10 pt-5'>
+        <div className=' px-2 lg:pl-10 pt-5'>
             <span className='bg-red-400 px-5 rounded-sm text-gray-100 dark:bg-red-600 dark:text-gray-300'>Demo Page</span>
             <h4 className='font-semibold text-xl dark:text-gray-300'>Reviews</h4>
-            <div className='flex justify-between w-1/3 my-4'>
+            <div className='lg:flex justify-between lg:w-1/3 my-4'>
                 <div>
                     <span className='block font-semibold dark:text-gray-300'>Total Reviews</span>
                     <span className='block font-semibold text-4xl dark:text-gray-300'>360</span>

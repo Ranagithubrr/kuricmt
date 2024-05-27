@@ -37,7 +37,7 @@ const QuotesReviewTable = () => {
             <ToastContainer
                 autoClose={1500}
             />
-            <div className=''>
+            <div className='overflow-x-auto'>
                 {
                     users && users.length !== 0 &&
 
@@ -63,13 +63,13 @@ const QuotesReviewTable = () => {
                                     const formattedDate = `${date.toLocaleDateString()} at ${date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
                                     return (
                                         <tr className='border dark:border-gray-600 even:bg-gray-50 odd:bg-white dark:even:bg-gray-800 dark:odd:bg-gray-900'>
-                                            <td className='border dark:text-gray-300 dark:border-gray-600 p-2'>{index + 1}</td>
-                                            <td className='border dark:text-gray-300 dark:border-gray-600 p-2'>{ele.name}</td>
-                                            <td className='border dark:text-gray-300 dark:border-gray-600 p-2'>{ele.department}</td>
-                                            <td className='border dark:text-gray-300 dark:border-gray-600 p-2'>{ele.session}</td>
-                                            <td className='border dark:text-gray-300 dark:border-gray-600 p-2'>{ele.message}</td>
-                                            <td className='border dark:text-gray-300 dark:border-gray-600 p-2'>{formattedDate}</td>
-                                            <td className='border dark:text-gray-300 dark:border-gray-600 p-2 text-center'>
+                                            <td className='border dark:text-gray-300 whitespace-nowrap dark:border-gray-600 p-2'>{index + 1}</td>
+                                            <td className='border dark:text-gray-300 whitespace-nowrap dark:border-gray-600 p-2'>{ele.name}</td>
+                                            <td className='border dark:text-gray-300 whitespace-nowrap dark:border-gray-600 p-2'>{ele.department}</td>
+                                            <td className='border dark:text-gray-300 whitespace-nowrap dark:border-gray-600 p-2'>{ele.session}</td>
+                                            <td className='border dark:text-gray-300 dark:border-gray-600 p-2 w-96 block lg:w-auto'>{ele.message}</td>
+                                            <td className='border dark:text-gray-300 whitespace-nowrap dark:border-gray-600 p-2'>{formattedDate}</td>
+                                            <td className='border dark:text-gray-300 whitespace-nowrap dark:border-gray-600 p-2 text-center'>
                                                 <div
                                                     className={`mt-2 w-14 h-6 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-300 ${ele.status ? 'bg-blue-500' : 'bg-gray-300'}`}
                                                     onClick={() => UpdateStatus(ele._id)}                                                                                            

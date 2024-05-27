@@ -65,7 +65,7 @@ const Announcement = () => {
                 value={announcement}
                 onChange={(e) => setAnnouncement(e.target.value)}
                 placeholder='Text'
-                className='border outline-none rounded-sm px-2 py-2 my-2 resize-none h-32 w-1/2 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300'
+                className='border outline-none rounded-sm px-2 py-2 my-2 resize-none h-32 w-full lg:w-1/2 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300'
             />
             <button onClick={UpdateAnnc} className='bg-blue-600 text-gray-200 font-semibold text-sm rounded px-6 py-2' >Post</button>
         </div>

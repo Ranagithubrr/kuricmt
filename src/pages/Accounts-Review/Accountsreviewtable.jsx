@@ -127,7 +127,7 @@ const AccountsReviewtable = () => {
       <ToastContainer
         autoClose={1500}
       />
-      <div className=''>
+      <div className='overflow-x-auto'>
         {
           users && users.length !== 0 &&
 
@@ -151,11 +151,11 @@ const AccountsReviewtable = () => {
                   const formattedDate = `${date.toLocaleDateString()} at ${date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
                   return (
                     <tr className='border dark:border-gray-500 dark:text-gray-300 even:bg-gray-50 odd:bg-white dark:even:bg-gray-800 dark:odd:bg-gray-900'>
-                      <td className='border dark:border-gray-500 dark:text-gray-300 p-2'>{index + 1}</td>
-                      <td className='border dark:border-gray-500 dark:text-gray-300 p-2'>{ele.name}</td>
-                      <td className='border dark:border-gray-500 dark:text-gray-300 p-2'>{ele.email}</td>
-                      <td className='border dark:border-gray-500 dark:text-gray-300 p-2'>{ele.type}</td>
-                      <td className='border dark:border-gray-500 dark:text-gray-300 p-2'>{formattedDate}</td>
+                      <td className='border dark:border-gray-500 whitespace-nowrap dark:text-gray-300 p-2'>{index + 1}</td>
+                      <td className='border dark:border-gray-500 whitespace-nowrap dark:text-gray-300 p-2'>{ele.name}</td>
+                      <td className='border dark:border-gray-500 whitespace-nowrap dark:text-gray-300 p-2'>{ele.email}</td>
+                      <td className='border dark:border-gray-500 whitespace-nowrap dark:text-gray-300 p-2'>{ele.type}</td>
+                      <td className='border dark:border-gray-500 whitespace-nowrap dark:text-gray-300 p-2'>{formattedDate}</td>
                       <td className='flex items-center justify-center h-full'>
                         <div className='flex items-center justify-center'>
                           <button title='Decline' className='mt-2 px-3 py-1 rounded mx-2  bg-red-500 text-gray-200 text-sm font-semibold' onClick={() => WantToDelete(ele.name, ele._id)}><FaTimes /></button>

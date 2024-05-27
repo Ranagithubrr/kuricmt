@@ -4,12 +4,12 @@ import React from 'react';
 
 const Singlereview = () => {
     return (
-        <div className='flex my-10'>
-            <div className='w-56 p-2'>
+        <div className='lg:flex my-10'>
+            <div className='lg:w-56 p-2'>
                 <h4 className='font-semibold m-0 p-0 dark:text-gray-300'>Masud Rana</h4>
                 <span className='text-sm text-gray-500 block dark:text-gray-400'>Junior Instructor</span>
             </div>
-            <div className='ml-2 w-6/12'>
+            <div className='ml-2 lg:w-6/12'>
                 <Rating value={4} readonly className='flex text-yellow-400 my-2' />
                 <div className='flex items-center'>
                     <span className='text-sm font-semibold text-gray-500 dark:text-gray-400'>24/08/2023</span>
