@@ -32,7 +32,7 @@ const Profile = () => {
           teachers.map((ele) => {
             if (ele.isactivate === true) {
               return (
-                <div className="w-full md:w-1/2 lg:w-1/4 px-2 my-2">
+                <div className="w-1/2 md:w-1/3 lg:w-1/4 px-2 my-2">
                   <div className="border rounded cursor-pointer box-border overflow-clip dark:border-slate-600">
                     <div className="h-32 bg-gradient-to-r from-gray-200 to-gray-100 dark:from-gray-700 dark:to-gray-800"></div>
                     <div>
