@@ -103,7 +103,7 @@ const Chat = () => {
             <div>
                 <div className='mt-8'>
                     <div className="lg:flex ">
-                        <div className="lg:w-1/5 px-2">
+                        <div className="lg:w-1/5 px-2 hidden lg:block">
                             <div className='bg-gray-200 dark:bg-gray-700 px-3 py-4 rounded mt-2 cursor-pointer sticky top-0'>
                                 <span className='font-semibold dark:text-gray-200'>Discussion</span>
                             </div>
