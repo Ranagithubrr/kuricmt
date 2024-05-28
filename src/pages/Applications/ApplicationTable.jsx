@@ -139,7 +139,7 @@ const ApplicationTable = () => {
           </div>
         }
         {
-          modal && <div className="fixed overflow-auto h-96  w-2/4 border bg-white dark:bg-gray-800 dark:border-slate-400 shadow-lg rounded top-32 z-20 p-4 left-0 right-0 m-auto">
+          modal && <div className="fixed overflow-auto h-96 w-11/12 mx-auto lg:w-2/4 border bg-white dark:bg-gray-800 dark:border-slate-400 shadow-lg rounded top-32 z-20 p-4 left-0 right-0 m-auto">
             <h4 className="text-center font-semibold text-lg dark:text-gray-200">Kurigram Polytechnic Institute</h4>
             <span className="block mt-2 dark:text-gray-200">{formattedDate}</span>
             <span className="block dark:text-gray-200">Chief Instructor</span>
