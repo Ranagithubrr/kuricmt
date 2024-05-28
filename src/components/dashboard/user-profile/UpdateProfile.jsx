@@ -108,10 +108,10 @@ const UpdateProfile = () => {
         }
     }
     return (
-        <div className='flex p-4 pr-0'>
+        <div className='lg:flex p-4 pr-0'>
             <ToastContainer
             />
-            <div className="w-1/5 flex justify-end">
+            <div className="lg:w-1/5 flex justify-center lg:justify-end">
                 <div className='relative h-40 w-40 overflow-hidden rounded-full'>
                     <img
                         src={logoState ? URL.createObjectURL(logoState) : image || ProfilePic}
@@ -126,67 +126,67 @@ const UpdateProfile = () => {
 
             </div>
             <div className="border-t-4 border-gray-300 mt-20 w-full pl-4">
-                <input className='font-bold text-xl text-gray-600 dark:text-white outline-none border-b-2' placeholder='Masud Rana ' autoFocus defaultValue={newData.name} onChange={(e) => handleChange(e)} name="name"></input>
+                <input className=' dark:bg-gray-900 dark:border-gray-600 dark:text-gray-300 font-bold text-xl text-gray-600  outline-none border-b-2' placeholder='Masud Rana ' autoFocus defaultValue={newData.name} onChange={(e) => handleChange(e)} name="name"></input>
                 <button className='bg-green-800 text-gray-100 float-right mr-5 font-bold text-sm p-2 rounded mt-2' onClick={() => SubmitClicked()}>Save Profile</button>
-                <input className='font-semibold text-gray-600 text-sm outline-none block border-b-2' placeholder='Jr Instructor' defaultValue={newData.title} onChange={(e) => handleChange(e)} name="title"></input>
+                <input className='dark:bg-gray-900 dark:border-gray-600 dark:text-gray-300 font-semibold text-gray-600 text-sm outline-none block border-b-2' placeholder='Jr Instructor' defaultValue={newData.title} onChange={(e) => handleChange(e)} name="title"></input>
                 <div className='pt-4'>
                     <span className='font-semibold text-gray-400'>Contact Informations</span>
-                    <div className='flex justify-between w-1/2'>
-                        <div className='w-1/4'>
+                    <div className='flex justify-between lg:w-1/2'>
+                        <div className='w-1/3 lg:w-1/4'>
                             <span className='font-semibold text-gray-600'>Phone</span>
                         </div>
-                        <div className='w-3/4'>
-                            <input className='text-gray-600 font-semibold outline-none border-b-2' placeholder='+880123456789' defaultValue={newData.phone} onChange={(e) => handleChange(e)} name="phone"></input>
+                        <div className='w-2/3 lg:w-3/4'>
+                            <input className='dark:bg-gray-900 dark:border-gray-600 dark:text-gray-300 text-gray-600 font-semibold outline-none border-b-2' placeholder='+880123456789' defaultValue={newData.phone} onChange={(e) => handleChange(e)} name="phone"></input>
                         </div>
                     </div>
-                    <div className='flex justify-between w-1/2'>
-                        <div className='w-1/4'>
+                    <div className='flex justify-between lg:w-1/2'>
+                        <div className='w-1/3 lg:w-1/4'>
                             <span className='font-semibold text-gray-600'>Address</span>
                         </div>
-                        <div className='w-3/4'>
-                            <input className='text-gray-600 font-semibold outline-none border-b-2' placeholder='Rangpur, Bangladesh'  onChange={(e) => handleChange(e)} name="address" defaultValue={newData.address}></input>
+                        <div className='w-2/3 lg:w-3/4'>
+                            <input className='dark:bg-gray-900 dark:border-gray-600 dark:text-gray-300 text-gray-600 font-semibold outline-none border-b-2' placeholder='Rangpur, Bangladesh'  onChange={(e) => handleChange(e)} name="address" defaultValue={newData.address}></input>
                         </div>
                     </div>
-                    <div className='flex justify-between w-1/2'>
-                        <div className='w-1/4'>
+                    <div className='flex justify-between lg:w-1/2'>
+                        <div className='w-1/3 lg:w-1/4'>
                             <span className='font-semibold text-gray-600'>Email</span>
                         </div>
-                        <div className='w-3/4'>
-                            <input className='text-gray-600 font-semibold outline-none border-b-2' placeholder='ranarr.dev@gmail.com' disabled defaultValue={email}></input>
+                        <div className='w-2/3 lg:w-3/4'>
+                            <input className='dark:bg-gray-900 dark:border-gray-600 dark:text-gray-300 text-gray-600 font-semibold outline-none border-b-2' placeholder='ranarr.dev@gmail.com' disabled defaultValue={email}></input>
                             <span className='block text-xs  my-2 p-1 w-2/3 rounded text-red-600 font-bold'>Email is not changable</span>
                         </div>
                     </div>
                     <span className='font-bold textmd text-gray-700'>Social Networks</span>
-                    <div className='flex justify-between w-1/2'>
-                        <div className='w-1/4'>
+                    <div className='flex justify-between lg:w-1/2'>
+                        <div className='w-1/3 lg:w-1/4'>
                             <span className='font-semibold text-gray-600'>Facebook</span>
                         </div>
-                        <div className='w-3/4'>
-                            <input className='text-gray-600 font-semibold outline-none border-b-2' placeholder='' defaultValue={newData.facebook} onChange={(e) => handleChange(e) } name="facebook"></input>
+                        <div className='w-2/3 lg:w-3/4'>
+                            <input className='dark:bg-gray-900 dark:border-gray-600 dark:text-gray-300 text-gray-600 font-semibold outline-none border-b-2' placeholder='' defaultValue={newData.facebook} onChange={(e) => handleChange(e) } name="facebook"></input>
                         </div>
                     </div>
-                    <div className='flex justify-between w-1/2'>
-                        <div className='w-1/4'>
+                    <div className='flex justify-between lg:w-1/2'>
+                        <div className='w-1/3 lg:w-1/4'>
                             <span className='font-semibold text-gray-600'>Instagram</span>
                         </div>
-                        <div className='w-3/4'>
-                            <input className='text-gray-600 font-semibold outline-none border-b-2' placeholder='' defaultValue={newData.instagram} onChange={(e) => handleChange(e)} name="instagram"></input>
+                        <div className='w-2/3 lg:w-3/4'>
+                            <input className='dark:bg-gray-900 dark:border-gray-600 dark:text-gray-300 text-gray-600 font-semibold outline-none border-b-2' placeholder='' defaultValue={newData.instagram} onChange={(e) => handleChange(e)} name="instagram"></input>
                         </div>
                     </div>
-                    <div className='flex justify-between w-1/2'>
-                        <div className='w-1/4'>
+                    <div className='flex justify-between lg:w-1/2'>
+                        <div className='w-1/3 lg:w-1/4'>
                             <span className='font-semibold text-gray-600'>Twitter</span>
                         </div>
-                        <div className='w-3/4'>
-                            <input className='text-gray-600 font-semibold outline-none border-b-2' placeholder='' defaultValue={newData.twitter} onChange={(e) => handleChange(e)} name="twitter"></input>
+                        <div className='w-2/3 lg:w-3/4'>
+                            <input className='dark:bg-gray-900 dark:border-gray-600 dark:text-gray-300 text-gray-600 font-semibold outline-none border-b-2' placeholder='' defaultValue={newData.twitter} onChange={(e) => handleChange(e)} name="twitter"></input>
                         </div>
                     </div>
-                    <div className='flex justify-between w-1/2'>
-                        <div className='w-1/4'>
+                    <div className='flex justify-between lg:w-1/2'>
+                        <div className='w-1/3 lg:w-1/4'>
                             <span className='font-semibold text-gray-600'>Website</span>
                         </div>
-                        <div className='w-3/4'>
-                            <input className='text-gray-600 font-semibold outline-none border-b-2' placeholder='' defaultValue={newData.website} onChange={(e) => handleChange(e)} name="website"></input>
+                        <div className='w-2/3 lg:w-3/4'>
+                            <input className='dark:bg-gray-900 dark:border-gray-600 dark:text-gray-300 text-gray-600 font-semibold outline-none border-b-2' placeholder='' defaultValue={newData.website} onChange={(e) => handleChange(e)} name="website"></input>
                         </div>
                     </div>
                 </div>
