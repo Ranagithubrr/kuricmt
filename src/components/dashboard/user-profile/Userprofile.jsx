@@ -19,8 +19,8 @@ const Userprofile = () => {
     image,
   } = userData || {};
   return (
-    <div className="flex p-4 pr-0 dark:bg-gray-800">
-      <div className="w-1/5 flex justify-end">
+    <div className="md:flex p-4 pr-0 dark:bg-gray-900">
+      <div className="md:w-1/5 flex justify-center md:justify-end">
         <img
           src={image || ProfilePic}
           alt="profilePic here"
@@ -50,50 +50,50 @@ const Userprofile = () => {
           <span className="font-semibold text-gray-400 dark:text-gray-200">
             Contact Informations
           </span>
-          <div className="flex justify-between w-1/2">
-            <div className="w-1/4">
+          <div className="flex justify-between lg:w-1/2">
+            <div className="w-1/3 lg:w-1/4">
               <span className="font-semibold text-gray-600 dark:text-gray-300">
                 Phone
               </span>
             </div>
-            <div className="w-3/4">
+            <div className="w-2/3 lg:w-3/4">
               <span className="text-gray-600 font-semibold dark:text-gray-300">
                 {phone}
               </span>
             </div>
           </div>
-          <div className="flex justify-between w-1/2">
-            <div className="w-1/4">
+          <div className="flex justify-between lg:w-1/2">
+            <div className=" w-1/3 lg:w-1/4">
               <span className="font-semibold text-gray-600 dark:text-gray-300">
                 Address
               </span>
             </div>
-            <div className="w-3/4">
+            <div className="w-2/3 lg:w-3/4">
               <span className="text-gray-600 font-semibold dark:text-gray-300">
                 {address}
               </span>
             </div>
           </div>
-          <div className="flex justify-between w-1/2">
-            <div className="w-1/4">
+          <div className="flex justify-between lg:w-1/2">
+            <div className=" w-1/3 lg:w-1/4">
               <span className="font-semibold text-gray-600 dark:text-gray-300">
                 Email
               </span>
             </div>
-            <div className="w-3/4">
+            <div className="w-2/3 lg:w-3/4">
               <span className="text-gray-600 font-semibold dark:text-gray-300">
                 {email}
               </span>
             </div>
           </div>
           {website && (
-            <div className="flex justify-between w-1/2">
-              <div className="w-1/4">
+            <div className="flex justify-between lg:w-1/2">
+              <div className="w-1/3 lg:w-1/4">
                 <span className="font-semibold text-gray-600 dark:text-gray-300">
                   Website
                 </span>
               </div>
-              <div className="w-3/4">
+              <div className="w-2/3 lg:w-3/4 overflow-x-auto pr-2">
                 <Link
                   to={website}
                   target="_blank"
@@ -105,13 +105,13 @@ const Userprofile = () => {
             </div>
           )}
           {facebook && (
-            <div className="flex justify-between w-1/2">
-              <div className="w-1/4">
+            <div className="flex justify-between lg:w-1/2">
+              <div className="w-1/3 lg:w-1/4">
                 <span className="font-semibold text-gray-600 dark:text-gray-300">
                   Facebook
                 </span>
               </div>
-              <div className="w-3/4">
+              <div className="w-2/3 lg:w-3/4 overflow-x-auto pr-2">
                 <Link
                   to={facebook}
                   target="_blank"
@@ -123,13 +123,13 @@ const Userprofile = () => {
             </div>
           )}
           {instagram && (
-            <div className="flex justify-between w-1/2">
-              <div className="w-1/4">
+            <div className="flex justify-between lg:w-1/2">
+              <div className="w-1/3 lg:w-1/4">
                 <span className="font-semibold text-gray-600 dark:text-gray-300">
                   Instagram
                 </span>
               </div>
-              <div className="w-3/4">
+              <div className="w-2/3 lg:w-3/4 overflow-x-auto pr-2">
                 <Link
                   to={instagram}
                   target="_blank"
@@ -141,13 +141,13 @@ const Userprofile = () => {
             </div>
           )}
           {twitter && (
-            <div className="flex justify-between w-1/2">
-              <div className="w-1/4">
+            <div className="flex justify-between lg:w-1/2">
+              <div className="w-1/3 lg:w-1/4">
                 <span className="font-semibold text-gray-600 dark:text-gray-300">
                   Twitter
                 </span>
               </div>
-              <div className="w-3/4">
+              <div className="w-2/3 lg:w-3/4 overflow-x-auto pr-2">
                 <Link
                   to={twitter}
                   target="_blank"
