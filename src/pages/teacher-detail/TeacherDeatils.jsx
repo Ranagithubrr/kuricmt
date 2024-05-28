@@ -31,7 +31,7 @@ const TeacherDeatils = () => {
         <div className="max-w-2xl mx-auto bg-white dark:shadow-gray-800 dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden mt-5">
             {
                 loading ? <div className="flex animate-pulse flex-wrap items-center gap-8">
-                    <div className="grid h-56 w-56 place-items-center rounded-lg bg-gray-300">
+                    <div className="grid w-11/12 mx-auto lg:mx-0 lg:w-56 h-56 place-items-center rounded-lg bg-gray-300">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
@@ -47,7 +47,7 @@ const TeacherDeatils = () => {
                             />
                         </svg>
                     </div>
-                    <div className="w-max">
+                    <div className="w-11/12 mx-auto lg:mx-0 lg:w-56 h-56 mt-10">
                         <Typography
                             as="div"
                             variant="paragraph"
@@ -86,7 +86,7 @@ const TeacherDeatils = () => {
                     </div>
                 </div> :
                     <div className="md:flex">
-                        <div className="md:flex-shrink-0 w-56 h-56">
+                        <div className="md:flex-shrink-0  w-11/12 mx-auto lg:mx-0 lg:w-56 h-56">
                             <img className="h-full w-full " src={teacher.image || Notfoundimage} alt={`${teacher.name}'s`} />
                         </div>
                         <div className="p-6">

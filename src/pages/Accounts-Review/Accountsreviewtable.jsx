@@ -181,7 +181,7 @@ const AccountsReviewtable = () => {
           <div onClick={() => setmodal(false)} className='bg-gray-700 opacity-50 fixed top-0 left-0 w-full h-full z-10'></div>
         }
         {modal &&
-          <div className='fixed top-32 w-1/3 m-auto z-50 bg-white shadow left-0 right-0 rounded p-4'>
+          <div className='fixed top-32 w-11/12 lg:w-1/3 m-auto z-50 bg-white shadow left-0 right-0 rounded p-4'>
             <div className='text-center w-full flex items-center justify-center flex-col'>
               <span className='text-yellow-400 text-3xl m-auto'><GoAlert /></span>
               <div>
