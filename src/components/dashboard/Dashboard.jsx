@@ -6,15 +6,16 @@ import Navbar from '../navbar/Navbar';
 const Dashboard = () => {
     const [sidebar, setSidebar] = useState(true);
     return (
-        <>
-            <Navbar setSidebar={setSidebar}/>
-            <div className='flex dark:bg-gray-900'>
-                <Sidebar sidebar={sidebar} setSidebar={setSidebar}/>
-                <div className='dark:bg-gray-900 overflow-scroll w-full overflow-x-hidden scroll h-[85vh] lg:h-[80vh] relative top-0 pb-20 lg:pb-2'>
+        <div class="h-screen flex flex-col">
+            <Navbar setSidebar={setSidebar} />
+            <div class="flex flex-grow overflow-hidden">
+                <Sidebar sidebar={sidebar} setSidebar={setSidebar} />
+                <div className='dark:bg-gray-900 overflow-scroll w-full overflow-x-hidden scroll pb-12 lg:pb-2'>
                     <Outlet />
                 </div>
             </div>
-        </>
+
+        </div>
     );
 };
 

@@ -20,7 +20,7 @@ const Sidebar = ({ sidebar, setSidebar }) => {
     }
     return (
         <>
-            <div className={`${!sidebar ? 'w-8/12 lg:w-3/12' : 'w-[6rem] -left-full lg:left-0'} lg:z-auto fixed top-20 lg:sticky transition-all duration-300 ease-in-out overflow-y-scroll pb-10 dark:border-gray-700 border-r shadow-lg dark:shadow-transparent bg-white dark:bg-slate-800 h-full lg:h-[85vh] z-50`}>
+            <div className={`${!sidebar ? 'w-8/12 lg:w-3/12' : 'w-[6rem] -left-full lg:left-0'} lg:z-auto fixed lg:sticky transition-all duration-300 ease-in-out overflow-y-scroll pb-10 dark:border-gray-700 border-r shadow-lg dark:shadow-transparent bg-white dark:bg-slate-800 z-50`}>
                 <div className='w-full text-center flex justify-end pr-7 pt-4 dark:text-gray-200 font-bold text-2xl cursor-pointer'>
                     <span className='hidden lg:block' onClick={() => setSidebar((prev) => !prev)}><HiOutlineBars3BottomRight /> </span>
                     <span className='lg:hidden' onClick={() => setSidebar(true)}><FaTimes /> </span>

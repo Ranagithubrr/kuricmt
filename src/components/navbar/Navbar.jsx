@@ -60,11 +60,10 @@ const Navbar = ({setSidebar}) => {
         <>
             <div class="flex px-6 py-2  items-center shadow-md sticky top-0 z-10 bg-white dark:bg-gray-800">
                 <div class="w-3/12">                    
-                    <img src={logo ? logo : Computer} alt="D.O.C" className='h-16 rounded-md bg-white' />
-                    <span className="text-xs font-semibold dark:text-gray-200 mt-1 hidden lg:block">Department Of Computer</span>
+                    <img src={logo ? logo : Computer} alt="D.O.C" className='h-14 rounded-md bg-white' />                    
                 </div>
                 <div class="lg:w-6/12 mx-auto">
-                    <ul className='flex items-center justify-evenly fixed lg:static bg-white lg:bg-transparent w-full bottom-0 dark:bg-gray-900 lg:dark:bg-transparent left-0 right-0 mx-auto py-4'>
+                    <ul className='flex items-center justify-evenly fixed lg:static bg-white lg:bg-transparent w-full bottom-0 dark:bg-gray-900 lg:dark:bg-transparent left-0 right-0 mx-auto pt-2'>
                         <li className=' border-b-4 border-transparent hover:border-blue-900 dark:hover:border-gray-200  mx-2 pb-3 font-semibold text-blue-950 dark:text-gray-200   '>
                             <Link to="/dashboard" className='text-3xl'>
                                 <AiOutlineHome />
