@@ -13,7 +13,8 @@ const ApplicationTable = () => {
     (state) => state.applicationReducer.applications
   );
   const dispatch = useDispatch();
-  const { token } = useAuth();
+  const { token, userData } = useAuth();
+  console.log(userData)
   const [modal, setModal] = useState(false);
   const [currentItem, setCurrentItem] = useState({});
   const dateString = currentItem.createdAt;
@@ -113,7 +114,9 @@ const ApplicationTable = () => {
                       <td className='border p-2 dark:text-gray-200 whitespace-nowrap'>{ele.subject}</td>
                       <td className='border p-2 dark:text-gray-200 whitespace-nowrap'>{formattedDate}</td>
                       <td className='border p-2 flex justify-center'><span className="text-green-600 dark:text-green-500 text-2xl cursor-pointer" onClick={() => viewClicked(ele)}><FaEye /></span></td>
-                      <td className='border p-2 dark:text-gray-200 whitespace-nowrap'>{ele.status} {ele.status === "pending" && <button title='Approve' className='mt-2 px-1 py-1 rounded mx-2  bg-green-500 text-gray-200 text-sm font-semibold' onClick={() => ApproveApplication(ele._id)}><FaCheck /></button>}</td>
+                      <td className='border p-2 dark:text-gray-200 whitespace-nowrap'>{ele.status} 
+                      {userData && userData.type === "admin" && ele.status === "pending" && <button title='Approve' className='mt-2 px-1 py-1 rounded mx-2  bg-green-500 text-gray-200 text-sm font-semibold' onClick={() => ApproveApplication(ele._id)}><FaCheck /></button>}
+                      </td>
                       <td className='flex items-center justify-center h-full whitespace-nowrap'>
                         <div className='flex items-center justify-center'>
                           <a href={`mailto:${ele.email}`} title='Mail' className='mt-2 px-3 py-1 rounded mx-2  bg-green-500 text-gray-200 text-sm font-semibold'><IoMail /></a>
