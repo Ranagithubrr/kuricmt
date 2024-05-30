@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from '../../contexts/AuthContext';
 
 const Sidebar = ({ sidebar, setSidebar }) => {
-    const { userData, logout } = useAuth()
+    const { userData, logout } = useAuth();
     const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
     const toggleSubmenu = () => {
         isSubMenuOpen ? setIsSubMenuOpen(false) : setIsSubMenuOpen(true);

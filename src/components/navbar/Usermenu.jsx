@@ -8,8 +8,10 @@ import {
 } from "@material-tailwind/react";
 import Teacher from "../../img/teacher.png";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
 
-export default function Usermenu() {    
+export default function Usermenu() {  
+    const { logout } = useAuth()  
 
     return (
         <>
@@ -61,7 +63,7 @@ export default function Usermenu() {
                                 fill="#90A4AE"
                             />
                         </svg>
-                        <Typography variant="small" className="font-medium">
+                        <Typography variant="small" className="font-medium" onClick={()=>logout()}>
                             Sign Out
                         </Typography>
                     </MenuItem>
