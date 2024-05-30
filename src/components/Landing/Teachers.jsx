@@ -67,15 +67,15 @@ const Teachers = ({ Teachers }) => {
                           <div>
                             <div className="uppercase tracking-wide text-xs text-gray-700 font-semibold text-left">{ele.title || "Not Provided"}</div>
                             <h1 className="text-2xl font-bold text-gray-900 text-left">{ele.name}</h1>
-                            <div className="flex items-center space-x-2">
+                            <div className="flex items-center space-x-2 text-left">
                               <IoLocation className="text-blue-500" size={14} />
                               <span className="text-sm font-bold text-gray-600 block">{ele.address || 'not provided'}</span>
                             </div>
-                            <div className="flex items-center space-x-2">
+                            <div className="flex items-center space-x-2 text-left">
                               <FaPhoneAlt className="text-red-500" size={14} />
                               <span className="text-sm font-bold text-gray-600 block">{ele.phone || 'not provided'}</span>
                             </div>
-                            <div className="flex items-center space-x-2">
+                            <div className="flex items-center space-x-2 text-left">
                               <IoMdMail className="text-green-500" size={14} />
                               <span className="text-sm font-bold text-gray-600 block">{ele.email || 'not provided'}</span>
                             </div>
@@ -119,15 +119,15 @@ const Teachers = ({ Teachers }) => {
                           <div>
                             <div className="uppercase tracking-wide text-xs text-gray-700 font-semibold text-left">{ele.title || "Not Provided"}</div>
                             <h1 className="text-md lg:text-2xl font-bold text-gray-900 text-left">{ele.name}</h1>
-                            <div className="flex items-center space-x-2">
+                            <div className="flex items-center space-x-2 text-left">
                               <IoLocation className="text-blue-500" size={14} />
                               <span className="text-sm font-bold text-gray-600 block">{ele.address || 'not provided'}</span>
                             </div>
-                            <div className="flex items-center space-x-2">
+                            <div className="flex items-center space-x-2 text-left">
                               <FaPhoneAlt className="text-red-500" size={14} />
                               <span className="text-sm font-bold text-gray-600 block">{ele.phone || 'not provided'}</span>
                             </div>
-                            <div className="flex items-center space-x-2">
+                            <div className="flex items-center space-x-2 text-left">
                               <IoMdMail className="text-green-500" size={14} />
                               <span className="text-sm font-bold text-gray-600 block">{ele.email || 'not provided'}</span>
                             </div>
