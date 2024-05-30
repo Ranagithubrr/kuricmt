@@ -45,7 +45,7 @@ const Patients = () => {
                     <span className='block pr-5 cursor-pointer dark:text-gray-200' onClick={FetchData}><LuRefreshCcw /></span>
                     {
                         userData && userData.type && userData.type === "admin" &&
-                        <button onClick={() => AddNewCaptainButtonClicked()} className='bg-blue-800 text-gray-200 rounded px-5 py-2 flex items-center'><span className='pr-3'><FaPlus /></span> Add New Captain</button>
+                        <button onClick={() => AddNewCaptainButtonClicked()} className='flex items-center px-6 py-2 text-sm font-semibold text-center text-white uppercase transition-all duration-300 bg-gradient-to-r from-blue-500 to-blue-800 rounded-full shadow-md hover:from-blue-600 hover:to-blue-900 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-300 active:shadow-inner'><span className='pr-3'><FaPlus /></span> Add New Captain</button>
                     }
                 </div>
             </div>

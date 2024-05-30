@@ -116,7 +116,7 @@ const Navbar = ({setSidebar}) => {
                     <div className='pt-3 pr-5'>
                         <span className='text-xs font-bold dark:text-gray-300 block text-center'>Theme : {darkMode ? 'Dark' : 'Light'}</span>
                         <div className='flex justify-between mt-5'>
-                            <button className='w-full bg-gradient-to-r from-green-400 to-green-500 hover:from-green-500 hover:to-green-600 dark:from-green-600 dark:to-green-700 dark:hover:from-green-700 dark:hover:to-green-800 text-white font-semibold text-sm px-6 py-3 rounded-lg shadow-lg transform transition-transform duration-300 ease-in-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-300 dark:focus:ring-green-800' onClick={handleToggleDarkMode}>Switch Theme</button>
+                            <button className='w-full flex items-center justify-center px-6 py-2 text-sm font-semibold text-center text-white uppercase transition-all duration-300 bg-gradient-to-r from-blue-500 to-blue-800 rounded-full shadow-md hover:from-blue-600 hover:to-blue-900 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-300 active:shadow-inner' onClick={handleToggleDarkMode}>Switch Theme</button>
                         </div>
                     </div>
                 </div>

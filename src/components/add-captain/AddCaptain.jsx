@@ -120,7 +120,7 @@ const AddCaptain = (props) => {
       <input value={phone} onChange={(e) => setPhone(e.target.value)} type="text" id='phone' className='border rounded-sm px-4 py-2 w-full outline-none dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300' placeholder='012923937937' />
       <label htmlFor="email" className="dark:text-gray-300">Email</label>
       <input value={email} onChange={(e) => setEmail(e.target.value)} type="text" id='email' className='border rounded-sm px-4 py-2 w-full outline-none dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300' placeholder='hello@gmail.com' />
-      <button onClick={AddCaptain} className='bg-blue-700 text-gray-100 rounded px-8 py-2 font-semibold my-3'>{isUpdating ? 'Update' : 'Add'}</button>
+      <button onClick={AddCaptain} className='flex items-center mt-4 px-6 py-2 text-sm font-semibold text-center text-white uppercase transition-all duration-300 bg-gradient-to-r from-blue-500 to-blue-800 rounded-full shadow-md hover:from-blue-600 hover:to-blue-900 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-300 active:shadow-inner'>{isUpdating ? 'Update' : 'Add'}</button>
     </div>
   )
 }

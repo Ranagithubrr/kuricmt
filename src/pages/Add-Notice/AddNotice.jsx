@@ -94,7 +94,7 @@ const AddNotice = () => {
       <input type="text" value={description} placeholder='Notice Descrition' className='border outline-none w-full lg:w-1/2 rounded-sm px-2 py-2 my-2 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300'
         onChange={(e) => setDescription(e.target.value)}
       />
-      <button disabled={disabled} className='bg-blue-600 text-gray-200 font-semibold text-sm rounded px-6 py-2' onClick={SubmitClicked}>Post</button>
+      <button disabled={disabled} className='flex items-center mt-4 px-6 py-2 text-sm font-semibold text-center text-white uppercase transition-all duration-300 bg-gradient-to-r from-blue-500 to-blue-800 rounded-full shadow-md hover:from-blue-600 hover:to-blue-900 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-300 active:shadow-inner' onClick={SubmitClicked}>Post</button>
     </div>
   )
 }

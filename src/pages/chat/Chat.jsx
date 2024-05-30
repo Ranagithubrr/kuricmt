@@ -166,7 +166,7 @@ const Chat = () => {
                             <div className='flex mt-2 mx-2 lg:mx-0'>
                                 <form onSubmit={sendMessage} className='flex w-full'>
                                     <input type="text" value={messageInput} onChange={(e) => setMessageInput(e.target.value)} className='border rounded-sm w-10/12 text-sm px-3 py-2 outline-none mr-2 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600' placeholder='Type Your Message . . .' />
-                                    <button type='submit' className='w-2/12 outline-none bg-green-600 rounded font-semibold'>Send</button>
+                                    <button type='submit' className='w-2/12 outline-none bg-green-600 text-gray-100 font-semibold transition-all duration-300 bg-gradient-to-r from-blue-500 to-blue-800 rounded shadow-md hover:from-blue-600 hover:to-blue-900 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-300 active:shadow-inner'>Send</button>
                                 </form>
                             </div>
                         </div>

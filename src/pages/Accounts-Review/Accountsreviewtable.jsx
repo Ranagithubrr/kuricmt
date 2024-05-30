@@ -181,11 +181,11 @@ const AccountsReviewtable = () => {
           <div onClick={() => setmodal(false)} className='bg-gray-700 opacity-50 fixed top-0 left-0 w-full h-full z-10'></div>
         }
         {modal &&
-          <div className='fixed top-32 w-11/12 lg:w-1/3 m-auto z-50 bg-white shadow left-0 right-0 rounded p-4'>
+          <div className='fixed top-32 w-11/12 lg:w-1/3 m-auto z-50 bg-white dark:bg-gray-900 shadow left-0 right-0 rounded p-4'>
             <div className='text-center w-full flex items-center justify-center flex-col'>
               <span className='text-yellow-400 text-3xl m-auto'><GoAlert /></span>
               <div>
-                <span className='text-sm font-semibold'>Are you sure want to {!isdelete ? <span className="font-bold text-green-600">Activate</span> : <span className="font-bold text-red-600">Decline</span>}  { } {teachaerName}'s account?</span>
+                <span className='text-sm font-semibold dark:text-gray-300'>Are you sure want to {!isdelete ? <span className="font-bold text-green-600">Activate</span> : <span className="font-bold text-red-600">Decline</span>}  { } {teachaerName}'s account?</span>
                 <div className='py-3'>
                   {
                     isdelete ? <button className='rounded px-6 mx-2 py-1 bg-red-500 text-gray-200 text-sm font-semibold' onClick={() => DeleteTacher()}>Yes</button>
