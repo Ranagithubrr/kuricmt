@@ -1,19 +1,20 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { AiFillEdit } from 'react-icons/ai'
-import {useAuth} from '../../contexts/AuthContext';
-const Hospitalsurvey = () => { 
-  const {token} = useAuth();
+import { useAuth } from '../../contexts/AuthContext';
+import { ToastContainer, toast } from 'react-toastify';
+const Hospitalsurvey = () => {
+  const { token } = useAuth();
   const [formData, setFormData] = useState({
-    labassistant:  "",
+    labassistant: "",
     labonecomputer: "",
     labtwocomputer: "",
-    laboneseat:  "",
+    laboneseat: "",
     labtwoseat: "",
     hlabcomputer: "",
-    hlabseat:  "",
+    hlabseat: "",
   });
-  const FetchData = () => {    
+  const FetchData = () => {
     axios.get('https://kuricmt-backend.onrender.com/content')
       .then((response) => {
         console.log('response is ', response.data[0]);
@@ -25,10 +26,10 @@ const Hospitalsurvey = () => {
           labtwoseat: response.data[0].labtwoseat || "",
           hlabcomputer: response.data[0].hlabcomputer || "",
           hlabseat: response.data[0].hlabseat || "",
-        });       
+        });
       })
       .catch((err) => {
-        console.log('an error', err)       
+        console.log('an error', err)
       })
   }
 
@@ -52,9 +53,22 @@ const Hospitalsurvey = () => {
       'Authorization': `Bearer ${token}`,
     };
     const apiUrl = `https://kuricmt-backend.onrender.com/content`;
+    const UpdatePromise = axios.put(apiUrl, formData, { headers });
+    const promiseToast = toast.promise(
+      UpdatePromise,
+      {
+        pending: 'Updating, please wait...',
+        success: 'Data Updated successfully',
+        error: 'Failed to Update Data',
+      }
+    );
     try {
-      const response = await axios.put(apiUrl, formData, { headers });
-      console.log('Response:', response.data);
+      // Wait for the deletion promise to resolve or reject
+      const response = await UpdatePromise;
+      console.log(response.status)
+
+      // Manually close the toast after success
+      toast.dismiss(promiseToast);
       FetchData()
     } catch (error) {
       console.error('Error:', error);
@@ -62,6 +76,9 @@ const Hospitalsurvey = () => {
   }
   return (
     <div className='m-5 p-3 border dark:border-gray-600'>
+      <ToastContainer
+                autoClose={1500}
+            />
       <h4 className='dark:text-gray-300'>Department Survey</h4>
       <div className='md:flex gap-4 my-2'>
         <div className='md:w-1/2 border p-2 dark:border-gray-600'>
@@ -74,7 +91,7 @@ const Hospitalsurvey = () => {
             <div className="">
               <span className='text-sm text-gray-400 font-semibold  block z-400 bg-white dark:bg-transparent dark:text-gray-300'>Lab Assistant</span>
               <input onChange={(e) => handleInputChange(e.target.name, e.target.value)} value={formData.labassistant} name='labassistant' type="number" placeholder='3' className='border dark:border-gray-600 outline-none px-3 py-2 text-lg bg-white dark:bg-gray-800 dark:text-gray-200 w-full' />
-            </div>            
+            </div>
           </div>
         </div>
         <div className='md:w-1/2 border p-2 dark:border-gray-600'>
@@ -114,8 +131,8 @@ const Hospitalsurvey = () => {
         </div>
       </div>
       <div className='my-2'>
-            <button onClick={UpdateDataClicked}  className='flex items-center bg-gradient-to-r from-green-400 to-green-500 hover:from-green-500 hover:to-green-600 dark:from-green-600 dark:to-green-700 dark:hover:from-green-700 dark:hover:to-green-800 text-white font-semibold text-sm px-6 py-3 rounded-lg shadow-lg transform transition-transform duration-300 ease-in-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-300 dark:focus:ring-green-800'><span className='mr-3'><AiFillEdit /></span> Update</button>
-          </div>
+        <button onClick={UpdateDataClicked} className='flex items-center mt-4 px-6 py-2 text-sm font-semibold text-center text-white uppercase transition-all duration-300 bg-gradient-to-r from-blue-500 to-blue-800 rounded-full shadow-md hover:from-blue-600 hover:to-blue-900 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-300 active:shadow-inner'><span className='mr-3'><AiFillEdit /></span> Update</button>
+      </div>
     </div>
   )
 }
