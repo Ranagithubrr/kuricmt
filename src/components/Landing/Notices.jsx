@@ -33,7 +33,7 @@ const Notices = ({ Notices }) => {
                             return (
                                 <div className="border shadow rounded-sm px-4 py-2 lg:flex lg:items-center cursor-pointer w-full lg:w-2/3 mx-auto mt-1">
                                     <div className='lg:w-1/6 flex items-center'>
-                                        <span className='text-red-500'><FaAngleDoubleRight /></span>
+                                        <span className='text-blue-500'><FaAngleDoubleRight /></span>
                                         <div className='font-semibold text-sm pl-2 flex lg:block'>
                                             <span className='block'>{formatDateAndTime(ele.createdAt).date}</span>
                                             <span className='block text-xs text-gray-400 pl-2 lg:pl-0'>{formatDateAndTime(ele.createdAt).time}</span>
@@ -43,8 +43,8 @@ const Notices = ({ Notices }) => {
                                         <span className='font-semibold block lg:pl-4'>{ele.title}</span>
                                         <span className='text-xs block lg:pl-4'>{ele.description}</span>
                                     </div>
-                                    <div className='w-full lg:w-2/6 lg:text-center mt-3 lg:mt-0'>
-                                        <Link to={ele.noticeurl} target='_blank' download={ele.noticeurl} className='w-2/4 mx-auto bg-red-500 text-gray-200 font-semibold rounded py-1 px-3'>Download</Link>
+                                    <div className='w-full lg:w-2/6 lg:text-center lg:mt-0'>
+                                        <Link to={ele.noticeurl} target='_blank' download={ele.noticeurl} className="inline-block px-6 py-2 text-sm font-semibold text-center text-white uppercase transition-all duration-300 bg-gradient-to-r from-blue-500 to-blue-800 rounded-full shadow-md hover:from-blue-600 hover:to-blue-900 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-300 active:shadow-inner">Download</Link>
                                     </div>
                                 </div>
                             )

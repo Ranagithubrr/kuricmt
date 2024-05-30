@@ -82,7 +82,7 @@ const Quotes = ({ Quotes, Teachers }) => {
                 }
             </div>
             <div className="text-center py-3 flex items-center justify-center">
-                <button className='bg-red-500 px-3 py-2 text-gray-200 rounded font-semibold flex items-center' onClick={() => setshowqhote(!showqhote)}><span className='mr-2'><FaPlus /></span> Add My Quote</button>
+                <button className="flex items-center px-6 py-2 text-sm font-semibold text-center text-white uppercase transition-all duration-300 bg-gradient-to-r from-blue-500 to-blue-800 rounded-full shadow-md hover:from-blue-600 hover:to-blue-900 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-300 active:shadow-inner" onClick={() => setshowqhote(!showqhote)}><span className='mr-2'><FaPlus /></span> Add My Quote</button>
             </div>
             {/* add quote */}
             {
@@ -119,7 +119,7 @@ const Quotes = ({ Quotes, Teachers }) => {
                             <textarea value={message} onChange={(e) => setMessage(e.target.value)} name="" id="" cols="30" rows="10" className='border rounded-sm px-3 py-1 w-full outline-none' placeholder='Type Your Message'></textarea>
                         </div>
                         <div className='text-center py-1 mx-5'>
-                            <button className='outline-none bg-red-500 text-gray-100 font-semibold text-sm px-3 py-2 rounded' onClick={SubmitQuote}>Submit</button>
+                            <button className="flex items-center px-6 py-2 text-sm font-semibold text-center text-white uppercase transition-all duration-300 bg-gradient-to-r from-blue-500 to-blue-800 rounded-full shadow-md hover:from-blue-600 hover:to-blue-900 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-300 active:shadow-inner" onClick={SubmitQuote}>Submit</button>
                         </div>
                     </div>
                 </>

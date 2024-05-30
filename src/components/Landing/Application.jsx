@@ -65,7 +65,7 @@ const Application = () => {
                     <p className='font-semibold text-gray-700'>Student Application Portal for Direct Dialogue with Chief Instructor</p>
                 </div>
                 <div className='flex items-center justify-center text-center w-full lg:w-1/2 mt-3 lg:mt-0'>
-                    <button onClick={() => setshowqhote(!showqhote)} className='outline-none bg-red-500 text-gray-100 font-semibold text-sm px-3 py-2 rounded flex items-center'> <span className='pr-2'><MdEditDocument /></span> Write an Application</button>
+                    <button onClick={() => setshowqhote(!showqhote)} className="flex items-center px-6 py-2 text-sm font-semibold text-center text-white uppercase transition-all duration-300 bg-gradient-to-r from-blue-500 to-blue-800 rounded-full shadow-md hover:from-blue-600 hover:to-blue-900 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-300 active:shadow-inner"> <span className='pr-2'><MdEditDocument /></span> Write an Application</button>
                 </div>
             </div>
             {
@@ -119,7 +119,7 @@ const Application = () => {
                             <textarea value={formData.body} name='body' onChange={(e) => handleChange(e)} id="" cols="30" rows="5" style={{ whiteSpace: 'pre-wrap' }} className='border rounded-sm px-3 py-1 w-full outline-none' placeholder='Type Your Application ( Just Write The Main Body! )'></textarea>
                         </div>
                         <div className='text-center py-1 mx-5'>
-                            <button onClick={SubmitClicked} className='outline-none bg-red-500 text-gray-100 font-semibold text-sm px-3 py-2 rounded'>Submit Application</button>
+                            <button onClick={SubmitClicked} className="flex items-center px-6 py-2 text-sm font-semibold text-center text-white uppercase transition-all duration-300 bg-gradient-to-r from-blue-500 to-blue-800 rounded-full shadow-md hover:from-blue-600 hover:to-blue-900 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-300 active:shadow-inner">Submit Application</button>
                         </div>
                     </div>
                 </>

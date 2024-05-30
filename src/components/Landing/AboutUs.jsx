@@ -1,5 +1,6 @@
 import React from 'react';
 import KuriImg from '../../img/kuri.jpg';
+import { IoIosArrowDropdown } from "react-icons/io";
 
 const AboutUs = ({ Content }) => {
     console.log(Content)
@@ -19,7 +20,8 @@ const AboutUs = ({ Content }) => {
                         <p class="text-justify font-semibold leading-relaxed text-gray-800">
                             Welcome to the Computer Department at Kurigram Polytechnic Institute, where innovation and education intersect. Our dynamic environment fosters a passion for computer science and emerging technologies. Join us on a journey of exploration and skill development in the ever-evolving world of computing.
                         </p>
-                        <a href="#teachers" className="inline-block px-4 py-1 mt-3 text-xs font-medium leading-6 text-center text-white uppercase transition bg-blue-600 rounded shadow ripple hover:shadow-lg hover:bg-blue-800 focus:outline-none">
+                        <a href="#teachers" className="inline-flex items-center px-6 py-3 mt-4 text-sm font-semibold text-center text-white uppercase transition-all duration-300 bg-gradient-to-r from-blue-500 to-blue-800 rounded-full shadow-md hover:from-blue-600 hover:to-blue-900 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-300 active:shadow-inner">
+                            <span className='text-2xl mr-2'><IoIosArrowDropdown /></span>
                             Explore More
                         </a>
                     </div>
