@@ -62,7 +62,7 @@ const Maindashboard = () => {
                             rounded py-2 px-3 text-1xl  flex items-center
                             "><FaClipboardList /></div>
                                     <div className="pl-2 flex flex-col">
-                                        <span className='font-semibold text-base dark:text-slate-400'>{dataState.data.notices.length}</span>
+                                        <span className='font-semibold text-base dark:text-slate-400'>{dataState.data.allnotices.length}</span>
                                         <span className='text-xs text-gray-500 dark:text-slate-400'>Notices</span>
                                     </div>
                                 </div>

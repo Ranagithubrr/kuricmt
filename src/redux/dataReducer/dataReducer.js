@@ -23,6 +23,7 @@ export const fetchAllData = () => {
             ]);
 
             const data = {
+                allnotices: noticesRes.data.allNotices,
                 notices: noticesRes.data.allNotices.slice(0, 3),
                 noticeNumber: noticesRes.data.allNotices.length,
                 teachers: teachersRes.data.AllUser,
@@ -42,6 +43,7 @@ export const fetchAllData = () => {
 const initialState = {
     loading: false,
     data: {
+        allnotices:[],
         notices: [],
         noticeNumber: 0,
         teachers: [],
