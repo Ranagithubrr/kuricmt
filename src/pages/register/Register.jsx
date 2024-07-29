@@ -16,7 +16,7 @@ const Register = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [errorText, setErrorText] = useState("Something went wrong");
-  const [step, setStep] = useState(3);
+  const [step, setStep] = useState(0);
   const [otp, setOtp] = useState("");
   const [timeLeft, setTimeLeft] = useState(0);
 
